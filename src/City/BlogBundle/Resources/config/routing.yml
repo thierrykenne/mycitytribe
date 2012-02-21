@@ -1,0 +1,29 @@
+cityblog_article:
+    resource: "routing/article.yml"
+    prefix:   /crud 
+
+cityblog:
+    pattern:   /{page}
+    defaults:  { _controller: CityBlogBundle:Blog:liste, page: 1 }
+    requirements:
+        page:  \d+
+
+cityblog_voir:
+    pattern:   /{slug}
+    defaults:  { _controller: CityBlogBundle:Blog:voir }
+
+cityblog_ajouter:
+    pattern:   /ajouter/article
+    defaults:  { _controller: CityBlogBundle:Blog:ajouter }
+
+cityblog_modifier:
+    pattern:   /modifier/{id}
+    defaults:  { _controller: CityBlogBundle:Blog:modifier }
+    requirements:
+        id:  \d+
+
+cityblog_supprimer:
+    pattern:   /supprimer/{id}
+    defaults:  { _controller: CityBlogBundle:Blog:supprimer }
+    requirements:
+        id:  \d+

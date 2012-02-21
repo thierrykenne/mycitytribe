@@ -1,0 +1,97 @@
+<?php
+
+/* ::layout.html.twig */
+class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
+{
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->blocks = array(
+            'title' => array($this, 'block_title'),
+            'body' => array($this, 'block_body'),
+        );
+    }
+
+    protected function doGetParent(array $context)
+    {
+        return false;
+    }
+
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        // line 1
+        echo "<!DOCTYPE html>
+<html>
+\t<head>
+\t\t<title>";
+        // line 4
+        $this->displayBlock('title', $context, $blocks);
+        echo "</title>
+
+\t\t<link rel=\"stylesheet\" href=\"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/style.css"), "html", null, true);
+        echo "\" type=\"text/css\" media=\"screen\" />
+\t</head>
+\t
+\t<body>
+\t\t<div id=\"en_tete\">
+\t\t\t<h1> Mycitytribe Header</h1>
+\t\t</div> 
+ 
+\t\t<div id=\"menu\">
+\t\t\t<div class=\"element_menu\"> 
+\t\t\t\t<ul> 
+\t\t\t\t\t<li><a href=\"";
+        // line 17
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("auth_service_login", array("service" => "facebook")), "html", null, true);
+        echo "\">Facebook login</a></li> 
+\t\t\t\t\t<li><a href=\"";
+        // line 18
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("auth_service_login", array("service" => "twitter")), "html", null, true);
+        echo "\">Twitter Login</a></li> 
+\t\t\t\t</ul>
+\t\t\t</div>
+\t\t</div>
+ 
+\t\t<div id=\"corps\">
+\t\t
+\t\t\t";
+        // line 25
+        $this->displayBlock('body', $context, $blocks);
+        // line 27
+        echo "\t\t\t
+\t\t</div> 
+ 
+\t\t<div id=\"pied_de_page\"> 
+\t 
+\t\t</div>
+\t</body>
+</html>
+";
+    }
+
+    // line 4
+    public function block_title($context, array $blocks = array())
+    {
+        echo "MycityTribe";
+    }
+
+    // line 25
+    public function block_body($context, array $blocks = array())
+    {
+        // line 26
+        echo "\t\t\t";
+    }
+
+    public function getTemplateName()
+    {
+        return "::layout.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+}

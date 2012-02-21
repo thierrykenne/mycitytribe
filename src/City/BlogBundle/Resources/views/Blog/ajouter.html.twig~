@@ -1,0 +1,46 @@
+{% extends "CityBlogBundle::layout.html.twig" %}
+
+{% block title %}Modifier un article - {{ parent() }}{% endblock %}
+
+{% block cityblog_body %}
+
+	<h2>Modifier un article</h2>
+	
+	{% include "CityBlogBundle:Blog:formulaire.html.twig" with {'form': form} %}
+	
+	<p>
+		Vous éditez un article déjà existant,
+		ne le changez pas trop pour éviter
+		aux membres de ne pas comprendre
+		ce qui se passe.
+	</p>
+	
+
+<form action="" method="post" {{ form_enctype(form) }}>
+
+<!-- Les erreurs générales du formulaire. -->
+{{ form_errors(form) }}
+
+<div>
+    <!-- Génération du label. -->
+    {{ form_label(form.titre, "Titre de l'article") }}
+
+    <!-- Affichage des erreurs pour ce champ précis. -->
+    {{ form_errors(form.titre) }}
+
+    <!-- Génération de l'input. -->
+    {{ form_widget(form.titre) }}
+</div>
+
+<!-- Idem pour un autre champ. -->
+<div>
+    {{ form_label(form.contenu, "Contenu de l'article") }}
+    {{ form_errors(form.contenu) }}
+    {{ form_widget(form.contenu) }}
+</div>
+
+<!-- Génération des champs pas encore écrits.
+     Dans cet exemple, ça serait « date », « pseudo » et « tags »,
+     mais aussi le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). -->
+{% endblock %}
