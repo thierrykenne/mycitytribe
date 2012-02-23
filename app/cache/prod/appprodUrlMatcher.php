@@ -25,6 +25,16 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $allow = array();
         $pathinfo = urldecode($pathinfo);
 
+        // CityGeoBundle_homepage
+        if (0 === strpos($pathinfo, '/geography/hello') && preg_match('#^/geography/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'CityGeoBundle_homepage'));
+        }
+
+        // city_tribu_default_index
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\TribuBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'city_tribu_default_index'));
+        }
+
         if (0 === strpos($pathinfo, '/Blog')) {
             if (0 === strpos($pathinfo, '/Blog/crud')) {
                 // article
@@ -194,6 +204,16 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_fos_user_registration_confirmed:
 
+            // fos_user_registration_tribu
+            if ($pathinfo === '/register/tribu_register') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_user_registration_tribu;
+                }
+                return array (  '_controller' => 'CityUserBundle:TribuRegister:register',  '_route' => 'fos_user_registration_tribu',);
+            }
+            not_fos_user_registration_tribu:
+
         }
 
         if (0 === strpos($pathinfo, '/resetting')) {
@@ -237,6 +257,36 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_fos_user_resetting_reset:
 
+        }
+
+        // auth_login
+        if ($pathinfo === '/social_network') {
+            return array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::loginAction',  '_route' => 'auth_login',);
+        }
+
+        // auth_service_login
+        if (0 === strpos($pathinfo, '/social_network') && preg_match('#^/social_network/(?P<service>[^/]+?)$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::loginAction',)), array('_route' => 'auth_service_login'));
+        }
+
+        // auth_callback
+        if (0 === strpos($pathinfo, '/callback') && preg_match('#^/callback/(?P<service>[^/]+?)$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::callbackAction',)), array('_route' => 'auth_callback'));
+        }
+
+        // auth_denied
+        if ($pathinfo === '/denied') {
+            return array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::deniedAction',  '_route' => 'auth_denied',);
+        }
+
+        // auth_profile
+        if ($pathinfo === '/profile') {
+            return array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::profileAction',  '_route' => 'auth_profile',);
+        }
+
+        // auth_logout
+        if ($pathinfo === '/logout') {
+            return array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::logoutAction',  '_route' => 'auth_logout',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

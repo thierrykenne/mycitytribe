@@ -1,0 +1,6 @@
+CityGeoBundle_homepage:
+    pattern:  /region
+    defaults: { _controller: CityGeoBundle:Default:index }
+CityGeoBundle_destination:
+    pattern:  /destination
+    defaults: { _controller: CityGeoBundle:Default:destination }

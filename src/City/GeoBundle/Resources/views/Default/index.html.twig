@@ -1,0 +1,11 @@
+Hello1 {{ name }}!
+{% if destination is defined  %}
+	<form action="{{ path('CityGeoBundle_destination') }}" method="post" {{ form_enctype(form) }}>
+{% else %}
+{% endif %}
+<form action="{{ path('CityGeoBundle_homepage') }}" method="post" {{ form_enctype(form) }}>
+	
+	{{ form_widget(form) }}
+	
+	<input type="submit" />
+</form>

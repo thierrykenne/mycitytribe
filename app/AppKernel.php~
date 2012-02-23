@@ -20,7 +20,9 @@ class AppKernel extends Kernel
             new City\BlogBundle\CityBlogBundle(),
             new City\UserBundle\CityUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new OnePlusOne\OAuthBundle\OnePlusOneOAutBundle(),
+            new OnePlusOne\OAuthBundle\OnePlusOneOAuthBundle(),
+            new City\TribuBundle\CityTribuBundle(),
+            new City\Bundle\GeoinformationBundle\GeoinformationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

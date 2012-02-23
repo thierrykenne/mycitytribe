@@ -1,5 +1,5 @@
 <?php
-// src/Sdz/UserBundle/Entity/User.php
+// src/City/UserBundle/Entity/User.php
 
 namespace City\UserBundle\Entity;
 
@@ -20,13 +20,6 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @var integer $tribu_id
-     *
-     * @ORM\Column(name="tribu_id", type="integer")
-     */
-    private $tribu_id;
-
-    /**
      * @var string $nationality
      *
      * @ORM\Column(name="nationality", type="string", length=255)
@@ -34,11 +27,34 @@ class User extends BaseUser
     protected $nationality;
 
     /**
-     * @var string $destination
+     * @var string $destination_city
      *
-     * @ORM\Column(name="destination", type="string", length=255)
+     * @ORM\Column(name="destination_city", type="string", length=255)
      */
-   protected $destination;
+   protected $destination_city;
+
+    /**
+     * @var string $destination_country
+     *
+     * @ORM\Column(name="destination_country", type="string", length=255)
+     */
+   protected $destination_country;
+
+
+    /**
+     * @var string $destination_region
+     *
+     * @ORM\Column(name="destination_region", type="string", length=255)
+     */
+   protected $destination_region;
+
+    /**
+     * @var string $origin_region
+     *
+     * @ORM\Column(name="origin_region", type="string", length=255)
+     */
+   protected $origin_region;
+
 
 
     public function __construct()
@@ -70,38 +86,78 @@ class User extends BaseUser
      *
      * @param string $destination
      */
-    public function setDestination($destination)
+    public function setDestinationCity($destination_city)
     {
-        $this->destination = $destination;
+        $this->destination_city = $destination_city;
     }
 
     /**
-     * Get destination
+     * Get destination_city
      *
      * @return string 
      */
-    public function getDestination()
+    public function getDestinationCity()
     {
-        return $this->destination;
-    }
-    /**
-     * Set tribu_id
-     *
-     * @param integer $tribuId
-     */
-    public function setTribuId($tribuId)
-    {
-        $this->tribu_id = $tribuId;
+        return $this->destination_city;
     }
 
     /**
-     * Get tribu_id
+     * Set destination_country
      *
-     * @return integer 
+     * @param string $destination_country
      */
-    public function getTribuId()
+    public function setDestinationCountry($destination_country)
     {
-        return $this->tribu_id;
+        $this->destination_country = $destination_country;
     }
 
+    /**
+     * Get destination_country
+     *
+     * @return string 
+     */
+    public function getDestinationCountry()
+    {
+        return $this->destination_country;
+    }
+
+    /**
+     * Set destination_region
+     *
+     * @param string $destination_region
+     */
+    public function setDestinationRegion($destination_region)
+    {
+        $this->destination_region = $destination_region;
+    }
+
+    /**
+     * Get destination_region
+     *
+     * @return string 
+     */
+    public function getDestinationRegion()
+    {
+        return $this->destination_region;
+    }
+
+    /**
+     * Set origin_region
+     *
+     * @param string $origin_region
+     */
+    public function setOriginRegion($origin_region)
+    {
+        $this->origin_region = $origin_region;
+    }
+
+    /**
+     * Get origin_region
+     *
+     * @return string 
+     */
+    public function getOriginRegion()
+    {
+        return $this->origin_region;
+    }
 }

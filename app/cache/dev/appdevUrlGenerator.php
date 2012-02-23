@@ -33,7 +33,9 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_home' => true,
        '_configurator_step' => true,
        '_configurator_final' => true,
-       'city_tribu_default_index' => true,
+       'CitytribeBundle_homepage' => true,
+       'CityGeoBundle_homepage' => true,
+       'CityGeoBundle_destination' => true,
        'article' => true,
        'article_show' => true,
        'article_new' => true,
@@ -190,9 +192,19 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController::finalAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/_configurator/final',  ),));
     }
 
-    private function getcity_tribu_default_indexRouteInfo()
+    private function getCitytribeBundle_homepageRouteInfo()
     {
-        return array(array (  0 => 'name',), array (  '_controller' => 'City\\TribuBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/home',  ),));
+    }
+
+    private function getCityGeoBundle_homepageRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/geography/region',  ),));
+    }
+
+    private function getCityGeoBundle_destinationRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::destinationAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/geography/destination',  ),));
     }
 
     private function getarticleRouteInfo()

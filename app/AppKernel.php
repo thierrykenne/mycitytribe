@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new OnePlusOne\OAuthBundle\OnePlusOneOAuthBundle(),
             new City\TribuBundle\CityTribuBundle(),
+            new City\GeoBundle\CityGeoBundle(),
+            new City\CitytribeBundle\CitytribeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

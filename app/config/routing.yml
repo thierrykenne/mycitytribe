@@ -1,11 +1,15 @@
-CityTribuBundle:
-    resource: "@CityTribuBundle/Controller/"
-    type:     annotation
+CitytribeBundle:
+    resource: "@CitytribeBundle/Resources/config/routing.yml"
     prefix:   /
+
+CityGeoBundle:
+    resource: "@CityGeoBundle/Resources/config/routing.yml"
+    prefix:   /geography
 
 CityBlogBundle:
     resource: "@CityBlogBundle/Resources/config/routing.yml"
     prefix:   /Blog
+
 # app/config/routing.yml
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

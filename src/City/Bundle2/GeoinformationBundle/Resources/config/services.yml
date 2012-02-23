@@ -1,0 +1,7 @@
+parameters:
+#    geoinformation.example.class: City\Bundle\GeoinformationBundle\Example
+
+services:
+#    geoinformation.example:
+#        class: %geoinformation.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

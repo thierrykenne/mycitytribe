@@ -143,9 +143,22 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // city_tribu_default_index
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\TribuBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'city_tribu_default_index'));
+        // CitytribeBundle_homepage
+        if ($pathinfo === '/home') {
+            return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'CitytribeBundle_homepage',);
+        }
+
+        if (0 === strpos($pathinfo, '/geography')) {
+            // CityGeoBundle_homepage
+            if ($pathinfo === '/geography/region') {
+                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::indexAction',  '_route' => 'CityGeoBundle_homepage',);
+            }
+
+            // CityGeoBundle_destination
+            if ($pathinfo === '/geography/destination') {
+                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::destinationAction',  '_route' => 'CityGeoBundle_destination',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/Blog')) {
