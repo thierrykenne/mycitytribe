@@ -148,15 +148,20 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'CitytribeBundle_homepage',);
         }
 
-        if (0 === strpos($pathinfo, '/geography')) {
-            // CityGeoBundle_homepage
-            if ($pathinfo === '/geography/region') {
-                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::indexAction',  '_route' => 'CityGeoBundle_homepage',);
+        if (0 === strpos($pathinfo, '/places')) {
+            // CityGeoBundle_origin_region
+            if ($pathinfo === '/places/residence') {
+                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::indexAction',  '_route' => 'CityGeoBundle_origin_region',);
             }
 
             // CityGeoBundle_destination
-            if ($pathinfo === '/geography/destination') {
+            if ($pathinfo === '/places/destination') {
                 return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::destinationAction',  '_route' => 'CityGeoBundle_destination',);
+            }
+
+            // CityGeoBundle_polygon_region
+            if ($pathinfo === '/places/polygon') {
+                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::polygonAction',  '_route' => 'CityGeoBundle_polygon_region',);
             }
 
         }

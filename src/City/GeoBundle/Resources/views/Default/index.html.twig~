@@ -1,10 +1,19 @@
-Hello1 {{ name }}!
-{% if destination is defined  %}
-	<form action="{{ path('CityGeoBundle_homepage') }}" method="post" {{ form_enctype(form) }}>
-{% endif %}
-<form action="{{ path('CityGeoBundle_homepage') }}" method="post" {{ form_enctype(form) }}>
+{% extends "::Glayout.html.twig" %}
+
+{% block body %}
+	Hello1 {{ name }}!<br />
+	{% if destination is defined  %}
+		<form action="{{ path('CityGeoBundle_destination') }}" method="post" {{ form_enctype(form) }}>
+	{% else %}
+	{% endif %}
+	<label>Address: </label> <input id="address" type="text" autocomplete="off" onKeyPress="return disableEnterKey(event)" /><br>
+
+	<div id="map-canvas" style="width:400px; height:400px"></div><br/>
+	<form id ="form" action="{{ path('CityGeoBundle_origin_region') }}" method="post" {{ form_enctype(form) }}>
 	
-	{{ form_widget(form) }}
+		{{ form_widget(form) }}
 	
-	<input type="submit" />
-</form>
+		<input type="submit" />
+	</form>
+<div id="erreur"> </div>
+{% endblock %}

@@ -14,8 +14,8 @@
 		<div id="menu">
 			<div class="element_menu"> 
 				<ul> 
-					<li><a href="{{ path('auth_service_login',{'service':1}) }}">Facebook login</a></li> 
-					<li><a href="{{ path('auth_service_login',{'service':2}) }}">Twitter Login</a></li> 
+					<li><a href="{{ path('auth_service_login',{'service':'facebook'}) }}">Facebook login</a></li> 
+					<li><a href="{{ path('auth_service_login',{'service':'twitter'}) }}">Twitter Login</a></li> 
 				</ul>
 			</div>
 		</div>

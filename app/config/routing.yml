@@ -4,7 +4,7 @@ CitytribeBundle:
 
 CityGeoBundle:
     resource: "@CityGeoBundle/Resources/config/routing.yml"
-    prefix:   /geography
+    prefix:   /places
 
 CityBlogBundle:
     resource: "@CityBlogBundle/Resources/config/routing.yml"

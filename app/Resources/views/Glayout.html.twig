@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block title %}MycityTribe{% endblock %}</title>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+			<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen" />
+		{% endblock %}
+<!-- Gmap -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=en"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<!-- jQuery UI -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+<!-- jQuery UI Css -->
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css" type="text/css" />
+<script language="javascript">
+$(document).ready(function() {
+	var Gcity=""; var Gcountry=""; var Gregion="";
+	$.each($('#form').find('input:visible'),function(index) { 
+  		if (index==0) {
+			$(this).addClass('city'); 
+			Gcity=$(this).attr('id');
+		}
+
+		if (index==1) {
+			$(this).addClass('region'); 
+			Gregion=$(this).attr('id');
+		}
+		if (index==2) {
+			 $(this).addClass('country'); 
+			Gcountry=$(this).attr('id');
+		}
+	});
+
+	$("#form").ajaxForm({
+              	 beforeSubmit: function() {
+			alert("salut");
+                       if ($('.city').val=="") $("#erreur").text(" city not esits");
+               }
+	});
+	//Init Geocoder  
+
+	var geocoder = new google.maps.Geocoder();
+	
+	//Init Map in Paris
+	var latlng = new google.maps.LatLng(48.864715,2.352448);
+		var options = {
+		zoom:5,
+		center: latlng,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+	};
+	var map = new google.maps.Map(document.getElementById("map-canvas"), options);
+	//add Polygon
+		var points = []; 
+	    var regionPolygon = new google.maps.Polygon({
+		paths: points,
+		strokeColor: "#FF0000",
+		strokeOpacity: 0.8,
+		strokeWeight: 2,
+		fillColor: "#FF0000",
+		fillOpacity: 0.35
+	  });
+	//Add Marker
+    var marker = new google.maps.Marker({
+        position: latlng,
+        map: map,
+    	draggable:true,
+    	animation: google.maps.Animation.DROP,
+    });
+	
+	//Drag Event
+	google.maps.event.addListener(marker, 'drag', function() {
+		geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			if (results[0]) {
+				$('#address').val(results[0].formatted_address);
+				//$('#region').val(marker.getPosition().lat());
+				//$('#country').val(marker.getPosition().lng());
+			    var elt = results[0].address_components;
+			    for(i in elt){
+					if(elt[i].types[0] == 'locality')
+						document.getElementById(Gcity).value = elt[i].long_name;					
+					if(elt[i].types[0] == 'administrative_area_level_1')
+						document.getElementById(Gregion).value = elt[i].long_name;
+					if(elt[i].types[0] == 'country')
+						document.getElementById(Gcountry).value = elt[i].long_name;
+				}
+			}
+		}
+		});
+    });
+	
+	//Autocomplete
+	$('input#address').autocomplete({
+	source: function(request,response) {
+	geocoder.geocode( { 'address': $('input#address').val() }, function(results, status) {
+	response($.map(results, function(item) {
+	return {
+	value: item.formatted_address,
+    	latitude: item.geometry.location.lat(),
+    	longitude: item.geometry.location.lng(),
+	region: 
+	        function (){
+			    var elt = item.address_components;
+				for(i in elt){
+					if(elt[i].types[0] == 'administrative_area_level_1')
+						return elt[i].long_name;
+                }
+
+			},
+	country: 
+	        function (){
+			    var elt = item.address_components;
+				for(i in elt){
+					if(elt[i].types[0] == 'country')
+						return elt[i].long_name;
+               }
+	       },
+	city: 
+	        function (){
+			    var elt = item.address_components;
+				for(i in elt){
+					if(elt[i].types[0] == 'locality')
+						return elt[i].long_name;
+               }
+	       }
+	}
+	}));
+	});
+	},
+	select: function(event, ui) {
+			$('#address').val(ui.item['value']);
+			$(".region").val(ui.item.region);
+			$(".country").val(ui.item.country);
+			$(".city").val(ui.item.city);
+			var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
+			marker.setPosition(location);
+			map.setCenter(location);
+			
+			
+			//draw polygon region on the map
+			
+			$.ajax({ // fonction permettant de faire de l'ajax
+				   type: "POST", // methode de transmission des données au fichier php
+				   url: "{{path('CityGeoBundle_polygon_region')}}", // url du fichier php
+				   data: "country="+$(".country").val()+"&region="+$(".region").val(), // données à transmettre
+				   success: function(msg){ // si l'appel a bien fonctionné
+						if(msg==0) // si la connexion en php a fonctionnée
+						{
+						    //remove polygon on map
+							regionPolygon.setPath([]);
+							
+						}
+						else // si la connexion en php n'a pas fonctionnée
+						{ 
+							regionPolygon.setPath([]);
+   							points=[];
+							var geomAry = new Array(); 
+							geomAry = msg.split('|'); 
+							var XY = new Array(); 
+     						
+							for (var i = 0; i < geomAry.length; i++) 
+							{ 
+							XY = geomAry[i].split(','); 
+							points.push(new google.maps.LatLng(parseFloat(XY[1]),parseFloat(XY[0]))) ;
+							} 
+							//add polygon on map
+							  regionPolygon.setPath(points);
+							  regionPolygon.setMap(map);
+
+						} 
+							
+					}
+
+			  })
+	},
+	minLength: 2
+	});
+	
+
+	});
+
+</script>
+	</head>
+	
+	<body>
+
+		<div id="corps">
+		
+			{% block body %}
+			{% endblock %}
+			
+		</div> 
+ 
+		<div id="pied_de_page"> 
+	 
+		</div>
+	</body>
+	{% block javascripts %}
+		{# Ajoutez ce javascript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+		<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+	{% endblock %}
+</html>

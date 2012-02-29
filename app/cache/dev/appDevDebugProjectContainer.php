@@ -202,6 +202,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'citytribe.user' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return City\CitytribeBundle\Service\CitytribeUser A City\CitytribeBundle\Service\CitytribeUser instance.
+     */
+    protected function getCitytribe_UserService()
+    {
+        return $this->services['citytribe.user'] = new \City\CitytribeBundle\Service\CitytribeUser();
+    }
+
+    /**
      * Gets the 'data_collector.request' service.
      *
      * This service is shared.
@@ -283,7 +296,7 @@ class appDevDebugProjectContainer extends Container
 
         $e = new \Symfony\Bridge\Doctrine\Annotations\IndexedReader($a);
 
-        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($e, array(0 => '/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity', 1 => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity', 2 => '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity'));
+        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($e, array(0 => '/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity', 1 => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity', 2 => '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity', 3 => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity'));
 
         $g = new \Symfony\Bridge\Doctrine\Mapping\Driver\XmlDriver(array(0 => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/doctrine'));
         $g->setNamespacePrefixes(array('/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/doctrine' => 'FOS\\UserBundle\\Entity'));
@@ -293,10 +306,11 @@ class appDevDebugProjectContainer extends Container
         $h->addDriver($f, 'City\\BlogBundle\\Entity');
         $h->addDriver($f, 'City\\UserBundle\\Entity');
         $h->addDriver($f, 'City\\TribuBundle\\Entity');
+        $h->addDriver($f, 'City\\GeoBundle\\Entity');
         $h->addDriver($g, 'FOS\\UserBundle\\Entity');
 
         $i = new \Doctrine\ORM\Configuration();
-        $i->setEntityNamespaces(array('CityBlogBundle' => 'City\\BlogBundle\\Entity', 'CityUserBundle' => 'City\\UserBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'CityTribuBundle' => 'City\\TribuBundle\\Entity'));
+        $i->setEntityNamespaces(array('CityBlogBundle' => 'City\\BlogBundle\\Entity', 'CityUserBundle' => 'City\\UserBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'CityTribuBundle' => 'City\\TribuBundle\\Entity', 'CityGeoBundle' => 'City\\GeoBundle\\Entity'));
         $i->setMetadataCacheImpl($b);
         $i->setQueryCacheImpl($c);
         $i->setResultCacheImpl($d);
@@ -1690,7 +1704,7 @@ class appDevDebugProjectContainer extends Container
         $a = $this->get('security.context');
         $b = $this->get('monolog.logger.security');
 
-        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4f450df3ad2de', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
+        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4f4d79e51123a', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
     }
 
     /**
@@ -2517,7 +2531,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = new \Symfony\Component\Security\Core\User\UserChecker();
 
-        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4f450df3ad2de'), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
+        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4f4d79e51123a'), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
     }
 
     /**

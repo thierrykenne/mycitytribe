@@ -117,6 +117,8 @@
   'CityTribuBundle:Default:index.html.twig' => '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/views/Default/index.html.twig',
   'CityGeoBundle:Default:index.html.twig~' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/views/Default/index.html.twig~',
   'CityGeoBundle:Default:index.html.twig' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/views/Default/index.html.twig',
+  'CitytribeBundle:Default:index.html.twig~' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views/Default/index.html.twig~',
+  'CitytribeBundle:Default:index.html.twig' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views/Default/index.html.twig',
   'AcmeDemoBundle::layout.html.twig' => '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/views/layout.html.twig',
   'AcmeDemoBundle:Secured:layout.html.twig' => '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/views/Secured/layout.html.twig',
   'AcmeDemoBundle:Secured:login.html.twig' => '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/views/Secured/login.html.twig',
@@ -154,5 +156,7 @@
   'SensioDistributionBundle:Configurator:final.html.twig' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/views/Configurator/final.html.twig',
   '::layout.html.twig~' => '/opt/lampp/htdocs/Symfony/app/Resources/views/layout.html.twig~',
   '::layout.html.twig' => '/opt/lampp/htdocs/Symfony/app/Resources/views/layout.html.twig',
+  '::Glayout.html.twig~' => '/opt/lampp/htdocs/Symfony/app/Resources/views/Glayout.html.twig~',
   '::base.html.twig' => '/opt/lampp/htdocs/Symfony/app/Resources/views/base.html.twig',
+  '::Glayout.html.twig' => '/opt/lampp/htdocs/Symfony/app/Resources/views/Glayout.html.twig',
 );

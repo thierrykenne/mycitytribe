@@ -10,7 +10,9 @@ class UserType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
 	    $builder
-            ->add('origin_region');
+            ->add('residence_city')
+            ->add('residence_region');
+            ->add('residence_country');
     }
 
     public function getName()

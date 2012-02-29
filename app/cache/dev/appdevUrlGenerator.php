@@ -34,8 +34,9 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_step' => true,
        '_configurator_final' => true,
        'CitytribeBundle_homepage' => true,
-       'CityGeoBundle_homepage' => true,
+       'CityGeoBundle_origin_region' => true,
        'CityGeoBundle_destination' => true,
+       'CityGeoBundle_polygon_region' => true,
        'article' => true,
        'article_show' => true,
        'article_new' => true,
@@ -197,14 +198,19 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/home',  ),));
     }
 
-    private function getCityGeoBundle_homepageRouteInfo()
+    private function getCityGeoBundle_origin_regionRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/geography/region',  ),));
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/residence',  ),));
     }
 
     private function getCityGeoBundle_destinationRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::destinationAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/geography/destination',  ),));
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::destinationAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/destination',  ),));
+    }
+
+    private function getCityGeoBundle_polygon_regionRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::polygonAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/polygon',  ),));
     }
 
     private function getarticleRouteInfo()

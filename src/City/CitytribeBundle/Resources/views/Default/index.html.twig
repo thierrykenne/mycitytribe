@@ -1,1 +1,8 @@
 Hello!
+{% if app.session.hasFlash('notice') %}
+    <div class="flash-notice">
+        {{ app.session.flash('notice') }}
+    </div>
+{% endif %}
+
+
