@@ -25,8 +25,23 @@ class __TwigTemplate_6734e68e7cb061ffe10c81d069c5ae04 extends Twig_Template
 ";
         }
         // line 7
+        echo twig_escape_filter($this->env, $this->getContext($context, "paths"), "html", null, true);
         echo "
-
+\t<form id =\"form\" action=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("CitytribeBundle_avatar"), "html", null, true);
+        echo "\" method=\"post\" ";
+        echo $this->env->getExtension('form')->renderEnctype($this->getContext($context, "form"));
+        echo ">
+\t
+\t\t";
+        // line 10
+        echo $this->env->getExtension('form')->renderWidget($this->getContext($context, "form"));
+        echo "
+\t
+\t\t<input type=\"submit\" />
+\t</form>
+<img src=\"../../../../web/uploads\"/> salut
 ";
     }
 

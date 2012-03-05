@@ -18,7 +18,7 @@ use City\GeoBundle\Form\UserHandler;
 class DefaultController extends Controller
 {
     
-    public function indexAction()
+    public function residenceAction()
     {
         $user=$this->get_user();
         $username=$user->getUsername();

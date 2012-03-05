@@ -6,10 +6,10 @@
 		<form action="{{ path('CityGeoBundle_destination') }}" method="post" {{ form_enctype(form) }}>
 	{% else %}
 	{% endif %}
-	<label>Address: </label> <input id="address" type="text" autocomplete="off" onKeyPress="return disableEnterKey(event)" /><br>
+	<label>Address: </label> <input id="address" type="text" autocomplete="off" onKeyPress="return event.keyCode!=13" /><br>
 
 	<div id="map-canvas" style="width:400px; height:400px"></div><br/>
-	<form id ="form" action="{{ path('CityGeoBundle_origin_region') }}" method="post" {{ form_enctype(form) }}>
+	<form id ="form" action="{{ path('CityGeoBundle_residence_region') }}" method="post" {{ form_enctype(form) }}>
 	
 		{{ form_widget(form) }}
 	

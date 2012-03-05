@@ -42,9 +42,9 @@ class DefaultController extends Controller
         $username=$user->getUsername();
         $userId=$user->getId();
         $form = $this->createFormBuilder( $user)
-            ->add('destination_city', 'text')
-            ->add('destination_region', 'text')
-            ->add('destination_country', 'text')
+            ->add('destination_city', 'text', array('required' => false))
+            ->add('destination_region', 'text' , array('required' => false))
+            ->add('destination_country', 'text', array('required' => false))
             ->getForm();
         $formHandler = new UserHandler($form, $this->get('request'), $this->getDoctrine()->getEntityManager());
         if( $formHandler->process() )

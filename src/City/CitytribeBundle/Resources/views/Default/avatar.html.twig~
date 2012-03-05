@@ -1,0 +1,12 @@
+{% if app.session.hasFlash('notice') %}
+    <div class="flash-notice">
+        {{ app.session.flash('notice') }}
+    </div>
+{% endif %}
+	<form id ="form" action="{{ path('CitytribeBundle_avatar') }}" method="post" {{ form_enctype(form) }}>
+	
+		{{ form_widget(form) }}
+	
+		<input type="submit" />
+	</form>
+<img src="{{ asset('uploads/avatars/') }}{{user.image}}" />{{user.image}}

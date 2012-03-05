@@ -33,12 +33,6 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#form").ajaxForm({
-              	 beforeSubmit: function() {
-			alert("salut");
-                       if ($('.city').val=="") $("#erreur").text(" city not esits");
-               }
-	});
 	//Init Geocoder  
 
 	var geocoder = new google.maps.Geocoder();

@@ -5,6 +5,9 @@ namespace City\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity
@@ -122,13 +125,6 @@ class User extends BaseUser
     private $occupation;
 
     /**
-     * @var string $avatar
-     *
-     * @ORM\Column(name="avatar", type="string", length=255)
-     */
-    private $avatar;
-
-    /**
      * @var string $language
      *
      * @ORM\Column(name="language", type="string", length=255)
@@ -148,6 +144,13 @@ class User extends BaseUser
      * @ORM\Column(name="destination_continent", type="string", length=255)
      */
     private $destination_continent;
+
+    /**
+     * @var string $image
+     *
+     * @ORM\Column(name="image", type="string", length=255)
+     */
+    private $image;
 
 
     public function __construct()
@@ -435,25 +438,7 @@ class User extends BaseUser
         return $this->visit_goal;
     }
 
-    /**
-     * Set avatar
-     *
-     * @param string $avatar
-     */
-    public function setAvatar($avatar)
-    {
-        $this->avatar = $avatar;
-    }
 
-    /**
-     * Get avatar
-     *
-     * @return string 
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
     /**
      * Set occupation
      *
@@ -544,5 +529,26 @@ class User extends BaseUser
     {
         return $this->destination_continent;
     }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
 
 }

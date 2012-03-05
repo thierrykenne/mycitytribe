@@ -34,7 +34,10 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_step' => true,
        '_configurator_final' => true,
        'CitytribeBundle_homepage' => true,
-       'CityGeoBundle_origin_region' => true,
+       'CitytribeBundle_profile' => true,
+       'CitytribeBundle_avatar' => true,
+       'CitytribeBundle_profile_edit' => true,
+       'CityGeoBundle_residence' => true,
        'CityGeoBundle_destination' => true,
        'CityGeoBundle_polygon_region' => true,
        'article' => true,
@@ -198,9 +201,24 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/home',  ),));
     }
 
-    private function getCityGeoBundle_origin_regionRouteInfo()
+    private function getCitytribeBundle_profileRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/residence',  ),));
+        return array(array (  0 => 'type',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::showAction',), array (  'type' => 'places|informations',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => 'places|informations',    3 => 'type',  ),  1 =>   array (    0 => 'text',    1 => '/profile',  ),));
+    }
+
+    private function getCitytribeBundle_avatarRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::avatarAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/avatar/',  ),));
+    }
+
+    private function getCitytribeBundle_profile_editRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/informations/edit',  ),));
+    }
+
+    private function getCityGeoBundle_residenceRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/residence',  ),));
     }
 
     private function getCityGeoBundle_destinationRouteInfo()

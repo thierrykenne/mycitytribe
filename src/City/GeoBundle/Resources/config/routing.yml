@@ -1,6 +1,6 @@
-CityGeoBundle_origin_region:
+CityGeoBundle_residence:
     pattern:  /residence
-    defaults: { _controller: CityGeoBundle:Default:index }
+    defaults: { _controller: CityGeoBundle:Default:residence }
 CityGeoBundle_destination:
     pattern:  /destination
     defaults: { _controller: CityGeoBundle:Default:destination }

@@ -10,14 +10,7 @@ class PersonInfoType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
 	    $builder
-            ->add('username')
-            ->add('email','email')
-            ->add('sex','choice', array( 'choices' => array('m' => 'Male', 'f' => 'Female'))
-            ->add('birth_year')
-            ->add('occupation')
-            ->add('visit_goal')
-            ->add('avatar')
-            ->add('about_me','textarea');
+            ->add('username','text');
     }
 
     public function getName()

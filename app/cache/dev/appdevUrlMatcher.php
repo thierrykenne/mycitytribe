@@ -148,10 +148,28 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'CitytribeBundle_homepage',);
         }
 
+        // CitytribeBundle_profile
+        if (0 === strpos($pathinfo, '/profile') && preg_match('#^/profile/(?P<type>places|informations)$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::showAction',)), array('_route' => 'CitytribeBundle_profile'));
+        }
+
+        // CitytribeBundle_avatar
+        if (rtrim($pathinfo, '/') === '/profile/avatar') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'CitytribeBundle_avatar');
+            }
+            return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::avatarAction',  '_route' => 'CitytribeBundle_avatar',);
+        }
+
+        // CitytribeBundle_profile_edit
+        if ($pathinfo === '/profile/informations/edit') {
+            return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::editAction',  '_route' => 'CitytribeBundle_profile_edit',);
+        }
+
         if (0 === strpos($pathinfo, '/places')) {
-            // CityGeoBundle_origin_region
+            // CityGeoBundle_residence
             if ($pathinfo === '/places/residence') {
-                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::indexAction',  '_route' => 'CityGeoBundle_origin_region',);
+                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',  '_route' => 'CityGeoBundle_residence',);
             }
 
             // CityGeoBundle_destination

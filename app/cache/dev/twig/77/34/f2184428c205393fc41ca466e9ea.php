@@ -61,12 +61,6 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t}
 \t});
 
-\t\$(\"#form\").ajaxForm({
-              \t beforeSubmit: function() {
-\t\t\talert(\"salut\");
-                       if (\$('.city').val==\"\") \$(\"#erreur\").text(\" city not esits\");
-               }
-\t});
 \t//Init Geocoder  
 
 \tvar geocoder = new google.maps.Geocoder();
@@ -172,7 +166,7 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t\t\$.ajax({ // fonction permettant de faire de l'ajax
 \t\t\t\t   type: \"POST\", // methode de transmission des données au fichier php
 \t\t\t\t   url: \"";
-        // line 146
+        // line 140
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("CityGeoBundle_polygon_region"), "html", null, true);
         echo "\", // url du fichier php
 \t\t\t\t   data: \"country=\"+\$(\".country\").val()+\"&region=\"+\$(\".region\").val(), // données à transmettre
@@ -220,9 +214,9 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t<div id=\"corps\">
 \t\t
 \t\t\t";
-        // line 191
+        // line 185
         $this->displayBlock('body', $context, $blocks);
-        // line 193
+        // line 187
         echo "\t\t\t
 \t\t</div> 
  
@@ -231,9 +225,9 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t</div>
 \t</body>
 \t";
-        // line 200
+        // line 194
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 204
+        // line 198
         echo "</html>
 ";
     }
@@ -258,19 +252,19 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t";
     }
 
-    // line 191
+    // line 185
     public function block_body($context, array $blocks = array())
     {
-        // line 192
+        // line 186
         echo "\t\t\t";
     }
 
-    // line 200
+    // line 194
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 201
+        // line 195
         echo "\t\t";
-        // line 202
+        // line 196
         echo "\t\t<script type=\"text/javascript\" src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
         echo "\"></script>

@@ -49,7 +49,7 @@ class __TwigTemplate_914ce561c9885036a5da825ee83f8aac extends Twig_Template
 \t<div id=\"map-canvas\" style=\"width:400px; height:400px\"></div><br/>
 \t<form id =\"form\" action=\"";
         // line 12
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("CityGeoBundle_origin_region"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("CityGeoBundle_residence"), "html", null, true);
         echo "\" method=\"post\" ";
         echo $this->env->getExtension('form')->renderEnctype($this->getContext($context, "form"));
         echo ">

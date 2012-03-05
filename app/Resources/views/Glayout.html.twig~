@@ -37,7 +37,8 @@ $(document).ready(function() {
               	 beforeSubmit: function() {
 			alert("salut");
                        if ($('.city').val=="") $("#erreur").text(" city not esits");
-               },
+               }
+	});
 	//Init Geocoder  
 
 	var geocoder = new google.maps.Geocoder();

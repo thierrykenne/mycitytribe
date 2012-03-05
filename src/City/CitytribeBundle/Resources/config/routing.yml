@@ -1,3 +1,15 @@
 CitytribeBundle_homepage:
     pattern:  /home
     defaults: { _controller: CitytribeBundle:Default:index }
+CitytribeBundle_profile:
+    pattern:   /profile/{type}
+    defaults:  { _controller: CitytribeBundle:Profile:show }
+    requirements:
+        type: places|informations
+CitytribeBundle_avatar:
+    pattern:   /profile/avatar/
+    defaults:  { _controller: CitytribeBundle:Profile:avatar }
+CitytribeBundle_profile_edit:
+    pattern:   /profile/informations/edit
+    defaults:  { _controller: CitytribeBundle:Profile:edit }
+

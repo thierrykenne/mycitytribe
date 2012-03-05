@@ -5,6 +5,9 @@ namespace City\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity
@@ -123,7 +126,11 @@ class User extends BaseUser
 
     /**
      * @var string $avatar
-     *
+     * @Assert\File(
+     *     maxSize = "1M",
+     *     mimeTypes = {"image/jpeg", "image/png","image/gif","image/jpg","image/bmp","jpg","jpeg"},
+     *     mimeTypesMessage = "This file is not a valid image"
+     * )
      * @ORM\Column(name="avatar", type="string", length=255)
      */
     private $avatar;
@@ -148,6 +155,13 @@ class User extends BaseUser
      * @ORM\Column(name="destination_continent", type="string", length=255)
      */
     private $destination_continent;
+
+    /**
+     * @var string $image
+     *
+     * @ORM\Column(name="image", type="string", length=255)
+     */
+    private $image;
 
 
     public function __construct()
@@ -440,9 +454,9 @@ class User extends BaseUser
      *
      * @param string $avatar
      */
-    public function setAvatar($avatar)
+    public function setAvatar( File $file = null)
     {
-        $this->avatar = $avatar;
+        $this->avatar = $file;
     }
 
     /**
@@ -472,6 +486,97 @@ class User extends BaseUser
     public function getOccupation()
     {
         return $this->occupation;
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string 
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * Set residence_continent
+     *
+     * @param string $residenceContinent
+     */
+    public function setResidenceContinent($residenceContinent)
+    {
+        $this->residence_continent = $residenceContinent;
+    }
+
+    /**
+     * Get residence_continent
+     *
+     * @return string 
+     */
+    public function getResidenceContinent()
+    {
+        return $this->residence_continent;
+    }
+
+    /**
+     * Set destination_continent
+     *
+     * @param string $destinationContinent
+     */
+    public function setDestinationContinent($destinationContinent)
+    {
+        $this->destination_continent = $destinationContinent;
+    }
+
+    /**
+     * Get destination_continent
+     *
+     * @return string 
+     */
+    public function getDestinationContinent()
+    {
+        return $this->destination_continent;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
 

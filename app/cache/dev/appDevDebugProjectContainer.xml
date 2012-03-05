@@ -1639,7 +1639,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4f4d79e51123a</argument>
+            <argument>4f4f7f1379b8b</argument>
           </service>
         </argument>
         <argument type="service">
@@ -1774,7 +1774,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4f4d79e51123a</argument>
+            <argument>4f4f7f1379b8b</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2151,6 +2151,7 @@
               <argument key="FOSUserBundle">FOS\UserBundle\Entity</argument>
               <argument key="CityTribuBundle">City\TribuBundle\Entity</argument>
               <argument key="CityGeoBundle">City\GeoBundle\Entity</argument>
+              <argument key="CitytribeBundle">City\CitytribeBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2196,6 +2197,7 @@
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2214,6 +2216,7 @@
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2232,6 +2235,7 @@
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2250,10 +2254,30 @@
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>City\GeoBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service">
+                        <service class="Symfony\Bridge\Doctrine\Annotations\IndexedReader" public="false">
+                          <argument type="service" id="annotation_reader"/>
+                        </service>
+                      </argument>
+                      <argument type="collection">
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>City\CitytribeBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">
