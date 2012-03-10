@@ -31,3 +31,7 @@ fos_user_change_password:
     prefix: /profile
 OAuthBundle:
     resource: "@OnePlusOneOAuthBundle/Resources/config/routing.yml"
+fos_comment_api:
+    type: rest
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+    prefix: /api

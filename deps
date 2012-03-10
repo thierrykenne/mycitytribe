@@ -1,3 +1,7 @@
+[FOSRestBundle]
+git=git://github.com/FriendsOfSymfony/FOSRestBundle.git
+target=bundles/FOS/RestBundle
+version=origin/2.0
 [symfony]
     git=http://github.com/symfony/symfony.git
     version=v2.0.8

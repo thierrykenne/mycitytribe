@@ -84,6 +84,26 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // _assetic_35a8e64
+        if ($pathinfo === '/js/35a8e64.js') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '35a8e64',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_35a8e64',);
+        }
+
+        // _assetic_35a8e64_0
+        if ($pathinfo === '/js/35a8e64_comments_1.js') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '35a8e64',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_35a8e64_0',);
+        }
+
+        // _assetic_48ed673
+        if ($pathinfo === '/css/48ed673.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '48ed673',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_48ed673',);
+        }
+
+        // _assetic_48ed673_0
+        if ($pathinfo === '/css/48ed673_comments_1.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '48ed673',  'pos' => 0,  '_format' => 'css',  '_route' => '_assetic_48ed673_0',);
+        }
+
         // _wdt
         if (preg_match('#^/_wdt/(?P<token>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::toolbarAction',)), array('_route' => '_wdt'));
@@ -436,6 +456,109 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // auth_logout
         if ($pathinfo === '/logout') {
             return array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::logoutAction',  '_route' => 'auth_logout',);
+        }
+
+        if (0 === strpos($pathinfo, '/api')) {
+            // fos_comment_new_threads
+            if (0 === strpos($pathinfo, '/api/threads/new') && preg_match('#^/api/threads/new(?:\\.(?P<_format>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_comment_new_threads;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::newThreadsAction',  '_format' => NULL,)), array('_route' => 'fos_comment_new_threads'));
+            }
+            not_fos_comment_new_threads:
+
+            // fos_comment_get_thread
+            if (0 === strpos($pathinfo, '/api/threads') && preg_match('#^/api/threads/(?P<id>[^/\\.]+?)(?:\\.(?P<_format>[^\\.]+?))?$#xs', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_comment_get_thread;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::getThreadAction',  '_format' => NULL,)), array('_route' => 'fos_comment_get_thread'));
+            }
+            not_fos_comment_get_thread:
+
+            // fos_comment_post_threads
+            if (0 === strpos($pathinfo, '/api/threads') && preg_match('#^/api/threads(?:\\.(?P<_format>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_fos_comment_post_threads;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::postThreadsAction',  '_format' => NULL,)), array('_route' => 'fos_comment_post_threads'));
+            }
+            not_fos_comment_post_threads:
+
+            // fos_comment_new_thread_comments
+            if (0 === strpos($pathinfo, '/api/threads') && preg_match('#^/api/threads/(?P<id>[^/]+?)/comments/new(?:\\.(?P<_format>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_comment_new_thread_comments;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::newThreadCommentsAction',  '_format' => NULL,)), array('_route' => 'fos_comment_new_thread_comments'));
+            }
+            not_fos_comment_new_thread_comments:
+
+            // fos_comment_get_thread_comment
+            if (0 === strpos($pathinfo, '/api/threads') && preg_match('#^/api/threads/(?P<id>[^/]+?)/comments/(?P<commentId>[^/\\.]+?)(?:\\.(?P<_format>[^\\.]+?))?$#xs', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_comment_get_thread_comment;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::getThreadCommentAction',  '_format' => NULL,)), array('_route' => 'fos_comment_get_thread_comment'));
+            }
+            not_fos_comment_get_thread_comment:
+
+            // fos_comment_get_thread_comments
+            if (0 === strpos($pathinfo, '/api/threads') && preg_match('#^/api/threads/(?P<id>[^/]+?)/comments(?:\\.(?P<_format>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_comment_get_thread_comments;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::getThreadCommentsAction',  '_format' => NULL,)), array('_route' => 'fos_comment_get_thread_comments'));
+            }
+            not_fos_comment_get_thread_comments:
+
+            // fos_comment_post_thread_comments
+            if (0 === strpos($pathinfo, '/api/threads') && preg_match('#^/api/threads/(?P<id>[^/]+?)/comments(?:\\.(?P<_format>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_fos_comment_post_thread_comments;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::postThreadCommentsAction',  '_format' => NULL,)), array('_route' => 'fos_comment_post_thread_comments'));
+            }
+            not_fos_comment_post_thread_comments:
+
+            // fos_comment_get_thread_comment_votes
+            if (0 === strpos($pathinfo, '/api/threads') && preg_match('#^/api/threads/(?P<id>[^/]+?)/comments/(?P<commentId>[^/]+?)/votes(?:\\.(?P<_format>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_comment_get_thread_comment_votes;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::getThreadCommentVotesAction',  '_format' => NULL,)), array('_route' => 'fos_comment_get_thread_comment_votes'));
+            }
+            not_fos_comment_get_thread_comment_votes:
+
+            // fos_comment_new_thread_comment_votes
+            if (0 === strpos($pathinfo, '/api/threads') && preg_match('#^/api/threads/(?P<id>[^/]+?)/comments/(?P<commentId>[^/]+?)/votes/new(?:\\.(?P<_format>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_comment_new_thread_comment_votes;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::newThreadCommentVotesAction',  '_format' => NULL,)), array('_route' => 'fos_comment_new_thread_comment_votes'));
+            }
+            not_fos_comment_new_thread_comment_votes:
+
+            // fos_comment_post_thread_comment_votes
+            if (0 === strpos($pathinfo, '/api/threads') && preg_match('#^/api/threads/(?P<id>[^/]+?)/comments/(?P<commentId>[^/]+?)/votes(?:\\.(?P<_format>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_fos_comment_post_thread_comment_votes;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::postThreadCommentVotesAction',  '_format' => NULL,)), array('_route' => 'fos_comment_post_thread_comment_votes'));
+            }
+            not_fos_comment_post_thread_comment_votes:
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

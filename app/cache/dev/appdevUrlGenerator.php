@@ -23,6 +23,10 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_demo' => true,
        '_demo_hello' => true,
        '_demo_contact' => true,
+       '_assetic_35a8e64' => true,
+       '_assetic_35a8e64_0' => true,
+       '_assetic_48ed673' => true,
+       '_assetic_48ed673_0' => true,
        '_wdt' => true,
        '_profiler_search' => true,
        '_profiler_purge' => true,
@@ -73,6 +77,16 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'auth_denied' => true,
        'auth_profile' => true,
        'auth_logout' => true,
+       'fos_comment_new_thread_comment_votes' => true,
+       'fos_comment_new_thread_comments' => true,
+       'fos_comment_new_threads' => true,
+       'fos_comment_get_thread' => true,
+       'fos_comment_get_thread_comment' => true,
+       'fos_comment_get_thread_comment_votes' => true,
+       'fos_comment_get_thread_comments' => true,
+       'fos_comment_post_thread_comment_votes' => true,
+       'fos_comment_post_thread_comments' => true,
+       'fos_comment_post_threads' => true,
     );
 
     /**
@@ -144,6 +158,26 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function get_demo_contactRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::contactAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/demo/contact',  ),));
+    }
+
+    private function get_assetic_35a8e64RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '35a8e64',  'pos' => NULL,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/35a8e64.js',  ),));
+    }
+
+    private function get_assetic_35a8e64_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '35a8e64',  'pos' => 0,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/35a8e64_comments_1.js',  ),));
+    }
+
+    private function get_assetic_48ed673RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '48ed673',  'pos' => NULL,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/48ed673.css',  ),));
+    }
+
+    private function get_assetic_48ed673_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '48ed673',  'pos' => 0,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/48ed673_comments_1.css',  ),));
     }
 
     private function get_wdtRouteInfo()
@@ -394,5 +428,55 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getauth_logoutRouteInfo()
     {
         return array(array (), array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::logoutAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/logout',  ),));
+    }
+
+    private function getfos_comment_new_thread_comment_votesRouteInfo()
+    {
+        return array(array (  0 => 'id',  1 => 'commentId',  2 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::newThreadCommentVotesAction',  '_format' => NULL,), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^/]+?',    3 => '_format',  ),  1 =>   array (    0 => 'text',    1 => '/votes/new',  ),  2 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'commentId',  ),  3 =>   array (    0 => 'text',    1 => '/comments',  ),  4 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  5 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
+    }
+
+    private function getfos_comment_new_thread_commentsRouteInfo()
+    {
+        return array(array (  0 => 'id',  1 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::newThreadCommentsAction',  '_format' => NULL,), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^/]+?',    3 => '_format',  ),  1 =>   array (    0 => 'text',    1 => '/comments/new',  ),  2 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  3 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
+    }
+
+    private function getfos_comment_new_threadsRouteInfo()
+    {
+        return array(array (  0 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::newThreadsAction',  '_format' => NULL,), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^/]+?',    3 => '_format',  ),  1 =>   array (    0 => 'text',    1 => '/api/threads/new',  ),));
+    }
+
+    private function getfos_comment_get_threadRouteInfo()
+    {
+        return array(array (  0 => 'id',  1 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::getThreadAction',  '_format' => NULL,), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^\\.]+?',    3 => '_format',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/\\.]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
+    }
+
+    private function getfos_comment_get_thread_commentRouteInfo()
+    {
+        return array(array (  0 => 'id',  1 => 'commentId',  2 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::getThreadCommentAction',  '_format' => NULL,), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^\\.]+?',    3 => '_format',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/\\.]+?',    3 => 'commentId',  ),  2 =>   array (    0 => 'text',    1 => '/comments',  ),  3 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  4 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
+    }
+
+    private function getfos_comment_get_thread_comment_votesRouteInfo()
+    {
+        return array(array (  0 => 'id',  1 => 'commentId',  2 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::getThreadCommentVotesAction',  '_format' => NULL,), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^/]+?',    3 => '_format',  ),  1 =>   array (    0 => 'text',    1 => '/votes',  ),  2 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'commentId',  ),  3 =>   array (    0 => 'text',    1 => '/comments',  ),  4 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  5 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
+    }
+
+    private function getfos_comment_get_thread_commentsRouteInfo()
+    {
+        return array(array (  0 => 'id',  1 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::getThreadCommentsAction',  '_format' => NULL,), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^/]+?',    3 => '_format',  ),  1 =>   array (    0 => 'text',    1 => '/comments',  ),  2 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  3 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
+    }
+
+    private function getfos_comment_post_thread_comment_votesRouteInfo()
+    {
+        return array(array (  0 => 'id',  1 => 'commentId',  2 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::postThreadCommentVotesAction',  '_format' => NULL,), array (  '_method' => 'POST',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^/]+?',    3 => '_format',  ),  1 =>   array (    0 => 'text',    1 => '/votes',  ),  2 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'commentId',  ),  3 =>   array (    0 => 'text',    1 => '/comments',  ),  4 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  5 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
+    }
+
+    private function getfos_comment_post_thread_commentsRouteInfo()
+    {
+        return array(array (  0 => 'id',  1 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::postThreadCommentsAction',  '_format' => NULL,), array (  '_method' => 'POST',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^/]+?',    3 => '_format',  ),  1 =>   array (    0 => 'text',    1 => '/comments',  ),  2 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  3 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
+    }
+
+    private function getfos_comment_post_threadsRouteInfo()
+    {
+        return array(array (  0 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::postThreadsAction',  '_format' => NULL,), array (  '_method' => 'POST',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^/]+?',    3 => '_format',  ),  1 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
     }
 }

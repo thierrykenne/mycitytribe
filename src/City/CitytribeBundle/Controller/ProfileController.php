@@ -51,8 +51,8 @@ class ProfileController extends Controller
 	    	         __DIR__.'/../../../../web/uploads/avatars/',$filename    	        
 	    	    );
 		//add image name in user table
-                    $user->setImage($filename);	
-		    $em=$this->getDoctrine()->getEntityManager();	
+                $user->setImage($filename);	
+		        $em=$this->getDoctrine()->getEntityManager();	
         	    $em->persist($user);
         	    $em->flush();
 	    	    $this->get('session')->setFlash('notice', 'Image updated!');

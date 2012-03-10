@@ -7,3 +7,12 @@
 [submodule "src/OnePlusOne/OAuthBundle"]
 	path = src/OnePlusOne/OAuthBundle
 	url = git://github.com/ruudk/OAuthBundle.git
+[submodule "vendor/bundles/FOS/CommentBundle"]
+	path = vendor/bundles/FOS/CommentBundle
+	url = git://github.com/FriendsOfSymfony/FOSCommentBundle.git
+[submodule "vendor/bundles/FOS/RestBundle"]
+	path = vendor/bundles/FOS/RestBundle
+	url = git://github.com/FriendsOfSymfony/FOSRestBundle.git
+[submodule "vendor/fos/FOS/Rest"]
+	path = vendor/fos/FOS/Rest
+	url = git://github.com/FriendsOfSymfony/FOSRest.git

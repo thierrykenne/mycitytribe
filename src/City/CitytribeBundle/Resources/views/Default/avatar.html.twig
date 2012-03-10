@@ -1,4 +1,5 @@
 {% if app.session.hasFlash('notice') %}
+{% block body %}
     <div class="flash-notice">
         {{ app.session.flash('notice') }}
     </div>
@@ -10,3 +11,4 @@
 		<input type="submit" />
 	</form>
 <img src="{{ asset('uploads/avatars/') }}{{user.image}}" />
+{% endblock %}

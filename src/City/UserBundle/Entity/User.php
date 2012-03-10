@@ -23,6 +23,22 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * ResidenceTribe of the user
+     *
+     * @var ResidenceTribe
+     * @ORM\ManyToOne(targetEntity="City\UserBundle\Entity\ResidenceTribe")
+     */
+    protected $residence_tribe;
+
+    /**
+     * DestinationTribe of the user
+     *
+     * @var DestinationTribe
+     * @ORM\ManyToOne(targetEntity="City\UserBundle\Entity\DestinationTribe")
+     */
+    protected $destination_tribe;
+
+    /**
      * @var string $nationality
      *
      * @ORM\Column(name="nationality", type="string", length=255)

@@ -3,46 +3,44 @@
 /* CitytribeBundle:Default:index.html.twig */
 class __TwigTemplate_6734e68e7cb061ffe10c81d069c5ae04 extends Twig_Template
 {
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->blocks = array(
+            'body' => array($this, 'block_body'),
+        );
+    }
+
     protected function doGetParent(array $context)
     {
-        return false;
+        return "::Commentlayout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 1
-        echo "Hello!
+        $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
+    }
+
+    // line 2
+    public function block_body($context, array $blocks = array())
+    {
+        // line 3
+        echo "Hello!2
 ";
-        // line 2
+        // line 4
         if ($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "hasFlash", array("notice", ), "method")) {
-            // line 3
+            // line 5
             echo "    <div class=\"flash-notice\">
         ";
-            // line 4
+            // line 6
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "flash", array("notice", ), "method"), "html", null, true);
             echo "
     </div>
 ";
         }
-        // line 7
-        echo twig_escape_filter($this->env, $this->getContext($context, "paths"), "html", null, true);
-        echo "
-\t<form id =\"form\" action=\"";
-        // line 8
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("CitytribeBundle_avatar"), "html", null, true);
-        echo "\" method=\"post\" ";
-        echo $this->env->getExtension('form')->renderEnctype($this->getContext($context, "form"));
-        echo ">
-\t
-\t\t";
-        // line 10
-        echo $this->env->getExtension('form')->renderWidget($this->getContext($context, "form"));
-        echo "
-\t
-\t\t<input type=\"submit\" />
-\t</form>
-<img src=\"../../../../web/uploads\"/> salut
-";
+        // line 9
+        $this->env->loadTemplate("FOSCommentBundle:Thread:async.html.twig")->display(array_merge($context, array("id" => "foo")));
     }
 
     public function getTemplateName()

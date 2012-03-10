@@ -1,0 +1,323 @@
+-- phpMyAdmin SQL Dump
+-- version 3.3.9
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Mar 10, 2012 at 02:45 
+-- Server version: 5.5.8
+-- PHP Version: 5.3.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `symfony`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Article`
+--
+
+CREATE TABLE IF NOT EXISTS `Article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `contenu` longtext NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `Article`
+--
+
+INSERT INTO `Article` (`id`, `date`, `titre`, `contenu`, `pseudo`) VALUES
+(1, '2011-02-01 00:00:00', 'first article', 'my first post is here i will learn symfony before new year', ''),
+(2, '2007-01-01 00:00:00', 'fsdgbrd', 'erge', 'zxzdvcxdv'),
+(3, '2007-01-01 00:00:00', 'le cooco', 'ma poule', 'thke');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `article_tag`
+--
+
+CREATE TABLE IF NOT EXISTS `article_tag` (
+  `article_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  PRIMARY KEY (`article_id`,`tag_id`),
+  KEY `IDX_919694F97294869C` (`article_id`),
+  KEY `IDX_919694F9BAD26311` (`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `article_tag`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Avatar`
+--
+
+CREATE TABLE IF NOT EXISTS `Avatar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `Avatar`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `city_user`
+--
+
+CREATE TABLE IF NOT EXISTS `city_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `username_canonical` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_canonical` varchar(255) NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `salt` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `locked` tinyint(1) NOT NULL,
+  `expired` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  `confirmation_token` varchar(255) DEFAULT NULL,
+  `password_requested_at` datetime DEFAULT NULL,
+  `roles` longtext NOT NULL COMMENT '(DC2Type:array)',
+  `credentials_expired` tinyint(1) NOT NULL,
+  `credentials_expire_at` datetime DEFAULT NULL,
+  `nationality` varchar(255) NOT NULL,
+  `destination_region` varchar(255) NOT NULL,
+  `destination_city` varchar(255) NOT NULL,
+  `destination_country` varchar(255) NOT NULL,
+  `about_me` longtext NOT NULL,
+  `sex` varchar(1) NOT NULL,
+  `premium` tinyint(1) NOT NULL,
+  `num_question` int(11) NOT NULL,
+  `num_answer` int(11) NOT NULL,
+  `occupation` varchar(255) NOT NULL,
+  `visit_goal` varchar(255) NOT NULL,
+  `residence_region` varchar(255) NOT NULL,
+  `residence_city` varchar(255) NOT NULL,
+  `residence_country` varchar(255) NOT NULL,
+  `language` varchar(255) NOT NULL,
+  `residence_continent` varchar(255) NOT NULL,
+  `destination_continent` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `residence_tribe_id` int(11) DEFAULT NULL,
+  `destination_tribe_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_6EDDEB2192FC23A8` (`username_canonical`),
+  UNIQUE KEY `UNIQ_6EDDEB21A0D96FBF` (`email_canonical`),
+  KEY `IDX_6EDDEB21F0CF8664` (`residence_tribe_id`),
+  KEY `IDX_6EDDEB21318E209C` (`destination_tribe_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `city_user`
+--
+
+INSERT INTO `city_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `nationality`, `destination_region`, `destination_city`, `destination_country`, `about_me`, `sex`, `premium`, `num_question`, `num_answer`, `occupation`, `visit_goal`, `residence_region`, `residence_city`, `residence_country`, `language`, `residence_continent`, `destination_continent`, `image`, `residence_tribe_id`, `destination_tribe_id`) VALUES
+(2, 'thierry1', 'thierry1', 'fossothierry@yahoo.fr', 'fossothierry@yahoo.fr', 1, '7vbnu0ctk3wocog8444gcccc8os4w80', 'pou{7vbnu0ctk3wocog8444gcccc8os4w80}', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', NULL, NULL),
+(4, 'thierry', 'thierry', 'joseph@yhh.fr', 'joseph@yhh.fr', 1, 'da4ur798oeo888g40wo4kw0sw4cgcs0', 'qqq{da4ur798oeo888g40wo4kw0sw4cgcs0}', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', NULL, NULL),
+(6, 'th8', 'th8', 'thkenne@yahoo.fr', 'thkenne@yahoo.fr', 1, 'dlqbtnhzfnk0swookco8os08c488cks', 'popo{dlqbtnhzfnk0swookco8os08c488cks}', '2012-03-07 01:15:19', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', 'Piemonte', '', 'Italy', '', '', 0, 0, 0, '', '', 'Bourgogne', 'Les Sièges', 'France', '', '', '', 'avatar_6.jpg', NULL, NULL),
+(7, 'toto', 'toto', 'fossothierry@gmail.com', 'fossothierry@gmail.com', 0, '9tw3wz0mhbgo4oso4ggoo8w8ws0co4c', 'toto{9tw3wz0mhbgo4oso4ggoo8w8ws0co4c}', NULL, 0, 0, NULL, '5oss5zv6qs084g4gos8kgc8ckso4s0wo88kk080cosws04gkcg', NULL, 'a:0:{}', 0, NULL, 'AF', 'yaoundé', '', '', '', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', NULL, NULL),
+(12, 'thc', 'thc', 'thc@yojj.gmj', 'thc@yojj.gmj', 1, '7whjj7159ds0gwk4884oo0kg048ook', 'popo{7whjj7159ds0gwk4884oo0kg048ook}', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'AF', 'cam', '', '', '', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Comment`
+--
+
+CREATE TABLE IF NOT EXISTS `Comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `thread_id` varchar(255) DEFAULT NULL,
+  `body` longtext NOT NULL,
+  `ancestors` varchar(1024) NOT NULL,
+  `depth` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_5BC96BF0E2904019` (`thread_id`),
+  KEY `IDX_5BC96BF0F675F31B` (`author_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `Comment`
+--
+
+INSERT INTO `Comment` (`id`, `thread_id`, `body`, `ancestors`, `depth`, `created_at`, `author_id`) VALUES
+(1, 'foo', 'salut macabo', '', 0, '2012-03-06 13:56:07', NULL),
+(2, 'foo', 'go away patate', '', 0, '2012-03-06 14:19:47', NULL),
+(3, 'foo', 'patatine', '2', 1, '2012-03-06 14:20:11', NULL),
+(4, 'foo', 'cocorico', '', 0, '2012-03-06 15:06:13', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `DestinationTribe`
+--
+
+CREATE TABLE IF NOT EXISTS `DestinationTribe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `create_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `DestinationTribe`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `RegionPolygon`
+--
+
+CREATE TABLE IF NOT EXISTS `RegionPolygon` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `country` varchar(255) NOT NULL,
+  `region` varchar(255) NOT NULL,
+  `polygon` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `RegionPolygon`
+--
+
+INSERT INTO `RegionPolygon` (`id`, `country`, `region`, `polygon`) VALUES
+(1, 'italy', 'abuzzi', '13.33758,42.68738|13.38910,42.63722|13.37094,42.58922|13.28861,42.57166|13.18924,42.58583|13.13277,42.53999|13.12611,42.43916|13.15306,42.35750|13.22722,42.27166|13.26958,42.23083|13.31584,42.19611|13.30660,42.14326|13.22611,42.12846|13.17334,42.15306|13.09111,42.17430|13.01153,42.10291|13.01708,42.05292|13.07368,42.01416|13.31528,41.94333|13.36548,41.91107|13.40000,41.83250|13.53256,41.76951|13.60708,41.78277|13.71757,41.79534|13.77972,41.74583|13.82639,41.73972|13.89715,41.72347|13.94559,41.68794|13.99834,41.68333|14.14639,41.75444|14.15166,41.84000|14.28472,41.90277|14.37500,41.87666|14.43084,41.83986|14.45264,41.78639|14.52722,41.80722|14.64778,41.91722|14.74639,42.01375|14.76218,42.07478|14.72166,42.10403|14.71625,42.16805|14.66139,42.18916|14.56584,42.21889|14.50416,42.26138|14.20000,42.48250|14.13055,42.54111|14.05834,42.61972|14.01666,42.67000|13.98722,42.71111|13.93972,42.80360|13.92361,42.84472|13.90555,42.90138|13.82666,42.88972|13.71523,42.86359|13.56445,42.80138|13.48556,42.73833|13.42334,42.69583|13.33758,42.68738'),
+(2, 'italy', 'basilicata', '15.54084,41.06112|15.55778,41.01388|15.56139,40.96833|15.52584,40.91556|15.46111,40.86857|15.41617,40.87707|15.35416,40.86361|15.37986,40.72521|15.43195,40.68111|15.51958,40.56153|15.53777,40.49294|15.58166,40.44388|15.70125,40.37944|15.78739,40.25913|15.64225,40.04293|15.71222,39.97972|15.74834,39.92722|15.85014,40.00937|15.95153,40.00556|16.01250,39.95083|16.07218,39.90646|16.20834,39.92444|16.33111,39.92111|16.36166,39.96777|16.38583,40.02750|16.43584,40.13555|16.57500,40.12694|16.64135,40.11830|16.68805,40.14708|16.79153,40.31138|16.86380,40.39035|16.73722,40.47132|16.71006,40.56625|16.72194,40.67166|16.71479,40.71457|16.62069,40.75944|16.50542,40.76096|16.44000,40.71250|16.34972,40.74444|16.28750,40.79416|16.23208,40.85052|16.13666,40.91833|16.01930,40.98541|15.96445,41.08194|15.86119,41.13646|15.80486,41.11285|15.71972,41.09277|15.61805,41.09972|15.57354,41.09576|15.54084,41.06112'),
+(3, 'italy', 'emilia-romagna', '9.20145,44.68180|9.20315,44.61354|9.29195,44.61111|9.42805,44.57722|9.48780,44.55579|9.49014,44.49764|9.59695,44.42916|9.65771,44.40146|9.68961,44.35741|9.86361,44.48332|9.93638,44.46985|9.98666,44.41222|10.07597,44.35000|10.21527,44.29500|10.36124,44.27367|10.39389,44.24069|10.52805,44.15027|10.61170,44.12749|10.68250,44.16083|10.72986,44.16090|10.78194,44.12639|10.92335,44.06528|11.04131,44.09167|11.24277,44.12472|11.26445,44.16277|11.31361,44.18666|11.37861,44.21416|11.44528,44.20708|11.49458,44.16486|11.59166,44.12472|11.74219,44.12993|11.72750,44.07833|11.68527,44.02638|11.68916,43.96083|11.71007,43.91694|11.72542,43.87250|11.81874,43.82153|11.98222,43.76861|12.10212,43.75883|12.16306,43.89861|12.31986,43.95833|12.41580,43.95795|12.45966,43.98326|12.50466,43.98687|12.49639,43.92334|12.58660,43.89771|12.62084,43.84465|12.67625,43.84292|12.74208,43.90139|12.75357,43.97100|12.68972,43.98750|12.54583,44.08861|12.42236,44.18931|12.35347,44.27833|12.28000,44.47611|12.24764,44.72388|12.26153,44.77624|12.29014,44.83826|12.39695,44.79138|12.28375,44.90652|12.09805,44.96972|12.05106,44.97761|11.97527,44.98722|11.83639,44.97500|11.74166,44.94306|11.63430,44.89166|11.58660,44.91097|11.53375,44.93764|11.42144,44.94972|11.30195,44.95944|11.14847,44.94388|11.09250,44.96325|11.00472,44.95556|10.90221,44.91382|10.76389,44.94306|10.58139,44.91222|10.51639,44.91472|10.43597,44.93708|10.24861,45.02514|10.17736,45.04014|10.12430,45.02875|10.05668,45.04183|9.99267,45.12367|9.88736,45.13234|9.90035,45.08550|9.71319,45.06006|9.57250,45.10638|9.49222,45.10056|9.41631,45.09110|9.36875,45.02499|9.30972,44.93027|9.31042,44.88666|9.35445,44.82222|9.31660,44.70104|9.20145,44.68180'),
+(4, 'italy', 'lombardia', '8.72885,46.10859|8.73500,46.03416|8.59048,45.91444|8.56521,45.78465|8.78527,45.48416|8.83098,45.40969|8.64708,45.33514|8.60083,45.36250|8.54208,45.36034|8.49757,45.29312|8.55583,45.16499|8.64965,45.03277|8.73111,45.01388|8.77834,45.01861|8.88389,45.05277|8.90639,44.98888|8.96916,44.94444|9.04834,44.86084|9.08166,44.81777|9.15410,44.80791|9.20145,44.68180|9.31660,44.70104|9.35445,44.82222|9.31042,44.88666|9.30972,44.93027|9.36875,45.02499|9.41631,45.09110|9.49222,45.10056|9.57250,45.10638|9.71319,45.06006|9.90035,45.08550|9.88736,45.13234|9.99267,45.12367|10.05668,45.04183|10.12430,45.02875|10.17736,45.04014|10.24861,45.02514|10.43597,44.93708|10.51639,44.91472|10.58139,44.91222|10.76389,44.94306|10.90221,44.91382|11.00472,44.95556|11.09250,44.96325|11.14847,44.94388|11.30195,44.95944|11.42144,44.94972|11.26334,45.03166|11.20916,45.06195|11.13916,45.10750|11.07979,45.09875|11.01305,45.14972|10.77861,45.30554|10.70639,45.31333|10.65500,45.46306|10.63166,45.59611|10.74389,45.71611|10.84466,45.83392|10.73389,45.84972|10.66792,45.81416|10.55458,45.80292|10.52334,45.83916|10.45958,45.99104|10.50764,46.07674|10.55298,46.10798|10.59334,46.24055|10.58027,46.30542|10.63743,46.39652|10.62076,46.45840|10.56625,46.48527|10.48580,46.49930|10.45753,46.54250|10.30361,46.55486|10.24632,46.59041|10.24180,46.63445|10.18111,46.63222|10.11916,46.61138|10.04444,46.50264|10.04968,46.44559|10.15389,46.39027|10.17395,46.26312|10.13639,46.23069|10.07177,46.22180|9.99500,46.29166|9.99042,46.35520|9.90806,46.38319|9.81305,46.35833|9.77055,46.34221|9.70882,46.30027|9.58195,46.29695|9.52139,46.31972|9.45028,46.42666|9.45500,46.47250|9.36680,46.50806|9.29378,46.50083|9.27313,46.42576|9.29722,46.35096|9.27666,46.29250|9.24101,46.23363|9.14444,46.16805|9.08334,46.12111|9.03583,46.05722|8.99736,45.97514|9.02298,45.93895|9.07305,45.92000|9.03666,45.83777|8.95111,45.84527|8.92666,45.90084|8.89778,45.95277|8.81986,45.98638|8.82028,46.03388|8.84416,46.08076|8.72885,46.10859'),
+(5, 'italy', 'piemonte', '6.63412,45.12400|6.66166,45.03999|6.74903,44.91833|6.84931,44.87041|6.90166,44.86041|6.96916,44.86430|7.03166,44.83138|7.02834,44.74472|6.95084,44.66472|6.85361,44.51777|6.87792,44.37514|6.97639,44.28416|7.03139,44.24694|7.35084,44.13152|7.42097,44.12611|7.52028,44.15611|7.61472,44.18027|7.66166,44.13396|7.70905,44.09131|7.75319,44.14222|7.80750,44.12860|7.86139,44.12083|7.99639,44.11520|8.05778,44.16333|8.08212,44.20384|8.07555,44.29972|8.19639,44.46194|8.26666,44.51916|8.38639,44.50472|8.59972,44.54976|8.63097,44.58985|8.71611,44.58319|8.76389,44.51166|8.88861,44.55778|8.87534,44.63562|8.95750,44.68472|9.00111,44.66306|9.04056,44.63166|9.14111,44.58180|9.20315,44.61354|9.20145,44.68180|9.15410,44.80791|9.08166,44.81777|9.04834,44.86084|8.96916,44.94444|8.90639,44.98888|8.88389,45.05277|8.77834,45.01861|8.73111,45.01388|8.64965,45.03277|8.55583,45.16499|8.49757,45.29312|8.54208,45.36034|8.60083,45.36250|8.64708,45.33514|8.83098,45.40969|8.78527,45.48416|8.56521,45.78465|8.59048,45.91444|8.73500,46.03416|8.72885,46.10859|8.61584,46.12125|8.44500,46.24722|8.44813,46.32298|8.46597,46.37264|8.44145,46.46208|8.36527,46.45361|8.30375,46.42291|8.14195,46.22291|8.14958,46.15124|8.00903,46.00930|7.90681,45.99264|7.85575,45.91905|7.86056,45.80499|7.87910,45.75701|7.91632,45.63680|7.87764,45.60096|7.73542,45.56076|7.67250,45.56305|7.56889,45.58749|7.46278,45.57430|7.38340,45.52346|7.25361,45.50249|7.14334,45.49277|7.08916,45.47686|7.14695,45.43054|7.15861,45.37749|7.12778,45.25930|7.06472,45.22306|6.93944,45.17944|6.82166,45.15305|6.76639,45.16819|6.68993,45.14806|6.63412,45.12400'),
+(6, 'italy', 'puglia', '15.14192,41.92803|15.10416,41.82958|15.09819,41.76792|15.11201,41.72166|15.04222,41.62639|14.95708,41.63305|14.93930,41.51951|14.99528,41.48195|15.05334,41.45611|15.09695,41.42805|15.06542,41.35569|15.18174,41.28937|15.24764,41.26381|15.24930,41.20375|15.20267,41.15996|15.28430,41.09916|15.54084,41.06112|15.57354,41.09576|15.61805,41.09972|15.71972,41.09277|15.80486,41.11285|15.86119,41.13646|15.96445,41.08194|16.01930,40.98541|16.13666,40.91833|16.23208,40.85052|16.28750,40.79416|16.34972,40.74444|16.44000,40.71250|16.50542,40.76096|16.62069,40.75944|16.71479,40.71457|16.72194,40.67166|16.71006,40.56625|16.73722,40.47132|16.86380,40.39035|16.94222,40.46778|16.99834,40.49888|17.07660,40.52048|17.29000,40.46972|17.24583,40.45499|17.20382,40.41249|17.39277,40.33056|17.50680,40.29750|17.67347,40.30403|17.78500,40.29445|17.85722,40.28444|17.90639,40.25500|18.01222,40.10132|17.99660,39.99881|18.04076,39.93771|18.08208,39.90292|18.15583,39.85666|18.19945,39.83749|18.25722,39.83236|18.30500,39.82000|18.34945,39.79194|18.39111,39.81624|18.39944,39.93610|18.41875,39.99402|18.47243,40.03923|18.51250,40.13472|18.42486,40.28846|18.27472,40.41083|18.12750,40.49444|18.03583,40.57777|18.01264,40.64306|17.93722,40.67860|17.76111,40.73083|17.47361,40.82888|17.29486,40.96479|17.18375,41.02958|17.04972,41.08194|16.65777,41.19138|16.08528,41.40472|16.03306,41.41888|15.98500,41.43972|15.92625,41.48583|15.89042,41.56527|15.89764,41.61333|15.93777,41.64055|15.98028,41.65319|16.03055,41.67694|16.16500,41.75777|16.19368,41.82944|16.14556,41.91117|16.08250,41.93610|16.02292,41.94666|15.91361,41.93527|15.85695,41.92528|15.76527,41.91694|15.67910,41.91583|15.60000,41.92361|15.49722,41.90916|15.40472,41.90388|15.14192,41.92803');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ResidenceTribe`
+--
+
+CREATE TABLE IF NOT EXISTS `ResidenceTribe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `create_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `ResidenceTribe`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Tag`
+--
+
+CREATE TABLE IF NOT EXISTS `Tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `Tag`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Thread`
+--
+
+CREATE TABLE IF NOT EXISTS `Thread` (
+  `id` varchar(255) NOT NULL,
+  `permalink` varchar(255) NOT NULL,
+  `is_commentable` tinyint(1) NOT NULL,
+  `num_comments` int(11) NOT NULL,
+  `last_comment_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Thread`
+--
+
+INSERT INTO `Thread` (`id`, `permalink`, `is_commentable`, `num_comments`, `last_comment_at`) VALUES
+('foo', 'http%3A%2F%2Flocalhost%2FSymfony%2Fweb%2Fapp_dev.php%2Fhome', 1, 4, '2012-03-06 15:06:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Vote`
+--
+
+CREATE TABLE IF NOT EXISTS `Vote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `voter_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `value` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_FA222A5AEBB4B8AD` (`voter_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `Vote`
+--
+
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `article_tag`
+--
+ALTER TABLE `article_tag`
+  ADD CONSTRAINT `FK_919694F97294869C` FOREIGN KEY (`article_id`) REFERENCES `Article` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_919694F9BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `Tag` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `city_user`
+--
+ALTER TABLE `city_user`
+  ADD CONSTRAINT `FK_6EDDEB21318E209C` FOREIGN KEY (`destination_tribe_id`) REFERENCES `DestinationTribe` (`id`),
+  ADD CONSTRAINT `FK_6EDDEB21F0CF8664` FOREIGN KEY (`residence_tribe_id`) REFERENCES `ResidenceTribe` (`id`);
+
+--
+-- Constraints for table `Comment`
+--
+ALTER TABLE `Comment`
+  ADD CONSTRAINT `FK_5BC96BF0E2904019` FOREIGN KEY (`thread_id`) REFERENCES `Thread` (`id`),
+  ADD CONSTRAINT `FK_5BC96BF0F675F31B` FOREIGN KEY (`author_id`) REFERENCES `city_user` (`id`);
+
+--
+-- Constraints for table `Vote`
+--
+ALTER TABLE `Vote`
+  ADD CONSTRAINT `FK_FA222A5AEBB4B8AD` FOREIGN KEY (`voter_id`) REFERENCES `city_user` (`id`);

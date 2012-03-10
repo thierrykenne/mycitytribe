@@ -78,5 +78,30 @@ one_plus_one_o_auth:
     twitter:
         key: 123
         secret: abc
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: City\CitytribeBundle\Entity\Comment
+            thread: City\CitytribeBundle\Entity\Thread
+jms_serializer:
+    handlers:
+        object_based: false
+        datetime:
+            format: <ISO8601 (Y-m-dTH:i:s)>
+            default_timezone: <timezone set in php.ini or via date_default_timezone_set>
+        array_collection: true
+        form_error: true
+        constraint_violation: true
+
+    property_naming:
+        separator:  _
+        lower_case: true
+
+    metadata:
+        cache: file
+        debug: %kernel.debug%
+        file_cache:
+            dir: %kernel.cache_dir%/serializer
 
 
