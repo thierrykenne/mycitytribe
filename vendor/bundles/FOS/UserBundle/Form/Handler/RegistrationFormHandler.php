@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Mailer\MailerInterface;
+use City\UserBundle\Entity\ResidenceTribe as ResidenceTribe;
+use City\UserBundle\Entity\DestinationTribe as DestinationTribe;
+use Doctrine\ORM\EntityManager;
 
 class RegistrationFormHandler
 {
@@ -23,13 +26,15 @@ class RegistrationFormHandler
     protected $userManager;
     protected $form;
     protected $mailer;
+    protected $em;
 
-    public function __construct(Form $form, Request $request, UserManagerInterface $userManager, MailerInterface $mailer)
+    public function __construct(Form $form, Request $request, UserManagerInterface $userManager, MailerInterface $mailer,EntityManager $em)
     {
         $this->form = $form;
         $this->request = $request;
         $this->userManager = $userManager;
         $this->mailer = $mailer;
+        $this->em = $em;
     }
 
     public function process($confirmation = true)
@@ -41,6 +46,8 @@ class RegistrationFormHandler
             $this->form->bindRequest($this->request);
 
             if ($this->form->isValid()) {
+                // j'ai mis ca
+                $confirmation=false;
                 $this->onSuccess($user, $confirmation);
 
                 return true;
@@ -52,6 +59,31 @@ class RegistrationFormHandler
 
     protected function onSuccess(UserInterface $user, $confirmation)
     {
+        // to avoid persit error at user registration
+        $tribe1 =$this->em->getRepository('CityUserBundle:DestinationTribe')->find(1);  
+        $tribe2= $this->em->getRepository('CityUserBundle:ResidenceTribe')->find(1);
+        $user->setDestinationTribe($tribe1);
+        $user->setResidenceTribe($tribe2);
+
+        $user->setDestinationCity('');
+        $user->setDestinationCountry('');
+        $user->setDestinationRegion('');
+        $user->setDestinationContinent('');
+
+        $user->setResidenceCity('');
+        $user->setResidenceCountry('');
+        $user->setResidenceRegion('');
+        $user->setResidenceContinent('');
+        $user->setAboutMe('');
+        $user->setSex('n');
+        $user->setPremium(1);
+        $user->setNumQuestion(0);
+        $user->setNumAnswer(0);
+        $user->setOccupation('');
+        $user->setVisitGoal('');
+        $user->setImage('');
+        $user->setLanguage('');
+        //end
         if ($confirmation) {
             $user->setEnabled(false);
             $this->mailer->sendConfirmationEmailMessage($user);

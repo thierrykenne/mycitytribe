@@ -15,7 +15,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     static private $declaredRouteNames = array(
        '_welcome' => true,
        '_demo_login' => true,
-       '_security_check' => true,
        '_demo_logout' => true,
        'acme_demo_secured_hello' => true,
        '_demo_secured_hello' => true,
@@ -66,6 +65,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'fos_user_registration_confirm' => true,
        'fos_user_registration_confirmed' => true,
        'fos_user_registration_tribu' => true,
+       'tribu_registration' => true,
        'fos_user_resetting_request' => true,
        'fos_user_resetting_send_email' => true,
        'fos_user_resetting_check_email' => true,
@@ -87,6 +87,8 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'fos_comment_post_thread_comment_votes' => true,
        'fos_comment_post_thread_comments' => true,
        'fos_comment_post_threads' => true,
+       '_security_check' => true,
+       '_security_logout' => true,
     );
 
     /**
@@ -118,11 +120,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function get_demo_loginRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::loginAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/demo/secured/login',  ),));
-    }
-
-    private function get_security_checkRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::securityCheckAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/demo/secured/login_check',  ),));
     }
 
     private function get_demo_logoutRouteInfo()
@@ -375,6 +372,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'CityUserBundle:TribuRegister:register',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/tribu_register',  ),));
     }
 
+    private function gettribu_registrationRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/residence',  ),));
+    }
+
     private function getfos_user_resetting_requestRouteInfo()
     {
         return array(array (), array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::requestAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/resetting/request',  ),));
@@ -478,5 +480,15 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getfos_comment_post_threadsRouteInfo()
     {
         return array(array (  0 => '_format',), array (  '_controller' => 'FOS\\CommentBundle\\Controller\\ThreadController::postThreadsAction',  '_format' => NULL,), array (  '_method' => 'POST',), array (  0 =>   array (    0 => 'variable',    1 => '.',    2 => '[^/]+?',    3 => '_format',  ),  1 =>   array (    0 => 'text',    1 => '/api/threads',  ),));
+    }
+
+    private function get_security_checkRouteInfo()
+    {
+        return array(array (), array (), array (), array (  0 =>   array (    0 => 'text',    1 => '/facebook/check',  ),));
+    }
+
+    private function get_security_logoutRouteInfo()
+    {
+        return array(array (), array (), array (), array (  0 =>   array (    0 => 'text',    1 => '/logout',  ),));
     }
 }

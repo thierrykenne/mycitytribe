@@ -12,7 +12,8 @@ class UserType extends AbstractType
 	    $builder
             ->add('residence_city')
             ->add('residence_region')
-            ->add('residence_country');
+            ->add('residence_country')
+            ->add('residence_continent');
     }
 
     public function getName()

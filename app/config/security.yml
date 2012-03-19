@@ -1,4 +1,6 @@
 security:
+    factories:
+        - "%kernel.root_dir%/../vendor/bundles/FOS/FacebookBundle/Resources/config/security_factories.xml"
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext 
         City\UserBundle\Entity\User:               plaintext
@@ -8,14 +10,20 @@ security:
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
+        my_fos_facebook_provider:
+            id: my.facebook.user
         fos_userbundle:
             id: fos_user.user_manager
+
 
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+#
+#        # Firewall pour l'application de facebook
+#
+#
         # Firewall pour les pages de connexion, inscription, et récupération de mot de passe
         login:
             pattern:   ^/(login$|register|resetting)  # Les adresses de ces pages sont login, register et resetting
@@ -23,7 +31,14 @@ security:
 
         # Firewall principal pour le reste de notre site
         main:
-            pattern: ^/                      # ^/ = tout ce qui commence par / = tout notre site
+            pattern: ^/ # ^/ = tout ce qui commence par / = tout notre site
+            fos_facebook:
+                app_url: "http://localhost/Symfony/web/app_dev.php/facebook/"
+                server_url: "http://localhost/Symfony/web/app_dev.php/home/"
+                login_path: /login
+                check_path: /facebook/check
+                provider:  my_fos_facebook_provider
+                default_target_path: /home                    
             form_login:                      # On définit notre méthode d'authentification
                 provider:    fos_userbundle  # On lit l'authentification au provider définit plus haut
                 remember_me: true            # On active la possibilité du "Se souvenir de moi" (désactivé par défaut)
@@ -39,3 +54,5 @@ security:
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        #- { path: ^/secured/.*, role: [IS_AUTHENTICATED_FULLY] } # This is the route secured with fos_facebook
+        #- { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }

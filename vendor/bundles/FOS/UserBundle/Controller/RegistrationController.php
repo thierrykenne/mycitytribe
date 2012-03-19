@@ -71,9 +71,13 @@ class RegistrationController extends ContainerAware
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-       return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:checkEmail.html.'.$this->getEngine(), array(
-            'user' => $user,
-        ));
+       //return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:checkEmail.html.'.$this->getEngine(), array(
+       //     'user' => $user,));
+        $this->authenticateUser($user);
+        $route = 'fos_user_security_login';
+        $url = $this->container->get('router')->generate($route);
+        return new RedirectResponse($url);
+        
        
     }
 
@@ -94,7 +98,7 @@ class RegistrationController extends ContainerAware
 
         $this->container->get('fos_user.user_manager')->updateUser($user);
         $this->authenticateUser($user);
-
+        //verifier que la tribu esiste
         $route = 'fos_user_registration_tribu';
         $url = $this->container->get('router')->generate($route);
         return new RedirectResponse($url);

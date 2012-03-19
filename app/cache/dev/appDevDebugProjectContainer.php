@@ -105,6 +105,8 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSCommentBundle', '/opt/lampp/htdocs/Symfony/app/Resources/FOSCommentBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSCommentBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSRestBundle', '/opt/lampp/htdocs/Symfony/app/Resources/FOSRestBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSRestBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSRestBundle', '/opt/lampp/htdocs/Symfony/app/Resources/FOSRestBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSRestBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSFacebookBundle', '/opt/lampp/htdocs/Symfony/app/Resources/FOSFacebookBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSFacebookBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSFacebookBundle', '/opt/lampp/htdocs/Symfony/app/Resources/FOSFacebookBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSFacebookBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'OnePlusOneOAuthBundle', '/opt/lampp/htdocs/Symfony/app/Resources/OnePlusOneOAuthBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'OnePlusOneOAuthBundle', '/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'OnePlusOneOAuthBundle', '/opt/lampp/htdocs/Symfony/app/Resources/OnePlusOneOAuthBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'OnePlusOneOAuthBundle', '/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityTribuBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CityTribuBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityTribuBundle', '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
@@ -113,6 +115,8 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityGeoBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CityGeoBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityGeoBundle', '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CitytribeBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CitytribeBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CitytribeBundle', '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CitytribeBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CitytribeBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CitytribeBundle', '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'KnpMenuBundle', '/opt/lampp/htdocs/Symfony/app/Resources/KnpMenuBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'KnpMenuBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'KnpMenuBundle', '/opt/lampp/htdocs/Symfony/app/Resources/KnpMenuBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'KnpMenuBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'AcmeDemoBundle', '/opt/lampp/htdocs/Symfony/app/Resources/AcmeDemoBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'AcmeDemoBundle', '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'AcmeDemoBundle', '/opt/lampp/htdocs/Symfony/app/Resources/AcmeDemoBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'AcmeDemoBundle', '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'WebProfilerBundle', '/opt/lampp/htdocs/Symfony/app/Resources/WebProfilerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'WebProfilerBundle', '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
@@ -1099,6 +1103,47 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'fos_facebook.api' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\FacebookBundle\Facebook\FacebookSessionPersistence A FOS\FacebookBundle\Facebook\FacebookSessionPersistence instance.
+     */
+    protected function getFosFacebook_ApiService()
+    {
+        require_once '/opt/lampp/htdocs/Symfony/app/../vendor/facebook/src/base_facebook.php';
+
+        return $this->services['fos_facebook.api'] = new \FOS\FacebookBundle\Facebook\FacebookSessionPersistence(array('appId' => '166704423433744', 'secret' => 'c3af5e8049c401279ced1807349e9589', 'cookie' => true, 'domain' => NULL), $this->get('session'));
+    }
+
+    /**
+     * Gets the 'fos_facebook.helper' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\FacebookBundle\Templating\Helper\FacebookHelper A FOS\FacebookBundle\Templating\Helper\FacebookHelper instance.
+     */
+    protected function getFosFacebook_HelperService()
+    {
+        return $this->services['fos_facebook.helper'] = new \FOS\FacebookBundle\Templating\Helper\FacebookHelper($this->get('templating'), $this->get('fos_facebook.api'), true, 'en_US', array(0 => 'email', 1 => 'user_hometown', 2 => 'user_about_me'));
+    }
+
+    /**
+     * Gets the 'fos_facebook.twig' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return FOS\FacebookBundle\Twig\Extension\FacebookExtension A FOS\FacebookBundle\Twig\Extension\FacebookExtension instance.
+     */
+    protected function getFosFacebook_TwigService()
+    {
+        return $this->services['fos_facebook.twig'] = new \FOS\FacebookBundle\Twig\Extension\FacebookExtension($this);
+    }
+
+    /**
      * Gets the 'fos_rest.body_listener' service.
      *
      * This service is shared.
@@ -1414,7 +1459,7 @@ class appDevDebugProjectContainer extends Container
             throw new InactiveScopeException('fos_user.registration.form.handler', 'request');
         }
 
-        return $this->services['fos_user.registration.form.handler'] = $this->scopedServices['request']['fos_user.registration.form.handler'] = new \FOS\UserBundle\Form\Handler\RegistrationFormHandler($this->get('fos_user.registration.form'), $this->get('request'), $this->get('fos_user.user_manager'), $this->get('fos_user.mailer'));
+        return $this->services['fos_user.registration.form.handler'] = $this->scopedServices['request']['fos_user.registration.form.handler'] = new \FOS\UserBundle\Form\Handler\RegistrationFormHandler($this->get('fos_user.registration.form'), $this->get('request'), $this->get('fos_user.user_manager'), $this->get('fos_user.mailer'), $this->get('doctrine.orm.default_entity_manager'));
     }
 
     /**
@@ -1632,7 +1677,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getJmsSerializer_MetadataDriverService()
     {
-        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/MonologBundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer', 'Symfony\\Bundle\\DoctrineBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/DoctrineBundle/Resources/config/serializer', 'Symfony\\Bundle\\AsseticBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Symfony/Bundle/AsseticBundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer', 'JMS\\SecurityExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SecurityExtraBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SerializerBundle/Resources/config/serializer', 'City\\BlogBundle' => '/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Resources/config/serializer', 'City\\UserBundle' => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Resources/config/serializer', 'FOS\\UserBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/serializer', 'FOS\\CommentBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer', 'FOS\\RestBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer', 'OnePlusOne\\OAuthBundle' => '/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/config/serializer', 'City\\TribuBundle' => '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer', 'City\\GeoBundle' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer', 'City\\CitytribeBundle' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer', 'Acme\\DemoBundle' => '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer', 'Symfony\\Bundle\\WebProfilerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer', 'Sensio\\Bundle\\DistributionBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer', 'Sensio\\Bundle\\GeneratorBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/GeneratorBundle/Resources/config/serializer'));
+        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/MonologBundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer', 'Symfony\\Bundle\\DoctrineBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/DoctrineBundle/Resources/config/serializer', 'Symfony\\Bundle\\AsseticBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Symfony/Bundle/AsseticBundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer', 'JMS\\SecurityExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SecurityExtraBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SerializerBundle/Resources/config/serializer', 'City\\BlogBundle' => '/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Resources/config/serializer', 'City\\UserBundle' => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Resources/config/serializer', 'FOS\\UserBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/serializer', 'FOS\\CommentBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer', 'FOS\\RestBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer', 'FOS\\FacebookBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer', 'OnePlusOne\\OAuthBundle' => '/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/config/serializer', 'City\\TribuBundle' => '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer', 'City\\GeoBundle' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer', 'City\\CitytribeBundle' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer', 'Knp\\Bundle\\MenuBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer', 'Acme\\DemoBundle' => '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer', 'Symfony\\Bundle\\WebProfilerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer', 'Sensio\\Bundle\\DistributionBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer', 'Sensio\\Bundle\\GeneratorBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/GeneratorBundle/Resources/config/serializer'));
 
         return $this->services['jms_serializer.metadata_driver'] = new \Metadata\Driver\DriverChain(array(0 => new \JMS\SerializerBundle\Metadata\Driver\YamlDriver($a), 1 => new \JMS\SerializerBundle\Metadata\Driver\XmlDriver($a), 2 => new \JMS\SerializerBundle\Metadata\Driver\PhpDriver($a), 3 => new \JMS\SerializerBundle\Metadata\Driver\AnnotationDriver($this->get('annotation_reader'))));
     }
@@ -1700,6 +1745,71 @@ class appDevDebugProjectContainer extends Container
     protected function getKernelService()
     {
         throw new \RuntimeException('You have requested a synthetic service ("kernel"). The DIC does not know how to construct this service.');
+    }
+
+    /**
+     * Gets the 'knp_menu.factory' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Knp\Menu\Silex\RouterAwareFactory A Knp\Menu\Silex\RouterAwareFactory instance.
+     */
+    protected function getKnpMenu_FactoryService()
+    {
+        return $this->services['knp_menu.factory'] = new \Knp\Menu\Silex\RouterAwareFactory($this->get('router'));
+    }
+
+    /**
+     * Gets the 'knp_menu.menu_provider' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Knp\Menu\Provider\ChainProvider A Knp\Menu\Provider\ChainProvider instance.
+     */
+    protected function getKnpMenu_MenuProviderService()
+    {
+        return $this->services['knp_menu.menu_provider'] = new \Knp\Menu\Provider\ChainProvider(array(0 => new \Knp\Bundle\MenuBundle\Provider\ContainerAwareProvider($this, array()), 1 => new \Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider($this->get('kernel'), $this, $this->get('knp_menu.factory'))));
+    }
+
+    /**
+     * Gets the 'knp_menu.renderer.list' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Knp\Menu\Renderer\ListRenderer A Knp\Menu\Renderer\ListRenderer instance.
+     */
+    protected function getKnpMenu_Renderer_ListService()
+    {
+        return $this->services['knp_menu.renderer.list'] = new \Knp\Menu\Renderer\ListRenderer('UTF-8');
+    }
+
+    /**
+     * Gets the 'knp_menu.renderer.twig' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Knp\Menu\Renderer\TwigRenderer A Knp\Menu\Renderer\TwigRenderer instance.
+     */
+    protected function getKnpMenu_Renderer_TwigService()
+    {
+        return $this->services['knp_menu.renderer.twig'] = new \Knp\Menu\Renderer\TwigRenderer($this->get('twig'), 'knp_menu.html.twig');
+    }
+
+    /**
+     * Gets the 'knp_menu.renderer_provider' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider A Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider instance.
+     */
+    protected function getKnpMenu_RendererProviderService()
+    {
+        return $this->services['knp_menu.renderer_provider'] = new \Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider($this, 'twig', array('list' => 'knp_menu.renderer.list', 'twig' => 'knp_menu.renderer.twig'));
     }
 
     /**
@@ -1904,6 +2014,19 @@ class appDevDebugProjectContainer extends Container
         $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'my.facebook.user' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return City\UserBundle\Provider\FacebookProvider A City\UserBundle\Provider\FacebookProvider instance.
+     */
+    protected function getMy_Facebook_UserService()
+    {
+        return $this->services['my.facebook.user'] = new \City\UserBundle\Provider\FacebookProvider($this->get('fos_facebook.api'), $this->get('fos_user.user_manager'), $this->get('validator'), $this);
     }
 
     /**
@@ -2233,7 +2356,7 @@ class appDevDebugProjectContainer extends Container
         $a = $this->get('security.context');
         $b = $this->get('monolog.logger.security');
 
-        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4f5763d858298', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
+        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('my.facebook.user'), 1 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4f670da7ca86a', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
     }
 
     /**
@@ -2247,22 +2370,28 @@ class appDevDebugProjectContainer extends Container
     protected function getSecurity_Firewall_Map_Context_MainService()
     {
         $a = $this->get('security.context');
-        $b = $this->get('fos_user.user_manager');
-        $c = $this->get('monolog.logger.security');
-        $d = $this->get('event_dispatcher');
-        $e = $this->get('security.http_utils');
-        $f = $this->get('security.authentication.manager');
+        $b = $this->get('my.facebook.user');
+        $c = $this->get('fos_user.user_manager');
+        $d = $this->get('monolog.logger.security');
+        $e = $this->get('event_dispatcher');
+        $f = $this->get('security.http_utils');
+        $g = $this->get('security.authentication.manager');
 
-        $g = new \Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices(array(0 => $b), 'ThisTokenIsNotSoSecretChangeIt', 'main', array('name' => 'REMEMBERME', 'lifetime' => 31536000, 'path' => '/', 'domain' => NULL, 'secure' => false, 'httponly' => true, 'always_remember_me' => false, 'remember_me_parameter' => '_remember_me'), $c);
+        $h = new \Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices(array(0 => $b, 1 => $c), 'ThisTokenIsNotSoSecretChangeIt', 'main', array('name' => 'REMEMBERME', 'lifetime' => 31536000, 'path' => '/', 'domain' => NULL, 'secure' => false, 'httponly' => true, 'always_remember_me' => false, 'remember_me_parameter' => '_remember_me'), $d);
 
-        $h = new \Symfony\Component\Security\Http\Firewall\LogoutListener($a, $e, '/logout', '/', NULL);
-        $h->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
-        $h->addHandler($g);
+        $i = new \Symfony\Component\Security\Http\Firewall\LogoutListener($a, $f, '/logout', '/', NULL);
+        $i->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+        $i->addHandler($h);
 
-        $i = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($a, $f, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $e, 'main', array('default_target_path' => '/home', 'check_path' => '/login_check', 'login_path' => '/login', 'use_forward' => false, 'always_use_default_target_path' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), NULL, NULL, $c, $d);
-        $i->setRememberMeServices($g);
+        $j = new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate');
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $b), 'main', $c, $d), 2 => $h, 3 => $i, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($a, $g, $f, $c, $d), 5 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $e, new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $e, '/login', false), NULL, NULL, $c));
+        $k = new \FOS\FacebookBundle\Security\Firewall\FacebookListener($a, $g, $j, $f, 'main', array('check_path' => '/facebook/check', 'login_path' => '/login', 'default_target_path' => '/home', 'app_url' => 'http://localhost/Symfony/web/app_dev.php/facebook/', 'server_url' => 'http://localhost/Symfony/web/app_dev.php/home/', 'use_forward' => false, 'always_use_default_target_path' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'display' => 'page', 'create_user_if_not_exists' => false), NULL, NULL, $d, $e);
+        $k->setRememberMeServices($h);
+
+        $l = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($a, $g, $j, $f, 'main', array('default_target_path' => '/home', 'check_path' => '/login_check', 'login_path' => '/login', 'use_forward' => false, 'always_use_default_target_path' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), NULL, NULL, $d, $e);
+        $l->setRememberMeServices($h);
+
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $b, 1 => $c), 'main', $d, $e), 2 => $i, 3 => $k, 4 => $l, 5 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($a, $h, $g, $d, $e), 6 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $f, new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $f, '/login', false), NULL, NULL, $d));
     }
 
     /**
@@ -2831,7 +2960,9 @@ class appDevDebugProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), true, array()));
         $instance->addExtension(new \JMS\SerializerBundle\Twig\SerializerExtension($this->get('serializer')));
         $instance->addExtension(new \FOS\CommentBundle\Twig\CommentExtension(NULL, NULL));
+        $instance->addExtension($this->get('fos_facebook.twig'));
         $instance->addExtension($this->get('twig.extension.txt'));
+        $instance->addExtension(new \Knp\Menu\Twig\MenuExtension(new \Knp\Menu\Twig\Helper($this->get('knp_menu.renderer_provider'), $this->get('knp_menu.menu_provider'))));
         $instance->addExtension($this->get('twig.extension.acme.demo'));
 
         return $instance;
@@ -2876,6 +3007,7 @@ class appDevDebugProjectContainer extends Container
         $this->services['twig.loader'] = $instance = new \Symfony\Bundle\TwigBundle\Loader\FilesystemLoader($this->get('templating.locator'), $this->get('templating.name_parser'));
 
         $instance->addPath('/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/TwigBundle/DependencyInjection/../../../Bridge/Twig/Resources/views/Form');
+        $instance->addPath('/opt/lampp/htdocs/Symfony/vendor/KnpMenu/src/Knp/Menu/Resources/views');
 
         return $instance;
     }
@@ -2934,6 +3066,16 @@ class appDevDebugProjectContainer extends Container
     protected function getDoctrine_Orm_EntityManagerService()
     {
         return $this->get('doctrine.orm.default_entity_manager');
+    }
+
+    /**
+     * Gets the facebook service alias.
+     *
+     * @return FOS\FacebookBundle\Facebook\FacebookSessionPersistence An instance of the fos_facebook.api service
+     */
+    protected function getFacebookService()
+    {
+        return $this->get('fos_facebook.api');
     }
 
     /**
@@ -3284,7 +3426,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = new \Symfony\Component\Security\Core\User\UserChecker();
 
-        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4f5763d858298'), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
+        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4f670da7ca86a'), 1 => new \FOS\FacebookBundle\Security\Authentication\Provider\FacebookProvider($this->get('fos_facebook.api'), $this->get('my.facebook.user'), $a, false), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
     }
 
     /**
@@ -3355,7 +3497,7 @@ class appDevDebugProjectContainer extends Container
         $this->services['templating.engine.php'] = $instance = new \Symfony\Bundle\FrameworkBundle\Templating\PhpEngine($this->get('templating.name_parser'), $this, $this->get('templating.loader'), $this->get('templating.globals'));
 
         $instance->setCharset('UTF-8');
-        $instance->setHelpers(array('slots' => 'templating.helper.slots', 'assets' => 'templating.helper.assets', 'request' => 'templating.helper.request', 'session' => 'templating.helper.session', 'router' => 'templating.helper.router', 'actions' => 'templating.helper.actions', 'code' => 'templating.helper.code', 'translator' => 'templating.helper.translator', 'form' => 'templating.helper.form', 'security' => 'templating.helper.security', 'assetic' => 'assetic.helper.dynamic'));
+        $instance->setHelpers(array('slots' => 'templating.helper.slots', 'assets' => 'templating.helper.assets', 'request' => 'templating.helper.request', 'session' => 'templating.helper.session', 'router' => 'templating.helper.router', 'actions' => 'templating.helper.actions', 'code' => 'templating.helper.code', 'translator' => 'templating.helper.translator', 'form' => 'templating.helper.form', 'security' => 'templating.helper.security', 'assetic' => 'assetic.helper.dynamic', 'facebook' => 'fos_facebook.helper'));
 
         return $instance;
     }
@@ -3499,10 +3641,12 @@ class appDevDebugProjectContainer extends Container
                 'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle',
                 'FOSCommentBundle' => 'FOS\\CommentBundle\\FOSCommentBundle',
                 'FOSRestBundle' => 'FOS\\RestBundle\\FOSRestBundle',
+                'FOSFacebookBundle' => 'FOS\\FacebookBundle\\FOSFacebookBundle',
                 'OnePlusOneOAuthBundle' => 'OnePlusOne\\OAuthBundle\\OnePlusOneOAuthBundle',
                 'CityTribuBundle' => 'City\\TribuBundle\\CityTribuBundle',
                 'CityGeoBundle' => 'City\\GeoBundle\\CityGeoBundle',
                 'CitytribeBundle' => 'City\\CitytribeBundle\\CitytribeBundle',
+                'KnpMenuBundle' => 'Knp\\Bundle\\MenuBundle\\KnpMenuBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -3698,6 +3842,23 @@ class appDevDebugProjectContainer extends Container
             'security.authentication.session_strategy.strategy' => 'migrate',
             'security.access.always_authenticate_before_granting' => false,
             'security.authentication.hide_user_not_found' => true,
+            'fos_facebook.options.main' => array(
+                'provider' => 'my_fos_facebook_provider',
+                'check_path' => '/facebook/check',
+                'login_path' => '/login',
+                'default_target_path' => '/home',
+                'app_url' => 'http://localhost/Symfony/web/app_dev.php/facebook/',
+                'server_url' => 'http://localhost/Symfony/web/app_dev.php/home/',
+                'remember_me' => true,
+                'use_forward' => false,
+                'always_use_default_target_path' => false,
+                'target_path_parameter' => '_target_path',
+                'use_referer' => false,
+                'failure_path' => NULL,
+                'failure_forward' => false,
+                'display' => 'page',
+                'create_user_if_not_exists' => false,
+            ),
             'security.role_hierarchy.roles' => array(
                 'ROLE_ADMIN' => array(
                     0 => 'ROLE_USER',
@@ -3990,6 +4151,21 @@ class appDevDebugProjectContainer extends Container
             'fos_rest.mime_types' => array(
 
             ),
+            'fos_facebook.api.class' => 'FOS\\FacebookBundle\\Facebook\\FacebookSessionPersistence',
+            'fos_facebook.helper.class' => 'FOS\\FacebookBundle\\Templating\\Helper\\FacebookHelper',
+            'fos_facebook.twig.class' => 'FOS\\FacebookBundle\\Twig\\Extension\\FacebookExtension',
+            'fos_facebook.file' => '/opt/lampp/htdocs/Symfony/app/../vendor/facebook/src/base_facebook.php',
+            'fos_facebook.app_id' => '166704423433744',
+            'fos_facebook.secret' => 'c3af5e8049c401279ced1807349e9589',
+            'fos_facebook.cookie' => true,
+            'fos_facebook.domain' => NULL,
+            'fos_facebook.logging' => true,
+            'fos_facebook.culture' => 'en_US',
+            'fos_facebook.permissions' => array(
+                0 => 'email',
+                1 => 'user_hometown',
+                2 => 'user_about_me',
+            ),
             'oauth.session.class' => 'OnePlusOne\\OAuthBundle\\Session',
             'oauth.views.error' => 'OnePlusOneOAuthBundle:Auth:error.html.php',
             'oauth.views.logout' => 'OnePlusOneOAuthBundle:Auth:logout.html.php',
@@ -4005,6 +4181,17 @@ class appDevDebugProjectContainer extends Container
             'oauth.twitter.api.class' => 'TwitterOAuth\\Api',
             'oauth.twitter.key' => 123,
             'oauth.twitter.secret' => 'abc',
+            'knp_menu.factory.class' => 'Knp\\Menu\\Silex\\RouterAwareFactory',
+            'knp_menu.helper.class' => 'Knp\\Menu\\Twig\\Helper',
+            'knp_menu.menu_provider.chain.class' => 'Knp\\Menu\\Provider\\ChainProvider',
+            'knp_menu.menu_provider.container_aware.class' => 'Knp\\Bundle\\MenuBundle\\Provider\\ContainerAwareProvider',
+            'knp_menu.menu_provider.builder_alias.class' => 'Knp\\Bundle\\MenuBundle\\Provider\\BuilderAliasProvider',
+            'knp_menu.renderer_provider.class' => 'Knp\\Bundle\\MenuBundle\\Renderer\\ContainerAwareProvider',
+            'knp_menu.renderer.list.class' => 'Knp\\Menu\\Renderer\\ListRenderer',
+            'knp_menu.twig.extension.class' => 'Knp\\Menu\\Twig\\MenuExtension',
+            'knp_menu.renderer.twig.class' => 'Knp\\Menu\\Renderer\\TwigRenderer',
+            'knp_menu.renderer.twig.template' => 'knp_menu.html.twig',
+            'knp_menu.default_renderer' => 'twig',
             'web_profiler.debug_toolbar.class' => 'Symfony\\Bundle\\WebProfilerBundle\\EventListener\\WebDebugToolbarListener',
             'web_profiler.debug_toolbar.intercept_redirects' => false,
             'web_profiler.debug_toolbar.mode' => 2,

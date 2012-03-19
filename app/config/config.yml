@@ -103,5 +103,18 @@ jms_serializer:
         debug: %kernel.debug%
         file_cache:
             dir: %kernel.cache_dir%/serializer
-
-
+fos_facebook:
+    file:   %kernel.root_dir%/../vendor/facebook/src/base_facebook.php
+    alias:  facebook
+    app_id: 166704423433744
+    secret: c3af5e8049c401279ced1807349e9589
+    cookie: true
+    permissions: [email, user_hometown ,user_about_me]
+services:
+    my.facebook.user:
+        class: City\UserBundle\Provider\FacebookProvider
+        arguments:
+            facebook: "@fos_facebook.api"
+            userManager: "@fos_user.user_manager"
+            validator: "@validator"
+            container: "@service_container"

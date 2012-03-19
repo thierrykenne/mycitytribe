@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css" type="text/css" />
 <script language="javascript">
 $(document).ready(function() {
-	var Gcity=""; var Gcountry=""; var Gregion="";
+	var Gcity=""; var Gcountry=""; var Gregion=""; var Gadress="";
 	$.each($('#form').find('input:visible'),function(index) { 
   		if (index==0) {
 			$(this).addClass('city'); 
@@ -31,8 +31,19 @@ $(document).ready(function() {
 			 $(this).addClass('country'); 
 			Gcountry=$(this).attr('id');
 		}
+		if (index==3) {
+			 $(this).addClass('formatted_address'); 
+			Gadress=$(this).attr('id');
+		}
 	});
-
+	$("#submit").click(function(){
+		ans=true;
+		if($('input#address').val()=="") {
+			$('input#address').css("border-color","red");
+			ans=false;
+		}
+		return ans;
+	})
 	//Init Geocoder  
 
 	var geocoder = new google.maps.Geocoder();
@@ -69,7 +80,7 @@ $(document).ready(function() {
 		if (status == google.maps.GeocoderStatus.OK) {
 			if (results[0]) {
 				$('#address').val(results[0].formatted_address);
-				//$('#region').val(marker.getPosition().lat());
+				$('.formatted_address').val(results[0].formatted_address);
 				//$('#country').val(marker.getPosition().lng());
 			    var elt = results[0].address_components;
 			    for(i in elt){
@@ -92,8 +103,8 @@ $(document).ready(function() {
 	response($.map(results, function(item) {
 	return {
 	value: item.formatted_address,
-    	latitude: item.geometry.location.lat(),
-    	longitude: item.geometry.location.lng(),
+    latitude: item.geometry.location.lat(),
+    longitude: item.geometry.location.lng(),
 	region: 
 	        function (){
 			    var elt = item.address_components;
@@ -125,6 +136,7 @@ $(document).ready(function() {
 	},
 	select: function(event, ui) {
 			$('#address').val(ui.item['value']);
+			$('.formatted_address').val(ui.item['value']);
 			$(".region").val(ui.item.region);
 			$(".country").val(ui.item.country);
 			$(".city").val(ui.item.city);

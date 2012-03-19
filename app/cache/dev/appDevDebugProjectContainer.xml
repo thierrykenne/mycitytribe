@@ -23,10 +23,12 @@
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="FOSCommentBundle">FOS\CommentBundle\FOSCommentBundle</parameter>
       <parameter key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</parameter>
+      <parameter key="FOSFacebookBundle">FOS\FacebookBundle\FOSFacebookBundle</parameter>
       <parameter key="OnePlusOneOAuthBundle">OnePlusOne\OAuthBundle\OnePlusOneOAuthBundle</parameter>
       <parameter key="CityTribuBundle">City\TribuBundle\CityTribuBundle</parameter>
       <parameter key="CityGeoBundle">City\GeoBundle\CityGeoBundle</parameter>
       <parameter key="CitytribeBundle">City\CitytribeBundle\CitytribeBundle</parameter>
+      <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -218,6 +220,23 @@
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
+    <parameter key="fos_facebook.options.main" type="collection">
+      <parameter key="provider">my_fos_facebook_provider</parameter>
+      <parameter key="check_path">/facebook/check</parameter>
+      <parameter key="login_path">/login</parameter>
+      <parameter key="default_target_path">/home</parameter>
+      <parameter key="app_url">http://localhost/Symfony/web/app_dev.php/facebook/</parameter>
+      <parameter key="server_url">http://localhost/Symfony/web/app_dev.php/home/</parameter>
+      <parameter key="remember_me">true</parameter>
+      <parameter key="use_forward">false</parameter>
+      <parameter key="always_use_default_target_path">false</parameter>
+      <parameter key="target_path_parameter">_target_path</parameter>
+      <parameter key="use_referer">false</parameter>
+      <parameter key="failure_path">null</parameter>
+      <parameter key="failure_forward">false</parameter>
+      <parameter key="display">page</parameter>
+      <parameter key="create_user_if_not_exists">false</parameter>
+    </parameter>
     <parameter key="security.role_hierarchy.roles" type="collection">
       <parameter key="ROLE_ADMIN" type="collection">
         <parameter>ROLE_USER</parameter>
@@ -496,6 +515,21 @@
     <parameter key="fos_rest.prefer_extension">true</parameter>
     <parameter key="fos_rest.fallback_format">html</parameter>
     <parameter key="fos_rest.mime_types" type="collection"/>
+    <parameter key="fos_facebook.api.class">FOS\FacebookBundle\Facebook\FacebookSessionPersistence</parameter>
+    <parameter key="fos_facebook.helper.class">FOS\FacebookBundle\Templating\Helper\FacebookHelper</parameter>
+    <parameter key="fos_facebook.twig.class">FOS\FacebookBundle\Twig\Extension\FacebookExtension</parameter>
+    <parameter key="fos_facebook.file">/opt/lampp/htdocs/Symfony/app/../vendor/facebook/src/base_facebook.php</parameter>
+    <parameter key="fos_facebook.app_id">166704423433744</parameter>
+    <parameter key="fos_facebook.secret">c3af5e8049c401279ced1807349e9589</parameter>
+    <parameter key="fos_facebook.cookie">true</parameter>
+    <parameter key="fos_facebook.domain">null</parameter>
+    <parameter key="fos_facebook.logging">true</parameter>
+    <parameter key="fos_facebook.culture">en_US</parameter>
+    <parameter key="fos_facebook.permissions" type="collection">
+      <parameter>email</parameter>
+      <parameter>user_hometown</parameter>
+      <parameter>user_about_me</parameter>
+    </parameter>
     <parameter key="oauth.session.class">OnePlusOne\OAuthBundle\Session</parameter>
     <parameter key="oauth.views.error">OnePlusOneOAuthBundle:Auth:error.html.php</parameter>
     <parameter key="oauth.views.logout">OnePlusOneOAuthBundle:Auth:logout.html.php</parameter>
@@ -511,6 +545,17 @@
     <parameter key="oauth.twitter.api.class">TwitterOAuth\Api</parameter>
     <parameter key="oauth.twitter.key">123</parameter>
     <parameter key="oauth.twitter.secret">abc</parameter>
+    <parameter key="knp_menu.factory.class">Knp\Menu\Silex\RouterAwareFactory</parameter>
+    <parameter key="knp_menu.helper.class">Knp\Menu\Twig\Helper</parameter>
+    <parameter key="knp_menu.menu_provider.chain.class">Knp\Menu\Provider\ChainProvider</parameter>
+    <parameter key="knp_menu.menu_provider.container_aware.class">Knp\Bundle\MenuBundle\Provider\ContainerAwareProvider</parameter>
+    <parameter key="knp_menu.menu_provider.builder_alias.class">Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider</parameter>
+    <parameter key="knp_menu.renderer_provider.class">Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider</parameter>
+    <parameter key="knp_menu.renderer.list.class">Knp\Menu\Renderer\ListRenderer</parameter>
+    <parameter key="knp_menu.twig.extension.class">Knp\Menu\Twig\MenuExtension</parameter>
+    <parameter key="knp_menu.renderer.twig.class">Knp\Menu\Renderer\TwigRenderer</parameter>
+    <parameter key="knp_menu.renderer.twig.template">knp_menu.html.twig</parameter>
+    <parameter key="knp_menu.default_renderer">twig</parameter>
     <parameter key="web_profiler.debug_toolbar.class">Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -559,6 +604,12 @@
     </parameter>
   </parameters>
   <services>
+    <service id="my.facebook.user" class="City\UserBundle\Provider\FacebookProvider">
+      <argument key="facebook" type="service" id="fos_facebook.api"/>
+      <argument key="userManager" type="service" id="fos_user.user_manager"/>
+      <argument key="validator" type="service" id="validator"/>
+      <argument key="container" type="service" id="service_container"/>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -1801,6 +1852,7 @@
           <argument key="form">templating.helper.form</argument>
           <argument key="security">templating.helper.security</argument>
           <argument key="assetic">assetic.helper.dynamic</argument>
+          <argument key="facebook">fos_facebook.helper</argument>
         </argument>
       </call>
     </service>
@@ -1866,7 +1918,17 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4f5763d858298</argument>
+            <argument>4f670da7ca86a</argument>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="FOS\FacebookBundle\Security\Authentication\Provider\FacebookProvider" public="false">
+            <argument type="service" id="fos_facebook.api"/>
+            <argument type="service" id="my.facebook.user"/>
+            <argument type="service">
+              <service class="Symfony\Component\Security\Core\User\UserChecker" public="false"/>
+            </argument>
+            <argument>false</argument>
           </service>
         </argument>
         <argument type="service">
@@ -1991,6 +2053,7 @@
           <service class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
             <argument type="service" id="security.context"/>
             <argument type="collection">
+              <argument type="service" id="my.facebook.user"/>
               <argument type="service" id="fos_user.user_manager"/>
             </argument>
             <argument>login</argument>
@@ -2001,7 +2064,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4f5763d858298</argument>
+            <argument>4f670da7ca86a</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2026,6 +2089,7 @@
           <service class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
             <argument type="service" id="security.context"/>
             <argument type="collection">
+              <argument type="service" id="my.facebook.user"/>
               <argument type="service" id="fos_user.user_manager"/>
             </argument>
             <argument>main</argument>
@@ -2049,6 +2113,63 @@
               <argument type="service">
                 <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
                   <argument type="collection">
+                    <argument type="service" id="my.facebook.user"/>
+                    <argument type="service" id="fos_user.user_manager"/>
+                  </argument>
+                  <argument>ThisTokenIsNotSoSecretChangeIt</argument>
+                  <argument>main</argument>
+                  <argument type="collection">
+                    <argument key="name">REMEMBERME</argument>
+                    <argument key="lifetime">31536000</argument>
+                    <argument key="path">/</argument>
+                    <argument key="domain">null</argument>
+                    <argument key="secure">false</argument>
+                    <argument key="httponly">true</argument>
+                    <argument key="always_remember_me">false</argument>
+                    <argument key="remember_me_parameter">_remember_me</argument>
+                  </argument>
+                  <argument type="service" id="monolog.logger.security"/>
+                </service>
+              </argument>
+            </call>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="FOS\FacebookBundle\Security\Firewall\FacebookListener" public="false">
+            <tag name="security.remember_me_aware" id="main" provider="security.user.provider.concrete.my_fos_facebook_provider"/>
+            <argument type="service" id="security.context"/>
+            <argument type="service" id="security.authentication.manager"/>
+            <argument type="service">
+              <service class="Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy" public="false">
+                <argument>migrate</argument>
+              </service>
+            </argument>
+            <argument type="service" id="security.http_utils"/>
+            <argument>main</argument>
+            <argument type="collection">
+              <argument key="check_path">/facebook/check</argument>
+              <argument key="login_path">/login</argument>
+              <argument key="default_target_path">/home</argument>
+              <argument key="app_url">http://localhost/Symfony/web/app_dev.php/facebook/</argument>
+              <argument key="server_url">http://localhost/Symfony/web/app_dev.php/home/</argument>
+              <argument key="use_forward">false</argument>
+              <argument key="always_use_default_target_path">false</argument>
+              <argument key="target_path_parameter">_target_path</argument>
+              <argument key="use_referer">false</argument>
+              <argument key="failure_path">null</argument>
+              <argument key="failure_forward">false</argument>
+              <argument key="display">page</argument>
+              <argument key="create_user_if_not_exists">false</argument>
+            </argument>
+            <argument>null</argument>
+            <argument>null</argument>
+            <argument type="service" id="monolog.logger.security"/>
+            <argument type="service" id="event_dispatcher"/>
+            <call method="setRememberMeServices">
+              <argument type="service">
+                <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
+                  <argument type="collection">
+                    <argument type="service" id="my.facebook.user"/>
                     <argument type="service" id="fos_user.user_manager"/>
                   </argument>
                   <argument>ThisTokenIsNotSoSecretChangeIt</argument>
@@ -2105,6 +2226,7 @@
               <argument type="service">
                 <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
                   <argument type="collection">
+                    <argument type="service" id="my.facebook.user"/>
                     <argument type="service" id="fos_user.user_manager"/>
                   </argument>
                   <argument>ThisTokenIsNotSoSecretChangeIt</argument>
@@ -2131,6 +2253,7 @@
             <argument type="service">
               <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
                 <argument type="collection">
+                  <argument type="service" id="my.facebook.user"/>
                   <argument type="service" id="fos_user.user_manager"/>
                 </argument>
                 <argument>ThisTokenIsNotSoSecretChangeIt</argument>
@@ -2277,7 +2400,23 @@
         </argument>
       </call>
       <call method="addExtension">
+        <argument type="service" id="fos_facebook.twig"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="twig.extension.txt"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service">
+          <service class="Knp\Menu\Twig\MenuExtension" public="false">
+            <tag name="twig.extension"/>
+            <argument type="service">
+              <service class="Knp\Menu\Twig\Helper" public="false">
+                <argument type="service" id="knp_menu.renderer_provider"/>
+                <argument type="service" id="knp_menu.menu_provider"/>
+              </service>
+            </argument>
+          </service>
+        </argument>
       </call>
       <call method="addExtension">
         <argument type="service" id="twig.extension.acme.demo"/>
@@ -2288,6 +2427,9 @@
       <argument type="service" id="templating.name_parser"/>
       <call method="addPath">
         <argument>/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/TwigBundle/DependencyInjection/../../../Bridge/Twig/Resources/views/Form</argument>
+      </call>
+      <call method="addPath">
+        <argument>/opt/lampp/htdocs/Symfony/vendor/KnpMenu/src/Knp/Menu/Resources/views</argument>
       </call>
     </service>
     <service id="templating.engine.twig" class="Symfony\Bundle\TwigBundle\TwigEngine" public="false">
@@ -3450,6 +3592,60 @@
               <argument type="service">
                 <service class="%assetic.directory_resource.class%" public="false">
                   <argument type="service" id="templating.loader"/>
+                  <argument>FOSFacebookBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/FOSFacebookBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>FOSFacebookBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.php"/>
+            <tag name="assetic.formula_resource" loader="php"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>FOSFacebookBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/FOSFacebookBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>FOSFacebookBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>php</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
                   <argument>OnePlusOneOAuthBundle</argument>
                   <argument>/opt/lampp/htdocs/Symfony/app/Resources/OnePlusOneOAuthBundle/views</argument>
                   <argument>/^[^.]+\.[^.]+\.twig$/</argument>
@@ -3649,6 +3845,60 @@
                   <argument type="service" id="templating.loader"/>
                   <argument>CitytribeBundle</argument>
                   <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>php</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>KnpMenuBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/KnpMenuBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>KnpMenuBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.php"/>
+            <tag name="assetic.formula_resource" loader="php"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>KnpMenuBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/KnpMenuBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>KnpMenuBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/views</argument>
                   <argument>/^[^.]+\.[^.]+\.php$/</argument>
                 </service>
               </argument>
@@ -4265,6 +4515,32 @@
       </argument>
       <argument>true</argument>
     </service>
+    <service id="fos_facebook.api" class="FOS\FacebookBundle\Facebook\FacebookSessionPersistence">
+      <file>/opt/lampp/htdocs/Symfony/app/../vendor/facebook/src/base_facebook.php</file>
+      <argument type="collection">
+        <argument key="appId">166704423433744</argument>
+        <argument key="secret">c3af5e8049c401279ced1807349e9589</argument>
+        <argument key="cookie">true</argument>
+        <argument key="domain">null</argument>
+      </argument>
+      <argument type="service" id="session"/>
+    </service>
+    <service id="fos_facebook.helper" class="FOS\FacebookBundle\Templating\Helper\FacebookHelper">
+      <tag name="templating.helper" alias="facebook"/>
+      <argument type="service" id="templating"/>
+      <argument type="service" id="fos_facebook.api"/>
+      <argument>true</argument>
+      <argument>en_US</argument>
+      <argument type="collection">
+        <argument>email</argument>
+        <argument>user_hometown</argument>
+        <argument>user_about_me</argument>
+      </argument>
+    </service>
+    <service id="fos_facebook.twig" class="FOS\FacebookBundle\Twig\Extension\FacebookExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="service_container"/>
+    </service>
     <service id="oauth.session" class="OnePlusOne\OAuthBundle\Session" scope="request">
       <argument type="service" id="session"/>
       <call method="addService">
@@ -4329,6 +4605,26 @@
     <service id="citytribe.user" class="City\CitytribeBundle\Service\CitytribeUser"/>
     <service id="twig.extension.txt" class="Twig_Extensions_Extension_Text">
       <tag name="twig.extension"/>
+    </service>
+    <service id="knp_menu.factory" class="Knp\Menu\Silex\RouterAwareFactory">
+      <argument type="service" id="router"/>
+    </service>
+    <service id="knp_menu.renderer_provider" class="Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider">
+      <argument type="service" id="service_container"/>
+      <argument>twig</argument>
+      <argument type="collection">
+        <argument key="list">knp_menu.renderer.list</argument>
+        <argument key="twig">knp_menu.renderer.twig</argument>
+      </argument>
+    </service>
+    <service id="knp_menu.renderer.list" class="Knp\Menu\Renderer\ListRenderer">
+      <tag name="knp_menu.renderer" alias="list"/>
+      <argument>UTF-8</argument>
+    </service>
+    <service id="knp_menu.renderer.twig" class="Knp\Menu\Renderer\TwigRenderer">
+      <tag name="knp_menu.renderer" alias="twig"/>
+      <argument type="service" id="twig"/>
+      <argument>knp_menu.html.twig</argument>
     </service>
     <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
       <tag name="twig.extension"/>
@@ -4574,10 +4870,12 @@
                   <argument key="FOS\UserBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/serializer</argument>
                   <argument key="FOS\CommentBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer</argument>
                   <argument key="FOS\RestBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer</argument>
+                  <argument key="FOS\FacebookBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer</argument>
                   <argument key="OnePlusOne\OAuthBundle">/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/config/serializer</argument>
                   <argument key="City\TribuBundle">/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer</argument>
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
+                  <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
                   <argument key="Acme\DemoBundle">/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Symfony\Bundle\WebProfilerBundle">/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                   <argument key="Sensio\Bundle\DistributionBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
@@ -4607,10 +4905,12 @@
                   <argument key="FOS\UserBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/serializer</argument>
                   <argument key="FOS\CommentBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer</argument>
                   <argument key="FOS\RestBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer</argument>
+                  <argument key="FOS\FacebookBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer</argument>
                   <argument key="OnePlusOne\OAuthBundle">/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/config/serializer</argument>
                   <argument key="City\TribuBundle">/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer</argument>
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
+                  <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
                   <argument key="Acme\DemoBundle">/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Symfony\Bundle\WebProfilerBundle">/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                   <argument key="Sensio\Bundle\DistributionBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
@@ -4640,10 +4940,12 @@
                   <argument key="FOS\UserBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/serializer</argument>
                   <argument key="FOS\CommentBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer</argument>
                   <argument key="FOS\RestBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer</argument>
+                  <argument key="FOS\FacebookBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer</argument>
                   <argument key="OnePlusOne\OAuthBundle">/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/config/serializer</argument>
                   <argument key="City\TribuBundle">/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer</argument>
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
+                  <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
                   <argument key="Acme\DemoBundle">/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Symfony\Bundle\WebProfilerBundle">/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                   <argument key="Sensio\Bundle\DistributionBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
@@ -4740,6 +5042,7 @@
       <argument type="service" id="request"/>
       <argument type="service" id="fos_user.user_manager"/>
       <argument type="service" id="fos_user.mailer"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="fos_user.resetting.form.handler" class="FOS\UserBundle\Form\Handler\ResettingFormHandler" scope="request">
       <argument type="service" id="fos_user.resetting.form"/>
@@ -4776,6 +5079,25 @@
         <argument type="service" id="service_container"/>
       </call>
     </service>
+    <service id="knp_menu.menu_provider" class="Knp\Menu\Provider\ChainProvider">
+      <argument type="collection">
+        <argument type="service">
+          <service class="Knp\Bundle\MenuBundle\Provider\ContainerAwareProvider" public="false">
+            <tag name="knp_menu.provider"/>
+            <argument type="service" id="service_container"/>
+            <argument type="collection"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider" public="false">
+            <tag name="knp_menu.provider"/>
+            <argument type="service" id="kernel"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="knp_menu.factory"/>
+          </service>
+        </argument>
+      </argument>
+    </service>
     <service id="debug.event_dispatcher" alias="event_dispatcher"/>
     <service id="translator" alias="translator.default"/>
     <service id="database_connection" alias="doctrine.dbal.default_connection"/>
@@ -4788,5 +5110,6 @@
     <service id="fos_rest.router" alias="router"/>
     <service id="fos_rest.templating" alias="templating"/>
     <service id="fos_rest.serializer" alias="serializer"/>
+    <service id="facebook" alias="fos_facebook.api"/>
   </services>
 </container>

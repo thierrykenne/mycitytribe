@@ -2,6 +2,9 @@
 
 {% block body %}
 	Hello1 {{ name }}!<br />
+	{% if flash is defined  %} 
+		{{flash}}
+	{% endif %}
 	{% if destination is defined  %}
 		<form action="{{ path('CityGeoBundle_destination') }}" method="post" {{ form_enctype(form) }}>
 	{% else %}
@@ -13,7 +16,7 @@
 	
 		{{ form_widget(form) }}
 	
-		<input type="submit" />
+		<input id="submit" type="submit" />
 	</form>
 <div id="erreur"> </div>
 {% endblock %}

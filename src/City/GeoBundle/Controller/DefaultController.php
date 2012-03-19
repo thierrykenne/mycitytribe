@@ -37,7 +37,7 @@ class DefaultController extends Controller
     }
 
     public function destinationAction()
-    {
+    { 
         $user=$this->get_user();
         $username=$user->getUsername();
         $userId=$user->getId();
@@ -45,13 +45,13 @@ class DefaultController extends Controller
             ->add('destination_city', 'text', array('required' => false))
             ->add('destination_region', 'text' , array('required' => false))
             ->add('destination_country', 'text', array('required' => false))
+            ->add('destination_continent', 'text', array('required' => false))
             ->getForm();
         $formHandler = new UserHandler($form, $this->get('request'), $this->getDoctrine()->getEntityManager());
-        if( $formHandler->process() )
-        {
-            return $this->redirect( $this->generateUrl('CitytribeBundle_homepage' ));
-        }
-
+            if( $formHandler->process() )
+            {
+                return $this->redirect( $this->generateUrl('CitytribeBundle_homepage' ));
+            }
         return $this->render('CityGeoBundle:Default:index.html.twig', array(
             'form' => $form->createView(),
             'name' => $username,

@@ -1,10 +1,14 @@
 {% extends "::Commentlayout.html.twig" %}
 {% block body %}
-Hello!2
+Hello!
+{{ knp_menu_render('CitytribeBundle:Builder:mainMenu') }}
 {% if app.session.hasFlash('notice') %}
     <div class="flash-notice">
         {{ app.session.flash('notice') }}
     </div>
 {% endif %}
-{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'foo'} %}
+{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': comment } %}
+<div id="others">
+{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'foo' } %}
+</div>
 {% endblock %}

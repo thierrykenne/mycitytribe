@@ -87,6 +87,22 @@ the Team.
     'layout.register' => 'Register',
     'layout.logged_in_as' => 'Logged in as %username%',
   ),
+  'FOSCommentBundle' => 
+  array (
+    'fos_comment_comment_new_headline_first' => 'Add  New Subject',
+    'fos_comment_comment_new_headline' => 'Add New Comment',
+    'fos_comment_comment_new_submit' => 'Post',
+    'fos_comment_comment_reply_reply_to' => 'Replying to %name%',
+    'fos_comment_comment_reply_cancel' => 'Cancel',
+    'fos_comment_comment_show_by' => 'By',
+    'fos_comment_comment_show_voteup' => 'Vote up',
+    'fos_comment_comment_show_votedown' => 'Vote down',
+    'fos_comment_comment_show_reply' => 'Reply',
+    'fos_comment_comment_vote_score' => 'Score: ',
+    'fos_comment_comment_tree_load_more' => 'Load More Replies',
+    'Showing %num% comment|Showing %num% comments' => 'Showing %num% comment|Showing %num% comments',
+    'fos_comment_rss_feed' => 'RSS Feed',
+  ),
 ));
 
 

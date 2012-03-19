@@ -38,11 +38,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::loginAction',  '_route' => '_demo_login',);
         }
 
-        // _security_check
-        if ($pathinfo === '/demo/secured/login_check') {
-            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::securityCheckAction',  '_route' => '_security_check',);
-        }
-
         // _demo_logout
         if ($pathinfo === '/demo/secured/logout') {
             return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::logoutAction',  '_route' => '_demo_logout',);
@@ -383,6 +378,16 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_fos_user_registration_tribu:
 
+            // tribu_registration
+            if ($pathinfo === '/register/residence') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tribu_registration;
+                }
+                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',  '_route' => 'tribu_registration',);
+            }
+            not_tribu_registration:
+
         }
 
         if (0 === strpos($pathinfo, '/resetting')) {
@@ -559,6 +564,16 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_fos_comment_post_thread_comment_votes:
 
+        }
+
+        // _security_check
+        if ($pathinfo === '/facebook/check') {
+            return array('_route' => '_security_check');
+        }
+
+        // _security_logout
+        if ($pathinfo === '/logout') {
+            return array('_route' => '_security_logout');
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

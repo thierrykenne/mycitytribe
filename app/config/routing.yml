@@ -35,3 +35,11 @@ fos_comment_api:
     type: rest
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
     prefix: /api
+_security_check:
+    pattern:  /facebook/check
+#    defaults: { _controller: CitytribeBundle:Default:index }
+_security_logout:
+    pattern:  /logout
+#fblogin:
+#    pattern:  /facebook/login
+#    defaults: { _controller: CitytribeBundle:Default:index }

@@ -4,13 +4,29 @@
 		<title>{% block title %}MycityTribe{% endblock %}</title>
 
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen" />
+	        <script>
+  function goLogIn(){
+      window.location = "{{ path('_security_check') }}";
+  }
+
+  function onFbInit() {
+      if (typeof(FB) != 'undefined' && FB != null ) {
+	  console.log("Got facebook SDK");
+          FB.Event.subscribe('auth.statusChange', function(response) {
+              setTimeout(goLogIn, 500);
+          });
+      }
+  }
+</script>	
 	</head>
 	
 	<body>
+      {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
 		<div id="en_tete">
 			<h1> Mycitytribe Header</h1>
 		</div> 
- 
+
+{{ facebook_login_button({'autologoutlink': true}) }}
 		<div id="menu">
 			<div class="element_menu"> 
 				<ul> 

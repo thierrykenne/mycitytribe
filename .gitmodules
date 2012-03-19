@@ -16,3 +16,12 @@
 [submodule "vendor/fos/FOS/Rest"]
 	path = vendor/fos/FOS/Rest
 	url = git://github.com/FriendsOfSymfony/FOSRest.git
+[submodule "vendor/bundles/Knp/Bundle/MenuBundle"]
+	path = vendor/bundles/Knp/Bundle/MenuBundle
+	url = https://github.com/KnpLabs/KnpMenuBundle.git
+[submodule "vendor/KnpMenu"]
+	path = vendor/KnpMenu
+	url = https://github.com/KnpLabs/KnpMenu.git
+[submodule "vendor/bundles/FOS/FacebookBundle"]
+	path = vendor/bundles/FOS/FacebookBundle
+	url = git://github.com/FriendsOfSymfony/FOSFacebookBundle.git

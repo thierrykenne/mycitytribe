@@ -1,9 +1,9 @@
 {% if app.session.hasFlash('notice') %}
-{% block body %}
     <div class="flash-notice">
         {{ app.session.flash('notice') }}
     </div>
 {% endif %}
+{% block body %}
 	<form id ="form" action="{{ path('CitytribeBundle_avatar') }}" method="post" {{ form_enctype(form) }}>
 	
 		{{ form_widget(form) }}

@@ -23,10 +23,12 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new FOS\FacebookBundle\FOSFacebookBundle(),
             new OnePlusOne\OAuthBundle\OnePlusOneOAuthBundle(),
             new City\TribuBundle\CityTribuBundle(),
             new City\GeoBundle\CityGeoBundle(),
             new City\CitytribeBundle\CitytribeBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
