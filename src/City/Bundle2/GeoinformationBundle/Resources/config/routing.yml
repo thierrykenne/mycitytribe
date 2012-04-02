@@ -1,3 +1,0 @@
-GeoinformationBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: GeoinformationBundle:Default:index }

@@ -20,17 +20,17 @@ class DefaultController extends Controller
     public function indexAction()
     {
             $user = $this->get('security.context')->getToken()->getUser();
-            $commentId=uniqid();
-        //$user=$this->get_user();
-        // check geografical coordinates
-        /*print($user->getResidenceRegion());
-        if( $user->getResidenceRegion()=='')
+            $commentId='4f672cc65645a';
+        $user=$this->get_user();
+         //check geografical coordinates
+        if( $user->getResidenceRegion()==''){
             $flash='Your residence region is not set, Please change it !';
             return $this->redirect( $this->generateUrl('CityGeoBundle_residence'));
-
+        }
+            
         if ($user->getDestinationCity()=='' || $user->getDestinationRegion()==''|| $user->getDestinationCountry()=='')
              $this->get('session')->setFlash('notice', 'Your destination region is not set! You can change it on Profile');
-        */
+        
         return $this->render('CitytribeBundle:Default:index.html.twig', array('comment' => $commentId)
             );
     }

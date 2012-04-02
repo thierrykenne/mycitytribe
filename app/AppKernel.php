@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new City\GeoBundle\CityGeoBundle(),
             new City\CitytribeBundle\CitytribeBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new City\DemoBundle\CityDemoBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

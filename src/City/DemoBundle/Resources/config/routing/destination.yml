@@ -1,0 +1,30 @@
+dest:
+    pattern:  /
+    defaults: { _controller: "CityDemoBundle:Destination:index" }
+
+dest_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CityDemoBundle:Destination:show" }
+
+dest_new:
+    pattern:  /new
+    defaults: { _controller: "CityDemoBundle:Destination:new" }
+
+dest_create:
+    pattern:  /create
+    defaults: { _controller: "CityDemoBundle:Destination:create" }
+    requirements: { _method: post }
+
+dest_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CityDemoBundle:Destination:edit" }
+
+dest_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CityDemoBundle:Destination:update" }
+    requirements: { _method: post }
+
+dest_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CityDemoBundle:Destination:delete" }
+    requirements: { _method: post }

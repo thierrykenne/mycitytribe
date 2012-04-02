@@ -29,6 +29,7 @@
       <parameter key="CityGeoBundle">City\GeoBundle\CityGeoBundle</parameter>
       <parameter key="CitytribeBundle">City\CitytribeBundle\CitytribeBundle</parameter>
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
+      <parameter key="CityDemoBundle">City\DemoBundle\CityDemoBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -224,12 +225,12 @@
       <parameter key="provider">my_fos_facebook_provider</parameter>
       <parameter key="check_path">/facebook/check</parameter>
       <parameter key="login_path">/login</parameter>
+      <parameter key="always_use_default_target_path">true</parameter>
       <parameter key="default_target_path">/home</parameter>
       <parameter key="app_url">http://localhost/Symfony/web/app_dev.php/facebook/</parameter>
       <parameter key="server_url">http://localhost/Symfony/web/app_dev.php/home/</parameter>
       <parameter key="remember_me">true</parameter>
       <parameter key="use_forward">false</parameter>
-      <parameter key="always_use_default_target_path">false</parameter>
       <parameter key="target_path_parameter">_target_path</parameter>
       <parameter key="use_referer">false</parameter>
       <parameter key="failure_path">null</parameter>
@@ -468,7 +469,7 @@
     </parameter>
     <parameter key="fos_comment.model.thread.class">City\CitytribeBundle\Entity\Thread</parameter>
     <parameter key="fos_comment.model.comment.class">City\CitytribeBundle\Entity\Comment</parameter>
-    <parameter key="fos_comment.model.vote.class">FOS\CommentBundle\Entity\Vote</parameter>
+    <parameter key="fos_comment.model.vote.class">City\CitytribeBundle\Entity\Vote</parameter>
     <parameter key="fos_comment.manager.thread.default.class">FOS\CommentBundle\Entity\ThreadManager</parameter>
     <parameter key="fos_comment.manager.comment.default.class">FOS\CommentBundle\Entity\CommentManager</parameter>
     <parameter key="fos_comment.manager.vote.default.class">FOS\CommentBundle\Entity\VoteManager</parameter>
@@ -1406,6 +1407,12 @@
         <argument>fr</argument>
         <argument>messages</argument>
       </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/translations/messages.fr.xliff</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
+      </call>
     </service>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
       <tag name="translation.loader" alias="php"/>
@@ -1918,7 +1925,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4f670da7ca86a</argument>
+            <argument>4f79a052499c4</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2002,7 +2009,7 @@
             </argument>
             <argument key="security.firewall.map.context.login" type="service">
               <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                <argument>^/(login$|register|resetting)</argument>
+                <argument>^/(login$|register|resetting|user|dest)</argument>
               </service>
             </argument>
             <argument key="security.firewall.map.context.main" type="service">
@@ -2064,7 +2071,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4f670da7ca86a</argument>
+            <argument>4f79a052499c4</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2149,11 +2156,11 @@
             <argument type="collection">
               <argument key="check_path">/facebook/check</argument>
               <argument key="login_path">/login</argument>
+              <argument key="always_use_default_target_path">true</argument>
               <argument key="default_target_path">/home</argument>
               <argument key="app_url">http://localhost/Symfony/web/app_dev.php/facebook/</argument>
               <argument key="server_url">http://localhost/Symfony/web/app_dev.php/home/</argument>
               <argument key="use_forward">false</argument>
-              <argument key="always_use_default_target_path">false</argument>
               <argument key="target_path_parameter">_target_path</argument>
               <argument key="use_referer">false</argument>
               <argument key="failure_path">null</argument>
@@ -2203,11 +2210,11 @@
             <argument type="service" id="security.http_utils"/>
             <argument>main</argument>
             <argument type="collection">
+              <argument key="always_use_default_target_path">true</argument>
               <argument key="default_target_path">/home</argument>
               <argument key="check_path">/login_check</argument>
               <argument key="login_path">/login</argument>
               <argument key="use_forward">false</argument>
-              <argument key="always_use_default_target_path">false</argument>
               <argument key="target_path_parameter">_target_path</argument>
               <argument key="use_referer">false</argument>
               <argument key="failure_path">null</argument>
@@ -2542,6 +2549,7 @@
               <argument key="CityTribuBundle">City\TribuBundle\Entity</argument>
               <argument key="CityGeoBundle">City\GeoBundle\Entity</argument>
               <argument key="CitytribeBundle">City\CitytribeBundle\Entity</argument>
+              <argument key="CityDemoBundle">City\DemoBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2588,6 +2596,7 @@
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2607,6 +2616,7 @@
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2626,6 +2636,7 @@
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2645,6 +2656,7 @@
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2664,10 +2676,31 @@
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>City\CitytribeBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service">
+                        <service class="Symfony\Bridge\Doctrine\Annotations\IndexedReader" public="false">
+                          <argument type="service" id="annotation_reader"/>
+                        </service>
+                      </argument>
+                      <argument type="collection">
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>City\DemoBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">
@@ -3916,6 +3949,60 @@
               <argument type="service">
                 <service class="%assetic.directory_resource.class%" public="false">
                   <argument type="service" id="templating.loader"/>
+                  <argument>CityDemoBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/CityDemoBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>CityDemoBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.php"/>
+            <tag name="assetic.formula_resource" loader="php"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>CityDemoBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/CityDemoBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>CityDemoBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>php</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
                   <argument>AcmeDemoBundle</argument>
                   <argument>/opt/lampp/htdocs/Symfony/app/Resources/AcmeDemoBundle/views</argument>
                   <argument>/^[^.]+\.[^.]+\.twig$/</argument>
@@ -4408,7 +4495,7 @@
     <service id="fos_comment.manager.vote.default" class="FOS\CommentBundle\Entity\VoteManager">
       <argument type="service" id="event_dispatcher"/>
       <argument type="service" id="fos_comment.entity_manager"/>
-      <argument>FOS\CommentBundle\Entity\Vote</argument>
+      <argument>City\CitytribeBundle\Entity\Vote</argument>
     </service>
     <service id="fos_comment.listener.comment_vote_score" class="FOS\CommentBundle\EventListener\CommentVoteScoreListener">
       <tag name="kernel.event_listener" event="fos_comment.vote.pre_persist" method="onVotePersist"/>
@@ -4876,6 +4963,7 @@
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
                   <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
+                  <argument key="City\DemoBundle">/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Acme\DemoBundle">/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Symfony\Bundle\WebProfilerBundle">/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                   <argument key="Sensio\Bundle\DistributionBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
@@ -4911,6 +4999,7 @@
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
                   <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
+                  <argument key="City\DemoBundle">/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Acme\DemoBundle">/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Symfony\Bundle\WebProfilerBundle">/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                   <argument key="Sensio\Bundle\DistributionBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
@@ -4946,6 +5035,7 @@
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
                   <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
+                  <argument key="City\DemoBundle">/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Acme\DemoBundle">/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Symfony\Bundle\WebProfilerBundle">/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                   <argument key="Sensio\Bundle\DistributionBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>

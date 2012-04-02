@@ -59,7 +59,12 @@ class FacebookProvider implements UserProviderInterface
                 // TODO: the user was found obviously, but doesnt match our expectations, do something smart
                 throw new UsernameNotFoundException('The facebook user could not be stored');
             }
-            $this->userManager->updateUser($user);
+            try {
+                $this->userManager->updateUser($user);
+            } catch (\PDOException $e) {
+                throw new UsernameNotFoundException('This email is already used');
+            }
+            
         }
 
         if (empty($user)) {

@@ -26,7 +26,7 @@ security:
 #
         # Firewall pour les pages de connexion, inscription, et récupération de mot de passe
         login:
-            pattern:   ^/(login$|register|resetting)  # Les adresses de ces pages sont login, register et resetting
+            pattern:   ^/(login$|register|resetting|user|dest)  # Les adresses de ces pages sont login, register et resetting
             anonymous: true                           # On autorise bien évidemment les anonymes sur ces pages !
 
         # Firewall principal pour le reste de notre site
@@ -38,10 +38,12 @@ security:
                 login_path: /login
                 check_path: /facebook/check
                 provider:  my_fos_facebook_provider
+                always_use_default_target_path: true
                 default_target_path: /home                    
             form_login:                      # On définit notre méthode d'authentification
                 provider:    fos_userbundle  # On lit l'authentification au provider définit plus haut
-                remember_me: true            # On active la possibilité du "Se souvenir de moi" (désactivé par défaut)
+                remember_me: true
+                always_use_default_target_path: true   # On active la possibilité du "Se souvenir de moi" (désactivé par défaut)
                 default_target_path: /home       #redirection de l'url lorsqu'on se connecte
             remember_me:
                 key:         %secret%        # On définit la clé pour le remember_me (%secret% est un parametre de parameters.ini)
@@ -55,4 +57,4 @@ security:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
         #- { path: ^/secured/.*, role: [IS_AUTHENTICATED_FULLY] } # This is the route secured with fos_facebook
-        #- { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
+        #- { path: ^/.*, role: [IS_AUTHENTICATED_FULLY] }

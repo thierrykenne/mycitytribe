@@ -36,6 +36,20 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_home' => true,
        '_configurator_step' => true,
        '_configurator_final' => true,
+       'dest' => true,
+       'dest_show' => true,
+       'dest_new' => true,
+       'dest_create' => true,
+       'dest_edit' => true,
+       'dest_update' => true,
+       'dest_delete' => true,
+       'user' => true,
+       'user_show' => true,
+       'user_new' => true,
+       'user_create' => true,
+       'user_edit' => true,
+       'user_update' => true,
+       'user_delete' => true,
        'CitytribeBundle_homepage' => true,
        'CitytribeBundle_profile' => true,
        'CitytribeBundle_avatar' => true,
@@ -227,6 +241,76 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController::finalAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/_configurator/final',  ),));
     }
 
+    private function getdestRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/dest/dest/',  ),));
+    }
+
+    private function getdest_showRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/dest',  ),));
+    }
+
+    private function getdest_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/dest/dest/new',  ),));
+    }
+
+    private function getdest_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/dest/dest/create',  ),));
+    }
+
+    private function getdest_editRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/dest',  ),));
+    }
+
+    private function getdest_updateRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/dest',  ),));
+    }
+
+    private function getdest_deleteRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/dest',  ),));
+    }
+
+    private function getuserRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/dest/user/',  ),));
+    }
+
+    private function getuser_showRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/user',  ),));
+    }
+
+    private function getuser_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/dest/user/new',  ),));
+    }
+
+    private function getuser_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/dest/user/create',  ),));
+    }
+
+    private function getuser_editRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/user',  ),));
+    }
+
+    private function getuser_updateRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/user',  ),));
+    }
+
+    private function getuser_deleteRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/user',  ),));
+    }
+
     private function getCitytribeBundle_homepageRouteInfo()
     {
         return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/home',  ),));
@@ -349,22 +433,22 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
 
     private function getfos_user_registration_registerRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/register/',  ),));
+        return array(array (), array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::registerAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/register/',  ),));
     }
 
     private function getfos_user_registration_check_emailRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::checkEmailAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/check-email',  ),));
+        return array(array (), array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::checkEmailAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/check-email',  ),));
     }
 
     private function getfos_user_registration_confirmRouteInfo()
     {
-        return array(array (  0 => 'token',), array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'token',  ),  1 =>   array (    0 => 'text',    1 => '/register/confirm',  ),));
+        return array(array (  0 => 'token',), array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::confirmAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'token',  ),  1 =>   array (    0 => 'text',    1 => '/register/confirm',  ),));
     }
 
     private function getfos_user_registration_confirmedRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmedAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/confirmed',  ),));
+        return array(array (), array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::confirmedAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/confirmed',  ),));
     }
 
     private function getfos_user_registration_tribuRouteInfo()

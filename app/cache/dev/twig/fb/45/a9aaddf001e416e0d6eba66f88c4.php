@@ -59,6 +59,7 @@ class __TwigTemplate_fb45a9aaddf001e416e0d6eba66f88c4 extends Twig_Template
 <!-- jQuery -->
 <script type=\"text/javascript\" src=\"http://code.jquery.com/jquery-1.7.1.min.js\"></script>
 
+
 \t</head>
 \t
 \t<body>
@@ -66,9 +67,9 @@ class __TwigTemplate_fb45a9aaddf001e416e0d6eba66f88c4 extends Twig_Template
 \t\t<div id=\"corps\">
 \t\t
 \t\t\t";
-        // line 23
+        // line 24
         $this->displayBlock('body', $context, $blocks);
-        // line 25
+        // line 26
         echo "\t\t\t
 \t\t</div> 
  
@@ -77,10 +78,11 @@ class __TwigTemplate_fb45a9aaddf001e416e0d6eba66f88c4 extends Twig_Template
 \t\t</div>
 \t</body>
 \t";
-        // line 32
+        // line 33
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 36
-        echo "</html>
+        // line 37
+        echo "
+</html>
 ";
     }
 
@@ -104,19 +106,19 @@ class __TwigTemplate_fb45a9aaddf001e416e0d6eba66f88c4 extends Twig_Template
 \t\t";
     }
 
-    // line 23
+    // line 24
     public function block_body($context, array $blocks = array())
     {
-        // line 24
+        // line 25
         echo "\t\t\t";
     }
 
-    // line 32
+    // line 33
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 33
-        echo "\t\t";
         // line 34
+        echo "\t\t";
+        // line 35
         echo "\t\t<script type=\"text/javascript\" src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
         echo "\"></script>

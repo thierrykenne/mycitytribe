@@ -5,6 +5,11 @@
         http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd">
 
     <class name="FOS\UserBundle\Model\User">
+        
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">email</option>
+            <option name="message">fos_user.email.already_used</option>
+        </constraint>
 
         <constraint name="FOS\UserBundle\Validator\Unique">
             <option name="property">usernameCanonical</option>
@@ -59,7 +64,7 @@
                 </option>
             </constraint>
             <constraint name="MinLength">
-                <option name="limit">2</option>
+                <option name="limit">5</option>
                 <option name="message">fos_user.email.short</option>
                 <option name="groups">
                     <value>Registration</value>

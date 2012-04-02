@@ -6,6 +6,7 @@ namespace City\CitytribeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Comment as BaseComment;
 use FOS\CommentBundle\Model\SignedCommentInterface;
+use FOS\CommentBundle\Model\VotableCommentInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use City\UserBundle\Entity\User;
 
@@ -14,7 +15,7 @@ use City\UserBundle\Entity\User;
  * @ORM\Entity
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Comment extends BaseComment implements SignedCommentInterface
+class Comment extends BaseComment implements SignedCommentInterface, VotableCommentInterface
 {
     /**
      * @ORM\Id
@@ -36,7 +37,10 @@ class Comment extends BaseComment implements SignedCommentInterface
      */
 
     protected $author;
-
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $score=0;
    
     /**
      * Gets the author of this comment.
@@ -79,5 +83,39 @@ class Comment extends BaseComment implements SignedCommentInterface
     public function getId()
     {
         return $this->id;
+    }
+    /**
+     * Sets the score of the comment.
+     *
+     * @param integer $score
+     */
+    public function setScore($score)
+    {
+
+      $this->score = intval($score);;
+    }
+
+    /**
+     * Returns the current score of the comment.
+     *
+     * @return integer
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * Increments the comment score by the provided
+     * value.
+     *
+     * @param integer value
+     * @return integer The new comment score
+     */
+    public function incrementScore($by = 1)
+    {
+        $score = $this->getScore() + intval($by);
+        $this->setScore($score);
+        return $score;
     }
 }

@@ -1,0 +1,8 @@
+CityDemoBundle_dest:
+    resource: "@CityDemoBundle/Resources/config/routing/destination.yml"
+    prefix:   /dest
+CityDemoBundle_user:
+    resource: "@CityDemoBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+

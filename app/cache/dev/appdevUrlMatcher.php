@@ -158,6 +158,121 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/dest')) {
+            if (0 === strpos($pathinfo, '/dest/dest')) {
+                // dest
+                if (rtrim($pathinfo, '/') === '/dest/dest') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'dest');
+                    }
+                    return array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::indexAction',  '_route' => 'dest',);
+                }
+
+                // dest_show
+                if (preg_match('#^/dest/dest/(?P<id>[^/]+?)/show$#xs', $pathinfo, $matches)) {
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::showAction',)), array('_route' => 'dest_show'));
+                }
+
+                // dest_new
+                if ($pathinfo === '/dest/dest/new') {
+                    return array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::newAction',  '_route' => 'dest_new',);
+                }
+
+                // dest_create
+                if ($pathinfo === '/dest/dest/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_dest_create;
+                    }
+                    return array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::createAction',  '_route' => 'dest_create',);
+                }
+                not_dest_create:
+
+                // dest_edit
+                if (preg_match('#^/dest/dest/(?P<id>[^/]+?)/edit$#xs', $pathinfo, $matches)) {
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::editAction',)), array('_route' => 'dest_edit'));
+                }
+
+                // dest_update
+                if (preg_match('#^/dest/dest/(?P<id>[^/]+?)/update$#xs', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_dest_update;
+                    }
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::updateAction',)), array('_route' => 'dest_update'));
+                }
+                not_dest_update:
+
+                // dest_delete
+                if (preg_match('#^/dest/dest/(?P<id>[^/]+?)/delete$#xs', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_dest_delete;
+                    }
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::deleteAction',)), array('_route' => 'dest_delete'));
+                }
+                not_dest_delete:
+
+            }
+
+            if (0 === strpos($pathinfo, '/dest/user')) {
+                // user
+                if (rtrim($pathinfo, '/') === '/dest/user') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'user');
+                    }
+                    return array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::indexAction',  '_route' => 'user',);
+                }
+
+                // user_show
+                if (preg_match('#^/dest/user/(?P<id>[^/]+?)/show$#xs', $pathinfo, $matches)) {
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::showAction',)), array('_route' => 'user_show'));
+                }
+
+                // user_new
+                if ($pathinfo === '/dest/user/new') {
+                    return array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::newAction',  '_route' => 'user_new',);
+                }
+
+                // user_create
+                if ($pathinfo === '/dest/user/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_user_create;
+                    }
+                    return array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::createAction',  '_route' => 'user_create',);
+                }
+                not_user_create:
+
+                // user_edit
+                if (preg_match('#^/dest/user/(?P<id>[^/]+?)/edit$#xs', $pathinfo, $matches)) {
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::editAction',)), array('_route' => 'user_edit'));
+                }
+
+                // user_update
+                if (preg_match('#^/dest/user/(?P<id>[^/]+?)/update$#xs', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_user_update;
+                    }
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::updateAction',)), array('_route' => 'user_update'));
+                }
+                not_user_update:
+
+                // user_delete
+                if (preg_match('#^/dest/user/(?P<id>[^/]+?)/delete$#xs', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_user_delete;
+                    }
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::deleteAction',)), array('_route' => 'user_delete'));
+                }
+                not_user_delete:
+
+            }
+
+        }
+
         // CitytribeBundle_homepage
         if ($pathinfo === '/home') {
             return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'CitytribeBundle_homepage',);
@@ -335,7 +450,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 if (substr($pathinfo, -1) !== '/') {
                     return $this->redirect($pathinfo.'/', 'fos_user_registration_register');
                 }
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
+                return array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
             }
 
             // fos_user_registration_check_email
@@ -344,7 +459,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_registration_check_email;
                 }
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
+                return array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
             }
             not_fos_user_registration_check_email:
 
@@ -354,7 +469,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_registration_confirm;
                 }
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmAction',)), array('_route' => 'fos_user_registration_confirm'));
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::confirmAction',)), array('_route' => 'fos_user_registration_confirm'));
             }
             not_fos_user_registration_confirm:
 
@@ -364,7 +479,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_registration_confirmed;
                 }
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
+                return array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
             }
             not_fos_user_registration_confirmed:
 

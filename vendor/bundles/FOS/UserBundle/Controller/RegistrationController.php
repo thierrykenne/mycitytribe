@@ -44,6 +44,7 @@ class RegistrationController extends ContainerAware
             } else {
                 $this->authenticateUser($user);
                 $route = 'fos_user_registration_confirmed';
+                //$route = 'CityGeoBundle_residence';
             }
 
             $this->setFlash('fos_user_success', 'registration.flash.user_created');
@@ -71,12 +72,15 @@ class RegistrationController extends ContainerAware
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-       //return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:checkEmail.html.'.$this->getEngine(), array(
-       //     'user' => $user,));
+       return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:checkEmail.html.'.$this->getEngine(), array(
+            'user' => $user,));
+
+        /* not email confirmation
         $this->authenticateUser($user);
         $route = 'fos_user_security_login';
         $url = $this->container->get('router')->generate($route);
         return new RedirectResponse($url);
+        */
         
        
     }
@@ -116,9 +120,16 @@ class RegistrationController extends ContainerAware
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-       return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(
-            'user' => $user,
-        ));
+        $user->setLastLogin(new \DateTime());
+
+        $this->container->get('fos_user.user_manager')->updateUser($user);
+        $this->authenticateUser($user);
+        $route = 'CityGeoBundle_residence';
+        $url = $this->container->get('router')->generate($route);
+        return new RedirectResponse($url);
+       //return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(
+        //    'user' => $user,
+        //));
        
     }
 

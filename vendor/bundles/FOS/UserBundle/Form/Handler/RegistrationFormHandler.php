@@ -46,8 +46,7 @@ class RegistrationFormHandler
             $this->form->bindRequest($this->request);
 
             if ($this->form->isValid()) {
-                // j'ai mis ca
-                $confirmation=false;
+
                 $this->onSuccess($user, $confirmation);
 
                 return true;
@@ -75,7 +74,7 @@ class RegistrationFormHandler
         $user->setResidenceRegion('');
         $user->setResidenceContinent('');
         $user->setAboutMe('');
-        $user->setSex('n');
+        $user->setSex('');
         $user->setPremium(1);
         $user->setNumQuestion(0);
         $user->setNumAnswer(0);

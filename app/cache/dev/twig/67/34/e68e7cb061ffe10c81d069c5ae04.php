@@ -46,12 +46,7 @@ class __TwigTemplate_6734e68e7cb061ffe10c81d069c5ae04 extends Twig_Template
         // line 10
         $this->env->loadTemplate("FOSCommentBundle:Thread:async.html.twig")->display(array_merge($context, array("id" => $this->getContext($context, "comment"))));
         // line 11
-        echo "<div id=\"others\">
-";
-        // line 12
-        $this->env->loadTemplate("FOSCommentBundle:Thread:async.html.twig")->display(array_merge($context, array("id" => "foo")));
-        // line 13
-        echo "</div>
+        echo "
 ";
     }
 

@@ -63,7 +63,7 @@ class DefaultController extends Controller
     public function polygonAction()
     {
      	$request = $this->get('request');
-   	$country=$request->request->get('country');
+   	    $country=$request->request->get('country');
         $region=$request->request->get('region');
         $repository = $this->getDoctrine()->getEntityManager()->getRepository('CityGeoBundle:RegionPolygon');
         if ($polygon = $repository->findOneBy(array('country' => $country,'region'=>$region)))

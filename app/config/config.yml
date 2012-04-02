@@ -84,6 +84,11 @@ fos_comment:
         model:
             comment: City\CitytribeBundle\Entity\Comment
             thread: City\CitytribeBundle\Entity\Thread
+            vote:   City\CitytribeBundle\Entity\Vote
+    service:
+        sorting:
+            default: date_desc
+            
 jms_serializer:
     handlers:
         object_based: false

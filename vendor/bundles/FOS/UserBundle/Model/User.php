@@ -15,6 +15,7 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Storage agnostic user object
@@ -40,6 +41,7 @@ abstract class User implements UserInterface, GroupableInterface
     protected $usernameCanonical;
 
     /**
+     *
      * @var string
      */
     protected $email;
