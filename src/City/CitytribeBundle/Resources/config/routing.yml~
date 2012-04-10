@@ -11,5 +11,37 @@ CitytribeBundle_avatar:
     defaults:  { _controller: CitytribeBundle:Profile:avatar }
 CitytribeBundle_profile_edit:
     pattern:   /profile/informations/edit
-    defaults:  { _controller: CitytribeBundle:Default:edit }
+    defaults:  { _controller: CitytribeBundle:Profile:edit }
+
+sdzblog_accueil:
+    pattern:   /{page}
+    defaults:  { _controller: SdzBlogBundle:Blog:index, page: 1 }
+    requirements:
+        page:  \d+
+
+sdzblog_voir:
+    pattern:   /article/{id}
+    defaults:  { _controller: SdzBlogBundle:Blog:voir }
+    requirements:
+        id:  \d+
+
+sdzblog_ajouter:
+    pattern:   /ajouter
+    defaults:  { _controller: SdzBlogBundle:Blog:ajouter }
+
+sdzblog_modifier:
+    pattern:   /modifier/{id}
+    defaults:  { _controller: SdzBlogBundle:Blog:modifier }
+    requirements:
+        id:  \d+
+
+sdzblog_supprimer:
+    pattern:   /supprimer/{id}
+    defaults:  { _controller: SdzBlogBundle:Blog:supprimer }
+    requirements:
+        id:  \d+
+
+sdzblog_crud:
+    resource: "routing/article.yml"
+    prefix:   /crud
 

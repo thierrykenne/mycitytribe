@@ -65,27 +65,13 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
         // line 29
         echo $this->env->getExtension('facebook')->renderLoginButton(array("autologoutlink" => true));
         echo "
-\t\t<div id=\"menu\">
-\t\t\t<div class=\"element_menu\"> 
-\t\t\t\t<ul> 
-\t\t\t\t\t<li><a href=\"";
-        // line 33
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("auth_service_login", array("service" => "facebook")), "html", null, true);
-        echo "\">Facebook login</a></li> 
-\t\t\t\t\t<li><a href=\"";
-        // line 34
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("auth_service_login", array("service" => "twitter")), "html", null, true);
-        echo "\">Twitter Login</a></li> 
-\t\t\t\t</ul>
-\t\t\t</div>
-\t\t</div>
  
 \t\t<div id=\"corps\">
 \t\t
 \t\t\t";
-        // line 41
+        // line 33
         $this->displayBlock('body', $context, $blocks);
-        // line 43
+        // line 35
         echo "\t\t\t
 \t\t</div> 
  
@@ -103,10 +89,10 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
         echo "MycityTribe";
     }
 
-    // line 41
+    // line 33
     public function block_body($context, array $blocks = array())
     {
-        // line 42
+        // line 34
         echo "\t\t\t";
     }
 

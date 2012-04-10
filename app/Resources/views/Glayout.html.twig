@@ -16,26 +16,10 @@
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css" type="text/css" />
 <script language="javascript">
 $(document).ready(function() {
-	var Gcity=""; var Gcountry=""; var Gregion=""; var Gadress="";
-	$.each($('#form').find('input:visible'),function(index) { 
-  		if (index==0) {
-			$(this).addClass('city'); 
-			Gcity=$(this).attr('id');
-		}
-
-		if (index==1) {
-			$(this).addClass('region'); 
-			Gregion=$(this).attr('id');
-		}
-		if (index==2) {
-			 $(this).addClass('country'); 
-			Gcountry=$(this).attr('id');
-		}
-		if (index==3) {
-			 $(this).addClass('formatted_address'); 
-			Gadress=$(this).attr('id');
-		}
-	});
+	var Gcity=$('input.city').attr('id'); 
+	var Gregion=$('input.region').attr('id'); 
+	var Gcountry=$('input.country').attr('id');
+	var Gstate=$('input.state').attr('id');
 	$("#submit").click(function(){
 		ans=true;
 		if($('input#address').val()=="") {
@@ -85,9 +69,17 @@ $(document).ready(function() {
 			    var elt = results[0].address_components;
 			    for(i in elt){
 					if(elt[i].types[0] == 'locality')
-						document.getElementById(Gcity).value = elt[i].long_name;					
+						document.getElementById(Gcity).value = elt[i].long_name;
+
 					if(elt[i].types[0] == 'administrative_area_level_1')
+						document.getElementById(Gstate).value = elt[i].long_name;
+
+					if(elt[i].types[0] == 'administrative_area_level_2')
 						document.getElementById(Gregion).value = elt[i].long_name;
+
+					if(elt[i].types[0] == 'administrative_area_level_3')
+						document.getElementById(Gsubregion).value = elt[i].long_name;
+
 					if(elt[i].types[0] == 'country')
 						document.getElementById(Gcountry).value = elt[i].long_name;
 				}
@@ -105,7 +97,7 @@ $(document).ready(function() {
 	value: item.formatted_address,
     latitude: item.geometry.location.lat(),
     longitude: item.geometry.location.lng(),
-	region: 
+    state: 
 	        function (){
 			    var elt = item.address_components;
 				for(i in elt){
@@ -114,6 +106,17 @@ $(document).ready(function() {
                 }
 
 			},
+
+	region: 
+	        function (){
+			    var elt = item.address_components;
+				for(i in elt){
+					if(elt[i].types[0] == 'administrative_area_level_2')
+						return elt[i].long_name;
+                }
+
+			},
+
 	country: 
 	        function (){
 			    var elt = item.address_components;
@@ -137,9 +140,10 @@ $(document).ready(function() {
 	select: function(event, ui) {
 			$('#address').val(ui.item['value']);
 			$('.formatted_address').val(ui.item['value']);
-			$(".region").val(ui.item.region);
-			$(".country").val(ui.item.country);
-			$(".city").val(ui.item.city);
+			$("input.state").val(ui.item.state);
+			$("input.region").val(ui.item.region);
+			$("input.country").val(ui.item.country);
+			$("input.city").val(ui.item.city);
 			var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
 			marker.setPosition(location);
 			map.setCenter(location);

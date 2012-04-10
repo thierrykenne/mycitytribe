@@ -1,9 +1,7 @@
-CityGeoBundle_residence:
-    pattern:  /residence
-    defaults: { _controller: CityGeoBundle:Default:residence }
-CityGeoBundle_destination:
-    pattern:  /destination
-    defaults: { _controller: CityGeoBundle:Default:destination }
 CityGeoBundle_polygon_region:
     pattern:  /polygon
     defaults: { _controller: CityGeoBundle:Default:polygon }
+CityGeoBundle_locality:
+    resource: "@CityGeoBundle/Resources/config/routing/destination.yml"
+    prefix:   /destination
+

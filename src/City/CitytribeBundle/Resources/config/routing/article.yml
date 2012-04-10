@@ -1,0 +1,27 @@
+
+message_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CitytribeBundle:Blog:show" }
+
+message_new:
+    pattern:  /new
+    defaults: { _controller: "CitytribeBundle:Blog:new" }
+
+message_create:
+    pattern:  /create
+    defaults: { _controller: "CitytribeBundle:Blog:create" }
+    requirements: { _method: post }
+
+message_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CitytribeBundle:Blog:edit" }
+
+message_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CitytribeBundle:Blog:update" }
+    requirements: { _method: post }
+
+message_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CitytribeBundle:Blog:delete" }
+    requirements: { _method: post }

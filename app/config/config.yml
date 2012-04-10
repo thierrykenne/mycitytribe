@@ -69,15 +69,6 @@ fos_user:
         address: MycityTribe@tribe.com
         sender_name: MycityTribe
 
-one_plus_one_o_auth:
-    facebook:
-        appId:  166704423433744
-        secret: c3af5e8049c401279ced1807349e9589
-        req_perms: 'publish_stream' #optional
-
-    twitter:
-        key: 123
-        secret: abc
 fos_comment:
     db_driver: orm
     class:

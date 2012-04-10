@@ -44,26 +44,10 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 <link rel=\"stylesheet\" href=\"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css\" type=\"text/css\" />
 <script language=\"javascript\">
 \$(document).ready(function() {
-\tvar Gcity=\"\"; var Gcountry=\"\"; var Gregion=\"\"; var Gadress=\"\";
-\t\$.each(\$('#form').find('input:visible'),function(index) { 
-  \t\tif (index==0) {
-\t\t\t\$(this).addClass('city'); 
-\t\t\tGcity=\$(this).attr('id');
-\t\t}
-
-\t\tif (index==1) {
-\t\t\t\$(this).addClass('region'); 
-\t\t\tGregion=\$(this).attr('id');
-\t\t}
-\t\tif (index==2) {
-\t\t\t \$(this).addClass('country'); 
-\t\t\tGcountry=\$(this).attr('id');
-\t\t}
-\t\tif (index==3) {
-\t\t\t \$(this).addClass('formatted_address'); 
-\t\t\tGadress=\$(this).attr('id');
-\t\t}
-\t});
+\tvar Gcity=\$('input.city').attr('id'); 
+\tvar Gregion=\$('input.region').attr('id'); 
+\tvar Gcountry=\$('input.country').attr('id');
+\tvar Gstate=\$('input.state').attr('id');
 \t\$(\"#submit\").click(function(){
 \t\tans=true;
 \t\tif(\$('input#address').val()==\"\") {
@@ -113,9 +97,17 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t\t    var elt = results[0].address_components;
 \t\t\t    for(i in elt){
 \t\t\t\t\tif(elt[i].types[0] == 'locality')
-\t\t\t\t\t\tdocument.getElementById(Gcity).value = elt[i].long_name;\t\t\t\t\t
+\t\t\t\t\t\tdocument.getElementById(Gcity).value = elt[i].long_name;
+
 \t\t\t\t\tif(elt[i].types[0] == 'administrative_area_level_1')
+\t\t\t\t\t\tdocument.getElementById(Gstate).value = elt[i].long_name;
+
+\t\t\t\t\tif(elt[i].types[0] == 'administrative_area_level_2')
 \t\t\t\t\t\tdocument.getElementById(Gregion).value = elt[i].long_name;
+
+\t\t\t\t\tif(elt[i].types[0] == 'administrative_area_level_3')
+\t\t\t\t\t\tdocument.getElementById(Gsubregion).value = elt[i].long_name;
+
 \t\t\t\t\tif(elt[i].types[0] == 'country')
 \t\t\t\t\t\tdocument.getElementById(Gcountry).value = elt[i].long_name;
 \t\t\t\t}
@@ -133,7 +125,7 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \tvalue: item.formatted_address,
     latitude: item.geometry.location.lat(),
     longitude: item.geometry.location.lng(),
-\tregion: 
+    state: 
 \t        function (){
 \t\t\t    var elt = item.address_components;
 \t\t\t\tfor(i in elt){
@@ -142,6 +134,17 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
                 }
 
 \t\t\t},
+
+\tregion: 
+\t        function (){
+\t\t\t    var elt = item.address_components;
+\t\t\t\tfor(i in elt){
+\t\t\t\t\tif(elt[i].types[0] == 'administrative_area_level_2')
+\t\t\t\t\t\treturn elt[i].long_name;
+                }
+
+\t\t\t},
+
 \tcountry: 
 \t        function (){
 \t\t\t    var elt = item.address_components;
@@ -165,9 +168,10 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \tselect: function(event, ui) {
 \t\t\t\$('#address').val(ui.item['value']);
 \t\t\t\$('.formatted_address').val(ui.item['value']);
-\t\t\t\$(\".region\").val(ui.item.region);
-\t\t\t\$(\".country\").val(ui.item.country);
-\t\t\t\$(\".city\").val(ui.item.city);
+\t\t\t\$(\"input.state\").val(ui.item.state);
+\t\t\t\$(\"input.region\").val(ui.item.region);
+\t\t\t\$(\"input.country\").val(ui.item.country);
+\t\t\t\$(\"input.city\").val(ui.item.city);
 \t\t\tvar location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
 \t\t\tmarker.setPosition(location);
 \t\t\tmap.setCenter(location);
@@ -178,7 +182,7 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t\t\$.ajax({ // fonction permettant de faire de l'ajax
 \t\t\t\t   type: \"POST\", // methode de transmission des données au fichier php
 \t\t\t\t   url: \"";
-        // line 152
+        // line 156
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("CityGeoBundle_polygon_region"), "html", null, true);
         echo "\", // url du fichier php
 \t\t\t\t   data: \"country=\"+\$(\".country\").val()+\"&region=\"+\$(\".region\").val(), // données à transmettre
@@ -226,9 +230,9 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t<div id=\"corps\">
 \t\t
 \t\t\t";
-        // line 197
+        // line 201
         $this->displayBlock('body', $context, $blocks);
-        // line 199
+        // line 203
         echo "\t\t\t
 \t\t</div> 
  
@@ -237,9 +241,9 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t</div>
 \t</body>
 \t";
-        // line 206
-        $this->displayBlock('javascripts', $context, $blocks);
         // line 210
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 214
         echo "</html>
 ";
     }
@@ -264,19 +268,19 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t";
     }
 
-    // line 197
+    // line 201
     public function block_body($context, array $blocks = array())
     {
-        // line 198
+        // line 202
         echo "\t\t\t";
     }
 
-    // line 206
+    // line 210
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 207
+        // line 211
         echo "\t\t";
-        // line 208
+        // line 212
         echo "\t\t<script type=\"text/javascript\" src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
         echo "\"></script>

@@ -24,7 +24,6 @@
       <parameter key="FOSCommentBundle">FOS\CommentBundle\FOSCommentBundle</parameter>
       <parameter key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</parameter>
       <parameter key="FOSFacebookBundle">FOS\FacebookBundle\FOSFacebookBundle</parameter>
-      <parameter key="OnePlusOneOAuthBundle">OnePlusOne\OAuthBundle\OnePlusOneOAuthBundle</parameter>
       <parameter key="CityTribuBundle">City\TribuBundle\CityTribuBundle</parameter>
       <parameter key="CityGeoBundle">City\GeoBundle\CityGeoBundle</parameter>
       <parameter key="CitytribeBundle">City\CitytribeBundle\CitytribeBundle</parameter>
@@ -531,21 +530,6 @@
       <parameter>user_hometown</parameter>
       <parameter>user_about_me</parameter>
     </parameter>
-    <parameter key="oauth.session.class">OnePlusOne\OAuthBundle\Session</parameter>
-    <parameter key="oauth.views.error">OnePlusOneOAuthBundle:Auth:error.html.php</parameter>
-    <parameter key="oauth.views.logout">OnePlusOneOAuthBundle:Auth:logout.html.php</parameter>
-    <parameter key="oauth.views.profile">OnePlusOneOAuthBundle:Auth:profile.html.php</parameter>
-    <parameter key="oauth.views.service">OnePlusOneOAuthBundle:Auth:service.html.php</parameter>
-    <parameter key="oauth.facebook.service.class">OnePlusOne\OAuthBundle\Services\Facebook</parameter>
-    <parameter key="oauth.facebook.req_perms">publish_stream</parameter>
-    <parameter key="oauth.facebook.appid">166704423433744</parameter>
-    <parameter key="oauth.facebook.secret">c3af5e8049c401279ced1807349e9589</parameter>
-    <parameter key="oauth.facebook.cookie">true</parameter>
-    <parameter key="oauth.facebook.api.file">/opt/lampp/htdocs/Symfony/app/../vendor/facebook-php-sdk/src/facebook.php</parameter>
-    <parameter key="oauth.twitter.service.class">OnePlusOne\OAuthBundle\Services\Twitter</parameter>
-    <parameter key="oauth.twitter.api.class">TwitterOAuth\Api</parameter>
-    <parameter key="oauth.twitter.key">123</parameter>
-    <parameter key="oauth.twitter.secret">abc</parameter>
     <parameter key="knp_menu.factory.class">Knp\Menu\Silex\RouterAwareFactory</parameter>
     <parameter key="knp_menu.helper.class">Knp\Menu\Twig\Helper</parameter>
     <parameter key="knp_menu.menu_provider.chain.class">Knp\Menu\Provider\ChainProvider</parameter>
@@ -1925,7 +1909,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4f79a052499c4</argument>
+            <argument>4f80e3e31e3e5</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2071,7 +2055,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4f79a052499c4</argument>
+            <argument>4f80e3e31e3e5</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2542,14 +2526,12 @@
         <service class="Doctrine\ORM\Configuration" public="false">
           <call method="setEntityNamespaces">
             <argument type="collection">
-              <argument key="CityBlogBundle">City\BlogBundle\Entity</argument>
               <argument key="CityUserBundle">City\UserBundle\Entity</argument>
               <argument key="FOSUserBundle">FOS\UserBundle\Entity</argument>
               <argument key="FOSCommentBundle">FOS\CommentBundle\Entity</argument>
               <argument key="CityTribuBundle">City\TribuBundle\Entity</argument>
               <argument key="CityGeoBundle">City\GeoBundle\Entity</argument>
               <argument key="CitytribeBundle">City\CitytribeBundle\Entity</argument>
-              <argument key="CityDemoBundle">City\DemoBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2591,32 +2573,10 @@
                         </service>
                       </argument>
                       <argument type="collection">
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
-                      </argument>
-                    </service>
-                  </argument>
-                  <argument>City\BlogBundle\Entity</argument>
-                </call>
-                <call method="addDriver">
-                  <argument type="service">
-                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
-                      <argument type="service">
-                        <service class="Symfony\Bridge\Doctrine\Annotations\IndexedReader" public="false">
-                          <argument type="service" id="annotation_reader"/>
-                        </service>
-                      </argument>
-                      <argument type="collection">
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2631,12 +2591,10 @@
                         </service>
                       </argument>
                       <argument type="collection">
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2651,12 +2609,10 @@
                         </service>
                       </argument>
                       <argument type="collection">
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2671,36 +2627,14 @@
                         </service>
                       </argument>
                       <argument type="collection">
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>City\CitytribeBundle\Entity</argument>
-                </call>
-                <call method="addDriver">
-                  <argument type="service">
-                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
-                      <argument type="service">
-                        <service class="Symfony\Bridge\Doctrine\Annotations\IndexedReader" public="false">
-                          <argument type="service" id="annotation_reader"/>
-                        </service>
-                      </argument>
-                      <argument type="collection">
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Entity</argument>
-                      </argument>
-                    </service>
-                  </argument>
-                  <argument>City\DemoBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">
@@ -3679,60 +3613,6 @@
               <argument type="service">
                 <service class="%assetic.directory_resource.class%" public="false">
                   <argument type="service" id="templating.loader"/>
-                  <argument>OnePlusOneOAuthBundle</argument>
-                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/OnePlusOneOAuthBundle/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>OnePlusOneOAuthBundle</argument>
-                  <argument>/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.php"/>
-            <tag name="assetic.formula_resource" loader="php"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>OnePlusOneOAuthBundle</argument>
-                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/OnePlusOneOAuthBundle/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>OnePlusOneOAuthBundle</argument>
-                  <argument>/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>php</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
                   <argument>CityTribuBundle</argument>
                   <argument>/opt/lampp/htdocs/Symfony/app/Resources/CityTribuBundle/views</argument>
                   <argument>/^[^.]+\.[^.]+\.twig$/</argument>
@@ -4628,67 +4508,6 @@
       <tag name="twig.extension"/>
       <argument type="service" id="service_container"/>
     </service>
-    <service id="oauth.session" class="OnePlusOne\OAuthBundle\Session" scope="request">
-      <argument type="service" id="session"/>
-      <call method="addService">
-        <argument type="service">
-          <service class="OnePlusOne\OAuthBundle\Services\Facebook" scope="request">
-            <argument key="0" type="service" id="oauth.facebook.api"/>
-            <argument key="req_perms">publish_stream</argument>
-            <call method="setSession">
-              <argument type="service" id="session"/>
-            </call>
-            <call method="setRequest">
-              <argument type="service" id="request"/>
-            </call>
-          </service>
-        </argument>
-      </call>
-      <call method="addService">
-        <argument type="service">
-          <service class="OnePlusOne\OAuthBundle\Services\Twitter" scope="request">
-            <argument type="service" id="oauth.twitter.api"/>
-            <call method="setSession">
-              <argument type="service" id="session"/>
-            </call>
-            <call method="setRequest">
-              <argument type="service" id="request"/>
-            </call>
-          </service>
-        </argument>
-      </call>
-    </service>
-    <service id="oauth.facebook" class="OnePlusOne\OAuthBundle\Services\Facebook" scope="request">
-      <argument key="0" type="service" id="oauth.facebook.api"/>
-      <argument key="req_perms">publish_stream</argument>
-      <call method="setSession">
-        <argument type="service" id="session"/>
-      </call>
-      <call method="setRequest">
-        <argument type="service" id="request"/>
-      </call>
-    </service>
-    <service id="oauth.facebook.api" class="Facebook">
-      <file>/opt/lampp/htdocs/Symfony/app/../vendor/facebook-php-sdk/src/facebook.php</file>
-      <argument type="collection">
-        <argument key="appId">166704423433744</argument>
-        <argument key="secret">c3af5e8049c401279ced1807349e9589</argument>
-        <argument key="cookie">true</argument>
-      </argument>
-    </service>
-    <service id="oauth.twitter" class="OnePlusOne\OAuthBundle\Services\Twitter" scope="request">
-      <argument type="service" id="oauth.twitter.api"/>
-      <call method="setSession">
-        <argument type="service" id="session"/>
-      </call>
-      <call method="setRequest">
-        <argument type="service" id="request"/>
-      </call>
-    </service>
-    <service id="oauth.twitter.api" class="TwitterOAuth\Api">
-      <argument key="key">123</argument>
-      <argument key="secret">abc</argument>
-    </service>
     <service id="citytribe.user" class="City\CitytribeBundle\Service\CitytribeUser"/>
     <service id="twig.extension.txt" class="Twig_Extensions_Extension_Text">
       <tag name="twig.extension"/>
@@ -4958,7 +4777,6 @@
                   <argument key="FOS\CommentBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer</argument>
                   <argument key="FOS\RestBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer</argument>
                   <argument key="FOS\FacebookBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer</argument>
-                  <argument key="OnePlusOne\OAuthBundle">/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/config/serializer</argument>
                   <argument key="City\TribuBundle">/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer</argument>
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
@@ -4994,7 +4812,6 @@
                   <argument key="FOS\CommentBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer</argument>
                   <argument key="FOS\RestBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer</argument>
                   <argument key="FOS\FacebookBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer</argument>
-                  <argument key="OnePlusOne\OAuthBundle">/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/config/serializer</argument>
                   <argument key="City\TribuBundle">/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer</argument>
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
@@ -5030,7 +4847,6 @@
                   <argument key="FOS\CommentBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer</argument>
                   <argument key="FOS\RestBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer</argument>
                   <argument key="FOS\FacebookBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer</argument>
-                  <argument key="OnePlusOne\OAuthBundle">/opt/lampp/htdocs/Symfony/src/OnePlusOne/OAuthBundle/Resources/config/serializer</argument>
                   <argument key="City\TribuBundle">/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer</argument>
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>

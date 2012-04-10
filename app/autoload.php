@@ -15,7 +15,6 @@ $loader->registerNamespaces(array(
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'FOS' => array(__DIR__.'/../vendor/bundles', __DIR__.'/../vendor/fos'),
-    'OnePlusOne'       => __DIR__.'/../src',
     'TwitterOAuth'     => __DIR__.'/../vendor/twitteroauth',
     'Knp\Bundle' => __DIR__.'/../vendor/bundles',
     'Knp\Menu'   => __DIR__.'/../vendor/KnpMenu/src',

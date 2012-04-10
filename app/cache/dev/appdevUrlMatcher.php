@@ -173,11 +173,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::showAction',)), array('_route' => 'dest_show'));
                 }
 
-                // dest_new
-                if ($pathinfo === '/dest/dest/new') {
-                    return array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::newAction',  '_route' => 'dest_new',);
-                }
-
                 // dest_create
                 if ($pathinfo === '/dest/dest/create') {
                     if ($this->context->getMethod() != 'POST') {
@@ -187,11 +182,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::createAction',  '_route' => 'dest_create',);
                 }
                 not_dest_create:
-
-                // dest_edit
-                if (preg_match('#^/dest/dest/(?P<id>[^/]+?)/edit$#xs', $pathinfo, $matches)) {
-                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::editAction',)), array('_route' => 'dest_edit'));
-                }
 
                 // dest_update
                 if (preg_match('#^/dest/dest/(?P<id>[^/]+?)/update$#xs', $pathinfo, $matches)) {
@@ -274,7 +264,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // CitytribeBundle_homepage
-        if ($pathinfo === '/home') {
+        if ($pathinfo === '/lahome') {
             return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'CitytribeBundle_homepage',);
         }
 
@@ -296,20 +286,114 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::editAction',  '_route' => 'CitytribeBundle_profile_edit',);
         }
 
+        // Cityblog_home
+        if (0 === strpos($pathinfo, '/home') && preg_match('#^/home(?:/(?P<page>\\d+))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'page' => 1,)), array('_route' => 'Cityblog_home'));
+        }
+
+        if (0 === strpos($pathinfo, '/blog')) {
+            // message_show
+            if (preg_match('#^/blog/(?P<id>[^/]+?)/show$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::showAction',)), array('_route' => 'message_show'));
+            }
+
+            // message_new
+            if ($pathinfo === '/blog/new') {
+                return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::newAction',  '_route' => 'message_new',);
+            }
+
+            // message_create
+            if ($pathinfo === '/blog/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_message_create;
+                }
+                return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::createAction',  '_route' => 'message_create',);
+            }
+            not_message_create:
+
+            // message_edit
+            if (preg_match('#^/blog/(?P<id>[^/]+?)/edit$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::editAction',)), array('_route' => 'message_edit'));
+            }
+
+            // message_update
+            if (preg_match('#^/blog/(?P<id>[^/]+?)/update$#xs', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_message_update;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::updateAction',)), array('_route' => 'message_update'));
+            }
+            not_message_update:
+
+            // message_delete
+            if (preg_match('#^/blog/(?P<id>[^/]+?)/delete$#xs', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_message_delete;
+                }
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::deleteAction',)), array('_route' => 'message_delete'));
+            }
+            not_message_delete:
+
+        }
+
         if (0 === strpos($pathinfo, '/places')) {
-            // CityGeoBundle_residence
-            if ($pathinfo === '/places/residence') {
-                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',  '_route' => 'CityGeoBundle_residence',);
-            }
-
-            // CityGeoBundle_destination
-            if ($pathinfo === '/places/destination') {
-                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::destinationAction',  '_route' => 'CityGeoBundle_destination',);
-            }
-
             // CityGeoBundle_polygon_region
             if ($pathinfo === '/places/polygon') {
                 return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::polygonAction',  '_route' => 'CityGeoBundle_polygon_region',);
+            }
+
+            if (0 === strpos($pathinfo, '/places/destination')) {
+                // GeoBundle_dest
+                if (rtrim($pathinfo, '/') === '/places/destination') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'GeoBundle_dest');
+                    }
+                    return array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::indexAction',  '_route' => 'GeoBundle_dest',);
+                }
+
+                // GeoBundle_destination_show
+                if ($pathinfo === '/places/destination/show') {
+                    return array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::showAction',  '_route' => 'GeoBundle_destination_show',);
+                }
+
+                // dest_new
+                if ($pathinfo === '/places/destination/new') {
+                    return array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::newAction',  '_route' => 'dest_new',);
+                }
+
+                // GeoBundle_destination_create
+                if ($pathinfo === '/places/destination/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_GeoBundle_destination_create;
+                    }
+                    return array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::createAction',  '_route' => 'GeoBundle_destination_create',);
+                }
+                not_GeoBundle_destination_create:
+
+                // GeoBundle_destination_update
+                if ($pathinfo === '/places/destination/update') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_GeoBundle_destination_update;
+                    }
+                    return array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::updateAction',  '_route' => 'GeoBundle_destination_update',);
+                }
+                not_GeoBundle_destination_update:
+
+                // dest_edit
+                if ($pathinfo === '/places/destination/edit') {
+                    return array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::editAction',  '_route' => 'dest_edit',);
+                }
+
+                // GeoBundle_destination_showtribe
+                if ($pathinfo === '/places/destination/showtribe') {
+                    return array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::showtribeAction',  '_route' => 'GeoBundle_destination_showtribe',);
+                }
+
             }
 
         }
@@ -546,36 +630,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_fos_user_resetting_reset:
 
-        }
-
-        // auth_login
-        if ($pathinfo === '/social_network') {
-            return array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::loginAction',  '_route' => 'auth_login',);
-        }
-
-        // auth_service_login
-        if (0 === strpos($pathinfo, '/social_network') && preg_match('#^/social_network/(?P<service>[^/]+?)$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::loginAction',)), array('_route' => 'auth_service_login'));
-        }
-
-        // auth_callback
-        if (0 === strpos($pathinfo, '/callback') && preg_match('#^/callback/(?P<service>[^/]+?)$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::callbackAction',)), array('_route' => 'auth_callback'));
-        }
-
-        // auth_denied
-        if ($pathinfo === '/denied') {
-            return array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::deniedAction',  '_route' => 'auth_denied',);
-        }
-
-        // auth_profile
-        if ($pathinfo === '/profile') {
-            return array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::profileAction',  '_route' => 'auth_profile',);
-        }
-
-        // auth_logout
-        if ($pathinfo === '/logout') {
-            return array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::logoutAction',  '_route' => 'auth_logout',);
         }
 
         if (0 === strpos($pathinfo, '/api')) {

@@ -1,0 +1,10 @@
+<ul> echo
+    {% for userdestination in userdestinations %}
+    <li> {{userdestination.destination.name }}--Tribe  | {{ userdestination.activated}}
+    </li>
+    {% endfor %}
+    {% for user in users %}
+    <li> {{user.user.email }}
+    </li>
+    {% endfor %}
+</ul>

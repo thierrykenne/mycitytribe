@@ -1,0 +1,39 @@
+{% extends "::Glayout.html.twig" %}
+
+{% block body %}
+<br />
+    {% if flash is defined  %} 
+        {{flash}}
+    {% endif %}
+    <label>Address: </label> <input id="address" type="text" autocomplete="off" onKeyPress="return event.keyCode!=13" value="{{ locality.city}},{{locality.country}}" /><br>
+
+    <div id="map-canvas" style="width:400px; height:400px"></div><br/>
+    {% if create  %}
+    <form id ="form" action="{{ path('GeoBundle_destination_create') }}" method="post" {{ form_enctype(form) }}>
+    {% else %}
+    <form id ="form" action="{{ path('GeoBundle_destination_update') }}" method="post" {{ form_enctype(form) }}>
+    {% endif %}
+    
+    
+    <div>
+        {{ form_label(form.country) }}
+        {{ form_widget(form.country, { 'attr': {'class': 'country'} }) }}
+    </div>
+    <div>
+        {{ form_label(form.state) }}
+        {{ form_widget(form.state, { 'attr': {'class': 'state'} }) }}
+    </div>
+    <div>
+        {{ form_label(form.region) }}
+        {{ form_widget(form.region, { 'attr': {'class': 'region'} }) }}
+    </div>
+    <div>
+        {{ form_label(form.city) }}
+        {{ form_widget(form.city, { 'attr': {'class': 'city'} }) }}
+    </div>
+    
+    {{ form_rest(form) }}
+        <input id="submit" type="submit" />
+    </form>
+<div id="erreur"> </div>
+{% endblock %}

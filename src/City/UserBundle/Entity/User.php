@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use City\UserBundle\Entity\Destination as Destination;
 
 /**
  * @ORM\Entity
@@ -26,70 +26,16 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * ResidenceTribe of the user
-     *
-     * @var ResidenceTribe
-     * @ORM\ManyToOne(targetEntity="City\UserBundle\Entity\ResidenceTribe")
+     * @ORM\OneToMany(targetEntity="City\CitytribeBundle\Entity\Message", mappedBy="author")
      */
-    protected $residence_tribe;
-
-    /**
-     * DestinationTribe of the user
-     *
-     * @var DestinationTribe
-     * @ORM\ManyToOne(targetEntity="City\UserBundle\Entity\DestinationTribe")
-     */
-    protected $destination_tribe;
+    private $messages;
 
     /**
      * @var string $nationality
      *
-     * @ORM\Column(name="nationality", type="string", length=255)
+     * @ORM\Column(type="string",nullable=TRUE)
      */
     protected $nationality;
-
-    /**
-     * @var string $destination_city
-     *
-     * @ORM\Column(name="destination_city", type="string", length=255,nullable=TRUE)
-     */
-   protected $destination_city;
-
-    /**
-     * @var string $destination_country
-     *
-     * @ORM\Column(name="destination_country", type="string", length=255 ,nullable=TRUE)
-     */
-   protected $destination_country;
-
-
-    /**
-     * @var string $destination_region
-     *
-     * @ORM\Column(name="destination_region", type="string", length=255 ,nullable=TRUE)
-     */
-   protected $destination_region;
-
-    /**
-     * @var string $residence_region
-     *
-     * @ORM\Column(name="residence_region", type="string", length=255,nullable=TRUE)
-     */
-   protected $residence_region;
-
-    /**
-     * @var string $residence_city
-     *
-     * @ORM\Column(name="residence_city", type="string", length=255,nullable=TRUE)
-     */
-   protected $residence_city;
-
-    /**
-     * @var string $residence_country
-     *
-     * @ORM\Column(name="residence_country", type="string", length=255,nullable=TRUE)
-     */
-   protected $residence_country;
 
     /**
      * @var text $about_me
@@ -148,20 +94,6 @@ class User extends BaseUser
     private $language;
 
     /**
-     * @var string $residence_continent
-     *
-     * @ORM\Column(name="residence_continent", type="string", length=255,nullable=TRUE)
-     */
-    private $residence_continent;
-
-    /**
-     * @var string $destination_continent
-     *
-     * @ORM\Column(name="destination_continent", type="string", length=255,nullable=TRUE)
-     */
-    private $destination_continent;
-
-    /**
      * @var string $image
      *
      * @ORM\Column(name="image", type="string", length=255,nullable=TRUE)
@@ -176,11 +108,13 @@ class User extends BaseUser
     protected $facebookId;
 
 
+
     public function __construct()
     {
         parent::__construct();
     }
- //facebook bundle   
+
+    //facebook bundle   
     public function serialize()
     {
         return serialize(array($this->facebookId, parent::serialize()));
@@ -192,41 +126,15 @@ class User extends BaseUser
         parent::unserialize($parentData);
     }
 
-    /**
-     * Set residence_tribe
-     *
-     */
-    public function setResidenceTribe( ResidenceTribe $residence_tribe)
+    public function getMessages()
     {
-        $this->residence_tribe = $residence_tribe;
+        return $this->messages;
     }
 
-    /**
-     * Get residence_tribe
-     *
-     */
-    public function getResidenceTribe()
+    public function addMessages(\City\CitytribeBundle\Message $message)
     {
-        return $this->residence_tribe;
-    }
-
-
-    /**
-     * Set destination_tribe
-     *
-     */
-    public function setDestinationTribe( DestinationTribe $destination_tribe )
-    {
-        $this->residence_tribe = $destination_tribe;
-    }
-
-    /**
-     * Get destination_tribe
-     *
-     */
-    public function getDestinationTribe()
-    {
-        return $this->destination_tribe;
+        $this->messages[] = $message;
+        $adresse->setClient($this);
     }
 
     /**
@@ -249,126 +157,6 @@ class User extends BaseUser
         return $this->nationality;
     }
 
-    /**
-     * Set destination_city
-     *
-     * @param string $destination_city
-     */
-    public function setDestinationCity($destination_city)
-    {
-        $this->destination_city = $destination_city;
-    }
-
-    /**
-     * Get destination_city
-     *
-     * @return string 
-     */
-    public function getDestinationCity()
-    {
-        return $this->destination_city;
-    }
-
-    /**
-     * Set destination_country
-     *
-     * @param string $destination_country
-     */
-    public function setDestinationCountry($destination_country)
-    {
-        $this->destination_country = $destination_country;
-    }
-
-    /**
-     * Get destination_country
-     *
-     * @return string 
-     */
-    public function getDestinationCountry()
-    {
-        return $this->destination_country;
-    }
-
-    /**
-     * Set destination_region
-     *
-     * @param string $destination_region
-     */
-    public function setDestinationRegion($destination_region)
-    {
-        $this->destination_region = $destination_region;
-    }
-
-    /**
-     * Get destination_region
-     *
-     * @return string 
-     */
-    public function getDestinationRegion()
-    {
-        return $this->destination_region;
-    }
-
-    /**
-     * Set residence_region
-     *
-     * @param string $residence_region
-     */
-    public function setResidenceRegion($residence_region)
-    {
-        $this->residence_region = $residence_region;
-    }
-
-    /**
-     * Get residence_region
-     *
-     * @return string 
-     */
-    public function getResidenceRegion()
-    {
-        return $this->residence_region;
-    }
-
-    /**
-     * Set residence_city
-     *
-     * @param string $residence_city
-     */
-    public function setResidenceCity($residence_city)
-    {
-        $this->residence_city = $residence_city;
-    }
-
-    /**
-     * Get residence_city
-     *
-     * @return string 
-     */
-    public function getResidenceCity()
-    {
-        return $this->residence_city;
-    }
-
-
-    /**
-     * Set residence_country
-     *
-     * @param string $residence_country
-     */
-    public function setResidenceCountry($residence_country)
-    {
-        $this->residence_country = $residence_country;
-    }
-
-    /**
-     * Get residence_country
-     *
-     * @return string 
-     */
-    public function getResidenceCountry()
-    {
-        return $this->residence_country;
-    }
 
     /**
      * Set birth_year
@@ -560,46 +348,6 @@ class User extends BaseUser
     public function getLanguage()
     {
         return $this->language;
-    }
-
-    /**
-     * Set residence_continent
-     *
-     * @param string $residenceContinent
-     */
-    public function setResidenceContinent($residenceContinent)
-    {
-        $this->residence_continent = $residenceContinent;
-    }
-
-    /**
-     * Get residence_continent
-     *
-     * @return string 
-     */
-    public function getResidenceContinent()
-    {
-        return $this->residence_continent;
-    }
-
-    /**
-     * Set destination_continent
-     *
-     * @param string $destinationContinent
-     */
-    public function setDestinationContinent($destinationContinent)
-    {
-        $this->destination_continent = $destinationContinent;
-    }
-
-    /**
-     * Get destination_continent
-     *
-     * @return string 
-     */
-    public function getDestinationContinent()
-    {
-        return $this->destination_continent;
     }
 
     /**

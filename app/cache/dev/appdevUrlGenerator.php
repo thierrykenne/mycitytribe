@@ -38,9 +38,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_final' => true,
        'dest' => true,
        'dest_show' => true,
-       'dest_new' => true,
        'dest_create' => true,
-       'dest_edit' => true,
        'dest_update' => true,
        'dest_delete' => true,
        'user' => true,
@@ -54,9 +52,21 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'CitytribeBundle_profile' => true,
        'CitytribeBundle_avatar' => true,
        'CitytribeBundle_profile_edit' => true,
-       'CityGeoBundle_residence' => true,
-       'CityGeoBundle_destination' => true,
+       'Cityblog_home' => true,
+       'message_show' => true,
+       'message_new' => true,
+       'message_create' => true,
+       'message_edit' => true,
+       'message_update' => true,
+       'message_delete' => true,
        'CityGeoBundle_polygon_region' => true,
+       'GeoBundle_dest' => true,
+       'GeoBundle_destination_show' => true,
+       'dest_new' => true,
+       'GeoBundle_destination_create' => true,
+       'GeoBundle_destination_update' => true,
+       'dest_edit' => true,
+       'GeoBundle_destination_showtribe' => true,
        'article' => true,
        'article_show' => true,
        'article_new' => true,
@@ -85,12 +95,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'fos_user_resetting_check_email' => true,
        'fos_user_resetting_reset' => true,
        'fos_user_change_password' => true,
-       'auth_login' => true,
-       'auth_service_login' => true,
-       'auth_callback' => true,
-       'auth_denied' => true,
-       'auth_profile' => true,
-       'auth_logout' => true,
        'fos_comment_new_thread_comment_votes' => true,
        'fos_comment_new_thread_comments' => true,
        'fos_comment_new_threads' => true,
@@ -251,19 +255,9 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/dest',  ),));
     }
 
-    private function getdest_newRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/dest/dest/new',  ),));
-    }
-
     private function getdest_createRouteInfo()
     {
         return array(array (), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/dest/dest/create',  ),));
-    }
-
-    private function getdest_editRouteInfo()
-    {
-        return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\DestinationController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/dest',  ),));
     }
 
     private function getdest_updateRouteInfo()
@@ -313,7 +307,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
 
     private function getCitytribeBundle_homepageRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/home',  ),));
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/lahome',  ),));
     }
 
     private function getCitytribeBundle_profileRouteInfo()
@@ -331,19 +325,79 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/informations/edit',  ),));
     }
 
-    private function getCityGeoBundle_residenceRouteInfo()
+    private function getCityblog_homeRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/residence',  ),));
+        return array(array (  0 => 'page',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'page' => 1,), array (  'page' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'page',  ),  1 =>   array (    0 => 'text',    1 => '/home',  ),));
     }
 
-    private function getCityGeoBundle_destinationRouteInfo()
+    private function getmessage_showRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::destinationAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/destination',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+    }
+
+    private function getmessage_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/blog/new',  ),));
+    }
+
+    private function getmessage_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/blog/create',  ),));
+    }
+
+    private function getmessage_editRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+    }
+
+    private function getmessage_updateRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+    }
+
+    private function getmessage_deleteRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
     }
 
     private function getCityGeoBundle_polygon_regionRouteInfo()
     {
         return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::polygonAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/polygon',  ),));
+    }
+
+    private function getGeoBundle_destRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/destination/',  ),));
+    }
+
+    private function getGeoBundle_destination_showRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/destination/show',  ),));
+    }
+
+    private function getdest_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/destination/new',  ),));
+    }
+
+    private function getGeoBundle_destination_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/places/destination/create',  ),));
+    }
+
+    private function getGeoBundle_destination_updateRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/places/destination/update',  ),));
+    }
+
+    private function getdest_editRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/destination/edit',  ),));
+    }
+
+    private function getGeoBundle_destination_showtribeRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::showtribeAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/destination/showtribe',  ),));
     }
 
     private function getarticleRouteInfo()
@@ -484,36 +538,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getfos_user_change_passwordRouteInfo()
     {
         return array(array (), array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',), array (  '_method' => 'GET|POST',), array (  0 =>   array (    0 => 'text',    1 => '/profile/change-password',  ),));
-    }
-
-    private function getauth_loginRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::loginAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/social_network',  ),));
-    }
-
-    private function getauth_service_loginRouteInfo()
-    {
-        return array(array (  0 => 'service',), array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::loginAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'service',  ),  1 =>   array (    0 => 'text',    1 => '/social_network',  ),));
-    }
-
-    private function getauth_callbackRouteInfo()
-    {
-        return array(array (  0 => 'service',), array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::callbackAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'service',  ),  1 =>   array (    0 => 'text',    1 => '/callback',  ),));
-    }
-
-    private function getauth_deniedRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::deniedAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/denied',  ),));
-    }
-
-    private function getauth_profileRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::profileAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile',  ),));
-    }
-
-    private function getauth_logoutRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'OnePlusOne\\OAuthBundle\\Controller\\AuthController::logoutAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/logout',  ),));
     }
 
     private function getfos_comment_new_thread_comment_votesRouteInfo()

@@ -1,0 +1,30 @@
+GeoBundle_dest:
+    pattern:  /
+    defaults: { _controller: "CityGeoBundle:Destination:index" }
+
+GeoBundle_destination_show:
+    pattern:  /show
+    defaults: { _controller: "CityGeoBundle:Destination:show" }
+
+dest_new:
+    pattern:  /new
+    defaults: { _controller: "CityGeoBundle:Destination:new" }
+
+GeoBundle_destination_create:
+    pattern:  /create
+    defaults: { _controller: "CityGeoBundle:Destination:create" }
+    requirements: { _method: post }
+
+GeoBundle_destination_update:
+    pattern:  /update
+    defaults: { _controller: "CityGeoBundle:Destination:update" }
+    requirements: { _method: post }
+
+dest_edit:
+    pattern:  /edit
+    defaults: { _controller: "CityGeoBundle:Destination:edit" }
+
+GeoBundle_destination_showtribe:
+    pattern:  /showtribe
+    defaults: { _controller: "CityGeoBundle:Destination:showtribe" }
+
