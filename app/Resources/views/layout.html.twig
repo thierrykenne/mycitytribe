@@ -1,42 +1,69 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>{% block title %}MycityTribe{% endblock %}</title>
+<html lang="{{ app.session.locale }}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head_style -%}
+        {% stylesheets filter='?cssembed,?yui_css'
+           '@IsdevTwitterBootstrapBundle/Resources/public/bootstrap/css/bootstrap.css'
+           '@IsdevTwitterBootstrapBundle/Resources/public/css/custom.css'
+        %}<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen" />
+        {% endstylesheets %}
+    {% endblock head_style %}
+    {% block head_script %}{# Append JavaScript at the bottom for fast page loading except in special cases. #}{% endblock head_script %}
+    <title>{% block title %}MycityTribe{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <script>
+		  function goLogIn(){
+		      window.location = "{{ path('_security_check') }}";
+		  }
 
-		<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen" />
-	        <script>
-  function goLogIn(){
-      window.location = "{{ path('_security_check') }}";
-  }
+		  function onFbInit() {
+		      if (typeof(FB) != 'undefined' && FB != null ) {
+			  console.log("Got facebook SDK");
+		          FB.Event.subscribe('auth.statusChange', function(response) {
+		              setTimeout(goLogIn, 500);
+		          });
+		      }
+		  }
+	</script>
+</head>
+<body>
+{{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
+{% block body %}
+    <div class="container">
+	{% block container %}
+        {# {% block navbar %}{% include 'IsdevTwitterBootstrapBundle::navbar.html.twig' %}{% endblock navbar %} #}
 
-  function onFbInit() {
-      if (typeof(FB) != 'undefined' && FB != null ) {
-	  console.log("Got facebook SDK");
-          FB.Event.subscribe('auth.statusChange', function(response) {
-              setTimeout(goLogIn, 500);
-          });
-      }
-  }
-</script>	
-	</head>
-	
-	<body>
-      {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
-		<div id="en_tete">
-			<h1> Mycitytribe Header</h1>
-		</div> 
-
-{{ facebook_login_button({'autologoutlink': true}) }}
- 
-		<div id="corps">
-		
-			{% block body %}
-			{% endblock %}
+        <div class="content">
 			
-		</div> 
- 
-		<div id="pied_de_page"> 
-	 
-		</div>
-	</body>
+			{% block flashes %}
+                {% import 'IsdevTwitterBootstrapBundle::flash.html.twig' as flash %}
+			    {{ flash.session_msg() }}
+			{% endblock flashes %}
+
+            {% block content %}
+            <div class="row">
+
+            </div>
+            {% endblock content %}
+        </div>{# /.content #}
+
+        <footer class="row">
+	        {% block footer %}
+	        <p align="center"> Copyright &copy; <a href="" target="_blank">MyCityTribe </a> {{ 'now'|date('Y') }}</p>
+	        {% endblock footer %}
+        </footer>
+	{% endblock container %}
+    </div>{# /.container #}
+
+	{% block foot_script -%}
+        {% javascripts filter="?yui_js"
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+            '@IsdevTwitterBootstrapBundle/Resources/public/bootstrap/js/bootstrap.js'
+        %}<script type="text/javascript" src="{{ asset_url }}"></script>{% endjavascripts %}
+    {% endblock foot_script %}
+{% endblock body %}
+</body>
 </html>

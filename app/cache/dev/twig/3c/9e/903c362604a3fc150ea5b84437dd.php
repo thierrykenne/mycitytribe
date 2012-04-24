@@ -8,7 +8,7 @@ class __TwigTemplate_3c9e903c362604a3fc150ea5b84437dd extends Twig_Template
         parent::__construct($env);
 
         $this->blocks = array(
-            'body' => array($this, 'block_body'),
+            'content' => array($this, 'block_content'),
         );
     }
 
@@ -22,99 +22,118 @@ class __TwigTemplate_3c9e903c362604a3fc150ea5b84437dd extends Twig_Template
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
-    public function block_body($context, array $blocks = array())
+    // line 2
+    public function block_content($context, array $blocks = array())
     {
+        // line 3
+        echo "<div class=\"content-type1\">
+    <div class=\"logo-left\"> <img src=\"";
         // line 4
-        echo "<br />
-    ";
-        // line 5
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo-medium.png"), "html", null, true);
+        echo "\"> </div>
+    <div class=\"slogan row  \">  <h2 > <span>Felling at your own home everywhere!</span> </h2></div>
+
+<div class=\"row contentbox content-map\"> 
+        ";
+        // line 8
         if (array_key_exists("flash", $context)) {
             echo " 
-        ";
-            // line 6
+            ";
+            // line 9
             echo twig_escape_filter($this->env, $this->getContext($context, "flash"), "html", null, true);
             echo "
-    ";
+        ";
         }
-        // line 8
-        echo "    <label>Address: </label> <input id=\"address\" type=\"text\" autocomplete=\"off\" onKeyPress=\"return event.keyCode!=13\" value=\"";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "locality"), "city"), "html", null, true);
-        echo ",";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "locality"), "country"), "html", null, true);
-        echo "\" /><br>
-
-    <div id=\"map-canvas\" style=\"width:400px; height:400px\"></div><br/>
-    ";
         // line 11
         if ($this->getContext($context, "create")) {
             // line 12
-            echo "    <form id =\"form\" action=\"";
+            echo "<form id =\"form\" action=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("GeoBundle_destination_create"), "html", null, true);
             echo "\" method=\"post\" ";
             echo $this->env->getExtension('form')->renderEnctype($this->getContext($context, "form"));
             echo ">
-    ";
+";
         } else {
             // line 14
-            echo "    <form id =\"form\" action=\"";
+            echo "<form id =\"form\" action=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("GeoBundle_destination_update"), "html", null, true);
             echo "\" method=\"post\" ";
             echo $this->env->getExtension('form')->renderEnctype($this->getContext($context, "form"));
             echo ">
-    ";
+";
         }
         // line 16
-        echo "    
-    
-    <div>
-        ";
-        // line 19
+        echo "        <div class=\"row\">
+            <div class=\"span3 offset3 \">
+                <label> <strong>Your  Destination City /Address : </strong>  </label>
+            </div>
+            <div class=\"span5 \">
+                
+                <input id=\"address\" class=\"span4\" type=\"text\" autocomplete=\"off\" onKeyPress=\"return event.keyCode!=13\" value=\"";
+        // line 22
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "locality"), "city"), "html", null, true);
+        echo ",";
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "locality"), "country"), "html", null, true);
+        echo "\" placeholder=\" Hometown City or Address.. \" />
+                <button type=\"submit\" class=\" address-btn btn btn-success btn-medium\">Validate</button>
+            </div>
+            
+        </div>
+        <div class=\"span4\">
+                    
+            <div>
+                ";
+        // line 30
         echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "country"));
         echo "
-        ";
-        // line 20
-        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "country"), array("attr" => array("class" => "country")));
+                ";
+        // line 31
+        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "country"), array("attr" => array("class" => "country", "readonly" => "readonly")));
         echo "
-    </div>
-    <div>
-        ";
-        // line 23
+            </div>
+            <div>
+                ";
+        // line 34
         echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "state"));
         echo "
-        ";
-        // line 24
-        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "state"), array("attr" => array("class" => "state")));
+                ";
+        // line 35
+        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "state"), array("attr" => array("class" => "state", "readonly" => "readonly")));
         echo "
-    </div>
-    <div>
-        ";
-        // line 27
+            </div>
+            <div>
+                ";
+        // line 38
         echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "region"));
         echo "
-        ";
-        // line 28
-        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "region"), array("attr" => array("class" => "region")));
+                ";
+        // line 39
+        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "region"), array("attr" => array("class" => "region", "readonly" => "readonly")));
         echo "
-    </div>
-    <div>
-        ";
-        // line 31
+            </div>
+            <div>
+                ";
+        // line 42
         echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "city"));
         echo "
-        ";
-        // line 32
-        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "city"), array("attr" => array("class" => "city")));
+                ";
+        // line 43
+        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "city"), array("attr" => array("class" => "city", "readonly" => "readonly")));
         echo "
-    </div>
-    
-    ";
-        // line 35
+            </div>
+            
+            ";
+        // line 46
         echo $this->env->getExtension('form')->renderRest($this->getContext($context, "form"));
-        echo "
-        <input id=\"submit\" type=\"submit\" />
-    </form>
-<div id=\"erreur\"> </div>
+        echo "           
+            <div id=\"erreur\"> </div> 
+        </div>
+        <div class=\"span8\">
+            <div class=\"map-msg alert alert-info\"> You can also move the icon on the map to select the address</div>
+            <div id=\"map-canvas\" style=\"width:550px; height:400px\"></div><br/>
+        </div>
+</form>     
+</div>
 ";
     }
 

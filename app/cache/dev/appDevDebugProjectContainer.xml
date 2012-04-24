@@ -29,6 +29,7 @@
       <parameter key="CitytribeBundle">City\CitytribeBundle\CitytribeBundle</parameter>
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
       <parameter key="CityDemoBundle">City\DemoBundle\CityDemoBundle</parameter>
+      <parameter key="IsdevTwitterBootstrapBundle">Isdev\TwitterBootstrapBundle\IsdevTwitterBootstrapBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -262,6 +263,7 @@
     <parameter key="twig.exception_listener.controller">Symfony\Bundle\TwigBundle\Controller\ExceptionController::showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>IsdevTwitterBootstrapBundle:Form:fields.html.twig</parameter>
     </parameter>
     <parameter key="twig.options" type="collection">
       <parameter key="debug">true</parameter>
@@ -372,6 +374,24 @@
     <parameter key="assetic.node.bin">/usr/bin/node</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
     <parameter key="assetic.filter.cssrewrite.class">Assetic\Filter\CssRewriteFilter</parameter>
+    <parameter key="assetic.filter.less.class">Assetic\Filter\LessFilter</parameter>
+    <parameter key="assetic.filter.less.node">/usr/bin/node</parameter>
+    <parameter key="assetic.filter.less.node_paths" type="collection">
+      <parameter>/home/thierry/bin</parameter>
+      <parameter>/usr/lib/node_modules</parameter>
+    </parameter>
+    <parameter key="assetic.filter.less.compress">null</parameter>
+    <parameter key="assetic.filter.yui_css.class">Assetic\Filter\Yui\CssCompressorFilter</parameter>
+    <parameter key="assetic.filter.yui_css.java">/usr/bin/java</parameter>
+    <parameter key="assetic.filter.yui_css.jar">/opt/lampp/htdocs/Symfony/app/Resources/java/yuicompressor.jar</parameter>
+    <parameter key="assetic.filter.yui_css.charset">UTF-8</parameter>
+    <parameter key="assetic.filter.yui_js.class">Assetic\Filter\Yui\JsCompressorFilter</parameter>
+    <parameter key="assetic.filter.yui_js.java">/usr/bin/java</parameter>
+    <parameter key="assetic.filter.yui_js.jar">/opt/lampp/htdocs/Symfony/app/Resources/java/yuicompressor.jar</parameter>
+    <parameter key="assetic.filter.yui_js.charset">UTF-8</parameter>
+    <parameter key="assetic.filter.yui_js.nomunge">null</parameter>
+    <parameter key="assetic.filter.yui_js.preserve_semi">null</parameter>
+    <parameter key="assetic.filter.yui_js.disable_optimizations">null</parameter>
     <parameter key="assetic.twig_extension.functions" type="collection"/>
     <parameter key="assetic.controller.class">Symfony\Bundle\AsseticBundle\Controller\AsseticController</parameter>
     <parameter key="assetic.routing_loader.class">Symfony\Bundle\AsseticBundle\Routing\AsseticLoader</parameter>
@@ -529,6 +549,7 @@
       <parameter>email</parameter>
       <parameter>user_hometown</parameter>
       <parameter>user_about_me</parameter>
+      <parameter>publish_stream</parameter>
     </parameter>
     <parameter key="knp_menu.factory.class">Knp\Menu\Silex\RouterAwareFactory</parameter>
     <parameter key="knp_menu.helper.class">Knp\Menu\Twig\Helper</parameter>
@@ -1397,6 +1418,12 @@
         <argument>fr</argument>
         <argument>messages</argument>
       </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/translations/messages.en.yml</argument>
+        <argument>en</argument>
+        <argument>messages</argument>
+      </call>
     </service>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
       <tag name="translation.loader" alias="php"/>
@@ -1909,7 +1936,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4f80e3e31e3e5</argument>
+            <argument>4f957f6461cad</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2055,7 +2082,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4f80e3e31e3e5</argument>
+            <argument>4f957f6461cad</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2358,6 +2385,7 @@
             <tag name="twig.extension"/>
             <argument type="collection">
               <argument>form_div_layout.html.twig</argument>
+              <argument>IsdevTwitterBootstrapBundle:Form:fields.html.twig</argument>
             </argument>
           </service>
         </argument>
@@ -2698,6 +2726,9 @@
       <argument type="service" id="service_container"/>
       <argument type="collection">
         <argument key="cssrewrite">assetic.filter.cssrewrite</argument>
+        <argument key="less">assetic.filter.less</argument>
+        <argument key="yui_css">assetic.filter.yui_css</argument>
+        <argument key="yui_js">assetic.filter.yui_js</argument>
       </argument>
     </service>
     <service id="assetic.asset_manager" class="Assetic\Factory\LazyAssetManager">
@@ -3883,6 +3914,60 @@
               <argument type="service">
                 <service class="%assetic.directory_resource.class%" public="false">
                   <argument type="service" id="templating.loader"/>
+                  <argument>IsdevTwitterBootstrapBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/IsdevTwitterBootstrapBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>IsdevTwitterBootstrapBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.php"/>
+            <tag name="assetic.formula_resource" loader="php"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>IsdevTwitterBootstrapBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/IsdevTwitterBootstrapBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>IsdevTwitterBootstrapBundle</argument>
+                  <argument>/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>php</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
                   <argument>AcmeDemoBundle</argument>
                   <argument>/opt/lampp/htdocs/Symfony/app/Resources/AcmeDemoBundle/views</argument>
                   <argument>/^[^.]+\.[^.]+\.twig$/</argument>
@@ -4145,6 +4230,42 @@
     </service>
     <service id="assetic.filter.cssrewrite" class="Assetic\Filter\CssRewriteFilter">
       <tag name="assetic.filter" alias="cssrewrite"/>
+    </service>
+    <service id="assetic.filter.less" class="Assetic\Filter\LessFilter">
+      <tag name="assetic.filter" alias="less"/>
+      <argument>/usr/bin/node</argument>
+      <argument type="collection">
+        <argument>/home/thierry/bin</argument>
+        <argument>/usr/lib/node_modules</argument>
+      </argument>
+      <call method="setCompress">
+        <argument>null</argument>
+      </call>
+    </service>
+    <service id="assetic.filter.yui_css" class="Assetic\Filter\Yui\CssCompressorFilter">
+      <tag name="assetic.filter" alias="yui_css"/>
+      <argument>/opt/lampp/htdocs/Symfony/app/Resources/java/yuicompressor.jar</argument>
+      <argument>/usr/bin/java</argument>
+      <call method="setCharset">
+        <argument>UTF-8</argument>
+      </call>
+    </service>
+    <service id="assetic.filter.yui_js" class="Assetic\Filter\Yui\JsCompressorFilter">
+      <tag name="assetic.filter" alias="yui_js"/>
+      <argument>/opt/lampp/htdocs/Symfony/app/Resources/java/yuicompressor.jar</argument>
+      <argument>/usr/bin/java</argument>
+      <call method="setCharset">
+        <argument>UTF-8</argument>
+      </call>
+      <call method="setNomunge">
+        <argument>null</argument>
+      </call>
+      <call method="setPreserveSemi">
+        <argument>null</argument>
+      </call>
+      <call method="setDisableOptimizations">
+        <argument>null</argument>
+      </call>
     </service>
     <service id="assetic.controller" class="Symfony\Bundle\AsseticBundle\Controller\AsseticController" scope="prototype">
       <argument type="service" id="request"/>
@@ -4502,6 +4623,7 @@
         <argument>email</argument>
         <argument>user_hometown</argument>
         <argument>user_about_me</argument>
+        <argument>publish_stream</argument>
       </argument>
     </service>
     <service id="fos_facebook.twig" class="FOS\FacebookBundle\Twig\Extension\FacebookExtension">
@@ -4782,6 +4904,7 @@
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
                   <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
                   <argument key="City\DemoBundle">/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer</argument>
+                  <argument key="Isdev\TwitterBootstrapBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/config/serializer</argument>
                   <argument key="Acme\DemoBundle">/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Symfony\Bundle\WebProfilerBundle">/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                   <argument key="Sensio\Bundle\DistributionBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
@@ -4817,6 +4940,7 @@
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
                   <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
                   <argument key="City\DemoBundle">/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer</argument>
+                  <argument key="Isdev\TwitterBootstrapBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/config/serializer</argument>
                   <argument key="Acme\DemoBundle">/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Symfony\Bundle\WebProfilerBundle">/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                   <argument key="Sensio\Bundle\DistributionBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
@@ -4852,6 +4976,7 @@
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
                   <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
                   <argument key="City\DemoBundle">/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer</argument>
+                  <argument key="Isdev\TwitterBootstrapBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/config/serializer</argument>
                   <argument key="Acme\DemoBundle">/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer</argument>
                   <argument key="Symfony\Bundle\WebProfilerBundle">/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
                   <argument key="Sensio\Bundle\DistributionBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>

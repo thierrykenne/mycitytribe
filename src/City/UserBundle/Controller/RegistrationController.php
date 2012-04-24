@@ -29,7 +29,7 @@ class RegistrationController extends BaseController
                 $route = 'fos_user_registration_check_email';
             } else {
                 $this->authenticateUser($user);
-                $route = 'CityGeoBundle_residence';
+                $route = 'Cityblog_home';
             }
 
             $this->setFlash('fos_user_success', 'registration.flash.user_created');

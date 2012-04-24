@@ -12,7 +12,7 @@
 		{% for message in messages %}
 			<li>
 				<a href="{{ path('message_show', {'id': message.id}) }}">{{ message.titre }}</a>
-				par {{ message.auteur }},
+				par {{ message.author }},
 				le {{ message.date|date('d/m/Y') }}
 			</li>
 		{% else %}

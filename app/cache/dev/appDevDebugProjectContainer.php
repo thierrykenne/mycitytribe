@@ -117,6 +117,8 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'KnpMenuBundle', '/opt/lampp/htdocs/Symfony/app/Resources/KnpMenuBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'KnpMenuBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityDemoBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CityDemoBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityDemoBundle', '/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityDemoBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CityDemoBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityDemoBundle', '/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'IsdevTwitterBootstrapBundle', '/opt/lampp/htdocs/Symfony/app/Resources/IsdevTwitterBootstrapBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'IsdevTwitterBootstrapBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'IsdevTwitterBootstrapBundle', '/opt/lampp/htdocs/Symfony/app/Resources/IsdevTwitterBootstrapBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'IsdevTwitterBootstrapBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'AcmeDemoBundle', '/opt/lampp/htdocs/Symfony/app/Resources/AcmeDemoBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'AcmeDemoBundle', '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'AcmeDemoBundle', '/opt/lampp/htdocs/Symfony/app/Resources/AcmeDemoBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'AcmeDemoBundle', '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'WebProfilerBundle', '/opt/lampp/htdocs/Symfony/app/Resources/WebProfilerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'WebProfilerBundle', '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
@@ -155,6 +157,60 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'assetic.filter.less' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Assetic\Filter\LessFilter A Assetic\Filter\LessFilter instance.
+     */
+    protected function getAssetic_Filter_LessService()
+    {
+        $this->services['assetic.filter.less'] = $instance = new \Assetic\Filter\LessFilter('/usr/bin/node', array(0 => '/home/thierry/bin', 1 => '/usr/lib/node_modules'));
+
+        $instance->setCompress(NULL);
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'assetic.filter.yui_css' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Assetic\Filter\Yui\CssCompressorFilter A Assetic\Filter\Yui\CssCompressorFilter instance.
+     */
+    protected function getAssetic_Filter_YuiCssService()
+    {
+        $this->services['assetic.filter.yui_css'] = $instance = new \Assetic\Filter\Yui\CssCompressorFilter('/opt/lampp/htdocs/Symfony/app/Resources/java/yuicompressor.jar', '/usr/bin/java');
+
+        $instance->setCharset('UTF-8');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'assetic.filter.yui_js' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Assetic\Filter\Yui\JsCompressorFilter A Assetic\Filter\Yui\JsCompressorFilter instance.
+     */
+    protected function getAssetic_Filter_YuiJsService()
+    {
+        $this->services['assetic.filter.yui_js'] = $instance = new \Assetic\Filter\Yui\JsCompressorFilter('/opt/lampp/htdocs/Symfony/app/Resources/java/yuicompressor.jar', '/usr/bin/java');
+
+        $instance->setCharset('UTF-8');
+        $instance->setNomunge(NULL);
+        $instance->setPreserveSemi(NULL);
+        $instance->setDisableOptimizations(NULL);
+
+        return $instance;
+    }
+
+    /**
      * Gets the 'assetic.filter_manager' service.
      *
      * This service is shared.
@@ -164,7 +220,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_FilterManagerService()
     {
-        return $this->services['assetic.filter_manager'] = new \Symfony\Bundle\AsseticBundle\FilterManager($this, array('cssrewrite' => 'assetic.filter.cssrewrite'));
+        return $this->services['assetic.filter_manager'] = new \Symfony\Bundle\AsseticBundle\FilterManager($this, array('cssrewrite' => 'assetic.filter.cssrewrite', 'less' => 'assetic.filter.less', 'yui_css' => 'assetic.filter.yui_css', 'yui_js' => 'assetic.filter.yui_js'));
     }
 
     /**
@@ -1126,7 +1182,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosFacebook_HelperService()
     {
-        return $this->services['fos_facebook.helper'] = new \FOS\FacebookBundle\Templating\Helper\FacebookHelper($this->get('templating'), $this->get('fos_facebook.api'), true, 'en_US', array(0 => 'email', 1 => 'user_hometown', 2 => 'user_about_me'));
+        return $this->services['fos_facebook.helper'] = new \FOS\FacebookBundle\Templating\Helper\FacebookHelper($this->get('templating'), $this->get('fos_facebook.api'), true, 'en_US', array(0 => 'email', 1 => 'user_hometown', 2 => 'user_about_me', 3 => 'publish_stream'));
     }
 
     /**
@@ -1676,7 +1732,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getJmsSerializer_MetadataDriverService()
     {
-        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/MonologBundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer', 'Symfony\\Bundle\\DoctrineBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/DoctrineBundle/Resources/config/serializer', 'Symfony\\Bundle\\AsseticBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Symfony/Bundle/AsseticBundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer', 'JMS\\SecurityExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SecurityExtraBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SerializerBundle/Resources/config/serializer', 'City\\BlogBundle' => '/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Resources/config/serializer', 'City\\UserBundle' => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Resources/config/serializer', 'FOS\\UserBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/serializer', 'FOS\\CommentBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer', 'FOS\\RestBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer', 'FOS\\FacebookBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer', 'City\\TribuBundle' => '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer', 'City\\GeoBundle' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer', 'City\\CitytribeBundle' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer', 'Knp\\Bundle\\MenuBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer', 'City\\DemoBundle' => '/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer', 'Acme\\DemoBundle' => '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer', 'Symfony\\Bundle\\WebProfilerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer', 'Sensio\\Bundle\\DistributionBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer', 'Sensio\\Bundle\\GeneratorBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/GeneratorBundle/Resources/config/serializer'));
+        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/MonologBundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer', 'Symfony\\Bundle\\DoctrineBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/DoctrineBundle/Resources/config/serializer', 'Symfony\\Bundle\\AsseticBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Symfony/Bundle/AsseticBundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer', 'JMS\\SecurityExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SecurityExtraBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SerializerBundle/Resources/config/serializer', 'City\\BlogBundle' => '/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Resources/config/serializer', 'City\\UserBundle' => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Resources/config/serializer', 'FOS\\UserBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/serializer', 'FOS\\CommentBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer', 'FOS\\RestBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer', 'FOS\\FacebookBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer', 'City\\TribuBundle' => '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer', 'City\\GeoBundle' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer', 'City\\CitytribeBundle' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer', 'Knp\\Bundle\\MenuBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer', 'City\\DemoBundle' => '/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer', 'Isdev\\TwitterBootstrapBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/config/serializer', 'Acme\\DemoBundle' => '/opt/lampp/htdocs/Symfony/src/Acme/DemoBundle/Resources/config/serializer', 'Symfony\\Bundle\\WebProfilerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer', 'Sensio\\Bundle\\DistributionBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/config/serializer', 'Sensio\\Bundle\\GeneratorBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/GeneratorBundle/Resources/config/serializer'));
 
         return $this->services['jms_serializer.metadata_driver'] = new \Metadata\Driver\DriverChain(array(0 => new \JMS\SerializerBundle\Metadata\Driver\YamlDriver($a), 1 => new \JMS\SerializerBundle\Metadata\Driver\XmlDriver($a), 2 => new \JMS\SerializerBundle\Metadata\Driver\PhpDriver($a), 3 => new \JMS\SerializerBundle\Metadata\Driver\AnnotationDriver($this->get('annotation_reader'))));
     }
@@ -2250,7 +2306,7 @@ class appDevDebugProjectContainer extends Container
         $a = $this->get('security.context');
         $b = $this->get('monolog.logger.security');
 
-        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('my.facebook.user'), 1 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4f80e3e31e3e5', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
+        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('my.facebook.user'), 1 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4f957f6461cad', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
     }
 
     /**
@@ -2828,6 +2884,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource('xliff', '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/translations/messages.fr.xliff', 'fr', 'messages');
         $instance->addResource('xliff', '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/translations/messages.fr.xliff', 'fr', 'messages');
         $instance->addResource('xliff', '/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/translations/messages.fr.xliff', 'fr', 'messages');
+        $instance->addResource('yml', '/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/translations/messages.en.yml', 'en', 'messages');
 
         return $instance;
     }
@@ -2851,7 +2908,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\CodeExtension($this));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\RoutingExtension($this->get('router')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\YamlExtension());
-        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(array(0 => 'form_div_layout.html.twig')));
+        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(array(0 => 'form_div_layout.html.twig', 1 => 'IsdevTwitterBootstrapBundle:Form:fields.html.twig')));
         $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), true, array()));
         $instance->addExtension(new \JMS\SerializerBundle\Twig\SerializerExtension($this->get('serializer')));
         $instance->addExtension(new \FOS\CommentBundle\Twig\CommentExtension(NULL, NULL));
@@ -3321,7 +3378,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = new \Symfony\Component\Security\Core\User\UserChecker();
 
-        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4f80e3e31e3e5'), 1 => new \FOS\FacebookBundle\Security\Authentication\Provider\FacebookProvider($this->get('fos_facebook.api'), $this->get('my.facebook.user'), $a, false), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
+        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4f957f6461cad'), 1 => new \FOS\FacebookBundle\Security\Authentication\Provider\FacebookProvider($this->get('fos_facebook.api'), $this->get('my.facebook.user'), $a, false), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
     }
 
     /**
@@ -3542,6 +3599,7 @@ class appDevDebugProjectContainer extends Container
                 'CitytribeBundle' => 'City\\CitytribeBundle\\CitytribeBundle',
                 'KnpMenuBundle' => 'Knp\\Bundle\\MenuBundle\\KnpMenuBundle',
                 'CityDemoBundle' => 'City\\DemoBundle\\CityDemoBundle',
+                'IsdevTwitterBootstrapBundle' => 'Isdev\\TwitterBootstrapBundle\\IsdevTwitterBootstrapBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -3779,6 +3837,7 @@ class appDevDebugProjectContainer extends Container
             'twig.exception_listener.controller' => 'Symfony\\Bundle\\TwigBundle\\Controller\\ExceptionController::showAction',
             'twig.form.resources' => array(
                 0 => 'form_div_layout.html.twig',
+                1 => 'IsdevTwitterBootstrapBundle:Form:fields.html.twig',
             ),
             'twig.options' => array(
                 'debug' => true,
@@ -3893,6 +3952,24 @@ class appDevDebugProjectContainer extends Container
             'assetic.node.bin' => '/usr/bin/node',
             'assetic.sass.bin' => '/usr/bin/sass',
             'assetic.filter.cssrewrite.class' => 'Assetic\\Filter\\CssRewriteFilter',
+            'assetic.filter.less.class' => 'Assetic\\Filter\\LessFilter',
+            'assetic.filter.less.node' => '/usr/bin/node',
+            'assetic.filter.less.node_paths' => array(
+                0 => '/home/thierry/bin',
+                1 => '/usr/lib/node_modules',
+            ),
+            'assetic.filter.less.compress' => NULL,
+            'assetic.filter.yui_css.class' => 'Assetic\\Filter\\Yui\\CssCompressorFilter',
+            'assetic.filter.yui_css.java' => '/usr/bin/java',
+            'assetic.filter.yui_css.jar' => '/opt/lampp/htdocs/Symfony/app/Resources/java/yuicompressor.jar',
+            'assetic.filter.yui_css.charset' => 'UTF-8',
+            'assetic.filter.yui_js.class' => 'Assetic\\Filter\\Yui\\JsCompressorFilter',
+            'assetic.filter.yui_js.java' => '/usr/bin/java',
+            'assetic.filter.yui_js.jar' => '/opt/lampp/htdocs/Symfony/app/Resources/java/yuicompressor.jar',
+            'assetic.filter.yui_js.charset' => 'UTF-8',
+            'assetic.filter.yui_js.nomunge' => NULL,
+            'assetic.filter.yui_js.preserve_semi' => NULL,
+            'assetic.filter.yui_js.disable_optimizations' => NULL,
             'assetic.twig_extension.functions' => array(
 
             ),
@@ -4060,6 +4137,7 @@ class appDevDebugProjectContainer extends Container
                 0 => 'email',
                 1 => 'user_hometown',
                 2 => 'user_about_me',
+                3 => 'publish_stream',
             ),
             'knp_menu.factory.class' => 'Knp\\Menu\\Silex\\RouterAwareFactory',
             'knp_menu.helper.class' => 'Knp\\Menu\\Twig\\Helper',

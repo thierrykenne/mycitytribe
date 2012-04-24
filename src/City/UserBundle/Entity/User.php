@@ -112,6 +112,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->messages = new \Doctrine\Common\Collections\ArrayCollection;
     }
 
     //facebook bundle   
@@ -131,10 +132,9 @@ class User extends BaseUser
         return $this->messages;
     }
 
-    public function addMessages(\City\CitytribeBundle\Message $message)
+    public function addMessages(\City\CitytribeBundle\Entity\Message $message)
     {
         $this->messages[] = $message;
-        $adresse->setClient($this);
     }
 
     /**

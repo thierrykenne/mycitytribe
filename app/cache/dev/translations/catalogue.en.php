@@ -103,6 +103,10 @@ the Team.
     'Showing %num% comment|Showing %num% comments' => 'Showing %num% comment|Showing %num% comments',
     'fos_comment_rss_feed' => 'RSS Feed',
   ),
+  'messages' => 
+  array (
+    'label.required_field' => 'Required field',
+  ),
 ));
 
 

@@ -1,0 +1,167 @@
+body{
+	background-color:#555;
+	font-family: "Trebuchet MS",Arial,sans-serif;
+}
+.contentbox{
+	background-color:#FFFFFF;
+	padding: 20px 0px 0px 0px;
+	box-shadow:-10px 5px 29px #000;
+}
+.contentbox .video{
+	width:440px;
+}
+.content-type1{
+	margin-top: 67px;
+}
+.content-map{
+	padding-top: 40px;
+}
+.logo{
+	background-color:#f2f3f4;
+}
+.logo img {
+	width:355px;
+	height:220px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+.slogan{
+	background-color:#C0C2C4;
+	height:37px;
+	border-radius: 5px 5px 0px 0px ;
+  	-webkit-border-radius: 5px 5px 0px 0px;
+  	-moz-border-radius: 5px 5px 0px 0px;
+  }
+.slogan span{
+	margin-right: auto;
+	margin-left: auto;
+	width:440px;
+	display: block;
+	color: #FFFFFF;
+}
+.rightbox{
+	padding: 0px 0px 20px 0px;
+}
+.rightbox .cnxbox .text{
+	height:40px;
+}
+.registerbox img{
+	width:50px;
+	height:20px;
+}
+a.fb_button{
+	width:190px;
+	height:42px;
+	background-image: url("../images/fcb-logo.png");
+	background-size:100% 100%;
+}
+.rightbox .registerbox .fb_button_text{
+	width:170px;
+	height:35px;
+	background:none!important;
+    border-bottom: 0;
+    border-top:0;
+    color: #FFFFFF;
+    display: block;
+    font-weight:thin;
+    margin:0;
+    padding:0;
+    text-shadow: none;
+    font-size: 0;
+}
+.rightbox .registerbox .fb_button_medium, .fb_button_medium_rtl {
+    background-position: left 0;
+}
+.register-now{
+	width:170px;
+	height:28px;
+	margin-top:10px;
+}
+.video{
+	border-right:2px solid #767374;
+	height:362px;
+}
+.rightbox .text {
+	border-radius: 5px;
+  	-webkit-border-radius: 5px;
+  	-moz-border-radius: 5px;
+    padding: 9px 9px 9px 11px;
+    text-align: justify;
+  	margin-left: 1px;
+  	font-size:14px;
+
+}
+.italian{
+	background-color: #c1c2c4;
+	margin-top: 20px;
+	color: #704120;
+}
+.english{
+  	background-color: #fef2cd;
+}
+footer{
+	background-color:#C0C2C4;
+	border-radius: 0px 0px 5px 5px ;
+  	-webkit-border-radius: 0px 0px 5px 5px;
+  	-moz-border-radius: 0px 0px 5px 5px;
+}
+.register-right img {
+	width:500px;
+	height:450px;
+}
+.register{
+	margin-top: 20px;
+}
+.logo-center img {
+    height: 160px;
+    width: 250px;	
+}
+.logo-center{
+    left: 556px;
+    position: absolute;
+    top: -6px;
+}
+
+.logo-left{
+    left: 556px;
+    position: absolute;
+    top: -6px;
+    left:193px;
+}
+.logo-left img {
+    height: 160px;
+    width: 250px;	
+}
+
+.navigation{
+  	margin-top: 21px;
+}
+.navigation .navbar{
+
+	border-radius: 5px 5px 0px 0px ;
+  	-webkit-border-radius: 5px 5px 0px 0px;
+  	-moz-border-radius: 5px 5px 0px 0px;
+	margin-bottom: 0;
+	background-color: #C0C2C4;
+}
+.navigation .navbar .navbar-inner {
+	background-color:#C0C2C4;
+	background-image:none;
+}
+#map-canvas{
+	border: 4px solid #A58A00;
+	border-radius: 10px 10px 10px 10px ;
+  	-webkit-border-radius: 10px 10px 10px 10px;
+  	-moz-border-radius: 10px 10px 10px 10px;
+  	margin-top: 20px;
+}
+.address-btn{
+	margin-top: -10px;
+	margin-left:5px;
+}
+.map-msg{
+    margin-top: 22px;
+    width: 452px;
+    padding-left: 70px;
+}

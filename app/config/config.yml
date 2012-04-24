@@ -20,6 +20,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources:
+            - 'IsdevTwitterBootstrapBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -32,6 +35,13 @@ assetic:
         #     jar: %kernel.root_dir%/java/compiler.jar
         # yui_css:
         #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
+        less:
+            node: /usr/bin/node
+            node_paths: [/home/thierry/bin, /usr/lib/node_modules]
+        yui_css:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
+        yui_js:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
 
 # Doctrine Configuration
 doctrine:
@@ -105,7 +115,7 @@ fos_facebook:
     app_id: 166704423433744
     secret: c3af5e8049c401279ced1807349e9589
     cookie: true
-    permissions: [email, user_hometown ,user_about_me]
+    permissions: [email, user_hometown ,user_about_me,publish_stream]
 services:
     my.facebook.user:
         class: City\UserBundle\Provider\FacebookProvider

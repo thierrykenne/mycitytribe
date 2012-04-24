@@ -141,6 +141,7 @@ class Message
     public function setAuthor(\City\UserBundle\Entity\User $author)
     {
         $this->author = $author;
+        $author->addMessages($this);
     }
 
     /**
@@ -158,7 +159,7 @@ class Message
         return $this->thread;
     }
 
-    public function setThread(\City\UserBundle\Entity\Thread $thread)
+    public function setThread(\City\CitytribeBundle\Entity\Thread $thread)
     {
         $this->thread = $thread;
     }

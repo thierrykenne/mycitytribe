@@ -67,7 +67,7 @@ class __TwigTemplate_f618064d63de6a9448d1e639a9625c2c extends Twig_Template
             echo "</a>
 \t\t\t\tpar ";
             // line 15
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "message"), "auteur"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "message"), "author"), "html", null, true);
             echo ",
 \t\t\t\tle ";
             // line 16

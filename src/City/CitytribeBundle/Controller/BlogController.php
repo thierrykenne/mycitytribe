@@ -4,21 +4,36 @@ namespace City\CitytribeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use FOS\UserBundle\Model\UserInterface;
 
 use City\CitytribeBundle\Entity\Message;
+use City\CitytribeBundle\Entity\Thread;
 use City\CitytribeBundle\Form\MessageType;
 
 class BlogController extends Controller
 {
     public function indexAction($page)
     {
- 
+        $userId=$this->get_user()->getId();
+        $em = $this->getDoctrine()->getEntityManager();
+        $userdestinations = $em->getRepository('CityUserBundle:User_destination')
+                           ->findBy(array('user'=>$userId,'activated'=>True),array(),1,0);
+        $destination =$userdestinations[0]->getDestination()->getId();
+
+        $destinationsOfUser = $em->getRepository('CityUserBundle:User_destination')
+                           ->findBy(array('destination'=>$destination,'activated'=>True)); 
+
+        foreach ($destinationsOfUser as $destination) {
+            $usersMessages[]=$destination->getUser()->getMessages();
+        }
         $repository = $this->getDoctrine()
                            ->getEntityManager()
                            ->getRepository('CitytribeBundle:Message');
 
         $nb_messages = $repository->getTotal();
-
         $nb_messages_page = 2;
 
 
@@ -86,12 +101,20 @@ class BlogController extends Controller
      */
     public function createAction()
     {
+        $user= $this->get_user();
         $entity  = new Message();
         $request = $this->getRequest();
         $form    = $this->createForm(new MessageType(), $entity);
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+            $thread = new Thread();
+            $thread->setId(uniqid());
+            $thread->setPermalink('empty');
+
+            $entity->setThread($thread);
+            $entity->setAuthor($user);
+
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
@@ -160,7 +183,15 @@ class BlogController extends Controller
         ));
     }
 
-
+    public function get_user()
+    {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        return $user;
+    }
+   
 
 
 }

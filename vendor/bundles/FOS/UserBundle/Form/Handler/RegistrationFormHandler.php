@@ -59,21 +59,6 @@ class RegistrationFormHandler
     protected function onSuccess(UserInterface $user, $confirmation)
     {
         // to avoid persit error at user registration
-        $tribe1 =$this->em->getRepository('CityUserBundle:DestinationTribe')->find(1);  
-        $tribe2= $this->em->getRepository('CityUserBundle:ResidenceTribe')->find(1);
-        $user->setDestinationTribe($tribe1);
-        $user->setResidenceTribe($tribe2);
-
-        $user->setDestinationCity('');
-        $user->setDestinationCountry('');
-        $user->setDestinationRegion('');
-        $user->setDestinationContinent('');
-
-        $user->setResidenceCity('');
-        $user->setResidenceCountry('');
-        $user->setResidenceRegion('');
-        $user->setResidenceContinent('');
-        $user->setAboutMe('');
         $user->setSex('');
         $user->setPremium(1);
         $user->setNumQuestion(0);

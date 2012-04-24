@@ -25,7 +25,7 @@ class __TwigTemplate_47b25fa1fc314d5aaefb0de925c58788 extends Twig_Template
         echo $this->env->getExtension('form')->renderWidget($this->getContext($context, "form"));
         echo "
     <div>
-        <input type=\"submit\" value=\"";
+        <input class=\"btn btn-warning\" type=\"submit\" value=\"";
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("registration.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "\" />

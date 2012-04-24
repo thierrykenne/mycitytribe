@@ -52,9 +52,12 @@ class __TwigTemplate_08d4b333ed6ead45ec5b2bd47ed4abcb extends Twig_Template
   e.async = true;
   document.getElementById('fb-root').appendChild(e);
 }());
+  var div1 = document.getElementById('registerbox')
+  var div1Paras = div1.getElementsByTagName(\"a\");
+  div1Paras.style.display = 'none';
 ";
         }
-        // line 23
+        // line 26
         echo "</script>
 ";
     }

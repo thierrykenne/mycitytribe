@@ -136,7 +136,6 @@ class DestinationController extends Controller
                 "userdestinations"=>$userdestinations,
                 "users"=>$users
                 ));
-
     }
 
     /**

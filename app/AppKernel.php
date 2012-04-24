@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new City\CitytribeBundle\CitytribeBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new City\DemoBundle\CityDemoBundle(),
+            new Isdev\TwitterBootstrapBundle\IsdevTwitterBootstrapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
