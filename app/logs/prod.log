@@ -1789,3 +1789,5 @@
 [2012-04-24 15:03:33] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /js/bootstrap.js" (uncaught exception) at /opt/lampp/htdocs/Symfony/app/cache/prod/classes.php line 5056 [] []
 [2012-04-24 15:07:11] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /js/bootstrap.js" (uncaught exception) at /opt/lampp/htdocs/Symfony/app/cache/prod/classes.php line 5056 [] []
 [2012-04-24 15:07:13] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /js/bootstrap.js" (uncaught exception) at /opt/lampp/htdocs/Symfony/app/cache/prod/classes.php line 5056 [] []
+[2012-04-24 17:06:26] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /js/bootstrap.js" (uncaught exception) at /opt/lampp/htdocs/Symfony/app/cache/prod/classes.php line 5056 [] []
+[2012-04-24 17:06:27] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /js/bootstrap.js" (uncaught exception) at /opt/lampp/htdocs/Symfony/app/cache/prod/classes.php line 5056 [] []

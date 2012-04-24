@@ -9,6 +9,7 @@ body{
 }
 .contentbox .video{
 	width:440px;
+	padding-right: 15px;
 }
 .content-type1{
 	margin-top: 67px;
@@ -164,4 +165,18 @@ footer{
     margin-top: 22px;
     width: 452px;
     padding-left: 70px;
+}
+.background-box{
+	z-index:auto;
+    height: 400px;
+    background: #9a4;
+    -moz-border-radius: 0 0 551px 200px / 0 0 267px 40px; 
+    -webkit-border-radius: 0 0 551px 200px / 0 0 267px 40px;  
+    -khtml-border-radius: 0 0 551px 200px / 0 0 267px 40px; 
+    border-radius: 0 0 551px 200px / 0 0 267px 40px;
+}
+.login-box{
+	position: absolute; 
+	z-index:1;
+
 }

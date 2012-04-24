@@ -36,6 +36,7 @@ class __TwigTemplate_56ad03ca6d8b6f1d7138ca9fdeee365a extends Twig_Template
 </div>
 
 <div class=\"row contentbox\"> 
+
 \t<div class=\"span6 video\"> 
 \t\t<object width=\"445\" height=\"315\"><param name=\"movie\" value=\"http://www.youtube.com/v/gaZH5ec-zWE?version=3&amp;hl=fr_FR&amp;rel=0\">
 \t\t</param><param name=\"allowFullScreen\" value=\"true\"></param>
@@ -46,44 +47,44 @@ class __TwigTemplate_56ad03ca6d8b6f1d7138ca9fdeee365a extends Twig_Template
 \t\t<div class=\"cnxbox row\"> 
 \t\t\t<div class=\"registerbox span3 \" id=\"registerbox\"> 
 \t\t\t\t";
-        // line 25
+        // line 26
         echo $this->env->getExtension('facebook')->renderLoginButton(array("autologoutlink" => true));
         echo "
 \t\t\t\t<a class=\"btn btn-warning register-now\" href=\"\"> <h3>Register Now</h3></a>
 \t\t\t</div> 
 \t\t\t<div class=\"loginbox span3 \">
 \t\t\t\t<form action=\"";
-        // line 29
+        // line 30
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("fos_user_security_check"), "html", null, true);
         echo "\" method=\"post\">
 \t\t\t\t    <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-        // line 30
+        // line 31
         echo twig_escape_filter($this->env, $this->getContext($context, "csrf_token"), "html", null, true);
         echo "\" />
 
 \t\t\t\t    <!--<label for=\"username\">";
-        // line 32
+        // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.username", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>-->
 \t\t\t\t    \t<input type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 33
+        // line 34
         echo twig_escape_filter($this->env, $this->getContext($context, "last_username"), "html", null, true);
         echo "\"  placeholder=\"Username or Email...\" /> 
 \t\t\t\t    <!--<label for=\"password\">";
-        // line 34
+        // line 35
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.password", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>-->
 \t\t\t\t    <input type=\"password\" id=\"password\" name=\"_password\" placeholder=\"Password...\" />
 
 \t\t\t\t    <label for=\"remember_me\"  class=\"checkbox\" >";
-        // line 37
+        // line 38
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.remember_me", array(), "FOSUserBundle"), "html", null, true);
         echo "
 \t\t\t\t    <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" />
 \t\t\t\t    </label>
 \t\t\t\t    <button type=\"submit\" id=\"_submit\" name=\"_submit\"  class=\"btn\">Sign in</button>
 \t\t\t\t<!--<input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"";
-        // line 41
+        // line 42
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "\" /> -->
 \t\t\t\t</form>\t\t\t\t
