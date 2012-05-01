@@ -13,6 +13,7 @@ body{
 }
 .content-type1{
 	margin-top: 67px;
+	position: relative;
 }
 .content-map{
 	padding-top: 40px;
@@ -114,7 +115,7 @@ footer{
 .register{
 	margin-top: 20px;
 }
-.logo-center img {
+.logo-center img, .logo-left img, .logo-left2 img {
     height: 160px;
     width: 250px;	
 }
@@ -125,14 +126,14 @@ footer{
 }
 
 .logo-left{
-    left: 556px;
     position: absolute;
-    top: -6px;
-    left:193px;
+    top: -70px;
+    left:-30px;
 }
-.logo-left img {
-    height: 160px;
-    width: 250px;	
+.logo-left2{
+    position: absolute;
+    top: -47px;
+    left:1px;
 }
 
 .navigation{
@@ -178,5 +179,10 @@ footer{
 .login-box{
 	position: absolute; 
 	z-index:1;
-
+}
+.navigation .container{
+	margin-left: 280px;
+}
+.space{
+	padding-top: 75px;
 }

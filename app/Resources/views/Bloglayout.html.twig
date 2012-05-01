@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ app.session.locale }}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head_style -%}
+        {% stylesheets filter='?cssembed,?yui_css'
+           '@IsdevTwitterBootstrapBundle/Resources/public/bootstrap/css/bootstrap.css'
+           '@IsdevTwitterBootstrapBundle/Resources/public/css/custom.css'
+        %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{{ asset('css/styleBlog.css') }}" type="text/css" media="screen" />
+        {% endstylesheets %}
+    {% endblock head_style %}
+    <title>{% block title %}MycityTribe{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <script>
+	</script>
+</head>
+<body>
+{% block body %}
+    <div class="container">
+	{% block container %}
+
+        <div class="content">
+			
+			{% block flashes %}
+                {% import 'IsdevTwitterBootstrapBundle::flash.html.twig' as flash %}
+			    {{ flash.session_msg() }}
+			{% endblock flashes %}
+
+            {% block content %}
+                <div class="row"></div>
+            {% endblock content %}
+        </div>
+    {% block footer %}
+        <footer class="row">
+	   <p align="center"> Copyright &copy; <a href="" target="_blank">MyCityTribe </a> {{ 'now'|date('Y') }}</p>
+        </footer>
+    {% endblock footer %}
+	{% endblock container %}
+    </div>
+{% endblock body %}
+</body>
+</html>

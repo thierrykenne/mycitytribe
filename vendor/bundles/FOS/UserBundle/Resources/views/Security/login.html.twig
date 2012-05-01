@@ -24,7 +24,7 @@
 		<div class="cnxbox row"> 
 			<div class="registerbox span3 " id="registerbox"> 
 				{{ facebook_login_button({'autologoutlink': true}) }}
-				<a class="btn btn-warning register-now" href=""> <h3>Register Now</h3></a>
+				<a class="btn btn-warning register-now" href="{{ path('fos_user_registration_register')}}"> <h3>Register Now</h3></a>
 			</div> 
 			<div class="loginbox span3 ">
 				<form action="{{ path("fos_user_security_check") }}" method="post">

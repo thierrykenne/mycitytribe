@@ -1,0 +1,30 @@
+GeoBundle_resi:
+    pattern:  /
+    defaults: { _controller: "CityGeoBundle:Residence:index" }
+
+GeoBundle_residence_show:
+    pattern:  /show
+    defaults: { _controller: "CityGeoBundle:Residence:show" }
+
+resi_new:
+    pattern:  /new
+    defaults: { _controller: "CityGeoBundle:Residence:new" }
+
+GeoBundle_residence_create:
+    pattern:  /create
+    defaults: { _controller: "CityGeoBundle:Residence:create" }
+    requirements: { _method: post }
+
+GeoBundle_residence_update:
+    pattern:  /update
+    defaults: { _controller: "CityGeoBundle:Residence:update" }
+    requirements: { _method: post }
+
+resi_edit:
+    pattern:  /edit
+    defaults: { _controller: "CityGeoBundle:Residence:edit" }
+
+GeoBundle_residence_showtribe:
+    pattern:  /showtribe
+    defaults: { _controller: "CityGeoBundle:Residence:showtribe" }
+

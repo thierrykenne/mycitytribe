@@ -1,0 +1,20 @@
+{% extends "CitytribeBundle::default.html.twig" %}
+{% block middle %}
+{% include "CitytribeBundle:Menu:profile_nav.html.twig" with {'tab1': '','tab2':'','tab3':'active'} %}
+{% if app.session.hasFlash('notice') %}
+    <div class="flash-notice">
+        {{ app.session.flash('notice') }}
+    </div>
+{% endif %}
+
+	<form id ="form" action="{{ path('blog_avatar') }}" method="post" {{ form_enctype(form) }}>
+	
+		{{ form_widget(form) }}
+	
+		<input type="submit" />
+	</form>
+<img src="{{ asset('uploads/avatars/') }}{{user.image}}" />
+{% endblock %}
+
+
+

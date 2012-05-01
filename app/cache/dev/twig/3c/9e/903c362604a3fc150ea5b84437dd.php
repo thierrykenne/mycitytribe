@@ -69,12 +69,17 @@ class __TwigTemplate_3c9e903c362604a3fc150ea5b84437dd extends Twig_Template
             </div>
             <div class=\"span5 \">
                 
-                <input id=\"address\" class=\"span4\" type=\"text\" autocomplete=\"off\" onKeyPress=\"return event.keyCode!=13\" value=\"";
+                <input id=\"address\" class=\"span4\" type=\"text\" autocomplete=\"on\" onKeyPress=\"return event.keyCode!=13\" value=\"";
         // line 22
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "locality"), "city"), "html", null, true);
-        echo ",";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "locality"), "country"), "html", null, true);
-        echo "\" placeholder=\" Hometown City or Address.. \" />
+        if ((!$this->getContext($context, "create"))) {
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "locality"), "city"), "html", null, true);
+            echo ",";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "locality"), "country"), "html", null, true);
+            echo "
+                                    ";
+        }
+        // line 23
+        echo "\" placeholder=\" Destination City or Address.. \" />
                 <button type=\"submit\" class=\" address-btn btn btn-success btn-medium\">Validate</button>
             </div>
             
@@ -83,47 +88,47 @@ class __TwigTemplate_3c9e903c362604a3fc150ea5b84437dd extends Twig_Template
                     
             <div>
                 ";
-        // line 30
+        // line 31
         echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "country"));
         echo "
                 ";
-        // line 31
+        // line 32
         echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "country"), array("attr" => array("class" => "country", "readonly" => "readonly")));
         echo "
             </div>
             <div>
                 ";
-        // line 34
+        // line 35
         echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "state"));
         echo "
                 ";
-        // line 35
+        // line 36
         echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "state"), array("attr" => array("class" => "state", "readonly" => "readonly")));
         echo "
             </div>
             <div>
                 ";
-        // line 38
+        // line 39
         echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "region"));
         echo "
                 ";
-        // line 39
+        // line 40
         echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "region"), array("attr" => array("class" => "region", "readonly" => "readonly")));
         echo "
             </div>
             <div>
                 ";
-        // line 42
+        // line 43
         echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "city"));
         echo "
                 ";
-        // line 43
+        // line 44
         echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "city"), array("attr" => array("class" => "city", "readonly" => "readonly")));
         echo "
             </div>
             
             ";
-        // line 46
+        // line 47
         echo $this->env->getExtension('form')->renderRest($this->getContext($context, "form"));
         echo "           
             <div id=\"erreur\"> </div> 

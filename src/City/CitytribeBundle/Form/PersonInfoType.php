@@ -12,16 +12,16 @@ class PersonInfoType extends AbstractType
 	    $builder
             ->add('username')
             ->add('email','email')
-            ->add('sex','choice', array( 'required' => false, 'choices' => array('m' => 'Male', 'f' => 'Female')))
-	    ->add('language','text',array('required' => false))
+            ->add('sex','choice', array( 'required' => false, 'choices' => array('Male' => 'Male', 'Female' => 'Female')))
+	        ->add('language','text',array('required' => false))
             ->add('occupation','text',array('required' => false))
             ->add('visit_goal','choice',array( 'required' => false, 
 						'choices' => array(
-						'studies' => 'Studies',
-						'Work' => 'Work',
-						'Tourist' => 'Tourist',
-						'To live' => 'To live'
-				)))
+        						'studies' => 'Studies',
+        						'Work' => 'Work',
+        						'Tourist' => 'Tourist',
+        						'To live' => 'To live'
+        				)))
             ->add('about_me','textarea',array('required' => false));
     }
 

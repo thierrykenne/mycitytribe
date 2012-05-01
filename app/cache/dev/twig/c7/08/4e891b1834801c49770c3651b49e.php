@@ -28,13 +28,13 @@ class __TwigTemplate_c7084e891b1834801c49770c3651b49e extends Twig_Template
     {
         // line 4
         echo "<div class=\"content-type1\">
-\t<div class=\"logo-center\"> <img src=\"";
+\t<div class=\"logo-left\"> <img src=\"";
         // line 5
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo-medium.png"), "html", null, true);
         echo "\"> </div>
 \t";
         // line 6
-        $this->env->loadTemplate("CitytribeBundle:Default:navigation.html.twig")->display($context);
+        $this->env->loadTemplate("CitytribeBundle:Menu:navigation.html.twig")->display($context);
         // line 7
         echo "\t\t<div class=\"row contentbox\" > 
 \t\t\t<div class=\"span7 register-right register\" id=\"reg\"> <img src=\"";

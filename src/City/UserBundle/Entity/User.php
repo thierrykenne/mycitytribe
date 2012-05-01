@@ -4,13 +4,12 @@
 namespace City\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
-use City\UserBundle\Entity\ResidenceTribe as ResidenceTribe;
-use City\UserBundle\Entity\DestinationTribe as DestinationTribe;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use City\UserBundle\Entity\Destination as Destination;
+use City\UserBundle\Entity\Residence as Residence;
 
 /**
  * @ORM\Entity
@@ -426,4 +425,14 @@ class User extends BaseUser
         
     }
 
+
+    /**
+     * Add messages
+     *
+     * @param City\CitytribeBundle\Entity\Message $messages
+     */
+    public function addMessage(\City\CitytribeBundle\Entity\Message $messages)
+    {
+        $this->messages[] = $messages;
+    }
 }

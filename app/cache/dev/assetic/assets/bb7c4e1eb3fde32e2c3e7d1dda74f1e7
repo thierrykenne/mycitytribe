@@ -1,7 +1,0 @@
-.control-label {
-    font-weight: bold;
-}
-
-.control-label span.required {
-    color: #e32;
-}

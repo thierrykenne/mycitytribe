@@ -1,0 +1,12 @@
+blog_profile_info:
+    pattern:   /informations
+    defaults:  { _controller: CitytribeBundle:Profile:info_show }
+blog_profile_places:
+    pattern:   /places
+    defaults:  { _controller: CitytribeBundle:Profile:places_show }
+blog_avatar:
+    pattern:   /avatar
+    defaults:  { _controller: CitytribeBundle:Profile:avatar_show }
+blog_profile_edit:
+    pattern:   /edit
+    defaults:  { _controller: CitytribeBundle:Profile:edit }

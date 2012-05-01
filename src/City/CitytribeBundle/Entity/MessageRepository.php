@@ -20,4 +20,16 @@ class MessageRepository extends EntityRepository
         return (int) $qb->getQuery()
                         ->getSingleScalarResult(); 
     }
+    public function getAllCountry($nationality,$country)
+    {
+        $qb = $this->createQueryBuilder('a')
+        		->where('a.nationality = :nation')
+         			->setParameter('nation', $nationality)
+         		->andWhere('a.country_tribe = :country')
+         			->setParameter('country',$country)
+                ->select('COUNT(a)');     
+
+        return (int) $qb->getQuery()
+                        ->getSingleScalarResult(); 
+    }
 }

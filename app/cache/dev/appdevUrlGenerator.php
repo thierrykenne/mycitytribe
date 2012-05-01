@@ -58,18 +58,18 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'user_edit' => true,
        'user_update' => true,
        'user_delete' => true,
-       'CitytribeBundle_homepage' => true,
-       'CitytribeBundle_profile' => true,
-       'CitytribeBundle_avatar' => true,
-       'CitytribeBundle_profile_edit' => true,
        'Cityblog_home' => true,
+       'blog_profile_info' => true,
+       'blog_profile_places' => true,
+       'blog_avatar' => true,
+       'blog_profile_edit' => true,
        'message_show' => true,
        'message_new' => true,
        'message_create' => true,
        'message_edit' => true,
        'message_update' => true,
        'message_delete' => true,
-       'CityGeoBundle_polygon_region' => true,
+       'GeoBundle_polygon_region' => true,
        'GeoBundle_dest' => true,
        'GeoBundle_destination_show' => true,
        'dest_new' => true,
@@ -77,6 +77,13 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'GeoBundle_destination_update' => true,
        'dest_edit' => true,
        'GeoBundle_destination_showtribe' => true,
+       'GeoBundle_resi' => true,
+       'GeoBundle_residence_show' => true,
+       'resi_new' => true,
+       'GeoBundle_residence_create' => true,
+       'GeoBundle_residence_update' => true,
+       'resi_edit' => true,
+       'GeoBundle_residence_showtribe' => true,
        'article' => true,
        'article_show' => true,
        'article_new' => true,
@@ -365,29 +372,29 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (  0 => 'id',), array (  '_controller' => 'City\\DemoBundle\\Controller\\UserController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/dest/user',  ),));
     }
 
-    private function getCitytribeBundle_homepageRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/lahome',  ),));
-    }
-
-    private function getCitytribeBundle_profileRouteInfo()
-    {
-        return array(array (  0 => 'type',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::showAction',), array (  'type' => 'places|informations',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => 'places|informations',    3 => 'type',  ),  1 =>   array (    0 => 'text',    1 => '/profile',  ),));
-    }
-
-    private function getCitytribeBundle_avatarRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::avatarAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/avatar/',  ),));
-    }
-
-    private function getCitytribeBundle_profile_editRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/informations/edit',  ),));
-    }
-
     private function getCityblog_homeRouteInfo()
     {
         return array(array (  0 => 'page',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'page' => 1,), array (  'page' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'page',  ),  1 =>   array (    0 => 'text',    1 => '/home',  ),));
+    }
+
+    private function getblog_profile_infoRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::info_showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/informations',  ),));
+    }
+
+    private function getblog_profile_placesRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::places_showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/places',  ),));
+    }
+
+    private function getblog_avatarRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::avatar_showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/avatar',  ),));
+    }
+
+    private function getblog_profile_editRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/edit',  ),));
     }
 
     private function getmessage_showRouteInfo()
@@ -420,7 +427,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
     }
 
-    private function getCityGeoBundle_polygon_regionRouteInfo()
+    private function getGeoBundle_polygon_regionRouteInfo()
     {
         return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::polygonAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/polygon',  ),));
     }
@@ -458,6 +465,41 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getGeoBundle_destination_showtribeRouteInfo()
     {
         return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DestinationController::showtribeAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/destination/showtribe',  ),));
+    }
+
+    private function getGeoBundle_resiRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\ResidenceController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/residence/',  ),));
+    }
+
+    private function getGeoBundle_residence_showRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\ResidenceController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/residence/show',  ),));
+    }
+
+    private function getresi_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\ResidenceController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/residence/new',  ),));
+    }
+
+    private function getGeoBundle_residence_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\ResidenceController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/places/residence/create',  ),));
+    }
+
+    private function getGeoBundle_residence_updateRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\ResidenceController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/places/residence/update',  ),));
+    }
+
+    private function getresi_editRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\ResidenceController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/residence/edit',  ),));
+    }
+
+    private function getGeoBundle_residence_showtribeRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\ResidenceController::showtribeAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/places/residence/showtribe',  ),));
     }
 
     private function getarticleRouteInfo()

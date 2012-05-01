@@ -2,6 +2,7 @@
 
 namespace City\CitytribeBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -57,10 +58,46 @@ class Message
      */
     private $tags;
 
+    /**
+     * @var string $nationality
+     *
+     * @ORM\Column(name="nationality", type="string", length=255)
+     */
+    private $nationality;
+
+    /**
+     * @var string $country_tribe
+     *
+     * @ORM\Column(name="country_tribe", type="string", length=255)
+     */
+    private $country_tribe;
+
+    /**
+     * @var string $state_tribe
+     *
+     * @ORM\Column(name="state_tribe", type="string", length=255)
+     */
+    private $state_tribe;
+
+    /**
+     * @var string $region_tribe
+     *
+     * @ORM\Column(name="region_tribe", type="string", length=255)
+     */
+    private $region_tribe;
+
+    /**
+     * @var string $city_tribe
+     *
+     * @ORM\Column(name="city_tribe", type="string", length=255)
+     */
+    private $city_tribe;
+
 
     public function __construct()
     {
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date=new DateTime();
     }
 
     /**
@@ -183,4 +220,106 @@ class Message
     {
         return $this->tags;
     }
+
+
+    /**
+     * Set nationality
+     *
+     * @param string $nationality
+     */
+    public function setNationality($nationality)
+    {
+        $this->nationality = $nationality;
+    }
+
+    /**
+     * Get nationality
+     *
+     * @return string 
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * Set country_tribe
+     *
+     * @param string $countryTribe
+     */
+    public function setCountryTribe($countryTribe)
+    {
+        $this->country_tribe = $countryTribe;
+    }
+
+    /**
+     * Get country_tribe
+     *
+     * @return string 
+     */
+    public function getCountryTribe()
+    {
+        return $this->country_tribe;
+    }
+
+    /**
+     * Set state_tribe
+     *
+     * @param string $stateTribe
+     */
+    public function setStateTribe($stateTribe)
+    {
+        $this->state_tribe = $stateTribe;
+    }
+
+    /**
+     * Get state_tribe
+     *
+     * @return string 
+     */
+    public function getStateTribe()
+    {
+        return $this->state_tribe;
+    }
+
+    /**
+     * Set region_tribe
+     *
+     * @param string $regionTribe
+     */
+    public function setRegionTribe($regionTribe)
+    {
+        $this->region_tribe = $regionTribe;
+    }
+
+    /**
+     * Get region_tribe
+     *
+     * @return string 
+     */
+    public function getRegionTribe()
+    {
+        return $this->region_tribe;
+    }
+
+    /**
+     * Set city_tribe
+     *
+     * @param string $cityTribe
+     */
+    public function setCityTribe($cityTribe)
+    {
+        $this->city_tribe = $cityTribe;
+    }
+
+    /**
+     * Get city_tribe
+     *
+     * @return string 
+     */
+    public function getCityTribe()
+    {
+        return $this->city_tribe;
+    }
+
 }

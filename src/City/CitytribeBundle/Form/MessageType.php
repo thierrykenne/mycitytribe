@@ -10,14 +10,18 @@ class MessageType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('date')
             ->add('titre')
             ->add('contenu')
+            ->add('nationality','choice',array(
+                'choices'=>array(
+                        'destination'=>'Destination-Tribe',
+                        'residence'=>'Hometown-Tribe'
+                )))
         ;
     }
 
     public function getName()
     {
-        return 'city_blogbundle_messagetype';
+        return 'messagetype';
     }
 }

@@ -18,63 +18,59 @@ use City\CitytribeBundle\Form\PersonInfoHandler;
 
 class ProfileController extends Controller
 {
-    
-
-    public function showAction($type)
+    public function info_showAction()
     {   
         $user=$this->get_user();
-	return $this->render('CitytribeBundle:Default:profile.html.twig',array(
-				'type'=>$type,
-				'user'=>$user
-			   ));
+	   return $this->render('CitytribeBundle:Profile:informations.html.twig',array('user'=>$user));
     }
 
-    public function avatarAction()
+    public function avatar_showAction()
     {
-	$user=$this->get_user();
-	$avatar=new Avatar;
-	$form =$this->createFormBuilder( $avatar)
-	       ->add("name")
-	       ->getForm();
-	$request = $this->get('request');
+    	$user=$this->get_user();
+    	$avatar=new Avatar;
+    	$form =$this->createFormBuilder( $avatar)
+    	       ->add("name")
+    	       ->getForm();
+    	$request = $this->get('request');
 
-	    if ($request->getMethod() == 'POST') {
-	      	$form->bindRequest($request); 
+    	    if ($request->getMethod() == 'POST') {
+    	      	$form->bindRequest($request); 
 
-	    	if ($form->isValid()) {
-		   //Upload of file
-	    	    $files=$request->files->get($form->getName());
-	    	    $uploadedFile=$files["name"];
-				$extention= $uploadedFile->guessExtension();
-				$filename='avatar_'.$user->getId().'.'.$extention;
-	    	    $uploadedFile->move(
-	    	         __DIR__.'/../../../../web/uploads/avatars/',$filename    	        
-	    	    );
-		//add image name in user table
-                $user->setImage($filename);	
-		        $em=$this->getDoctrine()->getEntityManager();	
-        	    $em->persist($user);
-        	    $em->flush();
-	    	    $this->get('session')->setFlash('notice', 'Image updated!');
-	    	}
-	}
-	return $this->render('CitytribeBundle:Default:avatar.html.twig',array(
-				'user'=>$user,
-				'form'=> $form->createView()
-			   ));
-   }	
+    	    	if ($form->isValid()) {
+    		   //Upload of file
+    	    	    $files=$request->files->get($form->getName());
+    	    	    $uploadedFile=$files["name"];
+    				$extention= $uploadedFile->guessExtension();
+    				$filename='avatar_'.$user->getId().'.'.$extention;
+    	    	    $uploadedFile->move(
+    	    	         __DIR__.'/../../../../web/uploads/avatars/',$filename    	        
+    	    	    );
+    		//add image name in user table
+                    $user->setImage($filename);	
+    		        $em=$this->getDoctrine()->getEntityManager();	
+            	    $em->persist($user);
+            	    $em->flush();
+    	    	    $this->get('session')->setFlash('notice', 'Image updated!');
+    	    	}
+    	}
+    	return $this->render('CitytribeBundle:Profile:avatar.html.twig',array(
+    				'user'=>$user,
+    				'form'=> $form->createView()
+    			   ));
+    }	
  
     public function editAction()
     {
         $user=$this->get_user(); 
+
         $form    = $this->createForm(new PersonInfoType, $user); 
         $formHandler = new PersonInfoHandler($form, $this->get('request'), $this->getDoctrine()->getEntityManager());
         if( $formHandler->process() )
         {
-            return $this->redirect( $this->generateUrl('CitytribeBundle_profile',array('type'=>'informations') ));
+            return $this->redirect( $this->generateUrl('blog_profile_info'));
         }
 
-        return $this->render('CitytribeBundle:Default:edit.html.twig', array(
+        return $this->render('CitytribeBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
             'user'=>$user,
         ));

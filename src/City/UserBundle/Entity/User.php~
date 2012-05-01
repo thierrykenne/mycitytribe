@@ -4,10 +4,13 @@
 namespace City\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
+use City\UserBundle\Entity\ResidenceTribe as ResidenceTribe;
+use City\UserBundle\Entity\DestinationTribe as DestinationTribe;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use City\UserBundle\Entity\Destination as Destination;
 
 /**
  * @ORM\Entity
@@ -23,151 +26,117 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="City\CitytribeBundle\Entity\Message", mappedBy="author")
+     */
+    private $messages;
+
+    /**
      * @var string $nationality
      *
-     * @ORM\Column(name="nationality", type="string", length=255)
+     * @ORM\Column(type="string",nullable=TRUE)
      */
     protected $nationality;
 
     /**
-     * @var string $destination_city
-     *
-     * @ORM\Column(name="destination_city", type="string", length=255)
-     */
-   protected $destination_city;
-
-    /**
-     * @var string $destination_country
-     *
-     * @ORM\Column(name="destination_country", type="string", length=255)
-     */
-   protected $destination_country;
-
-
-    /**
-     * @var string $destination_region
-     *
-     * @ORM\Column(name="destination_region", type="string", length=255)
-     */
-   protected $destination_region;
-
-    /**
-     * @var string $residence_region
-     *
-     * @ORM\Column(name="residence_region", type="string", length=255)
-     */
-   protected $residence_region;
-
-    /**
-     * @var string $residence_city
-     *
-     * @ORM\Column(name="residence_city", type="string", length=255)
-     */
-   protected $residence_city;
-
-    /**
-     * @var string $residence_country
-     *
-     * @ORM\Column(name="residence_country", type="string", length=255)
-     */
-   protected $residence_country;
-
-
-    private $birth_year;
-
-    /**
      * @var text $about_me
      *
-     * @ORM\Column(name="about_me", type="text")
+     * @ORM\Column(name="about_me", type="text",nullable=TRUE)
      */
     private $about_me;
 
     /**
      * @var string $sex
      *
-     * @ORM\Column(name="sex", type="string", length=1)
+     * @ORM\Column(name="sex", type="string",nullable=TRUE)
      */
     private $sex;
 
     /**
      * @var boolean $premium
      *
-     * @ORM\Column(name="premium", type="boolean")
+     * @ORM\Column(name="premium", type="boolean",nullable=TRUE)
      */
     private $premium;
 
     /**
      * @var integer $num_question
      *
-     * @ORM\Column(name="num_question", type="integer")
+     * @ORM\Column(name="num_question", type="integer",nullable=TRUE)
      */
     private $num_question;
 
     /**
      * @var integer $num_answer
      *
-     * @ORM\Column(name="num_answer", type="integer")
+     * @ORM\Column(name="num_answer", type="integer",nullable=TRUE)
      */
     private $num_answer;
 
     /**
      * @var string $visit_goal
      *
-     * @ORM\Column(name="visit_goal", type="string", length=255)
+     * @ORM\Column(name="visit_goal", type="string", length=255,nullable=TRUE)
      */
     private $visit_goal;
 
     /**
      * @var string $occupation
      *
-     * @ORM\Column(name="occupation", type="string", length=255)
+     * @ORM\Column(name="occupation", type="string", length=255,nullable=TRUE)
      */
     private $occupation;
 
     /**
-     * @var string $avatar
-     * @Assert\File(
-     *     maxSize = "1M",
-     *     mimeTypes = {"image/jpeg", "image/png","image/gif","image/jpg","image/bmp","jpg","jpeg"},
-     *     mimeTypesMessage = "This file is not a valid image"
-     * )
-     * @ORM\Column(name="avatar", type="string", length=255)
-     */
-    private $avatar;
-
-    /**
      * @var string $language
      *
-     * @ORM\Column(name="language", type="string", length=255)
+     * @ORM\Column(name="language", type="string", length=255,nullable=TRUE)
      */
     private $language;
 
     /**
-     * @var string $residence_continent
-     *
-     * @ORM\Column(name="residence_continent", type="string", length=255)
-     */
-    private $residence_continent;
-
-    /**
-     * @var string $destination_continent
-     *
-     * @ORM\Column(name="destination_continent", type="string", length=255)
-     */
-    private $destination_continent;
-
-    /**
      * @var string $image
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255,nullable=TRUE)
      */
     private $image;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebookId", type="string", length=255,nullable=TRUE)
+     */
+    protected $facebookId;
+
 
 
     public function __construct()
     {
         parent::__construct();
+        $this->messages = new \Doctrine\Common\Collections\ArrayCollection;
     }
+
+    //facebook bundle   
+    public function serialize()
+    {
+        return serialize(array($this->facebookId, parent::serialize()));
+    }
+
+    public function unserialize($data)
+    {
+        list($this->facebookId, $parentData) = unserialize($data);
+        parent::unserialize($parentData);
+    }
+
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    public function addMessages(\City\CitytribeBundle\Entity\Message $message)
+    {
+        $this->messages[] = $message;
+    }
+
     /**
      * Set nationality
      *
@@ -188,126 +157,6 @@ class User extends BaseUser
         return $this->nationality;
     }
 
-    /**
-     * Set destination_city
-     *
-     * @param string $destination_city
-     */
-    public function setDestinationCity($destination_city)
-    {
-        $this->destination_city = $destination_city;
-    }
-
-    /**
-     * Get destination_city
-     *
-     * @return string 
-     */
-    public function getDestinationCity()
-    {
-        return $this->destination_city;
-    }
-
-    /**
-     * Set destination_country
-     *
-     * @param string $destination_country
-     */
-    public function setDestinationCountry($destination_country)
-    {
-        $this->destination_country = $destination_country;
-    }
-
-    /**
-     * Get destination_country
-     *
-     * @return string 
-     */
-    public function getDestinationCountry()
-    {
-        return $this->destination_country;
-    }
-
-    /**
-     * Set destination_region
-     *
-     * @param string $destination_region
-     */
-    public function setDestinationRegion($destination_region)
-    {
-        $this->destination_region = $destination_region;
-    }
-
-    /**
-     * Get destination_region
-     *
-     * @return string 
-     */
-    public function getDestinationRegion()
-    {
-        return $this->destination_region;
-    }
-
-    /**
-     * Set residence_region
-     *
-     * @param string $residence_region
-     */
-    public function setResidenceRegion($residence_region)
-    {
-        $this->residence_region = $residence_region;
-    }
-
-    /**
-     * Get residence_region
-     *
-     * @return string 
-     */
-    public function getResidenceRegion()
-    {
-        return $this->residence_region;
-    }
-
-    /**
-     * Set residence_city
-     *
-     * @param string $residence_city
-     */
-    public function setResidenceCity($residence_city)
-    {
-        $this->residence_city = $residence_city;
-    }
-
-    /**
-     * Get residence_city
-     *
-     * @return string 
-     */
-    public function getResidenceCity()
-    {
-        return $this->residence_city;
-    }
-
-
-    /**
-     * Set residence_country
-     *
-     * @param string $residence_country
-     */
-    public function setResidenceCountry($residence_country)
-    {
-        $this->residence_country = $residence_country;
-    }
-
-    /**
-     * Get residence_country
-     *
-     * @return string 
-     */
-    public function getResidenceCountry()
-    {
-        return $this->residence_country;
-    }
 
     /**
      * Set birth_year
@@ -449,25 +298,7 @@ class User extends BaseUser
         return $this->visit_goal;
     }
 
-    /**
-     * Set avatar
-     *
-     * @param string $avatar
-     */
-    public function setAvatar( File $file = null)
-    {
-        $this->avatar = $file;
-    }
 
-    /**
-     * Get avatar
-     *
-     * @return string 
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
     /**
      * Set occupation
      *
@@ -520,46 +351,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set residence_continent
-     *
-     * @param string $residenceContinent
-     */
-    public function setResidenceContinent($residenceContinent)
-    {
-        $this->residence_continent = $residenceContinent;
-    }
-
-    /**
-     * Get residence_continent
-     *
-     * @return string 
-     */
-    public function getResidenceContinent()
-    {
-        return $this->residence_continent;
-    }
-
-    /**
-     * Set destination_continent
-     *
-     * @param string $destinationContinent
-     */
-    public function setDestinationContinent($destinationContinent)
-    {
-        $this->destination_continent = $destinationContinent;
-    }
-
-    /**
-     * Get destination_continent
-     *
-     * @return string 
-     */
-    public function getDestinationContinent()
-    {
-        return $this->destination_continent;
-    }
-
-    /**
      * Set image
      *
      * @param string $image
@@ -580,4 +371,69 @@ class User extends BaseUser
     }
 
 
+    /**
+     * @param string $facebookId
+     * @return void
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+        $this->setUsername($facebookId);
+        $this->salt = '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @param Array
+     */
+    public function setFBData($fbdata)
+    {
+        if (isset($fbdata['id'])) {
+            $this->setFacebookId($fbdata['id']);
+            $this->addRole('ROLE_FACEBOOK');
+        }
+/*        if (isset($fbdata['first_name'])) {
+            $this->setFirstname($fbdata['first_name']);
+        }
+*/
+        if (isset($fbdata['username'])) {
+            $this->setUsername($fbdata['username']);
+        }
+
+        if (isset($fbdata['email'])) {
+            $this->setEmail($fbdata['email']);
+        }
+        if (isset($fbdata['locale'])) {
+            $pieces = explode("_", $fbdata['locale']);
+            $this->setNationality($pieces[1]);
+        }
+        else{
+            $this->setNationality('IT');
+        }
+        if (isset($fbdata['user_about_me'])) {
+            $this->setAboutMe($fbdata['user_about_me']);
+        }
+        if (isset($fbdata['gender'])) {
+            $this->setSex($fbdata['gender']);
+        }
+        
+    }
+
+
+    /**
+     * Add messages
+     *
+     * @param City\CitytribeBundle\Entity\Message $messages
+     */
+    public function addMessage(\City\CitytribeBundle\Entity\Message $messages)
+    {
+        $this->messages[] = $messages;
+    }
 }

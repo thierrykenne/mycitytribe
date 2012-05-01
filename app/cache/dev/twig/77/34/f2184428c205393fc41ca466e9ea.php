@@ -14,9 +14,7 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
             'content' => array($this, 'block_content'),
             'footer' => array($this, 'block_footer'),
             'container' => array($this, 'block_container'),
-            'foot_script' => array($this, 'block_foot_script'),
             'body' => array($this, 'block_body'),
-            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -126,52 +124,52 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t//Autocomplete
 \t\$('input#address').autocomplete({
 \tsource: function(request,response) {
-\tgeocoder.geocode( { 'address': \$('input#address').val() }, function(results, status) {
-\tresponse(\$.map(results, function(item) {
-\treturn {
-\tvalue: item.formatted_address,
-    latitude: item.geometry.location.lat(),
-    longitude: item.geometry.location.lng(),
-    state: 
-\t        function (){
-\t\t\t    var elt = item.address_components;
-\t\t\t\tfor(i in elt){
-\t\t\t\t\tif(elt[i].types[0] == 'administrative_area_level_1')
-\t\t\t\t\t\treturn elt[i].long_name;
-                }
+\t\tgeocoder.geocode( { 'address': \$('input#address').val() }, function(results, status) {
+\t\tresponse(\$.map(results, function(item) {
+\t\treturn {
+\t\tvalue: item.formatted_address,
+\t    latitude: item.geometry.location.lat(),
+\t    longitude: item.geometry.location.lng(),
+\t    state: 
+\t\t        function (){
+\t\t\t\t    var elt = item.address_components;
+\t\t\t\t\tfor(i in elt){
+\t\t\t\t\t\tif(elt[i].types[0] == 'administrative_area_level_1')
+\t\t\t\t\t\t\treturn elt[i].long_name;
+\t                }
 
-\t\t\t},
+\t\t\t\t},
 
-\tregion: 
-\t        function (){
-\t\t\t    var elt = item.address_components;
-\t\t\t\tfor(i in elt){
-\t\t\t\t\tif(elt[i].types[0] == 'administrative_area_level_2')
-\t\t\t\t\t\treturn elt[i].long_name;
-                }
+\t\tregion: 
+\t\t        function (){
+\t\t\t\t    var elt = item.address_components;
+\t\t\t\t\tfor(i in elt){
+\t\t\t\t\t\tif(elt[i].types[0] == 'administrative_area_level_2')
+\t\t\t\t\t\t\treturn elt[i].long_name;
+\t                }
 
-\t\t\t},
+\t\t\t\t},
 
-\tcountry: 
-\t        function (){
-\t\t\t    var elt = item.address_components;
-\t\t\t\tfor(i in elt){
-\t\t\t\t\tif(elt[i].types[0] == 'country')
-\t\t\t\t\t\treturn elt[i].long_name;
-               }
-\t       },
-\tcity: 
-\t        function (){
-\t\t\t    var elt = item.address_components;
-\t\t\t\tfor(i in elt){
-\t\t\t\t\tif(elt[i].types[0] == 'locality')
-\t\t\t\t\t\treturn elt[i].long_name;
-               }
-\t       }
-\t}
-\t}));
-\t});
-\t},
+\t\tcountry: 
+\t\t        function (){
+\t\t\t\t    var elt = item.address_components;
+\t\t\t\t\tfor(i in elt){
+\t\t\t\t\t\tif(elt[i].types[0] == 'country')
+\t\t\t\t\t\t\treturn elt[i].long_name;
+\t               }
+\t\t       },
+\t\tcity: 
+\t\t        function (){
+\t\t\t\t    var elt = item.address_components;
+\t\t\t\t\tfor(i in elt){
+\t\t\t\t\t\tif(elt[i].types[0] == 'locality')
+\t\t\t\t\t\t\treturn elt[i].long_name;
+\t               }
+\t\t       }
+\t\t}
+\t\t}));
+\t\t});
+\t\t},
 \tselect: function(event, ui) {
 \t\t\t\$('#address').val(ui.item['value']);
 \t\t\t\$('.formatted_address').val(ui.item['value']);
@@ -190,7 +188,7 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t\t\t   type: \"POST\", // methode de transmission des données au fichier php
 \t\t\t\t   url: \"";
         // line 162
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("CityGeoBundle_polygon_region"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("GeoBundle_polygon_region"), "html", null, true);
         echo "\", // url du fichier php
 \t\t\t\t   data: \"country=\"+\$(\".country\").val()+\"&region=\"+\$(\".region\").val(), // données à transmettre
 \t\t\t\t   success: function(msg){ // si l'appel a bien fonctionné
@@ -222,8 +220,7 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t\t\t\t}
 
 \t\t\t  })
-\t},
-\tminLength: 2
+\t\t}
 \t});
 \t
 
@@ -234,15 +231,11 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t
 \t<body>
 ";
-        // line 204
+        // line 203
         $this->displayBlock('body', $context, $blocks);
-        // line 238
+        // line 231
         echo "\t</body>
-\t";
-        // line 239
-        $this->displayBlock('javascripts', $context, $blocks);
-        // line 243
-        echo "</html>
+</html>
 ";
     }
 
@@ -297,124 +290,82 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
         echo "    ";
     }
 
-    // line 211
+    // line 210
     public function block_flashes($context, array $blocks = array())
     {
-        // line 212
+        // line 211
         echo "                ";
         $context["flash"] = $this->env->loadTemplate("IsdevTwitterBootstrapBundle::flash.html.twig");
-        // line 213
+        // line 212
         echo "\t\t\t    ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "flash"), "session_msg", array(), "method"), "html", null, true);
         echo "
 \t\t\t";
     }
 
-    // line 216
+    // line 215
     public function block_content($context, array $blocks = array())
     {
-        // line 217
+        // line 216
         echo "            <div class=\"row\">
 
             </div>
             ";
     }
 
-    // line 224
+    // line 223
     public function block_footer($context, array $blocks = array())
     {
-        // line 225
+        // line 224
         echo "\t        <p align=\"center\"> Copyright &copy; <a href=\"\" target=\"_blank\">MyCityTribe </a> ";
         echo twig_escape_filter($this->env, twig_date_format_filter("now", "Y"), "html", null, true);
         echo "</p>
 \t        ";
     }
 
-    // line 206
+    // line 205
     public function block_container($context, array $blocks = array())
     {
-        // line 207
+        // line 206
         echo "        ";
-        // line 208
+        // line 207
         echo "
         <div class=\"content\">
 \t\t\t
 \t\t\t";
-        // line 211
+        // line 210
         $this->displayBlock('flashes', $context, $blocks);
-        // line 215
+        // line 214
         echo "
             ";
-        // line 216
+        // line 215
         $this->displayBlock('content', $context, $blocks);
-        // line 221
+        // line 220
         echo "        </div>";
-        // line 222
+        // line 221
         echo "
         <footer class=\"row\">
 \t        ";
-        // line 224
+        // line 223
         $this->displayBlock('footer', $context, $blocks);
-        // line 227
+        // line 226
         echo "        </footer>
 \t";
     }
 
-    // line 231
-    public function block_foot_script($context, array $blocks = array())
-    {
-        // line 232
-        if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
-            // asset "4d23fcb_0"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_4d23fcb_0") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/4d23fcb_jquery.min_1.js");
-            // line 235
-            echo "<script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
-            echo "\"></script>";
-            // asset "4d23fcb_1"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_4d23fcb_1") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/4d23fcb_bootstrap_2.js");
-            echo "<script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
-            echo "\"></script>";
-        } else {
-            // asset "4d23fcb"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_4d23fcb") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/4d23fcb.js");
-            echo "<script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
-            echo "\"></script>";
-        }
-        unset($context["asset_url"]);
-        // line 236
-        echo "    ";
-    }
-
-    // line 204
+    // line 203
     public function block_body($context, array $blocks = array())
     {
-        // line 205
+        // line 204
         echo "    <div class=\"container\">
 \t";
-        // line 206
+        // line 205
         $this->displayBlock('container', $context, $blocks);
-        // line 229
+        // line 228
         echo "    </div>";
-        // line 230
+        // line 229
         echo "
-\t";
-        // line 231
-        $this->displayBlock('foot_script', $context, $blocks);
-    }
-
-    // line 239
-    public function block_javascripts($context, array $blocks = array())
-    {
-        // line 240
-        echo "\t\t";
-        // line 241
-        echo "\t\t<script type=\"text/javascript\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
-        echo "\"></script>
-\t";
+";
     }
 
     public function getTemplateName()

@@ -50,7 +50,10 @@ class __TwigTemplate_56ad03ca6d8b6f1d7138ca9fdeee365a extends Twig_Template
         // line 26
         echo $this->env->getExtension('facebook')->renderLoginButton(array("autologoutlink" => true));
         echo "
-\t\t\t\t<a class=\"btn btn-warning register-now\" href=\"\"> <h3>Register Now</h3></a>
+\t\t\t\t<a class=\"btn btn-warning register-now\" href=\"";
+        // line 27
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("fos_user_registration_register"), "html", null, true);
+        echo "\"> <h3>Register Now</h3></a>
 \t\t\t</div> 
 \t\t\t<div class=\"loginbox span3 \">
 \t\t\t\t<form action=\"";

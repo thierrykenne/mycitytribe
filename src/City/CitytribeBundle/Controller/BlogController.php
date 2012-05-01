@@ -17,23 +17,18 @@ class BlogController extends Controller
 {
     public function indexAction($page)
     {
-        $userId=$this->get_user()->getId();
-        $em = $this->getDoctrine()->getEntityManager();
-        $userdestinations = $em->getRepository('CityUserBundle:User_destination')
-                           ->findBy(array('user'=>$userId,'activated'=>True),array(),1,0);
-        $destination =$userdestinations[0]->getDestination()->getId();
-
-        $destinationsOfUser = $em->getRepository('CityUserBundle:User_destination')
-                           ->findBy(array('destination'=>$destination,'activated'=>True)); 
-
-        foreach ($destinationsOfUser as $destination) {
-            $usersMessages[]=$destination->getUser()->getMessages();
+        $user=$this->get_user();
+        if(!$residences=$this->get_user_residences($user->getId())){
+            return $this->redirect($this->generateUrl('GeoBundle_resi'));
         }
-        $repository = $this->getDoctrine()
-                           ->getEntityManager()
-                           ->getRepository('CitytribeBundle:Message');
+        if (!$destinations=$this->get_user_destinations($user->getId())){
+            return $this->redirect($this->generateUrl('GeoBundle_dest'));
+        }
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $repository = $em->getRepository('CitytribeBundle:Message');
 
-        $nb_messages = $repository->getTotal();
+        $nb_messages = $repository->getAllCountry($user->getNationality(),$destinations['country']);
         $nb_messages_page = 2;
 
 
@@ -48,7 +43,10 @@ class BlogController extends Controller
         }    
 
         $messages = $repository->findBy(
-            array(),                 // Pas de critère
+            array(
+                'nationality'=>$user->getNationality(),
+                'country_tribe'=>$destinations['country']
+                ),                 
             array('date' => 'desc'), // On tri par date décroissante
             $nb_messages_page,       // On sélectionne $nb_messages_page messages
             $offset                  // A partir du $offset ième
@@ -108,10 +106,40 @@ class BlogController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+
+    //manage thread        
             $thread = new Thread();
             $thread->setId(uniqid());
             $thread->setPermalink('empty');
+    //find user destinations
+        $user=$this->get_user();
+        $em = $this->getDoctrine()->getEntityManager();
+        if($entity->getNationality()=='destination'){
 
+
+            if ($userdestinations = $em->getRepository('CityUserBundle:User_destination')
+                               ->findBy(array('user'=>$user->getId()))) 
+            {
+                foreach ($userdestinations as $userdestination) {
+                    
+                    switch ($userdestination->getDestination()->getType()) {
+                        case 'country':
+                            $entity->setCountryTribe($userdestination->getDestination()->getName());
+                            break;
+                        case 'state':
+                             $entity->setStateTribe($userdestination->getDestination()->getName());
+                            break;
+                        case 'region':
+                             $entity->setRegionTribe($userdestination->getDestination()->getName());
+                            break;
+                        case 'city':
+                             $entity->setCityTribe($userdestination->getDestination()->getName());
+                            break;                   
+                    }
+                }
+            }
+        }else{ print ($entity->getNationality());}
+            $entity->setNationality($user->getNationality());
             $entity->setThread($thread);
             $entity->setAuthor($user);
 
@@ -192,6 +220,60 @@ class BlogController extends Controller
         return $user;
     }
    
+    public  function get_user_destinations( $id)
+    {
+        $destination=array();
+        $em = $this->getDoctrine()->getEntityManager();
+        if ($userdestinations = $em->getRepository('CityUserBundle:User_destination')
+                               ->findBy(array('user'=>$id))) 
+            {
+                foreach ($userdestinations as $userdestination) {
+                    
+                    switch ($userdestination->getDestination()->getType()) {
+                        case 'country':
+                            $destination['country']=$userdestination->getDestination()->getName();
+                            break;
+                        case 'state':
+                             $destination['state']=$userdestination->getDestination()->getName();
+                            break;
+                        case 'region':
+                             $destination['region']=$userdestination->getDestination()->getName();
+                            break;
+                        case 'city':
+                             $destination['region']=$userdestination->getDestination()->getName();
+                            break;                   
+                    }
+                return $destination;
+                }
+            }else { return false;}
+    }
 
+    public  function get_user_residences( $id)
+    {
+        $residence=array();
+        $em = $this->getDoctrine()->getEntityManager();
+        if ($userresidences = $em->getRepository('CityUserBundle:User_residence')
+                               ->findBy(array('user'=>$id))) 
+            {
+                foreach ($userresidences as $userresidence) {
+                    
+                    switch ($userresidence->getResidence()->getType()) {
+                        case 'country':
+                            $residence['country']=$userresidence->getResidence()->getName();
+                            break;
+                        case 'state':
+                             $residence['state']=$userresidence->getResidence()->getName();
+                            break;
+                        case 'region':
+                             $residence['region']=$userresidence->getResidence()->getName();
+                            break;
+                        case 'city':
+                             $residence['region']=$userresidence->getResidence()->getName();
+                            break;                   
+                    }
+                return $residence;
+                }
+            }else { return False;}
+    }
 
 }

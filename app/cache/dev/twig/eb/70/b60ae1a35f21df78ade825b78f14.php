@@ -15,7 +15,6 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
             'content' => array($this, 'block_content'),
             'footer' => array($this, 'block_footer'),
             'container' => array($this, 'block_container'),
-            'foot_script' => array($this, 'block_foot_script'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -76,7 +75,7 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
 ";
         // line 34
         $this->displayBlock('body', $context, $blocks);
-        // line 68
+        // line 61
         echo "</body>
 </html>";
     }
@@ -200,34 +199,6 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
 \t";
     }
 
-    // line 61
-    public function block_foot_script($context, array $blocks = array())
-    {
-        // line 62
-        if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
-            // asset "4d23fcb_0"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_4d23fcb_0") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/4d23fcb_jquery.min_1.js");
-            // line 65
-            echo "<script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
-            echo "\"></script>";
-            // asset "4d23fcb_1"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_4d23fcb_1") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/4d23fcb_bootstrap_2.js");
-            echo "<script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
-            echo "\"></script>";
-        } else {
-            // asset "4d23fcb"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_4d23fcb") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/4d23fcb.js");
-            echo "<script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
-            echo "\"></script>";
-        }
-        unset($context["asset_url"]);
-        // line 66
-        echo "    ";
-    }
-
     // line 34
     public function block_body($context, array $blocks = array())
     {
@@ -238,11 +209,6 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
         $this->displayBlock('container', $context, $blocks);
         // line 59
         echo "    </div>";
-        // line 60
-        echo "
-\t";
-        // line 61
-        $this->displayBlock('foot_script', $context, $blocks);
     }
 
     public function getTemplateName()

@@ -1,4 +1,4 @@
-{% if type=="informations"  %}
+
 <a href={{path('CitytribeBundle_profile_edit')}}>modificate</a>
 <div id="username"> Username:	{{user.username}}</div>
 <div id="email"> Email:	{{user.email}}</div>
@@ -8,15 +8,4 @@
 <div id="language"> Language:	{{user.language}}</div>
 <div id="aboutMe"> About Me/Interesses:	{{user.aboutMe |striptags }}</div>
 	
-{% endif %}
-{% if type=="places"  %}
-<div id ="residence" class="places">
-	<div id="residenceCity">	{{user.residenceCity}}</div>
-	<div id="residenceCountry">	{{user.residenceCountry}}</div>
-</div>
-<div id ="destination" class="places">
-<div id="destinationCity">	{{user.destinationCity}}</div>
-<div id="destinationCountry">	{{user.destinationCountry}}</div>
-</div>	
-{% endif %}
 

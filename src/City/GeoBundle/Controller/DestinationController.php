@@ -103,7 +103,7 @@ class DestinationController extends Controller
             $em->persist($user_destination_city);           
             $em->flush();
 
-            return new Response('Ok');
+            return $this->redirect($this->generateUrl('Cityblog_home'));
             
         }
         return new Response('pas OK');           

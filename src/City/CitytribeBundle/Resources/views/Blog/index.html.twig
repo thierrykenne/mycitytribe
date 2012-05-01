@@ -1,34 +1,29 @@
-
-{% block title %}
-	HOME - {# {{ parent() }} #}
-{% endblock %}
-
-{% block cityblog_body %}
-
-	<h2>Liste des messages</h2>
-	<div>  <a href="{{ path('message_new')}}">New Message</a></div>
-
-	<ul>
-		{% for message in messages %}
-			<li>
-				<a href="{{ path('message_show', {'id': message.id}) }}">{{ message.titre }}</a>
-				par {{ message.author }},
-				le {{ message.date|date('d/m/Y') }}
-			</li>
-		{% else %}
-			<li>Pas (encore !) de messages</li>
-		{% endfor %}
-	</ul>
-
-    <div class="pagination">
-    	<ul>
-    		{# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
-    		{% for p in range(1, nb_pages) %}
-    			<li{% if p == page %} class="active"{% endif %}>
-    				<a href="{{ path('Cityblog_home', {'page': p}) }}">{{ p }}</a>
-    			</li>
-    		{% endfor %}
-    	</ul>
-    </div>
-
+{% extends "CitytribeBundle::default.html.twig" %}
+{% block middle %}
+{% include "CitytribeBundle:Menu:profile_nav.html.twig" with {'tab1': '','tab2':'active','tab3':''} %}
+		<h2>Liste des messages</h2>
+		<div>  <a href="{{ path('message_new')}}">New Message</a></div>
+		<div class="wall">
+			<ul>
+				{% for message in messages %}
+					<li>
+						<a href="{{ path('message_show', {'id': message.id}) }}">{{ message.titre }}</a>
+						par {{ message.author }},
+						le {{ message.date|date('d/m/Y') }}
+					</li>
+				{% else %}
+					<li>Pas (encore !) de messages</li>
+				{% endfor %}
+			</ul>
+	    	<div class="pagination">
+		    	<ul>
+		    		{# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+		    		{% for p in range(1, nb_pages) %}
+		    			<li{% if p == page %} class="active"{% endif %}>
+		    				<a href="{{ path('Cityblog_home', {'page': p}) }}">{{ p }}</a>
+		    			</li>
+		    		{% endfor %}
+		    	</ul>
+			</div>
+		</div>
 {% endblock %}

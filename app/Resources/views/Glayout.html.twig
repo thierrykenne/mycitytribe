@@ -97,52 +97,52 @@ $(document).ready(function() {
 	//Autocomplete
 	$('input#address').autocomplete({
 	source: function(request,response) {
-	geocoder.geocode( { 'address': $('input#address').val() }, function(results, status) {
-	response($.map(results, function(item) {
-	return {
-	value: item.formatted_address,
-    latitude: item.geometry.location.lat(),
-    longitude: item.geometry.location.lng(),
-    state: 
-	        function (){
-			    var elt = item.address_components;
-				for(i in elt){
-					if(elt[i].types[0] == 'administrative_area_level_1')
-						return elt[i].long_name;
-                }
+		geocoder.geocode( { 'address': $('input#address').val() }, function(results, status) {
+		response($.map(results, function(item) {
+		return {
+		value: item.formatted_address,
+	    latitude: item.geometry.location.lat(),
+	    longitude: item.geometry.location.lng(),
+	    state: 
+		        function (){
+				    var elt = item.address_components;
+					for(i in elt){
+						if(elt[i].types[0] == 'administrative_area_level_1')
+							return elt[i].long_name;
+	                }
 
-			},
+				},
 
-	region: 
-	        function (){
-			    var elt = item.address_components;
-				for(i in elt){
-					if(elt[i].types[0] == 'administrative_area_level_2')
-						return elt[i].long_name;
-                }
+		region: 
+		        function (){
+				    var elt = item.address_components;
+					for(i in elt){
+						if(elt[i].types[0] == 'administrative_area_level_2')
+							return elt[i].long_name;
+	                }
 
-			},
+				},
 
-	country: 
-	        function (){
-			    var elt = item.address_components;
-				for(i in elt){
-					if(elt[i].types[0] == 'country')
-						return elt[i].long_name;
-               }
-	       },
-	city: 
-	        function (){
-			    var elt = item.address_components;
-				for(i in elt){
-					if(elt[i].types[0] == 'locality')
-						return elt[i].long_name;
-               }
-	       }
-	}
-	}));
-	});
-	},
+		country: 
+		        function (){
+				    var elt = item.address_components;
+					for(i in elt){
+						if(elt[i].types[0] == 'country')
+							return elt[i].long_name;
+	               }
+		       },
+		city: 
+		        function (){
+				    var elt = item.address_components;
+					for(i in elt){
+						if(elt[i].types[0] == 'locality')
+							return elt[i].long_name;
+	               }
+		       }
+		}
+		}));
+		});
+		},
 	select: function(event, ui) {
 			$('#address').val(ui.item['value']);
 			$('.formatted_address').val(ui.item['value']);
@@ -159,7 +159,7 @@ $(document).ready(function() {
 			
 			$.ajax({ // fonction permettant de faire de l'ajax
 				   type: "POST", // methode de transmission des données au fichier php
-				   url: "{{path('CityGeoBundle_polygon_region')}}", // url du fichier php
+				   url: "{{path('GeoBundle_polygon_region')}}", // url du fichier php
 				   data: "country="+$(".country").val()+"&region="+$(".region").val(), // données à transmettre
 				   success: function(msg){ // si l'appel a bien fonctionné
 						if(msg==0) // si la connexion en php a fonctionnée
@@ -190,8 +190,7 @@ $(document).ready(function() {
 					}
 
 			  })
-	},
-	minLength: 2
+		}
 	});
 	
 
@@ -228,16 +227,6 @@ $(document).ready(function() {
 	{% endblock container %}
     </div>{# /.container #}
 
-	{% block foot_script -%}
-        {% javascripts filter="?yui_js"
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
-            '@IsdevTwitterBootstrapBundle/Resources/public/bootstrap/js/bootstrap.js'
-        %}<script type="text/javascript" src="{{ asset_url }}"></script>{% endjavascripts %}
-    {% endblock foot_script %}
 {% endblock body %}
 	</body>
-	{% block javascripts %}
-		{# Ajoutez ce javascript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-		<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-	{% endblock %}
 </html>

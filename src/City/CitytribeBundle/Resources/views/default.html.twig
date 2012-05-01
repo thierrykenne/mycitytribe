@@ -1,0 +1,21 @@
+{% extends "::Bloglayout.html.twig" %}
+
+{% block content %}
+<div class="content-type1 row">
+	<div class="logo-left2"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
+		{% include "CitytribeBundle:Menu:navigation.html.twig" %}
+		<div class="row contentbox space" > 
+			<div class="span3"> sdscas</div>
+			<div class="middle span6 "> {% block middle %} {% endblock %} </div>
+			<div class="span3"> ssssssd</div>
+		</div>
+</div>
+
+{% endblock %}
+    {% block footer %}
+    <div class="row">
+        <footer class="row">
+	   <p align="center"> Copyright &copy; <a href="" target="_blank">MyCityTribe </a> {{ 'now'|date('Y') }}</p>
+        </footer>
+    </div>
+    {% endblock footer %}

@@ -2,8 +2,8 @@
 {% block fos_user_content %}
 {% block content %}
 <div class="content-type1">
-	<div class="logo-center"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
-	{% include "CitytribeBundle:Default:navigation.html.twig" %}
+	<div class="logo-left"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
+	{% include "CitytribeBundle:Menu:navigation.html.twig" %}
 		<div class="row contentbox" > 
 			<div class="span7 register-right register" id="reg"> <img src="{{ asset('images/shutterstock.jpg') }}"></div>
 			<div class="span5 register-left register"> {% include "FOSUserBundle:Registration:register_content.html.twig" %}</div>	

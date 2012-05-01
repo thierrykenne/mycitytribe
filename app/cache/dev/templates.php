@@ -130,6 +130,7 @@
   'CityGeoBundle:Destination:edit.html.twig' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/views/Destination/edit.html.twig',
   'CityGeoBundle:Destination:new.html.twig' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/views/Destination/new.html.twig',
   'CityGeoBundle:Destination:index.html.twig' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/views/Destination/index.html.twig',
+  'CitytribeBundle:Default:navigation.html.twig' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views/Default/navigation.html.twig',
   'CitytribeBundle:Default:index.html.twig~' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views/Default/index.html.twig~',
   'CitytribeBundle:Default:profile.html.twig~' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views/Default/profile.html.twig~',
   'CitytribeBundle:Default:edit.html.twig~' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views/Default/edit.html.twig~',

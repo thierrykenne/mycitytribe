@@ -19,7 +19,8 @@
             </div>
             <div class="span5 ">
                 
-                <input id="address" class="span4" type="text" autocomplete="off" onKeyPress="return event.keyCode!=13" value="{{ locality.city}},{{locality.country}}" placeholder=" Hometown City or Address.. " />
+                <input id="address" class="span4" type="text" autocomplete="on" onKeyPress="return event.keyCode!=13" value="{% if not create %}{{ locality.city}},{{locality.country}}
+                                    {% endif %}" placeholder=" Destination City or Address.. " />
                 <button type="submit" class=" address-btn btn btn-success btn-medium">Validate</button>
             </div>
             

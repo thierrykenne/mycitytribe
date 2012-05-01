@@ -19,4 +19,24 @@ class Thread extends BaseThread
      * @ORM\Column(type="string")
      */
     protected $id;
+
+    /**
+     * Set id
+     *
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * Get id
+     *
+     * @return string 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

@@ -118,4 +118,5 @@ class Comment extends BaseComment implements SignedCommentInterface, VotableComm
         $this->setScore($score);
         return $score;
     }
+
 }
