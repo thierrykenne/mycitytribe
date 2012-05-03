@@ -1,0 +1,54 @@
+{% extends "::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error }}</div>
+{% endif %}
+
+
+{% block content %}
+<div >
+<div class="logo row "> <img src="{{ asset('images/new-logo.jpg') }}">
+	<div class="slogan  ">  <h2 > <span>Felling at your own home everywhere!</span> </h2></div>
+</div>
+
+<div class="row contentbox"> 
+
+	<div class="span6 video"> 
+<object width="445" height="315"><param name="movie" value="http://www.youtube.com/v/5JdJzazUJu0?version=3&amp;hl=fr_FR"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/5JdJzazUJu0?version=3&amp;hl=fr_FR" type="application/x-shockwave-flash" width="445" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+
+	</div>
+	<div class="span6 rightbox"> 
+		<div class="cnxbox row"> 
+			<div class="registerbox span3 " id="registerbox"> 
+				{{ facebook_login_button({'autologoutlink': true}) }}
+				<a class="btn btn-warning register-now" href="{{ path('fos_user_registration_register')}}"> <h3>Register Now</h3></a>
+			</div> 
+			<div class="loginbox span3 ">
+				<form action="{{ path("fos_user_security_check") }}" method="post">
+				    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+				    <!--<label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>-->
+				    	<input type="text" id="username" name="_username" value="{{ last_username }}"  placeholder="Username or Email..." /> 
+				    <!--<label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>-->
+				    <input type="password" id="password" name="_password" placeholder="Password..." />
+
+				    <label for="remember_me"  class="checkbox" >{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+				    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+				    </label>
+				    <button type="submit" id="_submit" name="_submit"  class="btn">Sign in</button>
+				<!--<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" /> -->
+				</form>				
+			</div>
+		 </div>
+		 <div class="text row english ">MyCityTribe is the social network where you can find information about the city in which you are migrating or traveling. In the community you can come into contact with people from your own tribe(Nationality) who have already faced the same problems and with whom you have same interests.
+		 </div>
+		 <div class="text row italian"> MyCityTribe è il social network dove trovare informazioni sulla città in cui si migra o si viaggia. Nella community puoi entrare in contatto con personne della tua stessa tribù (nationalità) che hanno già affrontato i tuoi stessi problemi ed hanno i medissimi tuoi interessi.</div>
+	</div>
+
+</div>
+            
+
+</div>
+{% endblock content %}
+{% endblock fos_user_content %}

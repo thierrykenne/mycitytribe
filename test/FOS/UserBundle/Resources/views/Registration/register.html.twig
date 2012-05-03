@@ -1,0 +1,14 @@
+{% extends "::layout.html.twig" %}
+{% block fos_user_content %}
+{% block content %}
+<div class="content-type1">
+	<div class="logo-left"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
+	{% include "CitytribeBundle:Menu:navigation.html.twig" %}
+		<div class="row contentbox" > 
+			<div class="span7 register-right register" id="reg"> <img src="{{ asset('images/world-blue.png') }}"></div>
+			<div class="span5 register-left register"> {% include "FOSUserBundle:Registration:register_content.html.twig" %}</div>	
+		</div>
+</div>
+{% endblock content %}
+
+{% endblock fos_user_content %}
