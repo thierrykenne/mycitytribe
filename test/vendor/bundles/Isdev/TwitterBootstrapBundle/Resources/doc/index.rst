@@ -1,1 +1,0 @@
-Read the README.markdown in the root of the project.
