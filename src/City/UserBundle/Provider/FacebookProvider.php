@@ -50,6 +50,7 @@ class FacebookProvider implements UserProviderInterface
                 $user = $this->userManager->createUser();
                 $user->setEnabled(true);
                 $user->setPassword('');
+                $user->setImage('default.jpg');
             }
 
             // TODO use http://developers.facebook.com/docs/api/realtime

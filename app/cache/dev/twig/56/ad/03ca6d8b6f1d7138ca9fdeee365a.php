@@ -38,56 +38,54 @@ class __TwigTemplate_56ad03ca6d8b6f1d7138ca9fdeee365a extends Twig_Template
 <div class=\"row contentbox\"> 
 
 \t<div class=\"span6 video\"> 
-\t\t<object width=\"445\" height=\"315\"><param name=\"movie\" value=\"http://www.youtube.com/v/gaZH5ec-zWE?version=3&amp;hl=fr_FR&amp;rel=0\">
-\t\t</param><param name=\"allowFullScreen\" value=\"true\"></param>
-\t\t<param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/gaZH5ec-zWE?version=3&amp;hl=fr_FR&amp;rel=0\" type=\"application/x-shockwave-flash\" width=\"420\" height=\"315\" allowscriptaccess=\"always\" allowfullscreen=\"true\">
-\t\t</embed></object>
+<object width=\"445\" height=\"315\"><param name=\"movie\" value=\"http://www.youtube.com/v/5JdJzazUJu0?version=3&amp;hl=fr_FR\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/5JdJzazUJu0?version=3&amp;hl=fr_FR\" type=\"application/x-shockwave-flash\" width=\"445\" height=\"315\" allowscriptaccess=\"always\" allowfullscreen=\"true\"></embed></object>
+
 \t</div>
 \t<div class=\"span6 rightbox\"> 
 \t\t<div class=\"cnxbox row\"> 
 \t\t\t<div class=\"registerbox span3 \" id=\"registerbox\"> 
 \t\t\t\t";
-        // line 26
+        // line 24
         echo $this->env->getExtension('facebook')->renderLoginButton(array("autologoutlink" => true));
         echo "
 \t\t\t\t<a class=\"btn btn-warning register-now\" href=\"";
-        // line 27
+        // line 25
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("fos_user_registration_register"), "html", null, true);
         echo "\"> <h3>Register Now</h3></a>
 \t\t\t</div> 
 \t\t\t<div class=\"loginbox span3 \">
 \t\t\t\t<form action=\"";
-        // line 30
+        // line 28
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("fos_user_security_check"), "html", null, true);
         echo "\" method=\"post\">
 \t\t\t\t    <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-        // line 31
+        // line 29
         echo twig_escape_filter($this->env, $this->getContext($context, "csrf_token"), "html", null, true);
         echo "\" />
 
 \t\t\t\t    <!--<label for=\"username\">";
-        // line 33
+        // line 31
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.username", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>-->
 \t\t\t\t    \t<input type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 34
+        // line 32
         echo twig_escape_filter($this->env, $this->getContext($context, "last_username"), "html", null, true);
         echo "\"  placeholder=\"Username or Email...\" /> 
 \t\t\t\t    <!--<label for=\"password\">";
-        // line 35
+        // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.password", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>-->
 \t\t\t\t    <input type=\"password\" id=\"password\" name=\"_password\" placeholder=\"Password...\" />
 
 \t\t\t\t    <label for=\"remember_me\"  class=\"checkbox\" >";
-        // line 38
+        // line 36
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.remember_me", array(), "FOSUserBundle"), "html", null, true);
         echo "
 \t\t\t\t    <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" />
 \t\t\t\t    </label>
 \t\t\t\t    <button type=\"submit\" id=\"_submit\" name=\"_submit\"  class=\"btn\">Sign in</button>
 \t\t\t\t<!--<input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"";
-        // line 42
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "\" /> -->
 \t\t\t\t</form>\t\t\t\t

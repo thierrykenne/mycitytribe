@@ -39,7 +39,7 @@ class __TwigTemplate_c7084e891b1834801c49770c3651b49e extends Twig_Template
         echo "\t\t<div class=\"row contentbox\" > 
 \t\t\t<div class=\"span7 register-right register\" id=\"reg\"> <img src=\"";
         // line 8
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/shutterstock.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/world-blue.png"), "html", null, true);
         echo "\"></div>
 \t\t\t<div class=\"span5 register-left register\"> ";
         // line 9

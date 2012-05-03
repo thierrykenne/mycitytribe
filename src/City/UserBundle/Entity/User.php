@@ -97,7 +97,7 @@ class User extends BaseUser
      *
      * @ORM\Column(name="image", type="string", length=255,nullable=TRUE)
      */
-    private $image;
+    private $image='default.jpg';
 
     /**
      * @var string
