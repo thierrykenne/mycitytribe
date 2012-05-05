@@ -1,9 +1,0 @@
-{% extends "SdzBlogBundle::layout.html.twig" %}
-
-{% block title %}Liste des articles - {{ parent() }}{% endblock %}
-
-{% block sdzblog_body %}
-
-	<p>{{ article}}</p>
-	
-{% endblock %}

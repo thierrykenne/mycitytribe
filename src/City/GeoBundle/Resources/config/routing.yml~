@@ -1,9 +1,0 @@
-CityGeoBundle_residence:
-    pattern:  /residence
-    defaults: { _controller: CityGeoBundle:Default:index }
-CityGeoBundle_destination:
-    pattern:  /destination
-    defaults: { _controller: CityGeoBundle:Default:destination }
-CityGeoBundle_polygon_region:
-    pattern:  /polygon
-    defaults: { _controller: CityGeoBundle:Default:polygon }
