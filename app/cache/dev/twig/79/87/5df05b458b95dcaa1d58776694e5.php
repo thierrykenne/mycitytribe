@@ -44,12 +44,18 @@ class __TwigTemplate_79875df05b458b95dcaa1d58776694e5 extends Twig_Template
         $this->env->loadTemplate("CitytribeBundle:Menu:navigation.html.twig")->display($context);
         // line 7
         echo "\t\t<div class=\"row contentbox space\" > 
-\t\t\t<div class=\"span3\"> sdscas</div>
-\t\t\t<div class=\"middle span6 \"> ";
+\t\t\t<div class=\"span3\"> ";
+        // line 8
+        $this->env->loadTemplate("CitytribeBundle:Menu:left.html.twig")->display($context);
+        echo " </div>
+\t\t\t<div class=\"middle span7 \"> ";
         // line 9
         $this->displayBlock('middle', $context, $blocks);
         echo " </div>
-\t\t\t<div class=\"span3\"> ssssssd</div>
+\t\t\t<div class=\"span2\"> ";
+        // line 10
+        $this->env->loadTemplate("CitytribeBundle:Menu:right.html.twig")->display($context);
+        echo "</div>
 \t\t</div>
 </div>
 

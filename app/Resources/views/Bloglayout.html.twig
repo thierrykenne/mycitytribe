@@ -7,16 +7,17 @@
         {% stylesheets filter='?cssembed,?yui_css'
            '@IsdevTwitterBootstrapBundle/Resources/public/bootstrap/css/bootstrap.css'
            '@IsdevTwitterBootstrapBundle/Resources/public/css/custom.css'
+           '@FOSCommentBundle/Resources/assets/css/comments.css'
         %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen" />
-        <link rel="stylesheet" href="{{ asset('css/styleBlog.css') }}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{{ asset('css/menu.css') }}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{{ asset('css/content.css') }}" type="text/css" media="screen" />
         {% endstylesheets %}
     {% endblock head_style %}
     <title>{% block title %}MycityTribe{% endblock %}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-    <script>
-	</script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 </head>
 <body>
 {% block body %}

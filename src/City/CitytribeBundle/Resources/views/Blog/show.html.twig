@@ -1,35 +1,22 @@
-<h1>Message</h1>
+{% extends "CitytribeBundle::default.html.twig" %}
+{% block middle %}
+<div class="message">
+    <div class="row">
+        <div class="span3 "><img class="img-msg" src="{{ asset('uploads/avatars/') }}{{user.image}} ">
+         <strong>{{ message.date|date('Y-m-d H:i:s') }}</strong></div>
+        <div class="span1"> <a href=""> {{num}}</a> Post </div>
+        <div class="span2"> 
+            <a href="{{ path('message_edit', { 'id': message.id }) }}"> Edit Message </a>
+        </div>
+    </div>
+        <div class="">
+            <p><div class="title-msg"> Title: {{ message.titre }}</div></p>
+            <p><div class="content-msg"> {{ message.contenu }}</div></p>
+            <p> <ul> <li><a href="{{ path('Cityblog_home') }}">Back to the list</a></li></ul> </p>
+        </div>
+</div>
+<div class="comments">
+    {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': message.thread.id} %}
+</div>
+{% endblock %}
 
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Date</th>
-            <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Titre</th>
-            <td>{{ entity.titre }}</td>
-        </tr>
-        <tr>
-            <th>Contenu</th>
-            <td>{{ entity.contenu }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('Cityblog_home') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('message_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-</ul>

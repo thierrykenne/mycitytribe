@@ -250,6 +250,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'bcc.twig.extension' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return City\CitytribeBundle\Twig\Extension\TwigExtension A City\CitytribeBundle\Twig\Extension\TwigExtension instance.
+     */
+    protected function getBcc_Twig_ExtensionService()
+    {
+        return $this->services['bcc.twig.extension'] = new \City\CitytribeBundle\Twig\Extension\TwigExtension();
+    }
+
+    /**
      * Gets the 'cache_warmer' service.
      *
      * This service is shared.
@@ -2306,7 +2319,7 @@ class appDevDebugProjectContainer extends Container
         $a = $this->get('security.context');
         $b = $this->get('monolog.logger.security');
 
-        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('my.facebook.user'), 1 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4fa2980278b6d', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
+        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('my.facebook.user'), 1 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4fa47e783c45f', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
     }
 
     /**
@@ -2901,6 +2914,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => true, 'strict_variables' => true, 'exception_controller' => 'Symfony\\Bundle\\TwigBundle\\Controller\\ExceptionController::showAction', 'cache' => '/opt/lampp/htdocs/Symfony/app/cache/dev/twig', 'charset' => 'UTF-8'));
 
+        $instance->addExtension($this->get('bcc.twig.extension'));
         $instance->addExtension(new \Symfony\Bundle\SecurityBundle\Twig\Extension\SecurityExtension($this->get('security.context')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($this->get('translator.default')));
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\AssetsExtension($this));
@@ -3378,7 +3392,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = new \Symfony\Component\Security\Core\User\UserChecker();
 
-        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4fa2980278b6d'), 1 => new \FOS\FacebookBundle\Security\Authentication\Provider\FacebookProvider($this->get('fos_facebook.api'), $this->get('my.facebook.user'), $a, false), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
+        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4fa47e783c45f'), 1 => new \FOS\FacebookBundle\Security\Authentication\Provider\FacebookProvider($this->get('fos_facebook.api'), $this->get('my.facebook.user'), $a, false), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
     }
 
     /**

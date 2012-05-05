@@ -1,0 +1,27 @@
+.form-msg{
+	margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 400px;
+}
+.form-msg input,.form-msg textarea{
+	width: 300px;
+}
+.form-msg textarea{
+	width: 350px;
+	height:130px;
+}
+.form-msg .btn{
+	width:120px;
+}
+.message{
+	background-color: #F8F4C6;
+    border: 2px solid #F8AE16;
+    margin-bottom: 20px;
+    padding: 5px;
+
+}
+.message .img-msg{
+	width:20px;
+	height:20px;
+}

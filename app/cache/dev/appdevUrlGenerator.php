@@ -31,11 +31,13 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_assetic_4d23fcb' => true,
        '_assetic_4d23fcb_0' => true,
        '_assetic_4d23fcb_1' => true,
+       '_assetic_fed6b85' => true,
+       '_assetic_fed6b85_0' => true,
+       '_assetic_fed6b85_1' => true,
+       '_assetic_fed6b85_2' => true,
        '_assetic_4c33c4b' => true,
        '_assetic_4c33c4b_0' => true,
        '_assetic_4c33c4b_1' => true,
-       '_assetic_48ed673' => true,
-       '_assetic_48ed673_0' => true,
        '_wdt' => true,
        '_profiler_search' => true,
        '_profiler_purge' => true,
@@ -237,6 +239,26 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '4d23fcb',  'pos' => 1,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/4d23fcb_bootstrap_2.js',  ),));
     }
 
+    private function get_assetic_fed6b85RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'fed6b85',  'pos' => NULL,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/fed6b85.css',  ),));
+    }
+
+    private function get_assetic_fed6b85_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'fed6b85',  'pos' => 0,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/fed6b85_bootstrap_1.css',  ),));
+    }
+
+    private function get_assetic_fed6b85_1RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'fed6b85',  'pos' => 1,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/fed6b85_custom_2.css',  ),));
+    }
+
+    private function get_assetic_fed6b85_2RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'fed6b85',  'pos' => 2,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/fed6b85_comments_3.css',  ),));
+    }
+
     private function get_assetic_4c33c4bRouteInfo()
     {
         return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '4c33c4b',  'pos' => NULL,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/4c33c4b.css',  ),));
@@ -250,16 +272,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function get_assetic_4c33c4b_1RouteInfo()
     {
         return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '4c33c4b',  'pos' => 1,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/4c33c4b_custom_2.css',  ),));
-    }
-
-    private function get_assetic_48ed673RouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '48ed673',  'pos' => NULL,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/48ed673.css',  ),));
-    }
-
-    private function get_assetic_48ed673_0RouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '48ed673',  'pos' => 0,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/48ed673_comments_1.css',  ),));
     }
 
     private function get_wdtRouteInfo()
@@ -399,32 +411,32 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
 
     private function getmessage_showRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/message',  ),));
     }
 
     private function getmessage_newRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/blog/new',  ),));
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/message/new',  ),));
     }
 
     private function getmessage_createRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/blog/create',  ),));
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/message/create',  ),));
     }
 
     private function getmessage_editRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/message',  ),));
     }
 
     private function getmessage_updateRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/message',  ),));
     }
 
     private function getmessage_deleteRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/message',  ),));
     }
 
     private function getGeoBundle_polygon_regionRouteInfo()

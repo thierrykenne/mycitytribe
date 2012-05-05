@@ -9,5 +9,5 @@ Cityblog_profile:
 
 Cityblog_crud:
     resource: "routing/article.yml"
-    prefix:   /blog
+    prefix:   /message
 

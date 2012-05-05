@@ -1,16 +1,23 @@
-<h1>Message creation</h1>
+{% extends "CitytribeBundle::default.html.twig" %}
+{% block middle %}
+<div class="form-msg">
+	<p><h2>New Subject</h2></p>
 
-<form action="{{ path('message_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
-</form>
+	<p> <form action="{{ path('message_create') }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
+	    <p>
+	        <button class="btn btn-success" type="submit">Create</button>
+	    </p>
+	</form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('Cityblog_home') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+	<ul class="record_actions">
+	    <li>
+	        <a href="{{ path('Cityblog_home') }}">
+	            Back to the list
+	        </a>
+	    </li>
+	</ul></p>
+</div>
+
+{% endblock %}
+

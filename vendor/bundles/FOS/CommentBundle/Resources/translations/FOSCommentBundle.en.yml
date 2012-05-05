@@ -1,5 +1,5 @@
-fos_comment_comment_new_headline_first:       Add  New Subject
-fos_comment_comment_new_headline:             Add New Comment
+fos_comment_comment_new_headline_first:       Be the first to comment
+fos_comment_comment_new_headline:             Type your Comment
 fos_comment_comment_new_submit:               Post
 
 fos_comment_comment_reply_reply_to:           Replying to %name%

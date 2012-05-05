@@ -1,0 +1,21 @@
+<div class="left-menu">
+	<ul class="thumbnails">
+	  <li class="span3">
+	    <div class="thumbnail">
+	      <img src=" {{asset('uploads/avatars/') }}{{user.image}}" alt="">
+	      <p><strong> Username: </strong>{{user.username}}</p>
+	      <p><strong> Country: </strong> {{user.nationality | country }} </p>
+	      <p><strong> Occupation: </strong> {{user.occupation}} </p>
+	      <p><strong>Usage: </strong> {{user.visitgoal}} </p>
+	    </div>
+	  </li>
+	</ul>
+
+	<ul class="nav nav-tabs nav-stacked">
+	 <li class="first"> <a href=""> UTENTI TRIBU </a>	 </li>
+	 <li class="even"> <a href=""> AMICI PREFERITI</a> </li>
+	 <li class="odd"> <a href=""> TRIBU PREFERITE</a> </li>
+	 <li class="even"> <a href=""> MESSAGES</a></li>
+	 <li class="last"> <a href=""> CHAT</a></li>	
+	</ul>
+</div>

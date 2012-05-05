@@ -32,11 +32,16 @@ div.fos_comment_comment_show {
 div.fos_comment_comment_metas {
     margin: 1.5em 0 0.5em 0;
     padding: 1em 20px;
-    background: #e6e6e6;
+    background: #F6F8FC;
     border: 1px solid #ccc;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
+}
+div.fos_comment_comment_metas img {
+    width:35px;
+    height:35px;
+    background-size:100% 100%;
 }
 div.fos_comment_comment_body {
     line-height: 1.5em;

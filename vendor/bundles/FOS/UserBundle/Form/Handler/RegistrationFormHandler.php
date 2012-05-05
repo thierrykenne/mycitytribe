@@ -65,7 +65,7 @@ class RegistrationFormHandler
         $user->setNumAnswer(0);
         $user->setOccupation('');
         $user->setVisitGoal('');
-        $user->setImage('');
+        $user->setImage('default.jpg');
         $user->setLanguage('');
         //end
         if ($confirmation) {

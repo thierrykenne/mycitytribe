@@ -140,7 +140,7 @@ class __TwigTemplate_e6ac6ae733fb638296157989b5ae6e61 extends Twig_Template
                 ";
         }
         // line 48
-        echo "                <input type=\"submit\" value=\"";
+        echo "                <input type=\"submit\" class=\"btn\" value=\"";
         echo $this->env->getExtension('translator')->getTranslator()->trans("fos_comment_comment_new_submit", array(), "FOSCommentBundle");
         echo "\" />
             ";

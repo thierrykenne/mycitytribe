@@ -55,7 +55,8 @@ class BlogController extends Controller
         return $this->render('CitytribeBundle:Blog:index.html.twig', array(
             'messages' => $messages,
             'page'     => $page,    // On transmet à la vue la page courante,
-            'nb_pages' => $nb_pages // Et le nombre total de pages.
+            'nb_pages' => $nb_pages,
+            'user'=>$user // Et le nombre total de pages.
         ));
     }
 
@@ -65,16 +66,20 @@ class BlogController extends Controller
      */
     public function showAction($id)
     {
+        $user= $this->get_user();
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('CitytribeBundle:Message')->find($id);
+        $numComments=$entity->getThread()->getNumComments();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Message entity.');
         }
 
         return $this->render('CitytribeBundle:Blog:show.html.twig', array(
-            'entity'      => $entity,
+            'message'      => $entity,
+            'user'         => $user,
+            'num'          => $numComments,
         ));
     }
 
@@ -84,12 +89,14 @@ class BlogController extends Controller
      */
     public function newAction()
     {
+        $user= $this->get_user();
         $entity = new Message();
         $form   = $this->createForm(new MessageType(), $entity);
 
         return $this->render('CitytribeBundle:Blog:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+            'user'=>$user
         ));
     }
 
@@ -112,33 +119,60 @@ class BlogController extends Controller
             $thread->setId(uniqid());
             $thread->setPermalink('empty');
     //find user destinations
-        $user=$this->get_user();
-        $em = $this->getDoctrine()->getEntityManager();
-        if($entity->getNationality()=='destination'){
+            $user=$this->get_user();
+            $em = $this->getDoctrine()->getEntityManager();
+            if($entity->getNationality()=='destination'){
 
 
-            if ($userdestinations = $em->getRepository('CityUserBundle:User_destination')
-                               ->findBy(array('user'=>$user->getId()))) 
-            {
-                foreach ($userdestinations as $userdestination) {
-                    
-                    switch ($userdestination->getDestination()->getType()) {
-                        case 'country':
-                            $entity->setCountryTribe($userdestination->getDestination()->getName());
-                            break;
-                        case 'state':
-                             $entity->setStateTribe($userdestination->getDestination()->getName());
-                            break;
-                        case 'region':
-                             $entity->setRegionTribe($userdestination->getDestination()->getName());
-                            break;
-                        case 'city':
-                             $entity->setCityTribe($userdestination->getDestination()->getName());
-                            break;                   
+                if ($userdestinations = $em->getRepository('CityUserBundle:User_destination')
+                                   ->findBy(array('user'=>$user->getId()))) 
+                {
+                    foreach ($userdestinations as $userdestination) {
+                        
+                        switch ($userdestination->getDestination()->getType()) {
+                            case 'country':
+                                $entity->setCountryTribe($userdestination->getDestination()->getName());
+                                break;
+                            case 'state':
+                                 $entity->setStateTribe($userdestination->getDestination()->getName());
+                                break;
+                            case 'region':
+                                 $entity->setRegionTribe($userdestination->getDestination()->getName());
+                                break;
+                            case 'city':
+                                 $entity->setCityTribe($userdestination->getDestination()->getName());
+                                break;                   
+                        }
                     }
                 }
             }
-        }else{ print ($entity->getNationality());}
+            elseif($entity->getNationality()=='residence')
+            { 
+                if ($residences = $em->getRepository('CityUserBundle:User_residence')
+                                   ->findBy(array('user'=>$user->getId()))) 
+                {
+                    foreach ($residences as $residence) {
+                        
+                        switch ($residence->getDestination()->getType()) {
+                            case 'country':
+                                $entity->setCountryTribe($residence->getDestination()->getName());
+                                break;
+                            case 'state':
+                                 $entity->setStateTribe($residence->getDestination()->getName());
+                                break;
+                            case 'region':
+                                 $entity->setRegionTribe($residence->getDestination()->getName());
+                                break;
+                            case 'city':
+                                 $entity->setCityTribe($residence->getDestination()->getName());
+                                break;                   
+                        }
+                    }
+                }
+            }
+            else{
+                 throw new AccessDeniedException('You are not allow to change Parameters!');
+            }
             $entity->setNationality($user->getNationality());
             $entity->setThread($thread);
             $entity->setAuthor($user);
@@ -153,7 +187,8 @@ class BlogController extends Controller
 
         return $this->render('CitytribeBundle:Blog:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+            'user'=>$user
         ));
     }
     /**
@@ -162,6 +197,7 @@ class BlogController extends Controller
      */
     public function editAction($id)
     {
+        $user= $this->get_user();
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('CitytribeBundle:Message')->find($id);
@@ -175,6 +211,7 @@ class BlogController extends Controller
         return $this->render('CitytribeBundle:Blog:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
+            'user'=>$user
         ));
     }
 
@@ -184,6 +221,7 @@ class BlogController extends Controller
      */
     public function updateAction($id)
     {
+        $user= $this->get_user();
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('CitytribeBundle:Message')->find($id);
@@ -208,6 +246,7 @@ class BlogController extends Controller
         return $this->render('CitytribeBundle:Blog:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
+            'user'=>$user
         ));
     }
 
@@ -240,7 +279,7 @@ class BlogController extends Controller
                              $destination['region']=$userdestination->getDestination()->getName();
                             break;
                         case 'city':
-                             $destination['region']=$userdestination->getDestination()->getName();
+                             $destination['city']=$userdestination->getDestination()->getName();
                             break;                   
                     }
                 return $destination;
@@ -268,7 +307,7 @@ class BlogController extends Controller
                              $residence['region']=$userresidence->getResidence()->getName();
                             break;
                         case 'city':
-                             $residence['region']=$userresidence->getResidence()->getName();
+                             $residence['city']=$userresidence->getResidence()->getName();
                             break;                   
                     }
                 return $residence;

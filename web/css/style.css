@@ -6,6 +6,9 @@ body{
 	background-color:#FFFFFF;
 	padding: 20px 0px 0px 0px;
 	box-shadow:-10px 5px 29px #000;
+	background-image: url('../images/content-bg.png');
+	background-repeat:no-repeat;
+	background-size: 100% auto;
 }
 .contentbox .video{
 	width:440px;
@@ -94,13 +97,14 @@ a.fb_button{
   	font-size:14px;
 
 }
-.italian{
-	background-color: #c1c2c4;
+.rightbox .italian{
+	background-color: #F8FAFD;
+    border: 2px solid #E3E7EC;
 	margin-top: 20px;
-	color: #704120;
 }
-.english{
-  	background-color: #fef2cd;
+.rightbox .english{
+	border: 2px solid #F8AE16;
+  	background-color: #F8F4C6;
 }
 footer{
 	background-color:#C0C2C4;

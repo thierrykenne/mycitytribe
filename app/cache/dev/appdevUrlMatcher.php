@@ -124,6 +124,26 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'assetic.controller:render',  'name' => '4d23fcb',  'pos' => 1,  '_format' => 'js',  '_route' => '_assetic_4d23fcb_1',);
         }
 
+        // _assetic_fed6b85
+        if ($pathinfo === '/css/fed6b85.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => 'fed6b85',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_fed6b85',);
+        }
+
+        // _assetic_fed6b85_0
+        if ($pathinfo === '/css/fed6b85_bootstrap_1.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => 'fed6b85',  'pos' => 0,  '_format' => 'css',  '_route' => '_assetic_fed6b85_0',);
+        }
+
+        // _assetic_fed6b85_1
+        if ($pathinfo === '/css/fed6b85_custom_2.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => 'fed6b85',  'pos' => 1,  '_format' => 'css',  '_route' => '_assetic_fed6b85_1',);
+        }
+
+        // _assetic_fed6b85_2
+        if ($pathinfo === '/css/fed6b85_comments_3.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => 'fed6b85',  'pos' => 2,  '_format' => 'css',  '_route' => '_assetic_fed6b85_2',);
+        }
+
         // _assetic_4c33c4b
         if ($pathinfo === '/css/4c33c4b.css') {
             return array (  '_controller' => 'assetic.controller:render',  'name' => '4c33c4b',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_4c33c4b',);
@@ -137,16 +157,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // _assetic_4c33c4b_1
         if ($pathinfo === '/css/4c33c4b_custom_2.css') {
             return array (  '_controller' => 'assetic.controller:render',  'name' => '4c33c4b',  'pos' => 1,  '_format' => 'css',  '_route' => '_assetic_4c33c4b_1',);
-        }
-
-        // _assetic_48ed673
-        if ($pathinfo === '/css/48ed673.css') {
-            return array (  '_controller' => 'assetic.controller:render',  'name' => '48ed673',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_48ed673',);
-        }
-
-        // _assetic_48ed673_0
-        if ($pathinfo === '/css/48ed673_comments_1.css') {
-            return array (  '_controller' => 'assetic.controller:render',  'name' => '48ed673',  'pos' => 0,  '_format' => 'css',  '_route' => '_assetic_48ed673_0',);
         }
 
         // _wdt
@@ -341,19 +351,19 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/blog')) {
+        if (0 === strpos($pathinfo, '/message')) {
             // message_show
-            if (preg_match('#^/blog/(?P<id>[^/]+?)/show$#xs', $pathinfo, $matches)) {
+            if (preg_match('#^/message/(?P<id>[^/]+?)/show$#xs', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::showAction',)), array('_route' => 'message_show'));
             }
 
             // message_new
-            if ($pathinfo === '/blog/new') {
+            if ($pathinfo === '/message/new') {
                 return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::newAction',  '_route' => 'message_new',);
             }
 
             // message_create
-            if ($pathinfo === '/blog/create') {
+            if ($pathinfo === '/message/create') {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_message_create;
@@ -363,12 +373,12 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_message_create:
 
             // message_edit
-            if (preg_match('#^/blog/(?P<id>[^/]+?)/edit$#xs', $pathinfo, $matches)) {
+            if (preg_match('#^/message/(?P<id>[^/]+?)/edit$#xs', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::editAction',)), array('_route' => 'message_edit'));
             }
 
             // message_update
-            if (preg_match('#^/blog/(?P<id>[^/]+?)/update$#xs', $pathinfo, $matches)) {
+            if (preg_match('#^/message/(?P<id>[^/]+?)/update$#xs', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_message_update;
@@ -378,7 +388,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_message_update:
 
             // message_delete
-            if (preg_match('#^/blog/(?P<id>[^/]+?)/delete$#xs', $pathinfo, $matches)) {
+            if (preg_match('#^/message/(?P<id>[^/]+?)/delete$#xs', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_message_delete;

@@ -12,7 +12,7 @@ use City\UserBundle\Entity\User;
 
 
 /**
- * @ORM\Entity
+* @ORM\Entity(repositoryClass="City\CitytribeBundle\Entity\CommentRepository")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
 class Comment extends BaseComment implements SignedCommentInterface, VotableCommentInterface

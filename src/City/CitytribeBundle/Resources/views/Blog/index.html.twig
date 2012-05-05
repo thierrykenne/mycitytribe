@@ -1,14 +1,14 @@
 {% extends "CitytribeBundle::default.html.twig" %}
 {% block middle %}
-		<h2>Liste des messages</h2>
+		<h2> Message List of the tribe</h2>
 		<div>  <a href="{{ path('message_new')}}">New Message</a></div>
 		<div class="wall">
 			<ul>
 				{% for message in messages %}
 					<li>
 						<a href="{{ path('message_show', {'id': message.id}) }}">{{ message.titre }}</a>
-						par {{ message.author }},
-						le {{ message.date|date('d/m/Y') }}
+						By {{ message.author }},
+						the {{ message.date|date('d/m/Y') }}
 					</li>
 				{% else %}
 					<li>Pas (encore !) de messages</li>

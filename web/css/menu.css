@@ -1,0 +1,41 @@
+.left-menu .nav  a, .right-menu a{
+	color: #FFF;
+}
+.left-menu .nav  a:hover{
+	z-index: auto;
+}
+.left-menu .first, .right-menu .nav-header{
+	background-image: url('../images/menu-head.png');
+	background-repeat: no-repeat;
+	background-color: #FFF;
+	background-size: 100% 100%;
+}
+.left-menu .odd{
+	background-image: url('../images/menu-middle.png');
+	background-repeat: no-repeat;
+	background-color: #EEE;
+	background-size: 100% 100%;
+}
+.left-menu .even, .right-menu .nav-list{
+	background-color: #c1c2c4;
+}
+.left-menu .last{
+	background-image: url('../images/menu-bottom.png');
+	background-repeat: no-repeat;
+	background-color: #EEE;
+	background-size: 100% 100%;
+}
+.right-menu .nav-list a{
+	font-family: arial, verdana, sans-serif;
+	text-shadow: none;
+	font-size: 100%;
+}
+.right-menu .nav-header {
+	color: #FFFFFF;
+    font-size: 100%;
+    text-shadow: none;
+}
+.right-menu ul{
+	border-radius:0 0 5px 5px;
+}
+	

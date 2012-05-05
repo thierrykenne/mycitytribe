@@ -3,41 +3,59 @@
 /* CitytribeBundle:Blog:new.html.twig */
 class __TwigTemplate_4d5d03bfe16336105161b40d9b0284cc extends Twig_Template
 {
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->blocks = array(
+            'middle' => array($this, 'block_middle'),
+        );
+    }
+
     protected function doGetParent(array $context)
     {
-        return false;
+        return "CitytribeBundle::default.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 1
-        echo "<h1>Message creation</h1>
+        $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
+    }
 
-<form action=\"";
+    // line 2
+    public function block_middle($context, array $blocks = array())
+    {
         // line 3
+        echo "<div class=\"form-msg\">
+\t<p><h2>New Subject</h2></p>
+
+\t<p> <form action=\"";
+        // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("message_create"), "html", null, true);
         echo "\" method=\"post\" ";
         echo $this->env->getExtension('form')->renderEnctype($this->getContext($context, "form"));
         echo ">
-    ";
-        // line 4
+\t    ";
+        // line 7
         echo $this->env->getExtension('form')->renderWidget($this->getContext($context, "form"));
         echo "
-    <p>
-        <button type=\"submit\">Create</button>
-    </p>
-</form>
+\t    <p>
+\t        <button class=\"btn btn-success\" type=\"submit\">Create</button>
+\t    </p>
+\t</form>
 
-<ul class=\"record_actions\">
-    <li>
-        <a href=\"";
-        // line 12
+\t<ul class=\"record_actions\">
+\t    <li>
+\t        <a href=\"";
+        // line 15
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home"), "html", null, true);
         echo "\">
-            Back to the list
-        </a>
-    </li>
-</ul>
+\t            Back to the list
+\t        </a>
+\t    </li>
+\t</ul></p>
+</div>
+
 ";
     }
 

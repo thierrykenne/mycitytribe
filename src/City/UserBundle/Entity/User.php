@@ -95,7 +95,7 @@ class User extends BaseUser
     /**
      * @var string $image
      *
-     * @ORM\Column(name="image", type="string", length=255,nullable=TRUE)
+     * @ORM\Column(name="image",type="string", length=255)
      */
     private $image='default.jpg';
 
@@ -112,6 +112,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->messages = new \Doctrine\Common\Collections\ArrayCollection;
+        $this->image='default.jpg';
     }
 
     //facebook bundle   

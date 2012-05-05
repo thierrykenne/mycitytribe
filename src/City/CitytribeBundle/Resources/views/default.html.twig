@@ -5,9 +5,9 @@
 	<div class="logo-left2"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
 		{% include "CitytribeBundle:Menu:navigation.html.twig" %}
 		<div class="row contentbox space" > 
-			<div class="span3"> sdscas</div>
-			<div class="middle span6 "> {% block middle %} {% endblock %} </div>
-			<div class="span3"> ssssssd</div>
+			<div class="span3"> {% include "CitytribeBundle:Menu:left.html.twig" %} </div>
+			<div class="middle span7 "> {% block middle %} {% endblock %} </div>
+			<div class="span2"> {% include "CitytribeBundle:Menu:right.html.twig" %}</div>
 		</div>
 </div>
 

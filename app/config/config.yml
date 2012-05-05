@@ -124,3 +124,7 @@ services:
             userManager: "@fos_user.user_manager"
             validator: "@validator"
             container: "@service_container"
+    bcc.twig.extension:
+        class: City\CitytribeBundle\Twig\Extension\TwigExtension
+        tags:
+            -  { name: twig.extension }

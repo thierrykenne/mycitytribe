@@ -10,9 +10,10 @@ class MessageType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('titre')
-            ->add('contenu')
+            ->add('titre','text',array('label'=>'Title'))
+            ->add('contenu' ,'textarea',array('label'=>'Message'))
             ->add('nationality','choice',array(
+                'label'=>'Related Tribe',
                 'choices'=>array(
                         'destination'=>'Destination-Tribe',
                         'residence'=>'Hometown-Tribe'
