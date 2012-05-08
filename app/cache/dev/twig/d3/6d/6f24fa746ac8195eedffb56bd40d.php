@@ -26,30 +26,30 @@ class __TwigTemplate_d36d6f24fa746ac8195eedffb56bd40d extends Twig_Template
 \t  <li class=\"nav-header\">
 \t    Functionalities
 \t  </li>
-\t  <li><i class=\"icon-book\"></i>
-\t    <a href=\"http://volagratis.com\" target=\"_blank\">Flight booking</a>
+\t  <li>
+\t    <a href=\"http://volagratis.com\" target=\"_blank\"><i class=\"icon-plane\"></i> Flight booking</a>
 \t  </li>
 \t  <li>
-\t    <a href=\"http://booking.com\" target=\"_blank\">Hotel booking</a>
+\t    <a href=\"http://booking.com\" target=\"_blank\"> <i class=\"icon-list-alt\"></i> Hotel booking</a>
 \t  </li>
 \t  <li>
-\t    <a href=\"#\">Vacancy</a>
+\t    <a href=\"#\"> <i class=\"icon-road\"></i> Vacancy</a>
 \t  </li>
 \t  <li>
-\t    <a href=\"#\">Flat rent</a>
+\t    <a href=\"#\"> <i class=\"icon-book\"></i> Flat rent</a>
 \t  </li>
 \t  <li>
-\t    <a href=\"#\">E-book</a>
+\t    <a href=\"#\"> <i class=\"icon-book\"></i> E-book</a>
 \t  </li>
 \t  <li>
-\t    <a href=\"#\">Documents</a>
+\t    <a href=\"#\"><i class=\"icon-bookmark\"></i> Documents</a>
 \t  </li>
 \t  <li>
-\t    <a href=\"#\">Service</a>
+\t    <a href=\"#\"><i class=\"icon-gift\"></i> Service</a>
 \t  </li>
 \t  <li class=\"divider\"></li>
 \t  <li>
-\t    <a href=\"#\">Faq</a>
+\t    <a href=\"#\"><i class=\"icon-question-sign\"></i> Faq</a>
 \t  </li>
 \t</ul></p>
 </div>

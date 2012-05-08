@@ -59,6 +59,7 @@ class DestinationController extends Controller
             'form' => $editForm->createView(),
             'create'=>$create,
             'locality'=>$locality,
+            'user' =>$this->get_user()
         ));
     }
 
@@ -121,22 +122,6 @@ class DestinationController extends Controller
                 ));
 
     }
-    public function showtribeAction()
-    {
-        $user=$this->get_user()->getId();
-        $em = $this->getDoctrine()->getEntityManager();
-        $userdestinations = $em->getRepository('CityUserBundle:User_destination')
-                           ->findBy(array('user'=>$user,'activated'=>True),array('id'=>'ASC'),1,0);
-        $destination =$userdestinations[0]->getDestination()->getId();
-
-        $users = $em->getRepository('CityUserBundle:User_destination')
-                           ->findBy(array('destination'=>$destination,'activated'=>True)); 
-
-        return $this->render('CityUserBundle:destination:show.html.twig', array(
-                "userdestinations"=>$userdestinations,
-                "users"=>$users
-                ));
-    }
 
     /**
      * Edits an existing Destination entity.
@@ -183,11 +168,11 @@ public function updateAction()
                          $userdestination->setDestination($destination_city);
                         break;                   
                 }
-            $em->persist($userdestination);    
+                 $em->persist($userdestination);    
             }      
             $em->flush();
 
-            return new Response('Ok');
+             return $this->redirect($this->generateUrl('Cityblog_home'));
             
         }
         return new Response('pas OK');           

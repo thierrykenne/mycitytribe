@@ -31,7 +31,7 @@ class __TwigTemplate_c92103a9054173f22ab8703371f8fec7 extends Twig_Template
         <div class=\"span3 \"><img class=\"img-msg\" src=\"";
         // line 5
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("uploads/avatars/"), "html", null, true);
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "user"), "image"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "message"), "author"), "image"), "html", null, true);
         echo " \">
          <strong>";
         // line 6
@@ -41,33 +41,41 @@ class __TwigTemplate_c92103a9054173f22ab8703371f8fec7 extends Twig_Template
         // line 7
         echo twig_escape_filter($this->env, $this->getContext($context, "num"), "html", null, true);
         echo "</a> Post </div>
-        <div class=\"span2\"> 
-            <a href=\"";
+        <div class=\"span2\">
+        ";
         // line 9
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("message_edit", array("id" => $this->getAttribute($this->getContext($context, "message"), "id"))), "html", null, true);
-        echo "\"> Edit Message </a>
+        if (($this->getAttribute($this->getContext($context, "message"), "author") == $this->getAttribute($this->getContext($context, "user"), "username"))) {
+            echo " 
+            <a href=\"";
+            // line 10
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("message_edit", array("id" => $this->getAttribute($this->getContext($context, "message"), "id"))), "html", null, true);
+            echo "\"> <i class=\"icon-edit\"></i>  Edit Message </a>
+        ";
+        }
+        // line 11
+        echo "    
         </div>
     </div>
         <div class=\"\">
             <p><div class=\"title-msg\"> Title: ";
-        // line 13
+        // line 15
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "message"), "titre"), "html", null, true);
         echo "</div></p>
             <p><div class=\"content-msg\"> ";
-        // line 14
+        // line 16
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "message"), "contenu"), "html", null, true);
         echo "</div></p>
             <p> <ul> <li><a href=\"";
-        // line 15
+        // line 17
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home"), "html", null, true);
         echo "\">Back to the list</a></li></ul> </p>
         </div>
 </div>
 <div class=\"comments\">
     ";
-        // line 19
+        // line 21
         $this->env->loadTemplate("FOSCommentBundle:Thread:async.html.twig")->display(array_merge($context, array("id" => $this->getAttribute($this->getAttribute($this->getContext($context, "message"), "thread"), "id"))));
-        // line 20
+        // line 22
         echo "</div>
 ";
     }

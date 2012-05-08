@@ -21,7 +21,10 @@ class ProfileController extends Controller
     public function info_showAction()
     {   
         $user=$this->get_user();
-	   return $this->render('CitytribeBundle:Profile:informations.html.twig',array('user'=>$user));
+	   return $this->render('CitytribeBundle:Profile:informations.html.twig',array(
+                    'user'=>$user,
+                    'profile'=>'active'
+        ));
     }
 
     public function avatar_showAction()
@@ -55,7 +58,8 @@ class ProfileController extends Controller
     	}
     	return $this->render('CitytribeBundle:Profile:avatar.html.twig',array(
     				'user'=>$user,
-    				'form'=> $form->createView()
+    				'form'=> $form->createView(),
+                    'profile'=>'active'
     			   ));
     }	
  
@@ -73,6 +77,7 @@ class ProfileController extends Controller
         return $this->render('CitytribeBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
             'user'=>$user,
+            'profile'=>'active'
         ));
     }
 
@@ -84,6 +89,44 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         return $user;
+    }
+    public function messagesAction($page,$id)
+    {
+        $em=$this->getDoctrine()->getEntityManager();
+        if ( !$user=$em->getRepository('CityUserBundle:User')->findOneById($id) )
+        {
+            throw new AccessDeniedException('Page not Found !');
+        }
+        
+        $repository =$em->getRepository('CitytribeBundle:Message');
+
+        $nb_messages = $repository->getTotalUser($user);
+
+        $nb_messages_page = 4;
+
+        $nb_pages = ceil($nb_messages/$nb_messages_page);
+        $offset = ($page-1) * $nb_messages_page;
+        if ($page!=1) {
+            if( $page < 1 OR $page > $nb_pages )
+            {
+                throw $this->createNotFoundException('Page not exist (page = '.$page.')');
+            }
+        }
+
+        $messages= $repository->findBy(
+            array('author' =>$user),                 
+            array('date' => 'desc'), 
+            $nb_messages_page,       
+            $offset                  
+        );
+
+        return $this->render('CitytribeBundle:Blog:index.html.twig', array(
+            'user'          =>$user,
+            'message'       =>'active',
+            'messages'      => $messages,
+            'page'          => $page,
+            'nb_pages'      => $nb_pages,
+        ));
     }
 }
 

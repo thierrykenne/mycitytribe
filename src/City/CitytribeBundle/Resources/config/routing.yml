@@ -1,8 +1,9 @@
 Cityblog_home:
-    pattern:   /home/{page}
-    defaults:  { _controller: CitytribeBundle:Blog:index, page: 1 }
+    pattern:   /home/{type}/{page}
+    defaults:  { _controller: CitytribeBundle:Blog:index, type:destination, page: 1 }
     requirements:
         page:  \d+
+        type: destination|residence
 Cityblog_profile:
     resource: "@CitytribeBundle/Resources/config/routing/profile.yml"
     prefix:   /profile
@@ -11,3 +12,14 @@ Cityblog_crud:
     resource: "routing/article.yml"
     prefix:   /message
 
+Cityblog_tribe_users:
+    pattern:   /home/users/{type}
+    defaults:  { _controller: CitytribeBundle:Blog:users, type:destination }
+    requirements:
+        type: destination|residence
+
+Cityblog_tribes:
+    pattern:   /home/tribes/{type}
+    defaults:  { _controller: CitytribeBundle:Blog:tribes, type:destination}
+    requirements:
+        type: destination|residence

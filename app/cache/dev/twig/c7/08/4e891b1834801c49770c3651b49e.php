@@ -34,7 +34,7 @@ class __TwigTemplate_c7084e891b1834801c49770c3651b49e extends Twig_Template
         echo "\"> </div>
 \t";
         // line 6
-        $this->env->loadTemplate("CitytribeBundle:Menu:navigation.html.twig")->display($context);
+        $this->env->loadTemplate("CitytribeBundle:Menu:default.html.twig")->display($context);
         // line 7
         echo "\t\t<div class=\"row contentbox\" > 
 \t\t\t<div class=\"span7 register-right register\" id=\"reg\"> <img src=\"";

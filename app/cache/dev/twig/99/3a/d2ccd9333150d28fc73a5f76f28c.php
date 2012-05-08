@@ -30,7 +30,7 @@ class __TwigTemplate_993ad2ccd9333150d28fc73a5f76f28c extends Twig_Template
         // line 4
         if ($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "hasFlash", array("notice", ), "method")) {
             // line 5
-            echo "    <div class=\"flash-notice\">
+            echo "    <div class=\"flash-notice alert alert-info\">
         ";
             // line 6
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "flash", array("notice", ), "method"), "html", null, true);
@@ -47,14 +47,14 @@ class __TwigTemplate_993ad2ccd9333150d28fc73a5f76f28c extends Twig_Template
         echo $this->env->getExtension('form')->renderEnctype($this->getContext($context, "form"));
         echo ">
 \t
-\t\t";
+\t<div class=\"span4\">\t";
         // line 12
         echo $this->env->getExtension('form')->renderWidget($this->getContext($context, "form"));
-        echo "
+        echo " </div>
 \t
-\t\t<input type=\"submit\" />
+\t<div class=\"span2\">\t<input type=\"submit\" class=\"btn btn-inverse\" value =\" Update Image\"/></div>
 \t</form>
-<img src=\"";
+\t<img src=\"";
         // line 16
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("uploads/avatars/"), "html", null, true);
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "user"), "image"), "html", null, true);

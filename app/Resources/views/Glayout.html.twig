@@ -28,6 +28,13 @@ $(document).ready(function() {
 	var Gstate=$('input.state').attr('id');
 	$("#submit").click(function(){
 		ans=true;
+		if ($('input.city').val()=="" || $('input.region').val()=="" || ('input.country').val()
+				|| $('input.state').val())
+		{
+			$('#error').show();
+			ans=false;
+		}
+		
 		if($('input#address').val()=="") {
 			$('input#address').css("border-color","red");
 			ans=false;

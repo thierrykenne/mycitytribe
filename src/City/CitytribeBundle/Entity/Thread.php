@@ -5,6 +5,8 @@ namespace City\CitytribeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Thread as BaseThread;
+use City\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
@@ -19,6 +21,12 @@ class Thread extends BaseThread
      * @ORM\Column(type="string")
      */
     protected $id;
+
+    /**
+     * @ORM\OneToOne( targetEntity="City\UserBundle\Entity\User" )
+     */
+
+    protected $last_comment_author;
 
     /**
      * Set id
@@ -39,4 +47,26 @@ class Thread extends BaseThread
     {
         return $this->id;
     }
+
+    /**
+     * Gets the last_comment_author of this comment.
+     *
+     * @return User
+     */
+
+       public function getLastCommentAuthor()
+       {
+           return $this->last_comment_author;
+       }
+
+    /**
+     * Sets the last_comment_author of this comment.
+     *
+     * @return void
+     */
+
+       public function setLastCommentAuthor(UserInterface $last_comment_author)
+       {
+           $this->last_comment_author = $last_comment_author;
+       }
 }

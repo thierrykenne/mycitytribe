@@ -13,11 +13,28 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen" />
         <link rel="stylesheet" href="{{ asset('css/menu.css') }}" type="text/css" media="screen" />
         <link rel="stylesheet" href="{{ asset('css/content.css') }}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{{ asset('css/icon.css') }}" type="text/css" media="screen" />
         {% endstylesheets %}
     {% endblock head_style %}
     <title>{% block title %}MycityTribe{% endblock %}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-1.7.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-tab.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-dropdown.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-tooltip.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-popover.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.navigation .container li').click( function(){
+        $('.navigation .container li').removeAttr('class');
+        $(this).attr('class','active');
+    });
+
+    $('.tool').popover();
+
+    
+})
+</script>
 </head>
 <body>
 {% block body %}

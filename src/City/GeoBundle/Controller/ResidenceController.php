@@ -59,6 +59,7 @@ class ResidenceController extends Controller
             'form' => $editForm->createView(),
             'create'=>$create,
             'locality'=>$locality,
+            'user'=>$this->get_user()
         ));
     }
 
@@ -102,41 +103,13 @@ class ResidenceController extends Controller
             $user_residence_city->setResidence($residence_city);  
             $em->persist($user_residence_city);           
             $em->flush();
-
             return $this->redirect($this->generateUrl('GeoBundle_dest'));
             
         }
-        return new Response('pas OK');           
+        return new Response('Sorry !');           
         
     }
 
-    public function showAction()
-    {
-        $user=$this->get_user()->getId();
-        $em = $this->getDoctrine()->getEntityManager();
-        $userresidences = $em->getRepository('CityUserBundle:User_residence')
-                           ->findBy(array('user'=>$user));
-        return $this->render('CityUserBundle:residence:show.html.twig', array(
-                "userresidences"=>$userresidences
-                ));
-
-    }
-    public function showtribeAction()
-    {
-        $user=$this->get_user()->getId();
-        $em = $this->getDoctrine()->getEntityManager();
-        $userresidences = $em->getRepository('CityUserBundle:User_residence')
-                           ->findBy(array('user'=>$user,'activated'=>True),array('id'=>'ASC'),1,0);
-        $residence =$userresidences[0]->getResidence()->getId();
-
-        $users = $em->getRepository('CityUserBundle:User_residence')
-                           ->findBy(array('residence'=>$residence,'activated'=>True)); 
-
-        return $this->render('CityUserBundle:residence:show.html.twig', array(
-                "userresidences"=>$userresidences,
-                "users"=>$users
-                ));
-    }
 
     /**
      * Edits an existing Residence entity.
@@ -187,10 +160,10 @@ public function updateAction()
             }      
             $em->flush();
 
-            return $this->redirect($this->generateUrl('home'));
+            return $this->redirect($this->generateUrl('Cityblog_home'));
             
         }
-        return new Response('pas OK');           
+        return new Response('Sorry!');           
         
     }
 

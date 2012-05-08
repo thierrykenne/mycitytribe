@@ -2,11 +2,13 @@
 {% block middle %}
 <div class="message">
     <div class="row">
-        <div class="span3 "><img class="img-msg" src="{{ asset('uploads/avatars/') }}{{user.image}} ">
+        <div class="span3 "><img class="img-msg" src="{{ asset('uploads/avatars/') }}{{message.author.image}} ">
          <strong>{{ message.date|date('Y-m-d H:i:s') }}</strong></div>
         <div class="span1"> <a href=""> {{num}}</a> Post </div>
-        <div class="span2"> 
-            <a href="{{ path('message_edit', { 'id': message.id }) }}"> Edit Message </a>
+        <div class="span2">
+        {% if message.author ==user.username %} 
+            <a href="{{ path('message_edit', { 'id': message.id }) }}"> <i class="icon-edit"></i>  Edit Message </a>
+        {% endif %}    
         </div>
     </div>
         <div class="">

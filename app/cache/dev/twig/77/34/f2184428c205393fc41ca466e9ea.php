@@ -55,6 +55,13 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \tvar Gstate=\$('input.state').attr('id');
 \t\$(\"#submit\").click(function(){
 \t\tans=true;
+\t\tif (\$('input.city').val()==\"\" || \$('input.region').val()==\"\" || ('input.country').val()
+\t\t\t\t|| \$('input.state').val())
+\t\t{
+\t\t\t\$('#error').show();
+\t\t\tans=false;
+\t\t}
+\t\t
 \t\tif(\$('input#address').val()==\"\") {
 \t\t\t\$('input#address').css(\"border-color\",\"red\");
 \t\t\tans=false;
@@ -187,7 +194,7 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t\t\$.ajax({ // fonction permettant de faire de l'ajax
 \t\t\t\t   type: \"POST\", // methode de transmission des données au fichier php
 \t\t\t\t   url: \"";
-        // line 162
+        // line 169
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("GeoBundle_polygon_region"), "html", null, true);
         echo "\", // url du fichier php
 \t\t\t\t   data: \"country=\"+\$(\".country\").val()+\"&region=\"+\$(\".region\").val(), // données à transmettre
@@ -231,9 +238,9 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t
 \t<body>
 ";
-        // line 203
+        // line 210
         $this->displayBlock('body', $context, $blocks);
-        // line 231
+        // line 238
         echo "\t</body>
 </html>
 ";
@@ -290,80 +297,80 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
         echo "    ";
     }
 
-    // line 210
+    // line 217
     public function block_flashes($context, array $blocks = array())
     {
-        // line 211
+        // line 218
         echo "                ";
         $context["flash"] = $this->env->loadTemplate("IsdevTwitterBootstrapBundle::flash.html.twig");
-        // line 212
+        // line 219
         echo "\t\t\t    ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "flash"), "session_msg", array(), "method"), "html", null, true);
         echo "
 \t\t\t";
     }
 
-    // line 215
+    // line 222
     public function block_content($context, array $blocks = array())
     {
-        // line 216
+        // line 223
         echo "            <div class=\"row\">
 
             </div>
             ";
     }
 
-    // line 223
+    // line 230
     public function block_footer($context, array $blocks = array())
     {
-        // line 224
+        // line 231
         echo "\t        <p align=\"center\"> Copyright &copy; <a href=\"\" target=\"_blank\">MyCityTribe </a> ";
         echo twig_escape_filter($this->env, twig_date_format_filter("now", "Y"), "html", null, true);
         echo "</p>
 \t        ";
     }
 
-    // line 205
+    // line 212
     public function block_container($context, array $blocks = array())
     {
-        // line 206
+        // line 213
         echo "        ";
-        // line 207
+        // line 214
         echo "
         <div class=\"content\">
 \t\t\t
 \t\t\t";
-        // line 210
+        // line 217
         $this->displayBlock('flashes', $context, $blocks);
-        // line 214
+        // line 221
         echo "
             ";
-        // line 215
+        // line 222
         $this->displayBlock('content', $context, $blocks);
-        // line 220
+        // line 227
         echo "        </div>";
-        // line 221
+        // line 228
         echo "
         <footer class=\"row\">
 \t        ";
-        // line 223
+        // line 230
         $this->displayBlock('footer', $context, $blocks);
-        // line 226
+        // line 233
         echo "        </footer>
 \t";
     }
 
-    // line 203
+    // line 210
     public function block_body($context, array $blocks = array())
     {
-        // line 204
+        // line 211
         echo "    <div class=\"container\">
 \t";
-        // line 205
+        // line 212
         $this->displayBlock('container', $context, $blocks);
-        // line 228
+        // line 235
         echo "    </div>";
-        // line 229
+        // line 236
         echo "
 ";
     }

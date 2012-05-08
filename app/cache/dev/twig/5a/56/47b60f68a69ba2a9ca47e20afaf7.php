@@ -36,7 +36,7 @@ class __TwigTemplate_5a5647b60f68a69ba2a9ca47e20afaf7 extends Twig_Template
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
             // line 7
             echo "    <li> ";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "user"), "user"), "email"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "user"), "email"), "html", null, true);
             echo "
     </li>
     ";

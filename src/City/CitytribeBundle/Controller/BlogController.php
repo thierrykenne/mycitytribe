@@ -15,21 +15,41 @@ use City\CitytribeBundle\Form\MessageType;
 
 class BlogController extends Controller
 {
-    public function indexAction($page)
+    public function indexAction($page,$type)
     {
+        $session = $this->getRequest()->getSession();
         $user=$this->get_user();
         if(!$residences=$this->get_user_residences($user->getId())){
+            $session->set('notice','new User');
             return $this->redirect($this->generateUrl('GeoBundle_resi'));
         }
         if (!$destinations=$this->get_user_destinations($user->getId())){
+            $session->set('notice','new User');
             return $this->redirect($this->generateUrl('GeoBundle_dest'));
         }
         $em = $this->getDoctrine()->getEntityManager();
         
         $repository = $em->getRepository('CitytribeBundle:Message');
+        if ($type =="destination")
+        {
+            $nb_messages = $repository->getAllCountry($user->getNationality(),$destinations['country']);
+            $session->set('type', 'destination');
+            $session->set('country_tribe', array('d'=>'destination',
+                                                'c'=>$destinations['country']));
+            $session->set('country_tribe2', array('d'=>'residence',
+                                                  'c'=>$residences['country']));
+        }
+        elseif ($type =="residence") {
+             $nb_messages = $repository->getAllCountry($user->getNationality(),$residences['country']);
+             $session->set('country_tribe', array('d'=>'residence',
+                                                  'c'=>$residences['country']));
+             $session->set('country_tribe2', array('d'=>'destination',
+                                                    'c'=>$destinations['country']));
+             $session->set('type', 'residence');
+        }
+        else { throw $this->createNotFoundException('Page unfound (type = '.$type.')');}
 
-        $nb_messages = $repository->getAllCountry($user->getNationality(),$destinations['country']);
-        $nb_messages_page = 2;
+        $nb_messages_page = 10;
 
 
         $nb_pages = ceil($nb_messages/$nb_messages_page);
@@ -53,10 +73,11 @@ class BlogController extends Controller
         );
 
         return $this->render('CitytribeBundle:Blog:index.html.twig', array(
-            'messages' => $messages,
-            'page'     => $page,    // On transmet à la vue la page courante,
-            'nb_pages' => $nb_pages,
-            'user'=>$user // Et le nombre total de pages.
+            'messages'      => $messages,
+            'page'          => $page,    
+            'nb_pages'      => $nb_pages,
+            'user'          => $user,
+            'type'          =>$type 
         ));
     }
 
@@ -264,7 +285,7 @@ class BlogController extends Controller
         $destination=array();
         $em = $this->getDoctrine()->getEntityManager();
         if ($userdestinations = $em->getRepository('CityUserBundle:User_destination')
-                               ->findBy(array('user'=>$id))) 
+                                        ->findByUser($id))
             {
                 foreach ($userdestinations as $userdestination) {
                     
@@ -282,8 +303,9 @@ class BlogController extends Controller
                              $destination['city']=$userdestination->getDestination()->getName();
                             break;                   
                     }
-                return $destination;
+                
                 }
+                return $destination;
             }else { return false;}
     }
 
@@ -291,11 +313,12 @@ class BlogController extends Controller
     {
         $residence=array();
         $em = $this->getDoctrine()->getEntityManager();
-        if ($userresidences = $em->getRepository('CityUserBundle:User_residence')
-                               ->findBy(array('user'=>$id))) 
-            {
+        if (
+                $userresidences = $em->getRepository('CityUserBundle:User_residence')
+                                        ->findByUser($id)
+            ) 
+            {  
                 foreach ($userresidences as $userresidence) {
-                    
                     switch ($userresidence->getResidence()->getType()) {
                         case 'country':
                             $residence['country']=$userresidence->getResidence()->getName();
@@ -310,9 +333,119 @@ class BlogController extends Controller
                              $residence['city']=$userresidence->getResidence()->getName();
                             break;                   
                     }
-                return $residence;
                 }
+                return $residence;
             }else { return False;}
+    }
+
+    public function usersAction($type){
+        $user=$this->get_user();
+        if(!$residences=$this->get_user_residences($user->getId())){
+            return $this->redirect($this->generateUrl('GeoBundle_resi'));
+        }
+        if (!$destinations=$this->get_user_destinations($user->getId())){
+            return $this->redirect($this->generateUrl('GeoBundle_dest'));
+        }
+        $em = $this->getDoctrine()->getEntityManager();
+        if ($type=='destination'){
+            $userdestinations = $em->getRepository('CityUserBundle:User_destination')
+                               ->findBy(array('user'=>$user->getId(),'activated'=>True),array(),1,0);
+            $destination =$userdestinations[0]->getDestination()->getId();
+
+            $TribeUsers = $em->getRepository('CityUserBundle:User_destination')
+                               ->findBy(array('destination'=>$destination,'activated'=>True)); 
+            $allTribeUsers=array(); 
+
+        // This Method is too bad To change in the next version
+
+            foreach ($TribeUsers as $tribeUser) {
+                
+                if($user->getNationality() == $tribeUser->getUser()->getNationality()) 
+                {
+                    $numComments=$em->getRepository('CitytribeBundle:Comment')
+                        ->getAuthorNumComments($tribeUser->getUser());
+
+                    $numMsg=$em->getRepository('CitytribeBundle:Message')
+                                ->getTotalUser($tribeUser->getUser());
+
+                    $allTribeUsers[]=array(
+                                            'user'          =>$tribeUser->getUser(),
+                                            'numComments'   =>$numComments,
+                                            'numMsg'        =>$numMsg
+                                            );            
+                }
+                    
+            }    
+        }
+        else
+        {
+            $userresidence = $em->getRepository('CityUserBundle:User_residence')
+                               ->findBy(array('user'=>$user->getId(),'activated'=>True),array(),1,0);
+            $residence =$userresidence[0]->getResidence()->getId();
+
+            $TribeUsers = $em->getRepository('CityUserBundle:User_residence')
+                               ->findBy(array('residence'=>$residence,'activated'=>True)); 
+            $allTribeUsers=array();                   
+            foreach ($TribeUsers as $tribeUser) {
+                
+                if($user->getNationality() == $tribeUser->getUser()->getNationality()) 
+                {
+                    $numComments=$em->getRepository('CitytribeBundle:Comment')
+                        ->getAuthorNumComments($tribeUser->getUser());
+
+                    $numMsg=$em->getRepository('CitytribeBundle:Message')
+                                ->getTotalUser($tribeUser->getUser());
+
+                    $allTribeUsers[]=array(
+                                            'user'          =>$tribeUser->getUser(),
+                                            'numComments'   =>$numComments,
+                                            'numMsg'        =>$numMsg
+                                            );            
+                }
+            }
+                
+        }      
+        
+        return $this->render('CitytribeBundle:users:show.html.twig', array(
+                "userdestinations"  =>$userdestinations,
+                "users"             =>$allTribeUsers,
+                'user'              =>$user
+                ));
+    }
+
+    public function tribesAction($type){
+        $user=$this->get_user();
+        
+        if ($type =="destination")
+        {
+            if (!$destinations=$this->get_user_destinations($user->getId())){
+                return $this->redirect($this->generateUrl('GeoBundle_dest'));
+            }
+             $country_tribe = $destinations['country'];
+             $state_tribe = $destinations['state'];
+             $region_tribe = $destinations['region'];
+             $city_tribe = $destinations['city'];
+        
+           
+        }
+        elseif ($type =="residence") {
+            if(!$residences=$this->get_user_residences($user->getId())){
+                return $this->redirect($this->generateUrl('GeoBundle_resi'));
+            }
+             $country_tribe = $residences['country'];
+             $state_tribe= $residences['region'];
+             $region_tribe= $residences['region'];
+             $city_tribe=$residences['city'];
+        }
+        else { throw $this->createNotFoundException('Page unfound (type = '.$type.')');}
+
+        return $this->render('CitytribeBundle:Blog:tribes.html.twig', array(
+            'user'          =>$user,
+            'country_tribe' =>$country_tribe,
+            'state_tribe'   =>$state_tribe,
+            'region_tribe'  =>$region_tribe,
+            'city_tribe'    =>$city_tribe,
+        ));
     }
 
 }

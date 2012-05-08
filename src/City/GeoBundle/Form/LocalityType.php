@@ -10,10 +10,10 @@ class LocalityType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
 	    $builder
-            ->add('state')
-            ->add('country')
-            ->add('region')
-            ->add('city');
+            ->add('state' ,'text', array('required' => true))
+            ->add('country', 'text', array('required' => true))
+            ->add('region', 'text', array('required' => true))
+            ->add('city', 'text', array('required' => true));
     }
 
     public function getName()

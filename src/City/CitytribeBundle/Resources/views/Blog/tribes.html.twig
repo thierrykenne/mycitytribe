@@ -1,0 +1,30 @@
+{% extends "CitytribeBundle::default.html.twig" %}
+{% block middle %}
+<div class="row">
+	<h2> Default Tribes</h2>
+	<div class="tribes">
+		<table class=" table table-bordered table-striped " >
+		  <tbody>
+		    <tr>
+		      <td>{{user.nationality|country}} Tribe in {{ country_tribe}}</td>
+		      <td><span class="badge badge-success"> <i class="icon-ok icon-white"></i> </span></td>
+		    </tr>
+		    <tr>
+		      <td>{{user.nationality|country}} Tribe in {{ state_tribe}}</td>
+		      <td><span class="badge badge-success"> <i class="icon-ok icon-white"></i> </span></td>
+		    </tr>
+		    <tr>
+		      <td>{{user.nationality|country}} Tribe in {{ region_tribe}} </td>
+		      <td><span class="badge badge-success"> <i class="icon-ok icon-white"></i> </span></td>
+		    </tr>
+		    <tr>
+		      <td>{{user.nationality|country}} Tribe at  {{ city_tribe}}</td>
+		      <td><span class="badge badge-success"> <i class="icon-ok icon-white"></i> </span></td>
+		    </tr>
+
+		  </tbody>
+		</table>
+	</div>
+</div>
+
+{% endblock %}

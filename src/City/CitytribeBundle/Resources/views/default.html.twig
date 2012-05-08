@@ -1,13 +1,43 @@
 {% extends "::Bloglayout.html.twig" %}
 
+{% set countrytribe = app.session.get('country_tribe') %}
+{% set countrytribe2 = app.session.get('country_tribe2') %}
 {% block content %}
 <div class="content-type1 row">
-	<div class="logo-left2"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
+	<div class="logo-left2"> <a href="{{path('Cityblog_home')}}"> <img src="{{ asset('images/logo-medium.png') }}"> </a> </div>
 		{% include "CitytribeBundle:Menu:navigation.html.twig" %}
-		<div class="row contentbox space" > 
+		<div class="row contentbox " > 
+			<div class="tribe-message row space">
+				<div class="span3">.
+				</div>
+				<div class="span5">
+					<h2>{{user.nationality|country}} Tribe in {{countrytribe.c}} </h2>
+				</div>
+				<div class="span4">
+					<div class="logout pull-right"><a class="btn btn-danger" href="{{path(	'fos_user_security_logout')}}">
+  						<strong> <i class="icon-off icon-white "></i> Logout </strong></a>  
+					</div>
+					<div class="btn-group pull-right">
+			          <button class="btn btn-medium btn-inverse">User -Tribes </button>
+			          <button class="btn btn-medium btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+			          <ul class="dropdown-menu">
+			            <li><a href="{{ path('Cityblog_home', {'page': "1",'type': countrytribe.d}) }}">
+			            	
+			            	{{user.nationality|country}} Tribe in {{countrytribe.c}} </h2>
+			            	
+			            	</a>
+			            </li>
+			            <li><a href="{{ path('Cityblog_home', {'page': "1",'type': countrytribe2.d}) }}">
+			             {{user.nationality|country}} Tribe in {{countrytribe2.c}} </h2></a></li>
+			          </ul>
+			        </div>
+				</div>
+			</div>
+		<div class="row">
 			<div class="span3"> {% include "CitytribeBundle:Menu:left.html.twig" %} </div>
 			<div class="middle span7 "> {% block middle %} {% endblock %} </div>
 			<div class="span2"> {% include "CitytribeBundle:Menu:right.html.twig" %}</div>
+		</div>
 		</div>
 </div>
 

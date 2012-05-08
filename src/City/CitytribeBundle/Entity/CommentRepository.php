@@ -20,6 +20,17 @@ class CommentRepository extends EntityRepository
         return (int) $qb->getQuery()
                         ->getSingleScalarResult(); 
     }
+
+    public function getAuthorNumComments($author)
+    {
+        $qb = $this->createQueryBuilder('a')
+                ->where('a.author = :author')
+                    ->setParameter('author', $author)
+                ->select('COUNT(a)');     
+
+        return (int) $qb->getQuery()
+                        ->getSingleScalarResult(); 
+    }
     public function getMessageComments($id)
     {
         $qb = $this->createQueryBuilder('a')

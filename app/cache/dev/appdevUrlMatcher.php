@@ -324,8 +324,8 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // Cityblog_home
-        if (0 === strpos($pathinfo, '/home') && preg_match('#^/home(?:/(?P<page>\\d+))?$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'page' => 1,)), array('_route' => 'Cityblog_home'));
+        if (0 === strpos($pathinfo, '/home') && preg_match('#^/home(?:/(?P<type>destination|residence)(?:/(?P<page>\\d+))?)?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'type' => 'destination',  'page' => 1,)), array('_route' => 'Cityblog_home'));
         }
 
         if (0 === strpos($pathinfo, '/profile')) {
@@ -347,6 +347,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // blog_profile_edit
             if ($pathinfo === '/profile/edit') {
                 return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::editAction',  '_route' => 'blog_profile_edit',);
+            }
+
+            // blog_profile_messages
+            if (0 === strpos($pathinfo, '/profile/messages') && preg_match('#^/profile/messages(?:/(?P<page>\\d+)(?:/(?P<id>\\d+))?)?$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::messagesAction',  'page' => 1,  'id' => 0,)), array('_route' => 'blog_profile_messages'));
             }
 
         }
@@ -397,6 +402,16 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_message_delete:
 
+        }
+
+        // Cityblog_tribe_users
+        if (0 === strpos($pathinfo, '/home/users') && preg_match('#^/home/users(?:/(?P<type>destination|residence))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::usersAction',  'type' => 'destination',)), array('_route' => 'Cityblog_tribe_users'));
+        }
+
+        // Cityblog_tribes
+        if (0 === strpos($pathinfo, '/home/tribes') && preg_match('#^/home/tribes(?:/(?P<type>destination|residence))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::tribesAction',  'type' => 'destination',)), array('_route' => 'Cityblog_tribes'));
         }
 
         if (0 === strpos($pathinfo, '/places')) {

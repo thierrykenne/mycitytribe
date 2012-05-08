@@ -21,55 +21,113 @@ class __TwigTemplate_79875df05b458b95dcaa1d58776694e5 extends Twig_Template
 
     protected function doDisplay(array $context, array $blocks = array())
     {
+        // line 3
+        $context["countrytribe"] = $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "get", array("country_tribe", ), "method");
+        // line 4
+        $context["countrytribe2"] = $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "get", array("country_tribe2", ), "method");
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 9
+    // line 38
     public function block_middle($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 3
+    // line 5
     public function block_content($context, array $blocks = array())
     {
-        // line 4
-        echo "<div class=\"content-type1 row\">
-\t<div class=\"logo-left2\"> <img src=\"";
-        // line 5
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo-medium.png"), "html", null, true);
-        echo "\"> </div>
-\t\t";
         // line 6
-        $this->env->loadTemplate("CitytribeBundle:Menu:navigation.html.twig")->display($context);
+        echo "<div class=\"content-type1 row\">
+\t<div class=\"logo-left2\"> <a href=\"";
         // line 7
-        echo "\t\t<div class=\"row contentbox space\" > 
-\t\t\t<div class=\"span3\"> ";
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home"), "html", null, true);
+        echo "\"> <img src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo-medium.png"), "html", null, true);
+        echo "\"> </a> </div>
+\t\t";
         // line 8
+        $this->env->loadTemplate("CitytribeBundle:Menu:navigation.html.twig")->display($context);
+        // line 9
+        echo "\t\t<div class=\"row contentbox \" > 
+\t\t\t<div class=\"tribe-message row space\">
+\t\t\t\t<div class=\"span3\">.
+\t\t\t\t</div>
+\t\t\t\t<div class=\"span5\">
+\t\t\t\t\t<h2>";
+        // line 14
+        echo twig_escape_filter($this->env, \City\CitytribeBundle\Twig\Extension\TwigExtension::countryFilter($this->getAttribute($this->getContext($context, "user"), "nationality")), "html", null, true);
+        echo " Tribe in ";
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "countrytribe"), "c"), "html", null, true);
+        echo " </h2>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"span4\">
+\t\t\t\t\t<div class=\"logout pull-right\"><a class=\"btn btn-danger\" href=\"";
+        // line 17
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("fos_user_security_logout"), "html", null, true);
+        echo "\">
+  \t\t\t\t\t\t<strong> <i class=\"icon-off icon-white \"></i> Logout </strong></a>  
+\t\t\t\t\t</div>
+\t\t\t\t\t<div class=\"btn-group pull-right\">
+\t\t\t          <button class=\"btn btn-medium btn-inverse\">User -Tribes </button>
+\t\t\t          <button class=\"btn btn-medium btn-inverse dropdown-toggle\" data-toggle=\"dropdown\"><span class=\"caret\"></span></button>
+\t\t\t          <ul class=\"dropdown-menu\">
+\t\t\t            <li><a href=\"";
+        // line 24
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home", array("page" => "1", "type" => $this->getAttribute($this->getContext($context, "countrytribe"), "d"))), "html", null, true);
+        echo "\">
+\t\t\t            \t
+\t\t\t            \t";
+        // line 26
+        echo twig_escape_filter($this->env, \City\CitytribeBundle\Twig\Extension\TwigExtension::countryFilter($this->getAttribute($this->getContext($context, "user"), "nationality")), "html", null, true);
+        echo " Tribe in ";
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "countrytribe"), "c"), "html", null, true);
+        echo " </h2>
+\t\t\t            \t
+\t\t\t            \t</a>
+\t\t\t            </li>
+\t\t\t            <li><a href=\"";
+        // line 30
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home", array("page" => "1", "type" => $this->getAttribute($this->getContext($context, "countrytribe2"), "d"))), "html", null, true);
+        echo "\">
+\t\t\t             ";
+        // line 31
+        echo twig_escape_filter($this->env, \City\CitytribeBundle\Twig\Extension\TwigExtension::countryFilter($this->getAttribute($this->getContext($context, "user"), "nationality")), "html", null, true);
+        echo " Tribe in ";
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "countrytribe2"), "c"), "html", null, true);
+        echo " </h2></a></li>
+\t\t\t          </ul>
+\t\t\t        </div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t<div class=\"row\">
+\t\t\t<div class=\"span3\"> ";
+        // line 37
         $this->env->loadTemplate("CitytribeBundle:Menu:left.html.twig")->display($context);
         echo " </div>
 \t\t\t<div class=\"middle span7 \"> ";
-        // line 9
+        // line 38
         $this->displayBlock('middle', $context, $blocks);
         echo " </div>
 \t\t\t<div class=\"span2\"> ";
-        // line 10
+        // line 39
         $this->env->loadTemplate("CitytribeBundle:Menu:right.html.twig")->display($context);
         echo "</div>
+\t\t</div>
 \t\t</div>
 </div>
 
 ";
     }
 
-    // line 15
+    // line 45
     public function block_footer($context, array $blocks = array())
     {
-        // line 16
+        // line 46
         echo "    <div class=\"row\">
         <footer class=\"row\">
 \t   <p align=\"center\"> Copyright &copy; <a href=\"\" target=\"_blank\">MyCityTribe </a> ";
-        // line 18
+        // line 48
         echo twig_escape_filter($this->env, twig_date_format_filter("now", "Y"), "html", null, true);
         echo "</p>
         </footer>

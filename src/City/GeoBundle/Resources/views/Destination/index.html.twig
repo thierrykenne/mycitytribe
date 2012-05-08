@@ -5,10 +5,16 @@
     <div class="slogan row  ">  <h2 > <span>Felling at your own home everywhere!</span> </h2></div>
 
 <div class="row contentbox content-map"> 
-        {% if flash is defined  %} 
-            {{flash}}
-        {% endif %}
+    <div id="error" class="alert alert-error">
+        <p align="center">The  City is Not Available !</p> 
+    </div>
+ 
+
+    
 {% if create  %}
+        <div class="flash-notice alert alert-success">
+           <h3> <p align="center"> Last step: Enter the name of City in Which  you Wish to go and start enjoy! </p> </h3>
+        </div>
 <form id ="form" action="{{ path('GeoBundle_destination_create') }}" method="post" {{ form_enctype(form) }}>
 {% else %}
 <form id ="form" action="{{ path('GeoBundle_destination_update') }}" method="post" {{ form_enctype(form) }}>
@@ -21,7 +27,7 @@
                 
                 <input id="address" class="span4" type="text" autocomplete="on" onKeyPress="return event.keyCode!=13" value="{% if not create %}{{ locality.city}},{{locality.country}}
                                     {% endif %}" placeholder=" Destination City or Address.. " />
-                <button type="submit" class=" address-btn btn btn-success btn-medium">Validate</button>
+                <button type="submit" id="submit" class=" address-btn btn btn-success btn-medium">Validate</button>
             </div>
             
         </div>
@@ -45,7 +51,6 @@
             </div>
             
             {{ form_rest(form) }}           
-            <div id="erreur"> </div> 
         </div>
         <div class="span8">
             <div class="map-msg alert alert-info"> You can also move the icon on the map to select the address</div>

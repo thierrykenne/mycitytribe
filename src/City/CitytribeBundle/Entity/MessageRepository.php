@@ -32,4 +32,15 @@ class MessageRepository extends EntityRepository
         return (int) $qb->getQuery()
                         ->getSingleScalarResult(); 
     }
+
+    public function getTotalUser($user)
+    {
+        $qb = $this->createQueryBuilder('a')
+                ->where('a.author = :author')
+                    ->setParameter('author', $user)
+                ->select('COUNT(a)');     
+
+        return (int) $qb->getQuery()
+                        ->getSingleScalarResult(); 
+    }
 }

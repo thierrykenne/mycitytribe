@@ -1,20 +1,37 @@
 {% extends "CitytribeBundle::default.html.twig" %}
 {% block middle %}
-		<h2> Message List of the tribe</h2>
-		<div>  <a href="{{ path('message_new')}}">New Message</a></div>
-		<div class="wall">
-			<ul>
+		<div class="msg-btn span6">
+		<a class="new-msg btn btn-large pull-right" href=" {{ path('message_new')}} "><i class="icon-comment"></i> Add New Message</a>
+		</div>
+		<h3> Message List of the tribe</h3>
+		<div class="message">
+
 				{% for message in messages %}
-					<li>
-						<a href="{{ path('message_show', {'id': message.id}) }}">{{ message.titre }}</a>
-						By {{ message.author }},
-						the {{ message.date|date('d/m/Y') }}
-					</li>
+					<div class="row">
+				        <div class="span2 ">{{message.author}}
+				         <strong>{{ message.date|date('Y-m-d') }}</strong>
+				    	</div>
+				        <div class="span1"> <a href="">{{message.thread.numComments}}</a> Posts </div>
+				        <div class="span3"> 
+				          Last comment By: <a href=""> {{ message.thread.lastCommentAuthor}} </a>
+				        </div>
+			    	</div>
+			        <div class="row">
+			        	<div class="span2">
+			        		<img class="img-msg2" src="{{ asset('uploads/avatars/') }}{{message.author.image}} ">
+			        	</div>
+			        	<div class="span4">
+			        		<a href="{{ path('message_show', {'id': message.id}) }}">
+			            		<p><div class="title-msg"> {{ message.titre }}</div></p>
+			            	</a>
+			        	</div>
+			            
+			        </div>
 				{% else %}
-					<li>Pas (encore !) de messages</li>
+					<ul> <li>There are no Message yet! </li> </ul>
 				{% endfor %}
-			</ul>
-	    	<div class="pagination">
+		</div>
+			<div class="pagination">
 		    	<ul>
 		    		{# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
 		    		{% for p in range(1, nb_pages) %}
@@ -24,5 +41,4 @@
 		    		{% endfor %}
 		    	</ul>
 			</div>
-		</div>
 {% endblock %}

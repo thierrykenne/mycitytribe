@@ -4,12 +4,30 @@
         <div class="container">
             <a class="brand" href="#">  </a>
             <ul class="nav">
-              <li class="active">
-                <a href="{{path('Cityblog_home')}}">Home</a>
-              </li>
-              <li><a href="{{path('blog_profile_info')}}">Profile</a></li>
-              <li><a href="#">Tribes</a></li>
-              <li><a href="#">Messages</a></li>
+              {% if profile  is not defined  and message is not defined  %}
+                <li class="active">
+                {% else %}
+                <li class="">
+                {% endif %}
+                 <a href="{{path('Cityblog_home')}}"> <i class=" active icon-white icon-home "></i> Home</a></li>
+
+              {% if profile is not defined  %}
+              <li><a href="{{path('blog_profile_info')}}"> <i class="icon-user icon-white"></i> Profile</a></li>
+              {% else %}
+              <li class="active"><a href="{{path('blog_profile_info')}}"> <i class="icon-user icon-white"></i> Profile</a></li>             
+              {% endif%}
+
+              {% if  tribes is not defined  %}
+              <li><a href="#"> <i class="icon-eye-open icon-white"></i> Tribes</a></li>
+              {% else %}
+              <li class="active"><a href="#"> <i class="icon-eye-open icon-white"></i> Tribes</a></li>
+              {% endif%}
+
+              {% if message is not defined  %}
+              <li><a href="{{path('blog_profile_messages', {'id': user.id}) }}"><i class="icon-envelope icon-white"></i> My Messages</a></li>
+              {% else %}
+              <li class="active" ><a href="{{path('blog_profile_messages', {'id': user.id}) }}"><i class="icon-envelope icon-white"></i> Messages</a></li>
+              {% endif%}
             </ul>
         </div>
     </div>

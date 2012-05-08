@@ -2,18 +2,18 @@
 {% block middle %}
 {% include "CitytribeBundle:Menu:profile_nav.html.twig" with {'tab1': '','tab2':'','tab3':'active'} %}
 {% if app.session.hasFlash('notice') %}
-    <div class="flash-notice">
+    <div class="flash-notice alert alert-info">
         {{ app.session.flash('notice') }}
     </div>
 {% endif %}
 
 	<form id ="form" action="{{ path('blog_avatar') }}" method="post" {{ form_enctype(form) }}>
 	
-		{{ form_widget(form) }}
+	<div class="span4">	{{ form_widget(form) }} </div>
 	
-		<input type="submit" />
+	<div class="span2">	<input type="submit" class="btn btn-inverse" value =" Update Image"/></div>
 	</form>
-<img src="{{ asset('uploads/avatars/') }}{{user.image}}" />
+	<img src="{{ asset('uploads/avatars/') }}{{user.image}}" />
 {% endblock %}
 
 

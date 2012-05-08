@@ -10,7 +10,7 @@ use City\UserBundle\Entity\Destination as Destination;
  * City\UserBundle\Entity\User_destination
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="City\UserBundle\Entity\User_destinationRepository")
  */
 class User_destination
 {

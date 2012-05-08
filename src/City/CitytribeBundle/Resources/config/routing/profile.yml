@@ -10,3 +10,10 @@ blog_avatar:
 blog_profile_edit:
     pattern:   /edit
     defaults:  { _controller: CitytribeBundle:Profile:edit }
+
+blog_profile_messages:
+    pattern:   /messages/{page}/{id}
+    defaults:  { _controller: CitytribeBundle:Profile:messages, page:1 ,id:0 }
+    requirements:
+        page:  \d+
+        id:    \d+

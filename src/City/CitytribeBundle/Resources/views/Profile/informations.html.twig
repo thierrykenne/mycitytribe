@@ -1,12 +1,14 @@
 {% extends "CitytribeBundle::default.html.twig" %}
 {% block middle %}
 {% include "CitytribeBundle:Menu:profile_nav.html.twig" with {'tab1': 'active','tab2':'','tab3':''} %}
-	<a class="btn btn-primary" href={{path('blog_profile_edit')}}>modificate</a>
+<div class="profile  ">
+	 <a class="btn btn-primary pull-right" href={{path('blog_profile_edit')}}> <i class="icon-edit icon-white"></i>  Edit Informations</a>
 	<p> <div id="username"> <strong>Username:</strong> 	{{user.username}}</div></p>
 	<p> <div id="email"> <strong>Email:</strong>	{{user.email}}</div></p>
-	<p> <div id="nation"> <strong>Country:</strong>	{{user.nationality}}</div></p>
+	<p> <div id="nation"> <strong>Country:</strong>	{{user.nationality|country}}</div></p>
 	<p> <div id="sex">	 <strong>Gender: </strong>       {{user.sex}}</div></p>
 	<p> <div id="occupation"> <strong>Occupation: </strong>	{{user.occupation}}</div></p>
-	<p> <div id="language"> <strong>Language: </strong>	{{user.language}}</div></p>
-	<p> <div id="aboutMe"> <strong>About Me or My Interesses: </strong>	{{ user.aboutMe |striptags }}</div></p>
+	<p> <div id="language"> <strong>Speech: </strong>	{{user.language}}</div></p>
+	<p> <div id="aboutMe"> <strong>About Me or My Interests: </strong>	{{ user.aboutMe |striptags }}</div></p>
+</div>
 {% endblock %}

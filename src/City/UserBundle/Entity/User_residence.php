@@ -10,7 +10,7 @@ use City\UserBundle\Entity\Residence as Residence;
  * City\UserBundle\Entity\User_residence
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="City\UserBundle\Entity\User_residenceRepository")
  */
 class User_residence
 {

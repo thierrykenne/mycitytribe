@@ -1,18 +1,7 @@
 <div class="tabbable"> 
-  <ul class="nav nav-tabs">
-    <li class="{{ tab1 }}"><a href="{{ path('blog_profile_info')}}"  data-toggle="tab">Personal Informations</a></li>
-    <li class=" {{ tab2 }}"><a href="{{ path('blog_profile_places')}}" data-toggle="tab">My Places</a></li>
-    <li class=" {{ tab3 }}"><a href="{{ path('blog_avatar')}}" data-toggle="tab">Avatar</a></li>
+  <ul class="nav nav-tabs" id="profile-nav">
+    <li class="{{ tab1 }}"><a href="{{ path('blog_profile_info')}}">Personal Informations</a></li>
+    <li class=" {{ tab2 }}"><a href="{{ path('blog_profile_places')}}">My Places</a></li>
+    <li class=" {{ tab3 }}"><a href="{{ path('blog_avatar')}}" >Avatar</a></li>
   </ul>
-  <div class="tab-content">
-    <div class="tab-pane" id="tab1">
-      <p>I'm in Section 1.</p>
-    </div>
-    <div class="tab-pane" id="tab2">
-      <p>Howdy, I'm in Section 2.</p>
-    </div>
-    <div class="tab-pane" id="tab3">
-      <p>Howdy, I'm in Section 3.</p>
-    </div>
-  </div>
 </div>
