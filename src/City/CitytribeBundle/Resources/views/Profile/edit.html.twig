@@ -1,7 +1,7 @@
 {% extends "CitytribeBundle::default.html.twig" %}
 {% block middle %}
 {% include "CitytribeBundle:Menu:profile_nav.html.twig" with {'tab1': 'active','tab2':'','tab3':''} %}
-	<form id ="form" action="{{ path('CitytribeBundle_profile_edit') }}" method="post" }}>
+	<form id ="form" action="{{ path('blog_profile_edit') }}" method="post" }}>
 	
 		{{ form_widget(form) }}
 	

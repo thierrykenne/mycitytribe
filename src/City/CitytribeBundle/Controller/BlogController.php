@@ -141,8 +141,6 @@ class BlogController extends Controller
     //find user destinations
             $user=$this->get_user();
             $em = $this->getDoctrine()->getEntityManager();
-            print_r('salo');
-            print_r($entity->getNationality());
             if($entity->getNationality()=='destination'){
 
 
@@ -232,7 +230,7 @@ class BlogController extends Controller
 
         return $this->render('CitytribeBundle:Blog:edit.html.twig', array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'user'=>$user
         ));
     }
@@ -408,7 +406,6 @@ class BlogController extends Controller
         }      
         
         return $this->render('CitytribeBundle:users:show.html.twig', array(
-                "userdestinations"  =>$userdestinations,
                 "users"             =>$allTribeUsers,
                 'user'              =>$user
                 ));
