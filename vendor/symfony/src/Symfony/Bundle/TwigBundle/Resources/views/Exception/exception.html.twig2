@@ -1,0 +1,7 @@
+{% extends "::Bloglayout.html.twig" %}
+{% block content %}
+                
+
+
+{% endblock content %}
+

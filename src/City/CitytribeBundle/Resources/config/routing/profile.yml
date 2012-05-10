@@ -2,8 +2,10 @@ blog_profile_info:
     pattern:   /informations
     defaults:  { _controller: CitytribeBundle:Profile:info_show }
 blog_profile_places:
-    pattern:   /places
-    defaults:  { _controller: CitytribeBundle:Profile:places_show }
+    pattern:   /places/{type}
+    defaults:  { _controller: CitytribeBundle:Blog:places_show }
+    requirements:
+        type: destination|residence
 blog_avatar:
     pattern:   /avatar
     defaults:  { _controller: CitytribeBundle:Profile:avatar_show }

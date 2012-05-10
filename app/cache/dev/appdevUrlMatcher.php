@@ -335,8 +335,8 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // blog_profile_places
-            if ($pathinfo === '/profile/places') {
-                return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::places_showAction',  '_route' => 'blog_profile_places',);
+            if (0 === strpos($pathinfo, '/profile/places') && preg_match('#^/profile/places/(?P<type>destination|residence)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::places_showAction',)), array('_route' => 'blog_profile_places'));
             }
 
             // blog_avatar
@@ -692,26 +692,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
             }
             not_fos_user_registration_confirmed:
-
-            // fos_user_registration_tribu
-            if ($pathinfo === '/register/tribu_register') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_fos_user_registration_tribu;
-                }
-                return array (  '_controller' => 'CityUserBundle:TribuRegister:register',  '_route' => 'fos_user_registration_tribu',);
-            }
-            not_fos_user_registration_tribu:
-
-            // tribu_registration
-            if ($pathinfo === '/register/residence') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_tribu_registration;
-                }
-                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',  '_route' => 'tribu_registration',);
-            }
-            not_tribu_registration:
 
         }
 

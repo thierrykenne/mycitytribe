@@ -4,7 +4,20 @@
 	<p><h2>New Subject</h2></p>
 
 	<p> <form action="{{ path('message_create') }}" method="post" {{ form_enctype(form) }}>
-	    {{ form_widget(form) }}
+		<div>
+	    {{ form_label(form.titre) }}
+        {{ form_widget(form.titre, { 'attr': {'class': 'titre'} }) }}
+        </div>
+        <div>
+                {{ form_label(form.contenu) }}
+                {{ form_widget(form.contenu, { 'attr': {'class': 'contenu'} }) }}
+            </div>
+            <div>
+                {{ form_label(form.nationality) }}
+                {{ form_widget(form.nationality, { 'attr': {'class': 'nationality',
+                'readonly':'readonly', 'value':countrytribe.d } }) }}
+            </div>
+              {{ form_rest(form) }}   
 	    <p>
 	        <button class="btn btn-success" type="submit">Create</button>
 	    </p>

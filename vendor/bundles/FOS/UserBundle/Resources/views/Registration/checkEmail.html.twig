@@ -1,5 +1,18 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
+{% extends "::layout.html.twig" %}
 {% block fos_user_content %}
-    <p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>
+{% block content %}
+<div class="content-type1">
+	<div class="logo-left"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
+	{% include "CitytribeBundle:Menu:default.html.twig" %}
+		<div class="row contentbox mail " > 
+			<div class="flash-notice alert alert-success">
+  		<h3> <p align="center">{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p> </h3>	
+			</div>
+		</div>
+</div>
+{% endblock content %}
+
 {% endblock fos_user_content %}
+
+ 
+

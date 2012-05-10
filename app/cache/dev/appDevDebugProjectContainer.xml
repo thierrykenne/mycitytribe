@@ -24,7 +24,6 @@
       <parameter key="FOSCommentBundle">FOS\CommentBundle\FOSCommentBundle</parameter>
       <parameter key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</parameter>
       <parameter key="FOSFacebookBundle">FOS\FacebookBundle\FOSFacebookBundle</parameter>
-      <parameter key="CityTribuBundle">City\TribuBundle\CityTribuBundle</parameter>
       <parameter key="CityGeoBundle">City\GeoBundle\CityGeoBundle</parameter>
       <parameter key="CitytribeBundle">City\CitytribeBundle\CitytribeBundle</parameter>
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
@@ -463,7 +462,7 @@
     <parameter key="fos_user.registration.confirmation.from_email" type="collection">
       <parameter key="MycityTribe@tribe.com">MycityTribe</parameter>
     </parameter>
-    <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
+    <parameter key="fos_user.registration.confirmation.enabled">true</parameter>
     <parameter key="fos_user.registration.form.type">fos_user_registration</parameter>
     <parameter key="fos_user.registration.form.name">fos_user_registration_form</parameter>
     <parameter key="fos_user.registration.form.validation_groups" type="collection">
@@ -1399,12 +1398,6 @@
       </call>
       <call method="addResource">
         <argument>xliff</argument>
-        <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/translations/messages.fr.xliff</argument>
-        <argument>fr</argument>
-        <argument>messages</argument>
-      </call>
-      <call method="addResource">
-        <argument>xliff</argument>
         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/translations/messages.fr.xliff</argument>
         <argument>fr</argument>
         <argument>messages</argument>
@@ -1939,7 +1932,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4fa86be763ad7</argument>
+            <argument>4fab037c6ec2b</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2085,7 +2078,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4fa86be763ad7</argument>
+            <argument>4fab037c6ec2b</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2563,7 +2556,6 @@
               <argument key="CityUserBundle">City\UserBundle\Entity</argument>
               <argument key="FOSUserBundle">FOS\UserBundle\Entity</argument>
               <argument key="FOSCommentBundle">FOS\CommentBundle\Entity</argument>
-              <argument key="CityTribuBundle">City\TribuBundle\Entity</argument>
               <argument key="CityGeoBundle">City\GeoBundle\Entity</argument>
               <argument key="CitytribeBundle">City\CitytribeBundle\Entity</argument>
             </argument>
@@ -2608,7 +2600,6 @@
                       </argument>
                       <argument type="collection">
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
                       </argument>
@@ -2626,25 +2617,6 @@
                       </argument>
                       <argument type="collection">
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
-                      </argument>
-                    </service>
-                  </argument>
-                  <argument>City\TribuBundle\Entity</argument>
-                </call>
-                <call method="addDriver">
-                  <argument type="service">
-                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
-                      <argument type="service">
-                        <service class="Symfony\Bridge\Doctrine\Annotations\IndexedReader" public="false">
-                          <argument type="service" id="annotation_reader"/>
-                        </service>
-                      </argument>
-                      <argument type="collection">
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
                       </argument>
@@ -2662,7 +2634,6 @@
                       </argument>
                       <argument type="collection">
                         <argument>/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity</argument>
-                        <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity</argument>
                       </argument>
@@ -3633,60 +3604,6 @@
                   <argument type="service" id="templating.loader"/>
                   <argument>FOSFacebookBundle</argument>
                   <argument>/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>php</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>CityTribuBundle</argument>
-                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/CityTribuBundle/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>CityTribuBundle</argument>
-                  <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.php"/>
-            <tag name="assetic.formula_resource" loader="php"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>CityTribuBundle</argument>
-                  <argument>/opt/lampp/htdocs/Symfony/app/Resources/CityTribuBundle/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>CityTribuBundle</argument>
-                  <argument>/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/views</argument>
                   <argument>/^[^.]+\.[^.]+\.php$/</argument>
                 </service>
               </argument>
@@ -4905,7 +4822,6 @@
                   <argument key="FOS\CommentBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer</argument>
                   <argument key="FOS\RestBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer</argument>
                   <argument key="FOS\FacebookBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer</argument>
-                  <argument key="City\TribuBundle">/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer</argument>
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
                   <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
@@ -4941,7 +4857,6 @@
                   <argument key="FOS\CommentBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer</argument>
                   <argument key="FOS\RestBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer</argument>
                   <argument key="FOS\FacebookBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer</argument>
-                  <argument key="City\TribuBundle">/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer</argument>
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
                   <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
@@ -4977,7 +4892,6 @@
                   <argument key="FOS\CommentBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer</argument>
                   <argument key="FOS\RestBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer</argument>
                   <argument key="FOS\FacebookBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer</argument>
-                  <argument key="City\TribuBundle">/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer</argument>
                   <argument key="City\GeoBundle">/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer</argument>
                   <argument key="City\CitytribeBundle">/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer</argument>
                   <argument key="Knp\Bundle\MenuBundle">/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>

@@ -1262,7 +1262,7 @@ table {
 }
 .table-striped tbody tr:nth-child(odd) td,
 .table-striped tbody tr:nth-child(odd) th {
-  background-color: #f9f9f9;
+  background-color: #C0C2C4;
 }
 .table tbody tr:hover td,
 .table tbody tr:hover th {

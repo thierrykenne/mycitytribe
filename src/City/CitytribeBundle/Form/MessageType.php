@@ -12,12 +12,9 @@ class MessageType extends AbstractType
         $builder
             ->add('titre','text',array('label'=>'Title'))
             ->add('contenu' ,'textarea',array('label'=>'Message'))
-            ->add('nationality','choice',array(
-                'label'=>'Related Tribe',
-                'choices'=>array(
-                        'destination'=>'Destination-Tribe',
-                        'residence'=>'Hometown-Tribe'
-                )))
+            ->add('nationality','text',array(
+                'label'=>'Related Tribe'
+                ))
         ;
     }
 

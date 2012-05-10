@@ -548,6 +548,9 @@
       <argument key="validator" type="service" id="validator"/>
       <argument key="container" type="service" id="service_container"/>
     </service>
+    <service id="bcc.twig.extension" class="City\CitytribeBundle\Twig\Extension\TwigExtension">
+      <tag name="twig.extension"/>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -1704,7 +1707,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4fa21621ee8c8</argument>
+            <argument>4faadf0247e4c</argument>
           </service>
         </argument>
         <argument type="service">
@@ -1850,7 +1853,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4fa21621ee8c8</argument>
+            <argument>4faadf0247e4c</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2092,6 +2095,9 @@
         <argument key="cache">/opt/lampp/htdocs/Symfony/app/cache/prod/twig</argument>
         <argument key="charset">UTF-8</argument>
       </argument>
+      <call method="addExtension">
+        <argument type="service" id="bcc.twig.extension"/>
+      </call>
       <call method="addExtension">
         <argument type="service">
           <service class="Symfony\Bundle\SecurityBundle\Twig\Extension\SecurityExtension" public="false">

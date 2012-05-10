@@ -32,27 +32,40 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
         // line 2
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "locale"), "html", null, true);
         echo "\">
+<script type=\"text/javascript\">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28877518-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 <head>
     <meta charset=\"utf-8\" />
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
     ";
-        // line 6
+        // line 19
         $this->displayBlock('head_style', $context, $blocks);
-        // line 14
+        // line 27
         echo "    ";
         $this->displayBlock('head_script', $context, $blocks);
-        // line 15
+        // line 28
         echo "    <title>";
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
     <link rel=\"shortcut icon\" href=\"";
-        // line 16
+        // line 29
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("favicon.ico"), "html", null, true);
         echo "\" />
     <script>
 \t\t  function goLogIn(){
 \t\t      window.location = \"";
-        // line 19
+        // line 32
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_security_check"), "html", null, true);
         echo "\";
 \t\t  }
@@ -69,145 +82,145 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
 </head>
 <body>
 ";
-        // line 33
+        // line 46
         echo $this->env->getExtension('facebook')->renderInitialize(array("xfbml" => true, "fbAsyncInit" => "onFbInit();"));
         echo "
 ";
-        // line 34
+        // line 47
         $this->displayBlock('body', $context, $blocks);
-        // line 61
+        // line 74
         echo "</body>
 </html>";
     }
 
-    // line 6
+    // line 19
     public function block_head_style($context, array $blocks = array())
     {
-        // line 7
+        // line 20
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
             // asset "4c33c4b_0"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_4c33c4b_0") : $this->env->getExtension('assets')->getAssetUrl("css/4c33c4b_bootstrap_1.css");
-            // line 10
+            // line 23
             echo "<link href=\"";
             echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\" type=\"text/css\" rel=\"stylesheet\" media=\"screen\" />
         <link rel=\"stylesheet\" href=\"";
-            // line 11
+            // line 24
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/style.css"), "html", null, true);
             echo "\" type=\"text/css\" media=\"screen\" />
         ";
             // asset "4c33c4b_1"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_4c33c4b_1") : $this->env->getExtension('assets')->getAssetUrl("css/4c33c4b_custom_2.css");
-            // line 10
+            // line 23
             echo "<link href=\"";
             echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\" type=\"text/css\" rel=\"stylesheet\" media=\"screen\" />
         <link rel=\"stylesheet\" href=\"";
-            // line 11
+            // line 24
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/style.css"), "html", null, true);
             echo "\" type=\"text/css\" media=\"screen\" />
         ";
         } else {
             // asset "4c33c4b"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_4c33c4b") : $this->env->getExtension('assets')->getAssetUrl("css/4c33c4b.css");
-            // line 10
+            // line 23
             echo "<link href=\"";
             echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\" type=\"text/css\" rel=\"stylesheet\" media=\"screen\" />
         <link rel=\"stylesheet\" href=\"";
-            // line 11
+            // line 24
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/style.css"), "html", null, true);
             echo "\" type=\"text/css\" media=\"screen\" />
         ";
         }
         unset($context["asset_url"]);
-        // line 13
+        // line 26
         echo "    ";
     }
 
-    // line 14
+    // line 27
     public function block_head_script($context, array $blocks = array())
     {
     }
 
-    // line 15
+    // line 28
     public function block_title($context, array $blocks = array())
     {
         echo "MycityTribe";
     }
 
-    // line 41
+    // line 54
     public function block_flashes($context, array $blocks = array())
     {
-        // line 42
+        // line 55
         echo "                ";
         $context["flash"] = $this->env->loadTemplate("IsdevTwitterBootstrapBundle::flash.html.twig");
-        // line 43
+        // line 56
         echo "\t\t\t    ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "flash"), "session_msg", array(), "method"), "html", null, true);
         echo "
 \t\t\t";
     }
 
-    // line 46
+    // line 59
     public function block_content($context, array $blocks = array())
     {
-        // line 47
+        // line 60
         echo "            <div class=\"row\">
 
             </div>
             ";
     }
 
-    // line 54
+    // line 67
     public function block_footer($context, array $blocks = array())
     {
-        // line 55
+        // line 68
         echo "\t        <p align=\"center\"> Copyright &copy; <a href=\"\" target=\"_blank\">MyCityTribe </a> ";
         echo twig_escape_filter($this->env, twig_date_format_filter("now", "Y"), "html", null, true);
         echo "</p>
 \t        ";
     }
 
-    // line 36
+    // line 49
     public function block_container($context, array $blocks = array())
     {
-        // line 37
+        // line 50
         echo "        ";
-        // line 38
+        // line 51
         echo "
         <div class=\"content\">
 \t\t\t
 \t\t\t";
-        // line 41
+        // line 54
         $this->displayBlock('flashes', $context, $blocks);
-        // line 45
+        // line 58
         echo "
             ";
-        // line 46
+        // line 59
         $this->displayBlock('content', $context, $blocks);
-        // line 51
+        // line 64
         echo "        </div>";
-        // line 52
+        // line 65
         echo "
         <footer class=\"row\">
 \t        ";
-        // line 54
+        // line 67
         $this->displayBlock('footer', $context, $blocks);
-        // line 57
+        // line 70
         echo "        </footer>
 \t";
     }
 
-    // line 34
+    // line 47
     public function block_body($context, array $blocks = array())
     {
-        // line 35
+        // line 48
         echo "    <div class=\"container\">
 \t";
-        // line 36
+        // line 49
         $this->displayBlock('container', $context, $blocks);
-        // line 59
+        // line 72
         echo "    </div>";
     }
 

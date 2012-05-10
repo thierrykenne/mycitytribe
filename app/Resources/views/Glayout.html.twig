@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28877518-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 	<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{% block title %}MycityTribe{% endblock %}</title>
+		<title>{% block title %}MycityTribe -Alfa{% endblock %}</title>
     {% block head_style -%}
         {% stylesheets filter='?cssembed,?yui_css'
            '@IsdevTwitterBootstrapBundle/Resources/public/bootstrap/css/bootstrap.css'
@@ -18,6 +31,9 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <!-- jQuery UI -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+
+<!--<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />-->
+    <link rel="icon" type="image/png" href=" {{ asset('images/favicon.png')}}" />
 <!-- jQuery UI Css -->
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css" type="text/css" />
 <script language="javascript">
@@ -28,8 +44,7 @@ $(document).ready(function() {
 	var Gstate=$('input.state').attr('id');
 	$("#submit").click(function(){
 		ans=true;
-		if ($('input.city').val()=="" || $('input.region').val()=="" || ('input.country').val()
-				|| $('input.state').val())
+		if ($('input.city').val()=="" || ('input.country').val() )
 		{
 			$('#error').show();
 			ans=false;

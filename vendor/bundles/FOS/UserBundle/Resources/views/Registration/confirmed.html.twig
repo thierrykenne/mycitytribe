@@ -1,9 +1,19 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
+{% extends "::layout.html.twig" %}
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+{% block content %}
+<div class="content-type1">
+	<div class="logo-left"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
+	{% include "CitytribeBundle:Menu:default.html.twig" %}
+		<div class="row contentbox mail " > 
+			<div class="flash-notice alert alert-success">
+  		    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
     {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
-    {% endif %}
+    {% endif %}	
+			</div>
+		</div>
+</div>
+{% endblock content %}
+
 {% endblock fos_user_content %}

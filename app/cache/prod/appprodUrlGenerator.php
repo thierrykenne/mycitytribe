@@ -30,12 +30,15 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'blog_profile_places' => true,
        'blog_avatar' => true,
        'blog_profile_edit' => true,
+       'blog_profile_messages' => true,
        'message_show' => true,
        'message_new' => true,
        'message_create' => true,
        'message_edit' => true,
        'message_update' => true,
        'message_delete' => true,
+       'Cityblog_tribe_users' => true,
+       'Cityblog_tribes' => true,
        'GeoBundle_polygon_region' => true,
        'GeoBundle_dest' => true,
        'GeoBundle_destination_show' => true,
@@ -176,7 +179,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
 
     private function getCityblog_homeRouteInfo()
     {
-        return array(array (  0 => 'page',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'page' => 1,), array (  'page' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'page',  ),  1 =>   array (    0 => 'text',    1 => '/home',  ),));
+        return array(array (  0 => 'type',  1 => 'page',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'type' => 'destination',  'page' => 1,), array (  'page' => '\\d+',  'type' => 'destination|residence',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'page',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => 'destination|residence',    3 => 'type',  ),  2 =>   array (    0 => 'text',    1 => '/home',  ),));
     }
 
     private function getblog_profile_infoRouteInfo()
@@ -186,7 +189,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
 
     private function getblog_profile_placesRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::places_showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/places',  ),));
+        return array(array (  0 => 'type',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::places_showAction',), array (  'type' => 'destination|residence',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => 'destination|residence',    3 => 'type',  ),  1 =>   array (    0 => 'text',    1 => '/profile/places',  ),));
     }
 
     private function getblog_avatarRouteInfo()
@@ -199,34 +202,49 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
         return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/edit',  ),));
     }
 
+    private function getblog_profile_messagesRouteInfo()
+    {
+        return array(array (  0 => 'page',  1 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::messagesAction',  'page' => 1,  'id' => 0,), array (  'page' => '\\d+',  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'page',  ),  2 =>   array (    0 => 'text',    1 => '/profile/messages',  ),));
+    }
+
     private function getmessage_showRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/message',  ),));
     }
 
     private function getmessage_newRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/blog/new',  ),));
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/message/new',  ),));
     }
 
     private function getmessage_createRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/blog/create',  ),));
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/message/create',  ),));
     }
 
     private function getmessage_editRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/message',  ),));
     }
 
     private function getmessage_updateRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/message',  ),));
     }
 
     private function getmessage_deleteRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/message',  ),));
+    }
+
+    private function getCityblog_tribe_usersRouteInfo()
+    {
+        return array(array (  0 => 'type',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::usersAction',  'type' => 'destination',), array (  'type' => 'destination|residence',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => 'destination|residence',    3 => 'type',  ),  1 =>   array (    0 => 'text',    1 => '/home/users',  ),));
+    }
+
+    private function getCityblog_tribesRouteInfo()
+    {
+        return array(array (  0 => 'type',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::tribesAction',  'type' => 'destination',), array (  'type' => 'destination|residence',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => 'destination|residence',    3 => 'type',  ),  1 =>   array (    0 => 'text',    1 => '/home/tribes',  ),));
     }
 
     private function getGeoBundle_polygon_regionRouteInfo()

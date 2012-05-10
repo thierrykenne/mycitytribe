@@ -97,7 +97,7 @@ class User extends BaseUser
      *
      * @ORM\Column(name="image",type="string", length=255)
      */
-    private $image='default.jpg';
+    private $image;
 
     /**
      * @var string
@@ -112,7 +112,11 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->messages = new \Doctrine\Common\Collections\ArrayCollection;
-        $this->image='default.jpg';
+       if (!$this->getImage() || $this->getImage()=='')
+       {
+            $this->image='default.jpg';
+       } 
+
     }
 
     //facebook bundle   
@@ -403,12 +407,21 @@ class User extends BaseUser
             $this->setFirstname($fbdata['first_name']);
         }
 */
-        if (isset($fbdata['username'])) {
-            $this->setUsername($fbdata['username']);
+        if (isset($fbdata['name'])) {
+            $this->setUsername($fbdata['name']);
         }
 
         if (isset($fbdata['email'])) {
             $this->setEmail($fbdata['email']);
+        }
+
+        if (isset($fbdata['picture'])) {
+            $img = file_get_contents($fbdata['picture']);
+            $Imgname='avatar_'.$fbdata['username'].'.jpg';
+            $file = dirname(__file__).'/../../../../web/uploads/avatars/avatar_'.$fbdata['username'].'.jpg';
+            file_put_contents($file, $img);
+
+            $this->setImage($Imgname);
         }
         if (isset($fbdata['locale'])) {
             $pieces = explode("_", $fbdata['locale']);

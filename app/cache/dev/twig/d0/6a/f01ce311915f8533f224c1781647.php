@@ -45,7 +45,7 @@ class __TwigTemplate_d06af01ce311915f8533f224c1781647 extends Twig_Template
         if ($this->getContext($context, "create")) {
             // line 15
             echo "    <div class=\"flash-notice alert alert-success\">
-        <h2> <p align=\"center\"> One more step: Just enter Your Actual City Residence !</p> </h2>
+       <h3>  <p align=\"center\"> One more step: Just enter Your Actual City Residence ! </p> </h3>  
     </div>
 <form id =\"form\" action=\"";
             // line 18

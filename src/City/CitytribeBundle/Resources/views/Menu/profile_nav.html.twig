@@ -1,7 +1,8 @@
+
 <div class="tabbable"> 
   <ul class="nav nav-tabs" id="profile-nav">
     <li class="{{ tab1 }}"><a href="{{ path('blog_profile_info')}}">Personal Informations</a></li>
-    <li class=" {{ tab2 }}"><a href="{{ path('blog_profile_places')}}">My Places</a></li>
+    <li class=" {{ tab2 }}"><a href="{{ path('blog_profile_places', {'type': countrytribe.d})}}">My Places</a></li>
     <li class=" {{ tab3 }}"><a href="{{ path('blog_avatar')}}" >Avatar</a></li>
   </ul>
 </div>

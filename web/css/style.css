@@ -204,3 +204,10 @@ footer{
 #error{
 	display: none;
 }
+.contentbox .flash-notice p  {
+	font-size:large;
+}
+.mail{
+	padding-top: 100px;
+	padding-top: 100px;
+}

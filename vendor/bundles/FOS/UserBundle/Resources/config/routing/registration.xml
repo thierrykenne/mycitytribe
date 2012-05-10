@@ -22,14 +22,5 @@
         <default key="_controller">FOSUserBundle:Registration:confirmed</default>
         <requirement key="_method">GET</requirement>
     </route>
-    <route id="fos_user_registration_tribu" pattern="/tribu_register">
-        <default key="_controller">CityUserBundle:TribuRegister:register</default>
-        <requirement key="_method">GET</requirement>
-    </route>
-    <route id="tribu_registration" pattern="/residence">
-        <default key="_controller">CityGeoBundle:Default:residence</default>
-        <requirement key="_method">GET</requirement>
-    </route>
-
 
 </routes>

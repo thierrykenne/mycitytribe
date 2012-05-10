@@ -132,7 +132,6 @@ class BlogController extends Controller
         $request = $this->getRequest();
         $form    = $this->createForm(new MessageType(), $entity);
         $form->bindRequest($request);
-
         if ($form->isValid()) {
 
     //manage thread        
@@ -142,6 +141,8 @@ class BlogController extends Controller
     //find user destinations
             $user=$this->get_user();
             $em = $this->getDoctrine()->getEntityManager();
+            print_r('salo');
+            print_r($entity->getNationality());
             if($entity->getNationality()=='destination'){
 
 
@@ -174,18 +175,18 @@ class BlogController extends Controller
                 {
                     foreach ($residences as $residence) {
                         
-                        switch ($residence->getDestination()->getType()) {
+                        switch ($residence->getResidence()->getType()) {
                             case 'country':
-                                $entity->setCountryTribe($residence->getDestination()->getName());
+                                $entity->setCountryTribe($residence->getResidence()->getName());
                                 break;
                             case 'state':
-                                 $entity->setStateTribe($residence->getDestination()->getName());
+                                 $entity->setStateTribe($residence->getResidence()->getName());
                                 break;
                             case 'region':
-                                 $entity->setRegionTribe($residence->getDestination()->getName());
+                                 $entity->setRegionTribe($residence->getResidence()->getName());
                                 break;
                             case 'city':
-                                 $entity->setCityTribe($residence->getDestination()->getName());
+                                 $entity->setCityTribe($residence->getResidence()->getName());
                                 break;                   
                         }
                     }
@@ -448,4 +449,26 @@ class BlogController extends Controller
         ));
     }
 
+    public function places_showAction($type)
+    {
+       $user= $this->get_user();
+       if($type=="destination")
+       {
+            $places=$this->get_user_destinations($user->getId());
+       }
+       else{
+            $places=$this->get_user_residences($user->getId());
+       }
+
+       return $this->render('CitytribeBundle:Profile:places.html.twig', array(
+            'user'          =>$user,
+            'place'         =>'active',
+            'type'          =>$type,
+            'places'        =>$places
+        ));
+    }
+    public function testAction(){
+        $file = __DIR__.'/../../../../web/uploads/avatars/';
+        print_r($file);
+    }
 }

@@ -4,6 +4,7 @@ Cityblog_home:
     requirements:
         page:  \d+
         type: destination|residence
+
 Cityblog_profile:
     resource: "@CitytribeBundle/Resources/config/routing/profile.yml"
     prefix:   /profile
@@ -20,6 +21,7 @@ Cityblog_tribe_users:
 
 Cityblog_tribes:
     pattern:   /home/tribes/{type}
-    defaults:  { _controller: CitytribeBundle:Blog:tribes, type:destination}
+    defaults:  { _controller: CitytribeBundle:Blog:tribes, type:destination }
     requirements:
         type: destination|residence
+

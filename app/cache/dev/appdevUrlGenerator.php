@@ -110,8 +110,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'fos_user_registration_check_email' => true,
        'fos_user_registration_confirm' => true,
        'fos_user_registration_confirmed' => true,
-       'fos_user_registration_tribu' => true,
-       'tribu_registration' => true,
        'fos_user_resetting_request' => true,
        'fos_user_resetting_send_email' => true,
        'fos_user_resetting_check_email' => true,
@@ -399,7 +397,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
 
     private function getblog_profile_placesRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::places_showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile/places',  ),));
+        return array(array (  0 => 'type',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::places_showAction',), array (  'type' => 'destination|residence',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => 'destination|residence',    3 => 'type',  ),  1 =>   array (    0 => 'text',    1 => '/profile/places',  ),));
     }
 
     private function getblog_avatarRouteInfo()
@@ -635,16 +633,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getfos_user_registration_confirmedRouteInfo()
     {
         return array(array (), array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::confirmedAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/confirmed',  ),));
-    }
-
-    private function getfos_user_registration_tribuRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'CityUserBundle:TribuRegister:register',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/tribu_register',  ),));
-    }
-
-    private function gettribu_registrationRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/residence',  ),));
     }
 
     private function getfos_user_resetting_requestRouteInfo()

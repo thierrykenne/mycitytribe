@@ -1,0 +1,35 @@
+{% extends "CitytribeBundle::default.html.twig" %}
+{% block middle %}
+{% include "CitytribeBundle:Menu:profile_nav.html.twig" with {'tab1': '','tab2':'active','tab3':''} %}
+<div class="places">
+
+	<table class=" table table-striped">
+	  <tbody>
+	  	<caption>
+	  			{% if type== "destination" %}
+				<a class="btn btn-primary pull-right" href="{{ path('GeoBundle_dest') }}"> <i class="icon-edit"></i>  Edit Place </a>
+				{% else %}
+				<a class=" btn btn-primary pull-right" href="{{ path('GeoBundle_resi') }}"> <i class="icon-edit"></i>  Edit Place </a>
+				{% endif %}
+		</caption>
+	  		
+	    <tr>
+	      <td>City</td>
+	      <td>{{places.city}}</td>
+	    </tr>
+	    <tr>
+	      <td>Region</td>
+	      <td>{{places.region}}</td>
+	    </tr>
+	    <tr>
+	      <td>State</td>
+	      <td>{{places.state}}</td>
+	    </tr>
+	    <tr>
+	      <td>Country</td>
+	      <td>{{places.country}}</td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>
+{% endblock %}

@@ -50,7 +50,7 @@ registration:
         To finish activating your account - please visit %confirmationUrl%
 
         Regards,
-        the Team.
+        Mycitytribe.
 
 # Password resetting
 resetting:
@@ -71,7 +71,7 @@ resetting:
         To reset your password - please visit %confirmationUrl%
 
         Regards,
-        the Team.
+        Mycitytribe.
 
 # Global strings
 layout:
@@ -91,6 +91,8 @@ fos_user_registration_form_username: "Username:"
 fos_user_registration_form_email: "Email:"
 fos_user_registration_form_plainPassword_first: "Password:"
 fos_user_registration_form_plainPassword_second: "Verification:"
+fos_user_registration_form_plainPassword: "Password:"
+fos_user_registration_form_nationality: "Nationality:"
 
 fos_user_resetting_form_new_first: "New password:"
 fos_user_resetting_form_new_second: "Verification:"

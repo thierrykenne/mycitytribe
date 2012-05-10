@@ -103,7 +103,7 @@ class RegistrationController extends ContainerAware
         $this->container->get('fos_user.user_manager')->updateUser($user);
         $this->authenticateUser($user);
         //verifier que la tribu esiste
-        $route = 'fos_user_registration_tribu';
+        $route = 'GeoBundle_resi';
         $url = $this->container->get('router')->generate($route);
         return new RedirectResponse($url);
       
@@ -124,7 +124,7 @@ class RegistrationController extends ContainerAware
 
         $this->container->get('fos_user.user_manager')->updateUser($user);
         $this->authenticateUser($user);
-        $route = 'CityGeoBundle_residence';
+        $route = 'GeoBundle_resi';
         $url = $this->container->get('router')->generate($route);
         return new RedirectResponse($url);
        //return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(

@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ app.session.locale }}">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28877518-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,7 +26,8 @@
     {% endblock head_style %}
     {% block head_script %}{# Append JavaScript at the bottom for fast page loading except in special cases. #}{% endblock head_script %}
     <title>{% block title %}MycityTribe{% endblock %}</title>
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+<!--<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />-->
+    <link rel="icon" type="image/png" href=" {{ asset('images/favicon.png')}}" />
     <script>
 		  function goLogIn(){
 		      window.location = "{{ path('_security_check') }}";

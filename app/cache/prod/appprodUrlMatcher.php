@@ -131,8 +131,8 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         }
 
         // Cityblog_home
-        if (0 === strpos($pathinfo, '/home') && preg_match('#^/home(?:/(?P<page>\\d+))?$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'page' => 1,)), array('_route' => 'Cityblog_home'));
+        if (0 === strpos($pathinfo, '/home') && preg_match('#^/home(?:/(?P<type>destination|residence)(?:/(?P<page>\\d+))?)?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'type' => 'destination',  'page' => 1,)), array('_route' => 'Cityblog_home'));
         }
 
         if (0 === strpos($pathinfo, '/profile')) {
@@ -142,8 +142,8 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
 
             // blog_profile_places
-            if ($pathinfo === '/profile/places') {
-                return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::places_showAction',  '_route' => 'blog_profile_places',);
+            if (0 === strpos($pathinfo, '/profile/places') && preg_match('#^/profile/places/(?P<type>destination|residence)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::places_showAction',)), array('_route' => 'blog_profile_places'));
             }
 
             // blog_avatar
@@ -156,21 +156,26 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::editAction',  '_route' => 'blog_profile_edit',);
             }
 
+            // blog_profile_messages
+            if (0 === strpos($pathinfo, '/profile/messages') && preg_match('#^/profile/messages(?:/(?P<page>\\d+)(?:/(?P<id>\\d+))?)?$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\ProfileController::messagesAction',  'page' => 1,  'id' => 0,)), array('_route' => 'blog_profile_messages'));
+            }
+
         }
 
-        if (0 === strpos($pathinfo, '/blog')) {
+        if (0 === strpos($pathinfo, '/message')) {
             // message_show
-            if (preg_match('#^/blog/(?P<id>[^/]+?)/show$#xs', $pathinfo, $matches)) {
+            if (preg_match('#^/message/(?P<id>[^/]+?)/show$#xs', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::showAction',)), array('_route' => 'message_show'));
             }
 
             // message_new
-            if ($pathinfo === '/blog/new') {
+            if ($pathinfo === '/message/new') {
                 return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::newAction',  '_route' => 'message_new',);
             }
 
             // message_create
-            if ($pathinfo === '/blog/create') {
+            if ($pathinfo === '/message/create') {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_message_create;
@@ -180,12 +185,12 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             not_message_create:
 
             // message_edit
-            if (preg_match('#^/blog/(?P<id>[^/]+?)/edit$#xs', $pathinfo, $matches)) {
+            if (preg_match('#^/message/(?P<id>[^/]+?)/edit$#xs', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::editAction',)), array('_route' => 'message_edit'));
             }
 
             // message_update
-            if (preg_match('#^/blog/(?P<id>[^/]+?)/update$#xs', $pathinfo, $matches)) {
+            if (preg_match('#^/message/(?P<id>[^/]+?)/update$#xs', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_message_update;
@@ -195,7 +200,7 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             not_message_update:
 
             // message_delete
-            if (preg_match('#^/blog/(?P<id>[^/]+?)/delete$#xs', $pathinfo, $matches)) {
+            if (preg_match('#^/message/(?P<id>[^/]+?)/delete$#xs', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_message_delete;
@@ -204,6 +209,16 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_message_delete:
 
+        }
+
+        // Cityblog_tribe_users
+        if (0 === strpos($pathinfo, '/home/users') && preg_match('#^/home/users(?:/(?P<type>destination|residence))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::usersAction',  'type' => 'destination',)), array('_route' => 'Cityblog_tribe_users'));
+        }
+
+        // Cityblog_tribes
+        if (0 === strpos($pathinfo, '/home/tribes') && preg_match('#^/home/tribes(?:/(?P<type>destination|residence))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::tribesAction',  'type' => 'destination',)), array('_route' => 'Cityblog_tribes'));
         }
 
         if (0 === strpos($pathinfo, '/places')) {
