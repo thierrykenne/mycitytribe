@@ -37,11 +37,11 @@
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
     <parameter key="database_driver">pdo_mysql</parameter>
-    <parameter key="database_host">localhost</parameter>
+    <parameter key="database_host">194.116.73.79</parameter>
     <parameter key="database_port"></parameter>
     <parameter key="database_name">symfony</parameter>
     <parameter key="database_user">root</parameter>
-    <parameter key="database_password"></parameter>
+    <parameter key="database_password">thken165</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">smtp.gmail.com</parameter>
     <parameter key="mailer_user">fossothierry@gmail.com</parameter>
@@ -462,7 +462,7 @@
     <parameter key="fos_user.registration.confirmation.from_email" type="collection">
       <parameter key="MycityTribe@tribe.com">MycityTribe</parameter>
     </parameter>
-    <parameter key="fos_user.registration.confirmation.enabled">true</parameter>
+    <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
     <parameter key="fos_user.registration.form.type">fos_user_registration</parameter>
     <parameter key="fos_user.registration.form.name">fos_user_registration_form</parameter>
     <parameter key="fos_user.registration.form.validation_groups" type="collection">
@@ -1932,7 +1932,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4fab037c6ec2b</argument>
+            <argument>4faba0ebd2a60</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2078,7 +2078,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4fab037c6ec2b</argument>
+            <argument>4faba0ebd2a60</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2495,10 +2495,10 @@
     <service id="doctrine.dbal.default_connection" class="stdClass" factory-method="createConnection" factory-service="doctrine.dbal.connection_factory">
       <argument type="collection">
         <argument key="dbname">symfony</argument>
-        <argument key="host">localhost</argument>
+        <argument key="host">194.116.73.79</argument>
         <argument key="port"></argument>
         <argument key="user">root</argument>
-        <argument key="password"></argument>
+        <argument key="password">thken165</argument>
         <argument key="driver">pdo_mysql</argument>
         <argument key="driverOptions" type="collection"/>
       </argument>

@@ -58,14 +58,18 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
         echo "    <title>";
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
-    <link rel=\"shortcut icon\" href=\"";
+<!--<link rel=\"shortcut icon\" href=\"";
         // line 29
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("favicon.ico"), "html", null, true);
+        echo "\" />-->
+    <link rel=\"icon\" type=\"image/png\" href=\" ";
+        // line 30
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/favicon.png"), "html", null, true);
         echo "\" />
     <script>
 \t\t  function goLogIn(){
 \t\t      window.location = \"";
-        // line 32
+        // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_security_check"), "html", null, true);
         echo "\";
 \t\t  }
@@ -82,13 +86,13 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
 </head>
 <body>
 ";
-        // line 46
+        // line 47
         echo $this->env->getExtension('facebook')->renderInitialize(array("xfbml" => true, "fbAsyncInit" => "onFbInit();"));
         echo "
 ";
-        // line 47
+        // line 48
         $this->displayBlock('body', $context, $blocks);
-        // line 74
+        // line 75
         echo "</body>
 </html>";
     }
@@ -149,78 +153,78 @@ class __TwigTemplate_eb70b60ae1a35f21df78ade825b78f14 extends Twig_Template
         echo "MycityTribe";
     }
 
-    // line 54
+    // line 55
     public function block_flashes($context, array $blocks = array())
     {
-        // line 55
+        // line 56
         echo "                ";
         $context["flash"] = $this->env->loadTemplate("IsdevTwitterBootstrapBundle::flash.html.twig");
-        // line 56
+        // line 57
         echo "\t\t\t    ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "flash"), "session_msg", array(), "method"), "html", null, true);
         echo "
 \t\t\t";
     }
 
-    // line 59
+    // line 60
     public function block_content($context, array $blocks = array())
     {
-        // line 60
+        // line 61
         echo "            <div class=\"row\">
 
             </div>
             ";
     }
 
-    // line 67
+    // line 68
     public function block_footer($context, array $blocks = array())
     {
-        // line 68
+        // line 69
         echo "\t        <p align=\"center\"> Copyright &copy; <a href=\"\" target=\"_blank\">MyCityTribe </a> ";
         echo twig_escape_filter($this->env, twig_date_format_filter("now", "Y"), "html", null, true);
         echo "</p>
 \t        ";
     }
 
-    // line 49
+    // line 50
     public function block_container($context, array $blocks = array())
     {
-        // line 50
-        echo "        ";
         // line 51
+        echo "        ";
+        // line 52
         echo "
         <div class=\"content\">
 \t\t\t
 \t\t\t";
-        // line 54
+        // line 55
         $this->displayBlock('flashes', $context, $blocks);
-        // line 58
+        // line 59
         echo "
             ";
-        // line 59
+        // line 60
         $this->displayBlock('content', $context, $blocks);
-        // line 64
-        echo "        </div>";
         // line 65
+        echo "        </div>";
+        // line 66
         echo "
         <footer class=\"row\">
 \t        ";
-        // line 67
+        // line 68
         $this->displayBlock('footer', $context, $blocks);
-        // line 70
+        // line 71
         echo "        </footer>
 \t";
     }
 
-    // line 47
+    // line 48
     public function block_body($context, array $blocks = array())
     {
-        // line 48
+        // line 49
         echo "    <div class=\"container\">
 \t";
-        // line 49
+        // line 50
         $this->displayBlock('container', $context, $blocks);
-        // line 72
+        // line 73
         echo "    </div>";
     }
 

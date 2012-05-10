@@ -75,8 +75,6 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'fos_user_registration_check_email' => true,
        'fos_user_registration_confirm' => true,
        'fos_user_registration_confirmed' => true,
-       'fos_user_registration_tribu' => true,
-       'tribu_registration' => true,
        'fos_user_resetting_request' => true,
        'fos_user_resetting_send_email' => true,
        'fos_user_resetting_check_email' => true,
@@ -425,16 +423,6 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
     private function getfos_user_registration_confirmedRouteInfo()
     {
         return array(array (), array (  '_controller' => 'City\\UserBundle\\Controller\\RegistrationController::confirmedAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/confirmed',  ),));
-    }
-
-    private function getfos_user_registration_tribuRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'CityUserBundle:TribuRegister:register',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/tribu_register',  ),));
-    }
-
-    private function gettribu_registrationRouteInfo()
-    {
-        return array(array (), array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',), array (  '_method' => 'GET',), array (  0 =>   array (    0 => 'text',    1 => '/register/residence',  ),));
     }
 
     private function getfos_user_resetting_requestRouteInfo()

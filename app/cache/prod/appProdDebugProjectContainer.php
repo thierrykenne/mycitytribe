@@ -94,8 +94,6 @@ class appProdDebugProjectContainer extends Container
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSRestBundle', '/opt/lampp/htdocs/Symfony/app/Resources/FOSRestBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSRestBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSFacebookBundle', '/opt/lampp/htdocs/Symfony/app/Resources/FOSFacebookBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSFacebookBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSFacebookBundle', '/opt/lampp/htdocs/Symfony/app/Resources/FOSFacebookBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'FOSFacebookBundle', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityTribuBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CityTribuBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityTribuBundle', '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityTribuBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CityTribuBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityTribuBundle', '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityGeoBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CityGeoBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityGeoBundle', '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityGeoBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CityGeoBundle/views', '/^[^.]+\\.[^.]+\\.php$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CityGeoBundle', '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.php$/'))), 'php');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CitytribeBundle', '/opt/lampp/htdocs/Symfony/app/Resources/CitytribeBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($b, 'CitytribeBundle', '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
@@ -296,7 +294,7 @@ class appProdDebugProjectContainer extends Container
         $b->addEventSubscriber(new \Doctrine\DBAL\Event\Listeners\MysqlSessionInit('UTF8'));
         $b->addEventSubscriber(new \FOS\UserBundle\Entity\UserListener($this));
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'symfony', 'host' => 'localhost', 'port' => '', 'user' => 'root', 'password' => '', 'driver' => 'pdo_mysql', 'driverOptions' => array()), $a, $b, array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'symfony', 'host' => '194.116.73.79', 'port' => '', 'user' => 'root', 'password' => 'thken165', 'driver' => 'pdo_mysql', 'driverOptions' => array()), $a, $b, array());
     }
 
     /**
@@ -322,7 +320,7 @@ class appProdDebugProjectContainer extends Container
 
         $e = new \Symfony\Bridge\Doctrine\Annotations\IndexedReader($a);
 
-        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($e, array(0 => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity', 1 => '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Entity', 2 => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity', 3 => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity'));
+        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($e, array(0 => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Entity', 1 => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Entity', 2 => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Entity'));
 
         $g = new \Symfony\Bridge\Doctrine\Mapping\Driver\XmlDriver(array(0 => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/doctrine', 1 => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/doctrine'));
         $g->setNamespacePrefixes(array('/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/doctrine' => 'FOS\\UserBundle\\Entity', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/doctrine' => 'FOS\\CommentBundle\\Entity'));
@@ -330,14 +328,13 @@ class appProdDebugProjectContainer extends Container
 
         $h = new \Doctrine\ORM\Mapping\Driver\DriverChain();
         $h->addDriver($f, 'City\\UserBundle\\Entity');
-        $h->addDriver($f, 'City\\TribuBundle\\Entity');
         $h->addDriver($f, 'City\\GeoBundle\\Entity');
         $h->addDriver($f, 'City\\CitytribeBundle\\Entity');
         $h->addDriver($g, 'FOS\\UserBundle\\Entity');
         $h->addDriver($g, 'FOS\\CommentBundle\\Entity');
 
         $i = new \Doctrine\ORM\Configuration();
-        $i->setEntityNamespaces(array('CityUserBundle' => 'City\\UserBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'FOSCommentBundle' => 'FOS\\CommentBundle\\Entity', 'CityTribuBundle' => 'City\\TribuBundle\\Entity', 'CityGeoBundle' => 'City\\GeoBundle\\Entity', 'CitytribeBundle' => 'City\\CitytribeBundle\\Entity'));
+        $i->setEntityNamespaces(array('CityUserBundle' => 'City\\UserBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'FOSCommentBundle' => 'FOS\\CommentBundle\\Entity', 'CityGeoBundle' => 'City\\GeoBundle\\Entity', 'CitytribeBundle' => 'City\\CitytribeBundle\\Entity'));
         $i->setMetadataCacheImpl($b);
         $i->setQueryCacheImpl($c);
         $i->setResultCacheImpl($d);
@@ -1684,7 +1681,7 @@ class appProdDebugProjectContainer extends Container
      */
     protected function getJmsSerializer_MetadataDriverService()
     {
-        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/MonologBundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer', 'Symfony\\Bundle\\DoctrineBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/DoctrineBundle/Resources/config/serializer', 'Symfony\\Bundle\\AsseticBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Symfony/Bundle/AsseticBundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer', 'JMS\\SecurityExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SecurityExtraBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SerializerBundle/Resources/config/serializer', 'City\\BlogBundle' => '/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Resources/config/serializer', 'City\\UserBundle' => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Resources/config/serializer', 'FOS\\UserBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/serializer', 'FOS\\CommentBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer', 'FOS\\RestBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer', 'FOS\\FacebookBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer', 'City\\TribuBundle' => '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/config/serializer', 'City\\GeoBundle' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer', 'City\\CitytribeBundle' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer', 'Knp\\Bundle\\MenuBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer', 'City\\DemoBundle' => '/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer', 'Isdev\\TwitterBootstrapBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/config/serializer'));
+        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/MonologBundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer', 'Symfony\\Bundle\\DoctrineBundle' => '/opt/lampp/htdocs/Symfony/vendor/symfony/src/Symfony/Bundle/DoctrineBundle/Resources/config/serializer', 'Symfony\\Bundle\\AsseticBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Symfony/Bundle/AsseticBundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer', 'JMS\\SecurityExtraBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SecurityExtraBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/JMS/SerializerBundle/Resources/config/serializer', 'City\\BlogBundle' => '/opt/lampp/htdocs/Symfony/src/City/BlogBundle/Resources/config/serializer', 'City\\UserBundle' => '/opt/lampp/htdocs/Symfony/src/City/UserBundle/Resources/config/serializer', 'FOS\\UserBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/UserBundle/Resources/config/serializer', 'FOS\\CommentBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/config/serializer', 'FOS\\RestBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/RestBundle/Resources/config/serializer', 'FOS\\FacebookBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/FacebookBundle/Resources/config/serializer', 'City\\GeoBundle' => '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/config/serializer', 'City\\CitytribeBundle' => '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/config/serializer', 'Knp\\Bundle\\MenuBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Knp/Bundle/MenuBundle/Resources/config/serializer', 'City\\DemoBundle' => '/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/config/serializer', 'Isdev\\TwitterBootstrapBundle' => '/opt/lampp/htdocs/Symfony/vendor/bundles/Isdev/TwitterBootstrapBundle/Resources/config/serializer'));
 
         return $this->services['jms_serializer.metadata_driver'] = new \Metadata\Driver\DriverChain(array(0 => new \JMS\SerializerBundle\Metadata\Driver\YamlDriver($a), 1 => new \JMS\SerializerBundle\Metadata\Driver\XmlDriver($a), 2 => new \JMS\SerializerBundle\Metadata\Driver\PhpDriver($a), 3 => new \JMS\SerializerBundle\Metadata\Driver\AnnotationDriver($this->get('annotation_reader'))));
     }
@@ -2166,7 +2163,7 @@ class appProdDebugProjectContainer extends Container
         $a = $this->get('security.context');
         $b = $this->get('monolog.logger.security');
 
-        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('my.facebook.user'), 1 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4faadf0247e4c', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
+        return $this->services['security.firewall.map.context.login'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('my.facebook.user'), 1 => $this->get('fos_user.user_manager')), 'login', $b, $this->get('event_dispatcher')), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '4faba19190cf4', $b), 3 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $this->get('security.http_utils'), NULL, NULL, NULL, $b));
     }
 
     /**
@@ -2727,7 +2724,6 @@ class appProdDebugProjectContainer extends Container
         $instance->addResource('yml', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/translations/FOSCommentBundle.ru.yml', 'ru', 'FOSCommentBundle');
         $instance->addResource('yml', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/translations/FOSCommentBundle.da.yml', 'da', 'FOSCommentBundle');
         $instance->addResource('yml', '/opt/lampp/htdocs/Symfony/vendor/bundles/FOS/CommentBundle/Resources/translations/FOSCommentBundle.es.yml', 'es', 'FOSCommentBundle');
-        $instance->addResource('xliff', '/opt/lampp/htdocs/Symfony/src/City/TribuBundle/Resources/translations/messages.fr.xliff', 'fr', 'messages');
         $instance->addResource('xliff', '/opt/lampp/htdocs/Symfony/src/City/GeoBundle/Resources/translations/messages.fr.xliff', 'fr', 'messages');
         $instance->addResource('xliff', '/opt/lampp/htdocs/Symfony/src/City/CitytribeBundle/Resources/translations/messages.fr.xliff', 'fr', 'messages');
         $instance->addResource('xliff', '/opt/lampp/htdocs/Symfony/src/City/DemoBundle/Resources/translations/messages.fr.xliff', 'fr', 'messages');
@@ -3174,7 +3170,7 @@ class appProdDebugProjectContainer extends Container
     {
         $a = new \Symfony\Component\Security\Core\User\UserChecker();
 
-        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4faadf0247e4c'), 1 => new \FOS\FacebookBundle\Security\Authentication\Provider\FacebookProvider($this->get('fos_facebook.api'), $this->get('my.facebook.user'), $a, false), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
+        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4faba19190cf4'), 1 => new \FOS\FacebookBundle\Security\Authentication\Provider\FacebookProvider($this->get('fos_facebook.api'), $this->get('my.facebook.user'), $a, false), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $a, 'main', $this->get('security.encoder_factory'), true), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main')));
     }
 
     /**
@@ -3356,7 +3352,6 @@ class appProdDebugProjectContainer extends Container
                 'FOSCommentBundle' => 'FOS\\CommentBundle\\FOSCommentBundle',
                 'FOSRestBundle' => 'FOS\\RestBundle\\FOSRestBundle',
                 'FOSFacebookBundle' => 'FOS\\FacebookBundle\\FOSFacebookBundle',
-                'CityTribuBundle' => 'City\\TribuBundle\\CityTribuBundle',
                 'CityGeoBundle' => 'City\\GeoBundle\\CityGeoBundle',
                 'CitytribeBundle' => 'City\\CitytribeBundle\\CitytribeBundle',
                 'KnpMenuBundle' => 'Knp\\Bundle\\MenuBundle\\KnpMenuBundle',
@@ -3366,11 +3361,11 @@ class appProdDebugProjectContainer extends Container
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appProdDebugProjectContainer',
             'database_driver' => 'pdo_mysql',
-            'database_host' => 'localhost',
+            'database_host' => '194.116.73.79',
             'database_port' => '',
             'database_name' => 'symfony',
             'database_user' => 'root',
-            'database_password' => '',
+            'database_password' => 'thken165',
             'mailer_transport' => 'smtp',
             'mailer_host' => 'smtp.gmail.com',
             'mailer_user' => 'fossothierry@gmail.com',

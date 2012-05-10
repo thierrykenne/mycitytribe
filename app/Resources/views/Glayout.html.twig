@@ -46,6 +46,14 @@ $(document).ready(function() {
 		ans=true;
 		if ($('input.city').val()=="" || ('input.country').val() )
 		{
+			if($('input.state').val()=="")
+			{
+				$('input.state').val(('input.country').val());
+			} 
+			if($('input.region').val()=="")
+			{
+				$('input.region').val(('input.city').val());
+			} 
 			$('#error').show();
 			ans=false;
 		}

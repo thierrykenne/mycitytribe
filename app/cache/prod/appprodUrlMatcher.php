@@ -500,26 +500,6 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_fos_user_registration_confirmed:
 
-            // fos_user_registration_tribu
-            if ($pathinfo === '/register/tribu_register') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_fos_user_registration_tribu;
-                }
-                return array (  '_controller' => 'CityUserBundle:TribuRegister:register',  '_route' => 'fos_user_registration_tribu',);
-            }
-            not_fos_user_registration_tribu:
-
-            // tribu_registration
-            if ($pathinfo === '/register/residence') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_tribu_registration;
-                }
-                return array (  '_controller' => 'City\\GeoBundle\\Controller\\DefaultController::residenceAction',  '_route' => 'tribu_registration',);
-            }
-            not_tribu_registration:
-
         }
 
         if (0 === strpos($pathinfo, '/resetting')) {

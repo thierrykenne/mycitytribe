@@ -265,7 +265,7 @@ class BlogController extends Controller
 
         return $this->render('CitytribeBundle:Blog:edit.html.twig', array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'user'=>$user
         ));
     }

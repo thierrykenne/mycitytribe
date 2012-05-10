@@ -74,7 +74,7 @@ fos_user:
     user_class:    City\UserBundle\Entity\User # La classe de l'entité User que nous venons de définir
     registration:
         confirmation:
-            enabled: true
+            enabled: false
     from_email:
         address: MycityTribe@tribe.com
         sender_name: MycityTribe

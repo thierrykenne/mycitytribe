@@ -33,6 +33,8 @@ $catalogue = new MessageCatalogue('en', array (
     'fos_user_registration_form_email' => 'Email:',
     'fos_user_registration_form_plainPassword_first' => 'Password:',
     'fos_user_registration_form_plainPassword_second' => 'Verification:',
+    'fos_user_registration_form_plainPassword' => 'Password:',
+    'fos_user_registration_form_nationality' => 'Nationality:',
     'fos_user_resetting_form_new_first' => 'New password:',
     'fos_user_resetting_form_new_second' => 'Verification:',
     'fos_user_change_password_form_new_first' => 'New password:',
@@ -65,7 +67,7 @@ Hello %username%!
 To finish activating your account - please visit %confirmationUrl%
 
 Regards,
-the Team.
+Mycitytribe.
 ',
     'resetting.password_already_requested' => 'The password for this user has already been requested within the last 24 hours.',
     'resetting.check_email' => 'An email has been sent to %email%. It contains a link you must click to reset your password.',
@@ -80,7 +82,7 @@ Hello %username%!
 To reset your password - please visit %confirmationUrl%
 
 Regards,
-the Team.
+Mycitytribe.
 ',
     'layout.logout' => 'Logout',
     'layout.login' => 'Login',
