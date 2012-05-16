@@ -65,12 +65,16 @@ class ProfileController extends Controller
  
     public function editAction()
     {
-        $user=$this->get_user(); 
+        $user=$this->get_user();
+        $em = $this->getDoctrine()->getEntityManager();
+        $request = $this->getRequest();
 
         $form    = $this->createForm(new PersonInfoType, $user); 
-        $formHandler = new PersonInfoHandler($form, $this->get('request'), $this->getDoctrine()->getEntityManager());
+        $formHandler = new PersonInfoHandler($form, $request, $em);
+        
         if( $formHandler->process() )
         {
+            
             return $this->redirect( $this->generateUrl('blog_profile_info'));
         }
 
@@ -114,7 +118,7 @@ class ProfileController extends Controller
         }
 
         $messages= $repository->findBy(
-            array('author' =>$user),                 
+            array('author' =>$user->getId()),                 
             array('date' => 'desc'), 
             $nb_messages_page,       
             $offset                  

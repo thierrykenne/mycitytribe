@@ -9,7 +9,7 @@
                 {% else %}
                 <li class="">
                 {% endif %}
-                 <a href="{{path('Cityblog_home')}}"> <i class=" active icon-white icon-home "></i> Home</a></li>
+                 <a href="{{path('Cityblog_home', {'type':countrytribe.d})}}"> <i class=" active icon-white icon-home "></i> Home</a></li>
 
               {% if profile is not defined  %}
               <li><a href="{{path('blog_profile_info')}}"> <i class="icon-user icon-white"></i> Profile</a></li>

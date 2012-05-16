@@ -30,7 +30,7 @@ class __TwigTemplate_3e68a9c568a24c67bd1c2fe2a81d2b79 extends Twig_Template
         }
         // line 12
         echo "                 <a href=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home", array("type" => $this->getAttribute($this->getContext($context, "countrytribe"), "d"))), "html", null, true);
         echo "\"> <i class=\" active icon-white icon-home \"></i> Home</a></li>
 
               ";
@@ -75,7 +75,7 @@ class __TwigTemplate_3e68a9c568a24c67bd1c2fe2a81d2b79 extends Twig_Template
             // line 29
             echo "              <li class=\"active\" ><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_profile_messages", array("id" => $this->getAttribute($this->getContext($context, "user"), "id"))), "html", null, true);
-            echo "\"><i class=\"icon-envelope icon-white\"></i> Messages</a></li>
+            echo "\"><i class=\"icon-envelope icon-white\"></i> My Messages</a></li>
               ";
         }
         // line 31

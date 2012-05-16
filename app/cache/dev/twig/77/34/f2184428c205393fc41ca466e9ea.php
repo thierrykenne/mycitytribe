@@ -79,6 +79,14 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\tans=true;
 \t\tif (\$('input.city').val()==\"\" || ('input.country').val() )
 \t\t{
+\t\t\tif(\$('input.state').val()==\"\")
+\t\t\t{
+\t\t\t\t\$('input.state').val(('input.country').val());
+\t\t\t} 
+\t\t\tif(\$('input.region').val()==\"\")
+\t\t\t{
+\t\t\t\t\$('input.region').val(('input.city').val());
+\t\t\t} 
 \t\t\t\$('#error').show();
 \t\t\tans=false;
 \t\t}
@@ -215,7 +223,7 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t\t\t\$.ajax({ // fonction permettant de faire de l'ajax
 \t\t\t\t   type: \"POST\", // methode de transmission des données au fichier php
 \t\t\t\t   url: \"";
-        // line 184
+        // line 192
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("GeoBundle_polygon_region"), "html", null, true);
         echo "\", // url du fichier php
 \t\t\t\t   data: \"country=\"+\$(\".country\").val()+\"&region=\"+\$(\".region\").val(), // données à transmettre
@@ -259,9 +267,9 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
 \t
 \t<body>
 ";
-        // line 225
+        // line 233
         $this->displayBlock('body', $context, $blocks);
-        // line 253
+        // line 261
         echo "\t</body>
 </html>
 ";
@@ -318,80 +326,80 @@ class __TwigTemplate_7734f2184428c205393fc41ca466e9ea extends Twig_Template
         echo "    ";
     }
 
-    // line 232
+    // line 240
     public function block_flashes($context, array $blocks = array())
     {
-        // line 233
+        // line 241
         echo "                ";
         $context["flash"] = $this->env->loadTemplate("IsdevTwitterBootstrapBundle::flash.html.twig");
-        // line 234
+        // line 242
         echo "\t\t\t    ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "flash"), "session_msg", array(), "method"), "html", null, true);
         echo "
 \t\t\t";
     }
 
-    // line 237
+    // line 245
     public function block_content($context, array $blocks = array())
     {
-        // line 238
+        // line 246
         echo "            <div class=\"row\">
 
             </div>
             ";
     }
 
-    // line 245
+    // line 253
     public function block_footer($context, array $blocks = array())
     {
-        // line 246
+        // line 254
         echo "\t        <p align=\"center\"> Copyright &copy; <a href=\"\" target=\"_blank\">MyCityTribe </a> ";
         echo twig_escape_filter($this->env, twig_date_format_filter("now", "Y"), "html", null, true);
         echo "</p>
 \t        ";
     }
 
-    // line 227
+    // line 235
     public function block_container($context, array $blocks = array())
     {
-        // line 228
+        // line 236
         echo "        ";
-        // line 229
+        // line 237
         echo "
         <div class=\"content\">
 \t\t\t
 \t\t\t";
-        // line 232
+        // line 240
         $this->displayBlock('flashes', $context, $blocks);
-        // line 236
+        // line 244
         echo "
             ";
-        // line 237
+        // line 245
         $this->displayBlock('content', $context, $blocks);
-        // line 242
+        // line 250
         echo "        </div>";
-        // line 243
+        // line 251
         echo "
         <footer class=\"row\">
 \t        ";
-        // line 245
+        // line 253
         $this->displayBlock('footer', $context, $blocks);
-        // line 248
+        // line 256
         echo "        </footer>
 \t";
     }
 
-    // line 225
+    // line 233
     public function block_body($context, array $blocks = array())
     {
-        // line 226
+        // line 234
         echo "    <div class=\"container\">
 \t";
-        // line 227
+        // line 235
         $this->displayBlock('container', $context, $blocks);
-        // line 250
+        // line 258
         echo "    </div>";
-        // line 251
+        // line 259
         echo "
 ";
     }

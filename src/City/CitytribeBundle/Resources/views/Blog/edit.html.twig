@@ -5,7 +5,7 @@
 	<p><h2>Edit Subject</h2></p>
 
 	<p> 
-		<form action="{{ path('message_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+		<form action="{{ path('message_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
 
 		<div>
 	    {{ form_label(form.titre) }}
@@ -26,13 +26,7 @@
 	    </p>
 	</form>
 
-	<ul class="record_actions">
-	    <li>
-	        <a href="{{ path('Cityblog_home') }}">
-	            Back to the list
-	        </a>
-	    </li>
-	</ul></p>
+</p>
 </div>
 
 {% endblock %}

@@ -3,9 +3,31 @@
 {% include "CitytribeBundle:Menu:profile_nav.html.twig" with {'tab1': 'active','tab2':'','tab3':''} %}
 	<form id ="form" action="{{ path('blog_profile_edit') }}" method="post" }}>
 	
-		{{ form_widget(form) }}
-	
-		<input type="submit" />
+	{{ form_label(form.username) }}
+        {{ form_widget(form.username, { 'attr': {'class': 'span4'} }) }}
+
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, { 'attr': {'class': 'span4'} }) }}
+
+        {{ form_label(form.sex) }}
+        {{ form_widget(form.sex, { 'attr': {'class': 'span4'} }) }}
+
+        {{ form_label(form.language) }}
+        {{ form_widget(form.language, { 'attr': {'class': 'span4'} }) }}
+
+        {{ form_label(form.occupation) }}
+        {{ form_widget(form.occupation, { 'attr': {'class': 'span4'} }) }}
+
+        {{ form_label(form.visit_goal) }}
+        {{ form_widget(form.visit_goal, { 'attr': {'class': 'span4'} }) }}
+
+        {{ form_label(form.about_me) }}
+        {{ form_widget(form.about_me, { 'attr': {'class': 'span6'} }) }}
+        {{ form_rest(form) }}
+
+        <p>
+	        <button class="btn btn-success" type="submit">Save Changes</button>
+	    </p>
 	</form>
 {% endblock %}
 

@@ -34,21 +34,53 @@ class __TwigTemplate_e4f17957af798d7cc1b6d3d7749f5ae9 extends Twig_Template
         // line 8
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("message_update", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
         echo "\" method=\"post\" ";
-        echo $this->env->getExtension('form')->renderEnctype($this->getContext($context, "edit_form"));
+        echo $this->env->getExtension('form')->renderEnctype($this->getContext($context, "form"));
         echo ">
-    ";
-        // line 9
-        echo $this->env->getExtension('form')->renderWidget($this->getContext($context, "edit_form"));
+
+\t\t<div>
+\t    ";
+        // line 11
+        echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "titre"));
         echo "
+        ";
+        // line 12
+        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "titre"), array("attr" => array("class" => "titre")));
+        echo "
+        </div>
+        <div>
+                ";
+        // line 15
+        echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "contenu"));
+        echo "
+                ";
+        // line 16
+        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "contenu"), array("attr" => array("class" => "contenu")));
+        echo "
+            </div>
+            <div>
+                ";
+        // line 19
+        echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "nationality"));
+        echo "
+                ";
+        // line 20
+        echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "nationality"), array("attr" => array("class" => "nationality", "readonly" => "readonly", "value" => $this->getAttribute($this->getContext($context, "countrytribe"), "d"))));
+        // line 21
+        echo "
+            </div>
+              ";
+        // line 23
+        echo $this->env->getExtension('form')->renderRest($this->getContext($context, "form"));
+        echo "   
 \t    <p>
-\t        <button class=\"btn btn-success\" type=\"submit\">Edit</button>
+\t        <button class=\"btn btn-success\" type=\"submit\">Create</button>
 \t    </p>
 \t</form>
 
 \t<ul class=\"record_actions\">
 \t    <li>
 \t        <a href=\"";
-        // line 17
+        // line 31
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home"), "html", null, true);
         echo "\">
 \t            Back to the list

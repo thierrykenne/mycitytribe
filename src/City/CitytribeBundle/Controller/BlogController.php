@@ -38,6 +38,7 @@ class BlogController extends Controller
                                                 'c'=>$destinations['country']));
             $session->set('country_tribe2', array('d'=>'residence',
                                                   'c'=>$residences['country']));
+            $country= $destinations['country'];
         }
         elseif ($type =="residence") {
              $nb_messages = $repository->getAllCountry($user->getNationality(),$residences['country']);
@@ -46,6 +47,7 @@ class BlogController extends Controller
              $session->set('country_tribe2', array('d'=>'destination',
                                                     'c'=>$destinations['country']));
              $session->set('type', 'residence');
+             $country=$residences['country'];
         }
         else { throw $this->createNotFoundException('Page unfound (type = '.$type.')');}
 
@@ -65,7 +67,7 @@ class BlogController extends Controller
         $messages = $repository->findBy(
             array(
                 'nationality'=>$user->getNationality(),
-                'country_tribe'=>$destinations['country']
+                'country_tribe'=>$country,
                 ),                 
             array('date' => 'desc'), // On tri par date décroissante
             $nb_messages_page,       // On sélectionne $nb_messages_page messages
@@ -257,6 +259,7 @@ class BlogController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
+            $editForm->getData()->setNationality($user->getNationality());
             $em->persist($entity);
             $em->flush();
 
