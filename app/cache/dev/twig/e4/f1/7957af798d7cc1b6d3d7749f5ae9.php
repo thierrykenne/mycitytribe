@@ -77,16 +77,7 @@ class __TwigTemplate_e4f17957af798d7cc1b6d3d7749f5ae9 extends Twig_Template
 \t    </p>
 \t</form>
 
-\t<ul class=\"record_actions\">
-\t    <li>
-\t        <a href=\"";
-        // line 31
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home"), "html", null, true);
-        echo "\">
-\t            Back to the list
-\t        </a>
-\t    </li>
-\t</ul></p>
+</p>
 </div>
 
 ";
