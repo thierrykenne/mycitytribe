@@ -25,3 +25,10 @@ Cityblog_tribes:
     requirements:
         type: destination|residence
 
+Default:
+    pattern:   /
+    defaults:  { _controller: CitytribeBundle:Blog:index, type:destination, page: 1 }
+    requirements:
+        page:  \d+
+        type: destination|residence
+

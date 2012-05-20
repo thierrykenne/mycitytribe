@@ -26,7 +26,7 @@ class __TwigTemplate_f618064d63de6a9448d1e639a9625c2c extends Twig_Template
     public function block_middle($context, array $blocks = array())
     {
         // line 3
-        echo "\t\t<div class=\"msg-btn span6\">
+        echo "\t\t<div class=\"msg-btn span7\">
 \t\t<a class=\"new-msg btn btn-large pull-right\" href=\" ";
         // line 4
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("message_new"), "html", null, true);
@@ -97,7 +97,7 @@ class __TwigTemplate_f618064d63de6a9448d1e639a9625c2c extends Twig_Template
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
         // line 33
         echo "\t\t</div>
-\t\t\t<div class=\"pagination\">
+\t\t\t<div class=\"pagination\"> 
 \t\t    \t<ul>
 \t\t    \t\t";
         // line 37
@@ -111,19 +111,33 @@ class __TwigTemplate_f618064d63de6a9448d1e639a9625c2c extends Twig_Template
                 echo " class=\"active\"";
             }
             echo ">
-\t\t    \t\t\t\t<a href=\"";
+\t\t    \t\t\t\t";
             // line 39
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home", array("page" => $this->getContext($context, "p"))), "html", null, true);
-            echo "\">";
-            echo twig_escape_filter($this->env, $this->getContext($context, "p"), "html", null, true);
-            echo "</a>
-\t\t    \t\t\t</li>
+            if ((!array_key_exists("mymessages", $context))) {
+                // line 40
+                echo "\t\t    \t\t\t\t<a href=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home", array("page" => $this->getContext($context, "p"))), "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, $this->getContext($context, "p"), "html", null, true);
+                echo "</a>
+\t\t    \t\t\t\t";
+            } else {
+                // line 42
+                echo "\t\t    \t\t\t\t<a href=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_profile_messages", array("page" => $this->getContext($context, "p"), "id" => $this->getAttribute($this->getContext($context, "user"), "id"))), "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, $this->getContext($context, "p"), "html", null, true);
+                echo "</a>
+\t\t    \t\t\t\t";
+            }
+            // line 44
+            echo "\t\t    \t\t\t</li>
 \t\t    \t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 42
+        // line 46
         echo "\t\t    \t</ul>
 \t\t\t</div>
 ";

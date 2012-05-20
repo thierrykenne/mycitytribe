@@ -57,17 +57,20 @@ class __TwigTemplate_aaafc7dc8696ddeadf5afd6cb32a99b2 extends Twig_Template
             <button data-url=\"";
             // line 24
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("fos_comment_new_thread_comment_votes", array("id" => $this->getAttribute($this->getAttribute($this->getContext($context, "comment"), "thread"), "id"), "commentId" => $this->getAttribute($this->getContext($context, "comment"), "id"), "value" => 1)), "html", null, true);
-            echo "\" class=\"fos_comment_comment_vote\">";
-            echo $this->env->getExtension('translator')->getTranslator()->trans("fos_comment_comment_show_voteup", array(), "FOSCommentBundle");
-            echo "</button>
+            echo "\" class=\"fos_comment_comment_vote\">
+                ";
+            // line 26
+            echo "                <i class=\"icon-thumbs-up\"></i>
+            </button>
             <button data-url=\"";
-            // line 25
+            // line 28
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("fos_comment_new_thread_comment_votes", array("id" => $this->getAttribute($this->getAttribute($this->getContext($context, "comment"), "thread"), "id"), "commentId" => $this->getAttribute($this->getContext($context, "comment"), "id"), "value" => (-1))), "html", null, true);
             echo "\" class=\"fos_comment_comment_vote\">";
-            echo $this->env->getExtension('translator')->getTranslator()->trans("fos_comment_comment_show_votedown", array(), "FOSCommentBundle");
-            echo "</button>
+            // line 29
+            echo "                <i class=\"icon-thumbs-down\"></i>
+            </button>
             <div class=\"fos_comment_comment_score\" id=\"fos_comment_score_";
-            // line 26
+            // line 31
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "comment"), "id"), "html", null, true);
             echo "\">";
             $this->env->loadTemplate("FOSCommentBundle:Thread:comment_votes.html.twig")->display(array_merge($context, array("commentScore" => $this->getAttribute($this->getContext($context, "comment"), "score"))));
@@ -75,42 +78,42 @@ class __TwigTemplate_aaafc7dc8696ddeadf5afd6cb32a99b2 extends Twig_Template
         </div>
         ";
         }
-        // line 29
+        // line 34
         echo "    </div>
     <div class=\"fos_comment_comment_body\">
         ";
-        // line 31
+        // line 36
         if ($this->env->getExtension('fos_comment')->isRawComment($this->getContext($context, "comment"))) {
-            // line 32
+            // line 37
             echo "        ";
             echo $this->getAttribute($this->getContext($context, "comment"), "rawBody");
             echo "
         ";
         } else {
-            // line 34
+            // line 39
             echo "        ";
             echo twig_nl2br_filter(twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "comment"), "body"), "html", null, true));
             echo "
         ";
         }
-        // line 36
+        // line 41
         echo "    </div>
 
     ";
-        // line 38
+        // line 43
         if ((!($this->getContext($context, "view") === "flat"))) {
-            // line 39
+            // line 44
             echo "    ";
             if (($this->getContext($context, "depth") == "0")) {
-                // line 40
+                // line 45
                 echo "        <div class=\"fos_comment_comment_replies\" style=\"margin-left: 2em;\">
         ";
-                // line 41
+                // line 46
                 if (($this->getAttribute($this->getAttribute($this->getContext($context, "comment"), "thread"), "commentable") && $this->env->getExtension('fos_comment')->canComment($this->getContext($context, "comment")))) {
-                    // line 42
+                    // line 47
                     echo "            <div class=\"fos_comment_comment_reply\">
                 <button data-url=\"";
-                    // line 43
+                    // line 48
                     echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("fos_comment_new_thread_comments", array("id" => $this->getAttribute($this->getAttribute($this->getContext($context, "comment"), "thread"), "id"))), "html", null, true);
                     echo "\" data-name=\"";
                     echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "comment"), "authorName"), "html", null, true);
@@ -122,29 +125,29 @@ class __TwigTemplate_aaafc7dc8696ddeadf5afd6cb32a99b2 extends Twig_Template
             </div>
         ";
                 }
-                // line 46
+                // line 51
                 echo "        ";
                 if (array_key_exists("children", $context)) {
-                    // line 47
+                    // line 52
                     echo "            ";
                     $this->env->loadTemplate("FOSCommentBundle:Thread:comments.html.twig")->display(array_merge($context, array("comments" => $this->getContext($context, "children"), "depth" => ($this->getContext($context, "depth") + 1), "parentId" => $this->getAttribute($this->getContext($context, "comment"), "id"), "view" => $this->getContext($context, "view"))));
-                    // line 48
+                    // line 53
                     echo "        ";
                 }
-                // line 49
+                // line 54
                 echo "        </div>
     ";
             } elseif ((($this->getContext($context, "view") === "flat") && array_key_exists("children", $context))) {
-                // line 51
+                // line 56
                 echo "        ";
                 $this->env->loadTemplate("FOSCommentBundle:Thread:comments.html.twig")->display(array_merge($context, array("comments" => $this->getContext($context, "children"), "depth" => ($this->getContext($context, "depth") + 1), "parentId" => $this->getAttribute($this->getContext($context, "comment"), "id"), "view" => $this->getContext($context, "view"))));
-                // line 52
+                // line 57
                 echo "    ";
             }
-            // line 53
+            // line 58
             echo "    ";
         }
-        // line 54
+        // line 59
         echo "</div>
 ";
     }

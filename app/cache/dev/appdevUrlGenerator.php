@@ -74,6 +74,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'message_delete' => true,
        'Cityblog_tribe_users' => true,
        'Cityblog_tribes' => true,
+       'Default' => true,
        'GeoBundle_polygon_region' => true,
        'GeoBundle_dest' => true,
        'GeoBundle_destination_show' => true,
@@ -453,6 +454,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getCityblog_tribesRouteInfo()
     {
         return array(array (  0 => 'type',), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::tribesAction',  'type' => 'destination',), array (  'type' => 'destination|residence',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => 'destination|residence',    3 => 'type',  ),  1 =>   array (    0 => 'text',    1 => '/home/tribes',  ),));
+    }
+
+    private function getDefaultRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'type' => 'destination',  'page' => 1,), array (  'page' => '\\d+',  'type' => 'destination|residence',), array (  0 =>   array (    0 => 'text',    1 => '/',  ),));
     }
 
     private function getGeoBundle_polygon_regionRouteInfo()

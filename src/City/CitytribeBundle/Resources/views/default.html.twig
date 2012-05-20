@@ -5,13 +5,14 @@
 {% block content %}
 <div class="content-type1 row">
 	<div class="logo-left2"> <a href="{{path('Cityblog_home')}}"> <img src="{{ asset('images/logo-medium.png') }}"> </a> </div>
+		<div class="version"> <span class="label label-info">ALFA VERSION !</span></div>
 		{% include "CitytribeBundle:Menu:navigation.html.twig" %}
 		<div class="row contentbox " > 
 			<div class="tribe-message row space">
 				<div class="span3">.
 				</div>
 				<div class="span5">
-					<h2>{{user.nationality|country}} Tribe in {{countrytribe.c}} </h2>
+					 <h2> <a> {{user.nationality|country}} Tribe in {{countrytribe.c}} </a></h2>
 				</div>
 				<div class="span4">
 					<div class="logout pull-right"><a class="btn btn-danger" href="{{path(	'fos_user_security_logout')}}">

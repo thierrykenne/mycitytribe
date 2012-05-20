@@ -42,8 +42,19 @@ class ProfileController extends Controller
     	    	if ($form->isValid()) {
     		   //Upload of file
     	    	    $files=$request->files->get($form->getName());
-    	    	    $uploadedFile=$files["name"];
-    				$extention= $uploadedFile->guessExtension();
+    	    	    
+    				if (!$uploadedFile=$files["name"])
+                    {
+                        $session = $this->getRequest()->getSession();
+                        $session->set('notice',' Please select a valid image file!');
+                        return $this->render('CitytribeBundle:Profile:avatar.html.twig',array(
+                                'user'=>$user,
+                                'form'=> $form->createView(),
+                                'profile'=>'active'
+                               ));
+
+                    }
+                    $extention= $uploadedFile->guessExtension();
     				$filename='avatar_'.$user->getId().'.'.$extention;
     	    	    $uploadedFile->move(
     	    	         __DIR__.'/../../../../web/uploads/avatars/',$filename    	        
@@ -130,6 +141,7 @@ class ProfileController extends Controller
             'messages'      => $messages,
             'page'          => $page,
             'nb_pages'      => $nb_pages,
+            'mymessages'     => 'active'
         ));
     }
 

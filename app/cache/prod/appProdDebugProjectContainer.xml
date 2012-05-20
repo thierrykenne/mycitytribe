@@ -33,7 +33,7 @@
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appProdDebugProjectContainer</parameter>
     <parameter key="database_driver">pdo_mysql</parameter>
-    <parameter key="database_host">194.116.73.79</parameter>
+    <parameter key="database_host">localhost</parameter>
     <parameter key="database_port"></parameter>
     <parameter key="database_name">symfony</parameter>
     <parameter key="database_user">root</parameter>
@@ -240,7 +240,7 @@
     <parameter key="twig.extension.yaml.class">Symfony\Bridge\Twig\Extension\YamlExtension</parameter>
     <parameter key="twig.extension.form.class">Symfony\Bridge\Twig\Extension\FormExtension</parameter>
     <parameter key="twig.exception_listener.class">Symfony\Component\HttpKernel\EventListener\ExceptionListener</parameter>
-    <parameter key="twig.exception_listener.controller">Symfony\Bundle\TwigBundle\Controller\ExceptionController::showAction</parameter>
+    <parameter key="twig.exception_listener.controller">CitytribeBundle:Exception:exception</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
       <parameter>IsdevTwitterBootstrapBundle:Form:fields.html.twig</parameter>
@@ -248,7 +248,7 @@
     <parameter key="twig.options" type="collection">
       <parameter key="debug">true</parameter>
       <parameter key="strict_variables">true</parameter>
-      <parameter key="exception_controller">Symfony\Bundle\TwigBundle\Controller\ExceptionController::showAction</parameter>
+      <parameter key="exception_controller">CitytribeBundle:Exception:exception</parameter>
       <parameter key="cache">/opt/lampp/htdocs/Symfony/app/cache/prod/twig</parameter>
       <parameter key="charset">UTF-8</parameter>
     </parameter>
@@ -1700,7 +1700,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4fb7e087eb0bf</argument>
+            <argument>4fb980ccbd7b4</argument>
           </service>
         </argument>
         <argument type="service">
@@ -1846,7 +1846,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4fb7e087eb0bf</argument>
+            <argument>4fb980ccbd7b4</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2084,7 +2084,7 @@
       <argument type="collection">
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
-        <argument key="exception_controller">Symfony\Bundle\TwigBundle\Controller\ExceptionController::showAction</argument>
+        <argument key="exception_controller">CitytribeBundle:Exception:exception</argument>
         <argument key="cache">/opt/lampp/htdocs/Symfony/app/cache/prod/twig</argument>
         <argument key="charset">UTF-8</argument>
       </argument>
@@ -2218,7 +2218,7 @@
     <service id="twig.exception_listener" class="Symfony\Component\HttpKernel\EventListener\ExceptionListener">
       <tag name="kernel.event_listener" event="kernel.exception" method="onKernelException" priority="-128"/>
       <tag name="monolog.logger" channel="request"/>
-      <argument>Symfony\Bundle\TwigBundle\Controller\ExceptionController::showAction</argument>
+      <argument>CitytribeBundle:Exception:exception</argument>
       <argument type="service" id="monolog.logger.request"/>
     </service>
     <service id="monolog.handler.main" class="Monolog\Handler\FingersCrossedHandler">
@@ -2253,7 +2253,7 @@
     <service id="doctrine.dbal.default_connection" class="stdClass" factory-method="createConnection" factory-service="doctrine.dbal.connection_factory">
       <argument type="collection">
         <argument key="dbname">symfony</argument>
-        <argument key="host">194.116.73.79</argument>
+        <argument key="host">localhost</argument>
         <argument key="port"></argument>
         <argument key="user">root</argument>
         <argument key="password">thken165</argument>

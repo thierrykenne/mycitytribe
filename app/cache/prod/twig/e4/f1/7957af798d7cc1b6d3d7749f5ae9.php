@@ -57,7 +57,7 @@ class __TwigTemplate_e4f17957af798d7cc1b6d3d7749f5ae9 extends Twig_Template
         echo $this->env->getExtension('form')->renderWidget($this->getAttribute($this->getContext($context, "form"), "contenu"), array("attr" => array("class" => "contenu")));
         echo "
             </div>
-            <div>
+            <div class=\"nationality\">
                 ";
         // line 19
         echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, "form"), "nationality"));

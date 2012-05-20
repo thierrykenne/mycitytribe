@@ -4,6 +4,9 @@
     position: relative;
     width: 400px;
 }
+.form-msg .nationality{
+	display: none;
+}
 .form-msg input,.form-msg textarea{
 	width: 300px;
 }
@@ -34,5 +37,8 @@
 }
 .user-list .badge {
 	margin-right: 20px;
+}
+.middle img{
+	max-width:520px;
 }
 

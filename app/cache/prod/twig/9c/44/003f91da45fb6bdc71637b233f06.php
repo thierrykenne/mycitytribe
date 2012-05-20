@@ -18,22 +18,23 @@ class __TwigTemplate_9c44003f91da45fb6bdc71637b233f06 extends Twig_Template
             <a class=\"brand\" href=\"#\">  </a>
             <ul class=\"nav\">
               <li >
+                
                 <a href=\"";
-        // line 8
+        // line 9
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home"), "html", null, true);
         echo "\"> <i class=\" active icon-white icon-home \"> </i> Home</a>
                </li>
                 <li class=\"active\">
                 <a href=\"";
-        // line 11
+        // line 12
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("fos_user_registration_register"), "html", null, true);
-        echo "\"> <i class=\" active icon-white icon-home \"></i> Register</a>
+        echo "\"> <i class=\" active icon-white icon-user \"></i> Register</a>
                </li>
                <li >
                 <a href=\"";
-        // line 14
+        // line 15
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("fos_user_security_login"), "html", null, true);
-        echo "\"> <i class=\" active icon-white icon-home \"></i> Login</a>
+        echo "\"> <i class=\" active icon-white  icon-off \"></i> Login</a>
                </li>
 
              

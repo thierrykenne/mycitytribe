@@ -1,20 +1,27 @@
 .left-menu .nav  a, .right-menu a{
 	color: #FFF;
 }
-.left-menu .nav  a:hover{
-	z-index: auto;
+.left-menu .first  a:hover{
+	background-image: url('../images/menu-middle.png');
+	border-color: none;
+	font-weight: bold;
 }
 .left-menu .first, .right-menu .nav-header{
 	background-image: url('../images/menu-head.png');
 	background-repeat: no-repeat;
-	background-color: #FFF;
+	background-color: #F5F5F5;
 	background-size: 100% 100%;
 }
 .left-menu .odd{
 	background-image: url('../images/menu-middle.png');
 	background-repeat: no-repeat;
-	background-color: #EEE;
 	background-size: 100% 100%;
+}
+.left-menu .odd a:hover{
+	background-image: url('../images/menu-middle.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	font-weight: bold;
 }
 .left-menu .even, .right-menu .nav-list{
 	background-color: #c1c2c4;
@@ -22,8 +29,14 @@
 .left-menu .last{
 	background-image: url('../images/menu-bottom.png');
 	background-repeat: no-repeat;
-	background-color: #EEE;
 	background-size: 100% 100%;
+}
+
+.left-menu .last a:hover{
+	background-image: url('../images/menu-bottom.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	font-weight: bold;
 }
 .right-menu .nav-list a{
 	font-family: arial, verdana, sans-serif;

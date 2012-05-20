@@ -10,6 +10,13 @@ body{
 	background-repeat:no-repeat;
 	background-size: 100% auto;
 }
+.contentbox .span7{
+	width:578px;
+}
+.contentbox #register .span7{
+	width:540px;
+}
+
 .contentbox .video{
 	width:440px;
 	padding-right: 15px;
@@ -139,7 +146,13 @@ footer{
     top: -47px;
     left:1px;
 }
-
+.version{
+	position: absolute;
+	right:2px;
+}
+.version .label{
+	font-size:14px;
+}
 .navigation{
   	margin-top: 21px;
 }
@@ -191,7 +204,7 @@ footer{
 	padding: 20px 0 20px 0;
 }
 .new-msg{
-	 margin-bottom: 20px;
+	 margin: 0 20px 20px 0;
 }
 .small-img{
 	width:50px;
@@ -210,4 +223,14 @@ footer{
 .mail{
 	padding-top: 100px;
 	padding-top: 100px;
+}
+
+.tribe-message .span5{
+	width:410px;
+}
+#errorbox{
+	font-size: 14px;
+	margin: 40px 20px 20px 20px;
+	min-height:450px;
+
 }

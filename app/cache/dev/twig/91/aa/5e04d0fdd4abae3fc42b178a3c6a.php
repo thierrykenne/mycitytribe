@@ -26,7 +26,7 @@ class __TwigTemplate_91aa5e04d0fdd4abae3fc42b178a3c6a extends Twig_Template
     public function block_middle($context, array $blocks = array())
     {
         // line 3
-        echo "<div class=\"row\">
+        echo "
 \t<h2> Default Tribes</h2>
 \t<div class=\"tribes\">
 \t\t<table class=\" table table-bordered table-striped \" >
@@ -71,7 +71,7 @@ class __TwigTemplate_91aa5e04d0fdd4abae3fc42b178a3c6a extends Twig_Template
 \t\t  </tbody>
 \t\t</table>
 \t</div>
-</div>
+
 
 ";
     }

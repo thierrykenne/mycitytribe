@@ -6,6 +6,8 @@ imports:
 #        metadata_cache_driver: apc
 #        result_cache_driver: apc
 #        query_cache_driver: apc
+twig:  
+    exception_controller: "CitytribeBundle:Exception:exception"
 
 monolog:
     handlers:

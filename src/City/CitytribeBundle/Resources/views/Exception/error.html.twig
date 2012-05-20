@@ -1,0 +1,23 @@
+{% extends "::layout.html.twig" %}
+{% block fos_user_content %}
+{% block content %}
+<div class="content-type1">
+    <div class="logo-left"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
+    {% include "CitytribeBundle:Menu:default.html.twig" %}
+        <div class="row contentbox" > 
+            <div id="errorbox">
+            
+                 <h1>Oops! An Error Occurred</h1>
+                <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+
+                <div>
+                    Something is broken. Please e-mail us at [email] and let us know
+                    what you were doing when this error occurred. We will fix it as soon
+                    as possible. Sorry for any inconvenience caused.lol
+                </div>
+             
+                </div>
+</div>
+{% endblock content %}
+
+{% endblock fos_user_content %}

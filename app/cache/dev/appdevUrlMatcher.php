@@ -414,6 +414,14 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::tribesAction',  'type' => 'destination',)), array('_route' => 'Cityblog_tribes'));
         }
 
+        // Default
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'Default');
+            }
+            return array (  '_controller' => 'City\\CitytribeBundle\\Controller\\BlogController::indexAction',  'type' => 'destination',  'page' => 1,  '_route' => 'Default',);
+        }
+
         if (0 === strpos($pathinfo, '/places')) {
             // GeoBundle_polygon_region
             if ($pathinfo === '/places/polygon') {

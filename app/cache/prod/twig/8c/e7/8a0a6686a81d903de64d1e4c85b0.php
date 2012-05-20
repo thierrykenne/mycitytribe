@@ -94,12 +94,44 @@ class __TwigTemplate_8ce78a0a6686a81d903de64d1e4c85b0 extends Twig_Template
     
 })
 </script>
+<script type=\"text/javascript\">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
 </head>
 <body>
+
+<div id=\"fb-root\"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '166704423433744', // App ID
+      channelUrl : '//www.mycityTribe.com', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = \"//connect.facebook.net/en_US/all.js\";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>    
 ";
-        // line 54
+        // line 86
         $this->displayBlock('body', $context, $blocks);
-        // line 77
+        // line 109
         echo "</body>
 </html>";
     }
@@ -214,73 +246,73 @@ class __TwigTemplate_8ce78a0a6686a81d903de64d1e4c85b0 extends Twig_Template
         echo "MycityTribe -Alfa";
     }
 
-    // line 60
+    // line 92
     public function block_flashes($context, array $blocks = array())
     {
-        // line 61
+        // line 93
         echo "                ";
         $context["flash"] = $this->env->loadTemplate("IsdevTwitterBootstrapBundle::flash.html.twig");
-        // line 62
+        // line 94
         echo "\t\t\t    ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "flash"), "session_msg", array(), "method"), "html", null, true);
         echo "
 \t\t\t";
     }
 
-    // line 65
+    // line 97
     public function block_content($context, array $blocks = array())
     {
-        // line 66
+        // line 98
         echo "                <div class=\"row\"></div>
             ";
     }
 
-    // line 69
+    // line 101
     public function block_footer($context, array $blocks = array())
     {
-        // line 70
+        // line 102
         echo "        <footer class=\"row\">
 \t   <p align=\"center\"> Copyright &copy; <a href=\"\" target=\"_blank\">MyCityTribe </a> ";
-        // line 71
+        // line 103
         echo twig_escape_filter($this->env, twig_date_format_filter("now", "Y"), "html", null, true);
         echo "</p>
         </footer>
     ";
     }
 
-    // line 56
+    // line 88
     public function block_container($context, array $blocks = array())
     {
-        // line 57
+        // line 89
         echo "
         <div class=\"content\">
 \t\t\t
 \t\t\t";
-        // line 60
+        // line 92
         $this->displayBlock('flashes', $context, $blocks);
-        // line 64
+        // line 96
         echo "
             ";
-        // line 65
+        // line 97
         $this->displayBlock('content', $context, $blocks);
-        // line 68
+        // line 100
         echo "        </div>
     ";
-        // line 69
+        // line 101
         $this->displayBlock('footer', $context, $blocks);
-        // line 74
+        // line 106
         echo "\t";
     }
 
-    // line 54
+    // line 86
     public function block_body($context, array $blocks = array())
     {
-        // line 55
+        // line 87
         echo "    <div class=\"container\">
 \t";
-        // line 56
+        // line 88
         $this->displayBlock('container', $context, $blocks);
-        // line 75
+        // line 107
         echo "    </div>
 ";
     }

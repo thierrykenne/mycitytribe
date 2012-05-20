@@ -28,7 +28,7 @@ class __TwigTemplate_79875df05b458b95dcaa1d58776694e5 extends Twig_Template
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 38
+    // line 39
     public function block_middle($context, array $blocks = array())
     {
         echo " ";
@@ -45,25 +45,26 @@ class __TwigTemplate_79875df05b458b95dcaa1d58776694e5 extends Twig_Template
         echo "\"> <img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo-medium.png"), "html", null, true);
         echo "\"> </a> </div>
+\t\t<div class=\"version\"> <span class=\"label label-info\">ALFA VERSION !</span></div>
 \t\t";
-        // line 8
-        $this->env->loadTemplate("CitytribeBundle:Menu:navigation.html.twig")->display($context);
         // line 9
+        $this->env->loadTemplate("CitytribeBundle:Menu:navigation.html.twig")->display($context);
+        // line 10
         echo "\t\t<div class=\"row contentbox \" > 
 \t\t\t<div class=\"tribe-message row space\">
 \t\t\t\t<div class=\"span3\">.
 \t\t\t\t</div>
 \t\t\t\t<div class=\"span5\">
-\t\t\t\t\t<h2>";
-        // line 14
+\t\t\t\t\t <h2> <a> ";
+        // line 15
         echo twig_escape_filter($this->env, \City\CitytribeBundle\Twig\Extension\TwigExtension::countryFilter($this->getAttribute($this->getContext($context, "user"), "nationality")), "html", null, true);
         echo " Tribe in ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "countrytribe"), "c"), "html", null, true);
-        echo " </h2>
+        echo " </a></h2>
 \t\t\t\t</div>
 \t\t\t\t<div class=\"span4\">
 \t\t\t\t\t<div class=\"logout pull-right\"><a class=\"btn btn-danger\" href=\"";
-        // line 17
+        // line 18
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("fos_user_security_logout"), "html", null, true);
         echo "\">
   \t\t\t\t\t\t<strong> <i class=\"icon-off icon-white \"></i> Logout </strong></a>  
@@ -73,12 +74,12 @@ class __TwigTemplate_79875df05b458b95dcaa1d58776694e5 extends Twig_Template
 \t\t\t          <button class=\"btn btn-medium btn-inverse dropdown-toggle\" data-toggle=\"dropdown\"><span class=\"caret\"></span></button>
 \t\t\t          <ul class=\"dropdown-menu\">
 \t\t\t            <li><a href=\"";
-        // line 24
+        // line 25
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home", array("page" => "1", "type" => $this->getAttribute($this->getContext($context, "countrytribe"), "d"))), "html", null, true);
         echo "\">
 \t\t\t            \t
 \t\t\t            \t";
-        // line 26
+        // line 27
         echo twig_escape_filter($this->env, \City\CitytribeBundle\Twig\Extension\TwigExtension::countryFilter($this->getAttribute($this->getContext($context, "user"), "nationality")), "html", null, true);
         echo " Tribe in ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "countrytribe"), "c"), "html", null, true);
@@ -87,11 +88,11 @@ class __TwigTemplate_79875df05b458b95dcaa1d58776694e5 extends Twig_Template
 \t\t\t            \t</a>
 \t\t\t            </li>
 \t\t\t            <li><a href=\"";
-        // line 30
+        // line 31
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("Cityblog_home", array("page" => "1", "type" => $this->getAttribute($this->getContext($context, "countrytribe2"), "d"))), "html", null, true);
         echo "\">
 \t\t\t             ";
-        // line 31
+        // line 32
         echo twig_escape_filter($this->env, \City\CitytribeBundle\Twig\Extension\TwigExtension::countryFilter($this->getAttribute($this->getContext($context, "user"), "nationality")), "html", null, true);
         echo " Tribe in ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "countrytribe2"), "c"), "html", null, true);
@@ -102,15 +103,15 @@ class __TwigTemplate_79875df05b458b95dcaa1d58776694e5 extends Twig_Template
 \t\t\t</div>
 \t\t<div class=\"row\">
 \t\t\t<div class=\"span3\"> ";
-        // line 37
+        // line 38
         $this->env->loadTemplate("CitytribeBundle:Menu:left.html.twig")->display($context);
         echo " </div>
 \t\t\t<div class=\"middle span7 \"> ";
-        // line 38
+        // line 39
         $this->displayBlock('middle', $context, $blocks);
         echo " </div>
 \t\t\t<div class=\"span2\"> ";
-        // line 39
+        // line 40
         $this->env->loadTemplate("CitytribeBundle:Menu:right.html.twig")->display($context);
         echo "</div>
 \t\t</div>
@@ -120,14 +121,14 @@ class __TwigTemplate_79875df05b458b95dcaa1d58776694e5 extends Twig_Template
 ";
     }
 
-    // line 45
+    // line 46
     public function block_footer($context, array $blocks = array())
     {
-        // line 46
+        // line 47
         echo "    <div class=\"row\">
         <footer class=\"row\">
 \t   <p align=\"center\"> Copyright &copy; <a href=\"\" target=\"_blank\">MyCityTribe </a> ";
-        // line 48
+        // line 49
         echo twig_escape_filter($this->env, twig_date_format_filter("now", "Y"), "html", null, true);
         echo "</p>
         </footer>

@@ -5,8 +5,10 @@
 	<div class="logo-left"> <img src="{{ asset('images/logo-medium.png') }}"> </div>
 	{% include "CitytribeBundle:Menu:default.html.twig" %}
 		<div class="row contentbox" > 
+			<div id="register">
 			<div class="span7 register-right register" id="reg"> <img src="{{ asset('images/world-blue.png') }}"></div>
-			<div class="span5 register-left register"> {% include "FOSUserBundle:Registration:register_content.html.twig" %}</div>	
+			<div class="span5 register-left register"> {% include "FOSUserBundle:Registration:register_content.html.twig" %}</div>
+			</div>	
 		</div>
 </div>
 {% endblock content %}

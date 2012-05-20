@@ -1,6 +1,6 @@
 {% extends "CitytribeBundle::default.html.twig" %}
 {% block middle %}
-		<div class="msg-btn span6">
+		<div class="msg-btn span7">
 		<a class="new-msg btn btn-large pull-right" href=" {{ path('message_new')}} "><i class="icon-comment"></i> Add New Message</a>
 		</div>
 		<h3> Message List of the tribe</h3>
@@ -31,12 +31,16 @@
 					<ul> <li>There are no Message yet! </li> </ul>
 				{% endfor %}
 		</div>
-			<div class="pagination">
+			<div class="pagination"> 
 		    	<ul>
 		    		{# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
 		    		{% for p in range(1, nb_pages) %}
 		    			<li{% if p == page %} class="active"{% endif %}>
+		    				{% if mymessages is not defined %}
 		    				<a href="{{ path('Cityblog_home', {'page': p}) }}">{{ p }}</a>
+		    				{% else %}
+		    				<a href="{{ path('blog_profile_messages', {'page': p,'id':user.id}) }}">{{ p }}</a>
+		    				{% endif %}
 		    			</li>
 		    		{% endfor %}
 		    	</ul>
