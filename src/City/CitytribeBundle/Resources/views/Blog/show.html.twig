@@ -17,9 +17,11 @@
             <p><div class="content-msg"> {{ message.contenu }}</div></p>
         </div>
 </div>
-
-<div class="fb-like" data-href="http://mycitytribe.com" data-send="false" data-layout="box_count" data-width="100" data-show-faces="false" data-font="verdana"></div>
-<g:plusone size="tall"></g:plusone>
+<div class="buttons pull-right "> 
+    <div class="fb-like" data-href="http://mycitytribe.com" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="verdana"></div>
+    <g:plusone ></g:plusone>
+    <br /><br />
+</div>
 
 <div class="comments">
     {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': message.thread.id} %}
