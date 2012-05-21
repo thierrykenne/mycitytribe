@@ -57,6 +57,7 @@ class BlogController extends Controller
         $nb_pages = ceil($nb_messages/$nb_messages_page);
 
         $offset = ($page-1) * $nb_messages_page;
+        if ($page==0) $page=1;
         if ($page!=1) {
             if( $page < 1 OR $page > $nb_pages )
             {

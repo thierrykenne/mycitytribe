@@ -18,9 +18,14 @@ window.fbAsyncInit = function() {
   e.async = true;
   document.getElementById('fb-root').appendChild(e);
 }());
-  var div1 = document.getElementById('registerbox')
-  var div1Paras = div1.getElementsByTagName("a");
-  div1Paras.style.display = 'none';
+  if ( div1 = document.getElementById('registerbox'))
+  {
+	  	if (div1Paras = div1.getElementsByTagName("a")){
+	  	div1Paras.style.display = 'none';
+	  	}
+  }
+  
+  
 {% endif %}
 {% endautoescape %}
 </script>
