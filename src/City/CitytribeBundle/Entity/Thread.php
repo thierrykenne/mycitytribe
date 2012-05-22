@@ -23,7 +23,7 @@ class Thread extends BaseThread
     protected $id;
 
     /**
-     * @ORM\OneToOne( targetEntity="City\UserBundle\Entity\User" )
+     * @ORM\ManyToOne( targetEntity="City\UserBundle\Entity\User" )
      */
 
     protected $last_comment_author;
