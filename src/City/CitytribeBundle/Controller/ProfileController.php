@@ -41,12 +41,12 @@ class ProfileController extends Controller
 
     	    	if ($form->isValid()) {
     		   //Upload of file
-    	    	    $files=$request->files->get($form->getName());
     	    	    
-    				if (!$uploadedFile=$files["name"])
+    	    	    $files=$request->files->get($form->getName());
+                    $uploadedFile=$files["name"];
+    				if ($uploadedFile->getError())
                     {
-                        $session = $this->getRequest()->getSession();
-                        $session->set('notice',' Please select a valid image file!');
+                        $this->get('session')->setFlash('Please select a valid image file');
                         return $this->render('CitytribeBundle:Profile:avatar.html.twig',array(
                                 'user'=>$user,
                                 'form'=> $form->createView(),
@@ -54,7 +54,7 @@ class ProfileController extends Controller
                                ));
 
                     }
-                    $extention= $uploadedFile->guessExtension();
+                    $extention= $uploadedFile->getExtension();
     				$filename='avatar_'.$user->getId().'.'.$extention;
     	    	    $uploadedFile->move(
     	    	         __DIR__.'/../../../../web/uploads/avatars/',$filename    	        

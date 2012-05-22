@@ -34,7 +34,6 @@
 
 		  function onFbInit() {
 		      if (typeof(FB) != 'undefined' && FB != null ) {
-			  console.log("Got facebook SDK");
 		          FB.Event.subscribe('auth.statusChange', function(response) {
 		              setTimeout(goLogIn, 500);
 		          });
