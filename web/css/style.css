@@ -4,7 +4,7 @@ body{
 }
 .contentbox{
 	background-color:#FFFFFF;
-	padding: 20px 0px 0px 0;
+	padding: 82px 0px 0px 0;
 	box-shadow:-10px 5px 29px #000;
 	background-image: url('../images/content-bg.png');
 	background-repeat:no-repeat;
@@ -26,24 +26,25 @@ body{
 	position: relative;
 }
 .content-map{
-	padding-top: 40px;
+	padding-top: 83px;
 }
 .logo{
-	background-color:#f2f3f4;
+	background-image:url('../images/logo-bg.png');
+	background-repeat:no-repeat;
+	background-size: 961px 225px;
+	height: 225px;
+    position: relative;
 }
 .logo img {
-	width:355px;
-	height:220px;
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
+    position: relative;
+    top: 44px;
+    z-index: 1;
 }
 .slogan{
-	background-color:#C0C2C4;
-	height:37px;
-	border-radius: 5px 5px 0px 0px ;
-  	-webkit-border-radius: 5px 5px 0px 0px;
-  	-moz-border-radius: 5px 5px 0px 0px;
+    background-color: #C0C2C4;
+    height: 37px;
+    position: relative;
+    z-index: 0;
   }
 .slogan span{
 	margin-right: auto;
@@ -52,6 +53,21 @@ body{
 	display: block;
 	color: #FFFFFF;
 }
+.slogan1{
+    background-color: #C0C2C4;
+    height: 37px;
+    position: relative;
+    top: -59px;
+    z-index: 0;
+  }
+.slogan1 span{
+	margin-right: auto;
+	margin-left: auto;
+	width:440px;
+	display: block;
+	color: #FFFFFF;
+}
+
 .rightbox{
 	padding: 0px 0px 20px 0px;
 }
@@ -127,8 +143,7 @@ footer{
 	margin-top: 20px;
 }
 .logo-center img, .logo-left img, .logo-left2 img {
-    height: 160px;
-    width: 250px;	
+	
 }
 .logo-center{
     left: 556px;
@@ -137,14 +152,15 @@ footer{
 }
 
 .logo-left{
+    left: -41px;
     position: absolute;
-    top: -70px;
-    left:-30px;
+    top: -83px;
+    z-index: 1;
 }
 .logo-left2{
+    left: -66px;
     position: absolute;
-    top: -47px;
-    left:1px;
+    top: -84px;
 }
 .version{
 	position: absolute;
@@ -218,13 +234,21 @@ footer{
 	display: none;
 }
 .contentbox .flash-notice p  {
-	font-size:large;
+	font-size:16px;
+	text-align:right;
+}
+.flash-notice{
+	position: relative;
+    top: -82px;
 }
 .mail{
 	padding-top: 100px;
 	padding-top: 100px;
 }
-
+.tribe-message{
+	margin-top: -46px;
+	margin-bottom: 38px;
+}
 .tribe-message .span5{
 	width:410px;
 }
